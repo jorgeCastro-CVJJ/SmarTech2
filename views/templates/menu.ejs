@@ -7,6 +7,7 @@
               <img class="icon" src="../media/casa.png" alt="inicio" />
               <a>Inicio</a>
             </div>
+            <% if(listaPrivilegios.RegNuevoProyecto == false) {  %>
             <div class="row">
               <img
                 class="icon"
@@ -23,14 +24,16 @@
               />
               <a>Mis Tareas</a>
             </div>
-            <div class="row">
-              <img
-                class="icon"
-                src="../media/pendiente.png"
-                alt="tareas"
-              />
-              <a>Crear Proyecto</a>
-            </div>
+            
+              <div class="row">
+                <img
+                  class="icon"
+                  src="../media/pendiente.png"
+                  alt="tareas"
+                />
+                <a>Crear Proyecto</a>
+              </div>
+            <% } %>
             <div class="row">
               <img
                 class="icon"
