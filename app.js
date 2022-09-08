@@ -6,9 +6,6 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const csrf = require("csurf");
 
-// rutas a utilizar
-const menuColaborador = require("./routes/colaborador.routes");
-
 // uso de librerias
 const app = express();
 const PORT = 5000;
@@ -39,8 +36,12 @@ app.use((request, response, next) => {
   next();
 });
 
-// ruta raiz
+// rutas a utilizar
+const menuColaborador = require("./routes/colaborador.routes");
 app.use("/", menuColaborador);
+
+const rutaUsuario = require("./routes/user.routes");
+app.use("/user", rutaUsuario);
 
 // ERROR 404
 app.use((request, response, next) => {
