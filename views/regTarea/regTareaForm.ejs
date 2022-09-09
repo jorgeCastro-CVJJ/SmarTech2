@@ -12,10 +12,11 @@
     <div class="field is-narrow">
       <div class="control">
         <div class="select is-fullwidth">
-          <select>
-            <option>Selecciona o escribe</option>
-            <option>Marketing</option>
-            <option>Sales</option>
+          <select name="nombreP" id="nombreP">
+            <option value="" disabled selected>Escribe selecciona el proyecto</option>
+                <% for (let p of proyecto) { %>
+                    <option value="<%= p.nombreP %>"><%= p.nombreP %></option>
+                <% } %>
           </select>
         </div>
       </div>

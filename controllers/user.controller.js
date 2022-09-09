@@ -27,9 +27,12 @@ postLogin = (request, response, next) => {
             const p = privilegio.descripcionPrivilegio;
             request.session.privilegios[p] = true; // crear un arreglo privilegios que tiene como llave el nombre del provilegio y el valor de true, con esto comparo si tiene el privilegio o no
           }
+          console.log(request.session.privilegios);
           //let listaPrivilegios = request.session.privilegios;  // <-- It's a test
           //console.log(request.session.privilegios) // me da los privilegios
-          return response.redirect("/user/inicio")
+          return request.session.save(err => {
+            response.redirect("/user/inicio");
+        });
            //return response.render("index.ejs", {
            //listaPrivilegios : listaPrivilegios});
         })
@@ -70,8 +73,8 @@ postLogin = (request, response, next) => {
 };
 
 menu = (request, response, next) => {
-  let listaPrivilegios = request.session.privilegios;
-  response.render("index.ejs",{listaPrivilegios: listaPrivilegios});
+  console.log(request.session.privilegios);
+  response.render("index.ejs",{listaPrivilegios: request.session.privilegios});
 };
 
 module.exports = {
