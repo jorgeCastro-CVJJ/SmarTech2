@@ -37,8 +37,6 @@ app.use((request, response, next) => {
 });*/
 
 // rutas a utilizar
-const menuColaborador = require("./routes/colaborador.routes");
-app.use("/", menuColaborador);
 
 const rutaUsuario = require("./routes/user.routes");
 app.use("/user", rutaUsuario);

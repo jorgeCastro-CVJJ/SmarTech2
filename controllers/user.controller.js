@@ -27,11 +27,11 @@ postLogin = (request, response, next) => {
             const p = privilegio.descripcionPrivilegio;
             request.session.privilegios[p] = true; // crear un arreglo privilegios que tiene como llave el nombre del provilegio y el valor de true, con esto comparo si tiene el privilegio o no
           }
-          let listaPrivilegios = request.session.privilegios;  // <-- It's a test
-          console.log(request.session.privilegios) // me da los privilegios
-          //return response.redirect("/user/moni")
-           return response.render("index.ejs", {
-           listaPrivilegios : listaPrivilegios});
+          //let listaPrivilegios = request.session.privilegios;  // <-- It's a test
+          //console.log(request.session.privilegios) // me da los privilegios
+          return response.redirect("/user/inicio")
+           //return response.render("index.ejs", {
+           //listaPrivilegios : listaPrivilegios});
         })
         .catch((err) => {
           console.log(err);
@@ -78,6 +78,5 @@ module.exports = {
   getLogin,
   postLogin,
   menu,
-
 };
 // en vistas poner if pasar arreglo de privilegios a la vista e ir comparando 
