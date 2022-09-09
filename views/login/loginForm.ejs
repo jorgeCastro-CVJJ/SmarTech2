@@ -1,11 +1,38 @@
-<h1>Acceder</h1>
-<form action="login" method="POST">
-  <fieldset>
-    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-    <legend>Correo</legend>
-    <input placeholder="DenisseDB@gmail.com" id="correo" name="correo" type="text" required />
-    <label class="label" for="user">Correo</label>
-  </fieldset>
-  <br />
-  <input type="submit" class="btn" value="Entrar" />
-</form>
+<%- include('../templates/head.ejs') %>
+<section class="hero has-background-white-ter is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div column is-5-tablet is-4-desktop is-3-widescreen>
+          
+          
+          <form action="login" method="POST">
+            <fieldset> 
+              <h3 class="title-is-3">Login</h3>
+              <div class="field">
+                <label for="user" class="label">Email Adress</label>
+                <input type="email" placeholder="denissedb01@gmail.com" id="correo" name="correo" class="input" required>
+              </div>
+
+            <div class="field">
+              <label for="" class="label">Password</label>
+              <div class="control has-icons-left">
+                <input type="password" placeholder="******" class="input" required>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-lock"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="field">
+              <button class="button is-success">
+                Login
+              </button>
+            </div>
+          </fieldset>
+          </form>
+
+      </div>
+    </div>
+  </div>
+</section>
