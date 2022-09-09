@@ -23,9 +23,8 @@ postLogin = (request, response, next) => {
         Usuario.fetchPrivilegio(rows[0].correo) // me da una promesa
         .then(( [rows, fielData]) => { // todas las filas de los privilegios
           request.session.privilegios = []; 
-          for(privilegio of rows){
-            const p = privilegio.descripcionPrivilegio;
-            request.session.privilegios[p] = true; // crear un arreglo privilegios que tiene como llave el nombre del provilegio y el valor de true, con esto comparo si tiene el privilegio o no
+          for(privilegio of rows) {
+            request.session.privilegios.push(privilegio.descripcionPrivilegio); // crear un arreglo privilegios que tiene como llave el nombre del provilegio y el valor de true, con esto comparo si tiene el privilegio o no
           }
           //let listaPrivilegios = request.session.privilegios;  // <-- It's a test
           //console.log(request.session.privilegios) // me da los privilegios
@@ -70,8 +69,10 @@ postLogin = (request, response, next) => {
 };
 
 menu = (request, response, next) => {
-  let listaPrivilegios = request.session.privilegios;
-  response.render("index.ejs",{listaPrivilegios: listaPrivilegios});
+
+  console.log(request.session.hola);
+  console.log(request.session.privilegios);
+  response.render("index.ejs",{listaPrivilegios: request.session.privilegios});
 };
 
 module.exports = {
