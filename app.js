@@ -37,9 +37,11 @@ app.use((request, response, next) => {
 });*/
 
 // rutas a utilizar
-
 const rutaUsuario = require("./routes/user.routes");
 app.use("/user", rutaUsuario);
+
+const rutasRegTarea = require("./routes/regTarea.routes");
+app.use("/registrarTarea", rutasRegTarea);
 
 // ERROR 404
 app.use((request, response, next) => {

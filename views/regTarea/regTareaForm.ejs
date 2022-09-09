@@ -1,0 +1,105 @@
+<%- include('head.ejs') %>
+
+<form action="regTarea" method="POST">
+
+<h1>Crear Tarea</h1>
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">Proyecto al que pertence</label>
+  </div>
+  <div class="field-body">
+    <div class="field is-narrow">
+      <div class="control">
+        <div class="select is-fullwidth">
+          <select>
+            <option>Selecciona o escribe</option>
+            <option>Marketing</option>
+            <option>Sales</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">Nombre de tarea</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <input class="input is-danger" type="text" placeholder="Escribe aqui" id="nombreT" name="nombreT">
+      </div>
+      <p class="help is-danger">
+        This field is required
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">Colaboradores</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <input class="input" type="text" placeholder="Escribe aqui">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label"></label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <input class="input" type="text" placeholder="Agregar">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">HORAS DE TRABAJO</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="field has-addons">
+        <p class="control">
+          <input class="input" type="number" placeholder="1" id="horasTrabajo" name="horasTrabajo">
+        </p>
+        <p class="control">
+          <a class="button is-static">
+            horas
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="field is-grouped is-grouped-centered">
+  <p class="control">
+    <a class="button is-primary">
+      Agregar
+    </a>
+  </p>
+  <p class="control">
+    <a class="button is-light">
+      Cancelar
+    </a>
+  </p>
+</div>
+</div>
+</form>
