@@ -29,8 +29,9 @@ postLogin = (request, response, next) => {
           }
           let listaPrivilegios = request.session.privilegios;  // <-- It's a test
           console.log(request.session.privilegios) // me da los privilegios
-          return response.render("index.ejs", {
-          listaPrivilegios : listaPrivilegios});
+          //return response.redirect("/user/moni")
+           return response.render("index.ejs", {
+           listaPrivilegios : listaPrivilegios});
         })
         .catch((err) => {
           console.log(err);
@@ -69,12 +70,14 @@ postLogin = (request, response, next) => {
 };
 
 menu = (request, response, next) => {
-  response.render("index.ejs");
+  let listaPrivilegios = request.session.privilegios;
+  response.render("index.ejs",{listaPrivilegios: listaPrivilegios});
 };
 
 module.exports = {
   getLogin,
   postLogin,
-  menu
+  menu,
+
 };
 // en vistas poner if pasar arreglo de privilegios a la vista e ir comparando 
