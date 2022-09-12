@@ -7,11 +7,6 @@ getLogin = (request, response, next) => {
   });
 };
 
-// exports.login = (request, response, next) => {
-//   if(RegNuevoProyecto in request.session.privilegios) {
-
-//   }
-// }
 
 postLogin = (request, response, next) => {
   // recuperar usuario busco si existe
@@ -28,13 +23,9 @@ postLogin = (request, response, next) => {
             request.session.privilegios[p] = true; // crear un arreglo privilegios que tiene como llave el nombre del provilegio y el valor de true, con esto comparo si tiene el privilegio o no
           }
           console.log(request.session.privilegios);
-          //let listaPrivilegios = request.session.privilegios;  // <-- It's a test
-          //console.log(request.session.privilegios) // me da los privilegios
           return request.session.save(err => {
             response.redirect("/user/inicio");
         });
-           //return response.render("index.ejs", {
-           //listaPrivilegios : listaPrivilegios});
         })
         .catch((err) => {
           console.log(err);
@@ -82,4 +73,3 @@ module.exports = {
   postLogin,
   menu,
 };
-// en vistas poner if pasar arreglo de privilegios a la vista e ir comparando 
