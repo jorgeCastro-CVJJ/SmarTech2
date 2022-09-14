@@ -1,40 +1,48 @@
 const path = require("path");
-const { fetchAll } = require("../models/regTareaModel");
-const RegTarea = require("../models/regTareaModel");
+const { fetchAll } = require("../models/proyectoModel");
+const Proyecto = require("../models/proyectoModel");
+const Tarea  = require("../models/tareaModel");
+const Empleado = require("../models/empleadoModel")
 
-getTarea = (request, response, next) => {
-    response.render(path.join("regTarea", "regTarea.ejs"), {
-      isLoggedIn: request.session.isLoggedIn ? request.session.isLoggedIn : false,
-    });
-};
-
-postTarea = (request, response, next) => {
-    const tarea = new RegTarea(request.body.nombreT);
-    tarea.save()
-    .then(() => {
-        RegTarea.fechAll()
-        .then(([rows, fieldData]) => {
-            response.render(path.join('regTarea', 'regTarea.ejs'), {
-                nombreP: rows,
-                nombreT: rows,
-                horasTrabajo : rows,
-                isLoggedIn: request.session.isLoggedIn ? request.session.isLoggedIn : false,
+// es cuabdo quiero algo de la base de datos
+getnuevaTarea = (request, response, next) => {
+    console.log(request.session)
+    Proyecto.fetchAll()
+    .then(([rowsProyecto, fieldData])=> {
+        Empleado.fetchAll()
+        .then(([rowsEmpleado, fieldData]) => {
+            response.render(path.join("regTarea", "regTarea.ejs"), {
+                // aqui mando los datos a la vista
+                proyecto:rowsProyecto,
+                empleado:rowsEmpleado
             })
-        });
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     })
-    .catch(err => {
-        response.render('error.ejs', {
-            isLoggedIn: request.session.isLoggedIn ? request.session.isLoggedIn : false
-        });
-    });
+    .catch((err) => {
+        console.log(err)
+    })
 };
 
+postnuevaTarea = (request, response, next) => {
+    const nuevaTarea = new Tarea(request.body.nombreT, request.body.horasRegistradas, 2);
+    console.log(nuevaTarea);
+    nuevaTarea.save()
+    .then((result) => {
+        response.status(200).json({
+            salida:"exitoso"
+        })
+    
+        .catch((err) => {
+            console.log(err)
+        })
+    })
+}
 
-  
-
-  
 module.exports = {
-    getTarea,
-    postTarea
+    getnuevaTarea,
+    postnuevaTarea
   };
   

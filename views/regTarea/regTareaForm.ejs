@@ -1,6 +1,7 @@
-<%- include('head.ejs') %>
+<%- include('../templates/head.ejs') %>
 
-<form action="regTarea" method="POST">
+<!-- en action ponemos la ruta-->
+<form action="/registrarTarea/nueva" method="POST">
 
 <h1>Crear Tarea</h1>
 
@@ -49,24 +50,17 @@
     <div class="field">
       <div class="control">
         <input class="input" type="text" placeholder="Escribe aqui">
+        <select name="nombre" id="nombre">
+          <option value="" disabled selected>Juan Montoya</option>
+              <% for (let e of empleado) { %>
+                  <option value="<%= e.nombre, e.apellidoM, e.apellidoP %>"><%= e.nombre, e.apellidoM, e.apellidoP %></option>
+              <% } %>
+        </select>
       </div>
     </div>
   </div>
 </div>
 
-
-<div class="field is-horizontal">
-  <div class="field-label is-normal">
-    <label class="label"></label>
-  </div>
-  <div class="field-body">
-    <div class="field">
-      <div class="control">
-        <input class="input" type="text" placeholder="Agregar">
-      </div>
-    </div>
-  </div>
-</div>
 
 
 <div class="field is-horizontal">
@@ -77,7 +71,7 @@
     <div class="field">
       <div class="field has-addons">
         <p class="control">
-          <input class="input" type="number" placeholder="1" id="horasTrabajo" name="horasTrabajo">
+          <input class="input" type="number" placeholder="1" id="horasTrabajo" name="horasRegistradas">
         </p>
         <p class="control">
           <a class="button is-static">
@@ -92,9 +86,7 @@
 
 <div class="field is-grouped is-grouped-centered">
   <p class="control">
-    <a class="button is-primary">
-      Agregar
-    </a>
+    <input type="submit" value="Agregar">
   </p>
   <p class="control">
     <a class="button is-light">
