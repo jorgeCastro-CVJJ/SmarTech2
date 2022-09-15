@@ -61,3 +61,28 @@
 .footer.footer{
   height: 200px;;
 }
+
+.crearTarea{
+  font-family: 'Inter';
+  text-align: center;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 120px;
+  color: #000000;
+}
+
+.botonAgregarTarea{
+  margin-left: -380px;
+  margin-top: 50px;
+}
+
+.botonCancelarTarea{
+  margin-left: -250px;
+  margin-top: 50px;
+}
+
+.regTareaForm{
+  margin-left: 300px;
+  margin-right: 150px;
+}
+

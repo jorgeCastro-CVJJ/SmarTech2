@@ -6,7 +6,7 @@ const Empleado = require("../models/empleadoModel")
 
 // es cuabdo quiero algo de la base de datos
 getnuevaTarea = (request, response, next) => {
-    console.log(request.session)
+    console.log(request.session);
     Proyecto.fetchAll()
     .then(([rowsProyecto, fieldData])=> {
         Empleado.fetchAll()

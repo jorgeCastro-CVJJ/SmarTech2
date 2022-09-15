@@ -1,9 +1,10 @@
 <%- include('../templates/head.ejs') %>
 
 <!-- en action ponemos la ruta-->
-<form action="/registrarTarea/nueva" method="POST">
+<form action="/registrarTarea/nueva" method="POST" class="regTareaForm">
 
-<h1>Crear Tarea</h1>
+
+<h1 class="crearTarea">Crear Tarea</h1>
 
 <div class="field is-horizontal">
   <div class="field-label is-normal">
@@ -14,7 +15,7 @@
       <div class="control">
         <div class="select is-fullwidth">
           <select name="nombreP" id="nombreP">
-            <option value="" disabled selected>Escribe selecciona el proyecto</option>
+            <option value="" disabled selected>Selecciona el proyecto</option>
                 <% for (let p of proyecto) { %>
                     <option value="<%= p.nombreP %>"><%= p.nombreP %></option>
                 <% } %>
@@ -33,7 +34,7 @@
   <div class="field-body">
     <div class="field">
       <div class="control">
-        <input class="input is-danger" type="text" placeholder="Escribe aqui" id="nombreT" name="nombreT">
+        <input class="input" type="text" placeholder="Escribe aqui" id="nombreT" name="nombreT">
       </div>
       <p class="help is-danger">
         This field is required
@@ -47,20 +48,20 @@
     <label class="label">Colaboradores</label>
   </div>
   <div class="field-body">
-    <div class="field">
+    <div class="field is-narrow">
       <div class="control">
-        <input class="input" type="text" placeholder="Escribe aqui">
-        <select name="nombre" id="nombre">
-          <option value="" disabled selected>Juan Montoya</option>
-              <% for (let e of empleado) { %>
-                  <option value="<%= e.nombre, e.apellidoM, e.apellidoP %>"><%= e.nombre, e.apellidoM, e.apellidoP %></option>
-              <% } %>
-        </select>
+        <div class="select is-fullwidth">
+          <select name="nombreP" id="nombreP">
+            <option value="" disabled selected> Selecciona a los colaboradores</option>
+            <% for (let e of empleado) { %>
+              <option value="<%= e.nombre, e.apellidoM, e.apellidoP %>"><%= e.nombre, e.apellidoM, e.apellidoP %></option>
+            <% } %>
+          </select>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
 
 
 <div class="field is-horizontal">
@@ -71,7 +72,7 @@
     <div class="field">
       <div class="field has-addons">
         <p class="control">
-          <input class="input" type="number" placeholder="1" id="horasTrabajo" name="horasRegistradas">
+          <input class="input is-danger" type="number" placeholder="1" id="horasTrabajo" name="horasRegistradas">
         </p>
         <p class="control">
           <a class="button is-static">
@@ -86,13 +87,14 @@
 
 <div class="field is-grouped is-grouped-centered">
   <p class="control">
-    <input type="submit" value="Agregar">
+    <input type="submit" value="Agregar"  class="button botonAgregarTarea is-success is-outlined">
   </p>
   <p class="control">
-    <a class="button is-light">
+    <a class="button botonCancelarTarea is-danger is-outlined">
       Cancelar
     </a>
   </p>
 </div>
 </div>
 </form>
+
