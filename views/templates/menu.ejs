@@ -1,4 +1,3 @@
-<%- include('head.ejs') %>
    <aside class="menu">
       <ul class="menu-list">
         <div class="columns">
@@ -23,7 +22,7 @@
               />
               <a>Mis Tareas</a>
             </div>
-            <% if(listaPrivilegios.indexOf('RegNuevoProyecto') != -1 ) {  %>
+            <% if(listaPrivilegios.indexOf('RegNuevoProyecto') != -1) {  %>
               <div class="row">
                 <img
                   class="icon"
@@ -33,7 +32,7 @@
                 <a>Crear Proyecto</a>
               </div>
             <% } %>
-            <% if(listaPrivilegios.indexOf('RegHorasAusentes == true) {  %>
+            <% if(listaPrivilegios.indexOf('RegHorasAusentes') != -1) {  %>
             <div class="row">
               <img
                 class="icon"
@@ -49,5 +48,3 @@
         <!-- <li class="cerrarSesion">Cerrar Sesion</li> -->
       </ul>
     </aside>
-  </body>
-</html>

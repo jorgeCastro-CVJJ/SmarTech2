@@ -28,7 +28,7 @@ postLogin = (request, response, next) => {
           }
           //let listaPrivilegios = request.session.privilegios;  // <-- It's a test
           //console.log(request.session.privilegios) // me da los privilegios
-          return response.redirect("/user/inicio")
+          return response.redirect("/user/inicio");
            //return response.render("index.ejs", {
            //listaPrivilegios : listaPrivilegios});
         })
@@ -69,10 +69,8 @@ postLogin = (request, response, next) => {
 };
 
 menu = (request, response, next) => {
-
-  console.log(request.session.hola);
   console.log(request.session.privilegios);
-  response.render("index.ejs",{listaPrivilegios: request.session.privilegios});
+  return response.render("index.ejs",{listaPrivilegios: request.session.privilegios});
 };
 
 module.exports = {
