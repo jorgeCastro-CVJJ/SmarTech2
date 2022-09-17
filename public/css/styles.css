@@ -62,12 +62,46 @@
   height: 200px;;
 } */
 
+
+.contenedor {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 95%;
+}
+
+.imagen-formulario {
+  background-image: url("../media/logo.png");
+  background-position: center center;
+  background-size: cover;
+  flex: 0 0 calc(60%);
+}
+
+@media(min-width:768px) {
+  .contenedor-formulario {
+    display: flex;
+  }
+}
+
+.formulario {
+  padding: 50px;
+  background-color: rgb(27, 27, 106);
+}
+
+.texto-formulario h2, .input label, .password-olvidada a{
+  color: white;
+}
+
 .columns {
-  /* background-color: black; */
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 95%;
+  background-color: black;
+  box-shadow: #002b49;
   box-sizing: border-box;
-  display: flexbox;
-  width: 500px;
-  text-align: justify;
-  padding-left: 500px; 
+  display: flex;
+  text-align: center;
+  padding-left: 500px;
+  /* padding-left: 300px;  */
+
 }
 

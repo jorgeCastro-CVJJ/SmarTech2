@@ -1,39 +1,28 @@
 <%- include('../templates/head.ejs') %>
 
-<section class="hero has-background-white-ter is-fullheight">
-  <div class="hero-body" id="login_carta">
-    <div class="container">
-      <div class="columns is-centered">
-        <div column is-5-tablet is-4-desktop is-3-widescreen>
-        <div id="login">
-          <form action="login" method="POST">
-            <fieldset> 
-              <h3 class="title-is-3">Login</h3>
-              <div class="field">
-                <label for="user" class="label">Email Adress</label>
-                <input type="email" placeholder="denissedb01@gmail.com" id="correo" name="correo" class="input" required>
-              </div>
-
-            <div class="field">
-              <label for="" class="label">Password</label>
-              <div class="control has-icons-left">
-                <input type="password" placeholder="******" class="input" required>
-                <span class="icon is-small is-left">
-                  <i class="fas fa-lock"></i>
-                </span>
-              </div>
-            </div>
-
-            <div class="field">
-              <button class="button is-success">
-                Login
-              </button>
-            </div>
-          </fieldset>
-          </form>
-        </div>
-      </div>
+<div class="contenedor-formulario contenedor">
+    <div class="imagen-formulario">
+        
     </div>
-  </div>
 
-</section>
+    <form class="formulario">
+        <div class="texto-formulario">
+            <h2>Bienvenido de nuevo</h2>
+            <p>Inicia sesión con tu cuenta</p>
+        </div>
+        <div class="input">
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario">
+        </div>
+        <div class="input">
+            <label for="contraseña">Contraseña</label>
+            <input type="password" id="contraseña">
+        </div>
+        <div class="password-olvidada">
+            <a href="#">¿Olvidaste tu contraseña?</a>
+        </div>
+        <div class="input">
+            <input type="submit" value="enviar">
+        </div>
+    </form>
+</div>
