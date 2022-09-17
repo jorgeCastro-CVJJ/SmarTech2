@@ -75,6 +75,12 @@
   background-size: cover;
   height: 200px;
   flex: 0 0 calc(60%);
+  position: relative;
+}
+
+.imagen-formulario::before {
+  content: "";
+  position: absolute; /*se desactivan propiedades top, bottom left y right*/
 }
 
 @media(min-width: 768px) {
@@ -117,6 +123,11 @@
   margin: 20px 0;
 }
 
+.password-olvidada a{
+  display: inline-block;
+  margin-top: 20px;
+}
+
 .input input {
   width: 100%;
   padding: 10px 16px;
@@ -130,5 +141,10 @@
   font-size: 22px;
   font-weight: bold;
   border: none;
+  margin-top: 20px;
+  transition: background-color .3s ease in-out;
 }
-
+.input input[type="submit"]:hover{
+  cursor: pointer;
+  background-color:rgb(0, 125, 186)
+}
