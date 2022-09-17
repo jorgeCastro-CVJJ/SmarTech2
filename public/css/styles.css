@@ -5,7 +5,7 @@
   height: 1020px;
   left: 20px;
   top: 0px;
-  background: #002b49;
+  background: #002b49; 
 
   /* letras */
   font-family: "Helvetica";
@@ -54,10 +54,20 @@
   background-color: rgb(8, 64, 109);
 }
 
-.footer img{
+/* .footer img{
   width: 150px;
 
 }
 .footer.footer{
   height: 200px;;
+} */
+
+.columns {
+  /* background-color: black; */
+  box-sizing: border-box;
+  display: flexbox;
+  width: 500px;
+  text-align: justify;
+  padding-left: 500px; 
 }
+
