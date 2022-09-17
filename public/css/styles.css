@@ -136,13 +136,14 @@ body{
 }
 
 .formulario {
-  padding: 50px;
+  padding: 80px;
   background-color: var(--azulOscuro);
   /*bgcolor: var(--azul)*/
 }
 
-.texto-formulario h2, .input label, .texto-formulario p{
+.texto-formulario h2, .input label, .texto-formulario p, .usuario-input{
   color: var(--blanco);
+  font-family: var(--fuente);
   /*color: var(--azul)*/
 }
 
@@ -152,7 +153,7 @@ body{
 }
 
 .texto-formulario p{
-  font-size: 22px;
+  font-size: 20px;
   text-align: center;
 }
 
@@ -165,13 +166,13 @@ body{
 
 .input input {
   width: 100%;
-  padding: 8px 20px;
+  padding: 10px 20px;
   border: none;
   outline: none;
 }
 
-.input input[type="submit"] {
-  background-color: rgb(0, 43, 73);
+.field button[type="submit"] {
+  background-color: var(--azulSec1);
   color: white;
   font-size: 22px;
   font-weight: bold;
@@ -179,7 +180,7 @@ body{
   margin-top: 0px;
   transition: background-color .3s ease in-out;
 }
-.input input[type="submit"]:hover{
+.field button[type="submit"]:hover{
   cursor: pointer;
-  background-color:rgb(0, 125, 186)
+  background-color:var(--azulSec2)
 }
