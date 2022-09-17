@@ -74,13 +74,6 @@
   --fuente: "Quicksand", sans-serif;
 }
 
-body{
-  font-family: var(--fuente);
-  background-color: var(--azulOscuro);
-  display: flex;
-  align-items: center;
-  height: 100vh;
-}
 
 html{
   box-sizing: border-box;
@@ -90,9 +83,17 @@ html{
   box-sizing: inherit;
 }
 
+body{
+  font-family: var(--fuente);
+  background-color: var(--azulOscuro);
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
 .contenedor {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1000px;
   width: 95%;
 }
 
@@ -101,7 +102,7 @@ html{
   background-position: center center;
   background-size: cover;
   height: 100px;
-  flex: 0 0 calc(60%);
+  flex: 0 0 calc(52%);
   position: relative;
 }
 
@@ -117,7 +118,8 @@ html{
 
 @media(min-width: 768px) {
   .imagen-formulario{
-    height: auto;
+    height: auto; 
+    background-position: right;
   }
 }
 
@@ -139,7 +141,7 @@ html{
   /*bgcolor: var(--azul)*/
 }
 
-.texto-formulario h2, .input label, .password-olvidada a, .texto-formulario p{
+.texto-formulario h2, .input label, .texto-formulario p{
   color: var(--blanco);
   /*color: var(--azul)*/
 }
@@ -158,18 +160,13 @@ html{
   display: block;
   font-size: 22px;
   font-weight: bold;
-  margin: 20px 0;
-}
-
-.password-olvidada a{
-  display: inline-block;
-  margin-top: 20px;
+  margin: 0px 0;
 }
 
 .input input {
   width: 100%;
-  padding: 10px 16px;
-  border-radius: 5px;
+  padding: 8px 20px;
+  border: none;
   outline: none;
 }
 
@@ -179,7 +176,7 @@ html{
   font-size: 22px;
   font-weight: bold;
   border: none;
-  margin-top: 20px;
+  margin-top: 0px;
   transition: background-color .3s ease in-out;
 }
 .input input[type="submit"]:hover{

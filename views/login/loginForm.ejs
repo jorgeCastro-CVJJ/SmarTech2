@@ -10,16 +10,13 @@
             <h2>Bienvenido de nuevo</h2>
             <p>Inicia sesión con tu cuenta</p>
         </div>
-        <div class="input">
-            <label for="usuario">Usuario</label>
-            <input placeholder="Ingresa tu nombre" type="text" id="usuario">
+        <div class="field">
+            <label for="usuario" id="usuario-input">Usuario</label>
+            <input placeholder="Ingresa tu nombre" type="text" id="correo" name="correo" class="input" required>
         </div>
-        <div class="input">
-            <label for="contraseña">Contraseña</label>
-            <input placeholder="contraseña" type="password" id="contraseña">
-        </div>
-        <div class="password-olvidada">
-            <a href="#">¿Olvidaste tu contraseña?</a>
+        <div class="field">
+            <label for="contraseña" class="label" id="usuario-input">Contraseña</label>
+            <input placeholder="contraseña" type="password" id="contraseña" class="input" required>
         </div>
         <div class="input">
             <input type="submit" value="Login">
