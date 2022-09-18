@@ -3,20 +3,25 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const session = require("express-session");
-const cookieParser = require("cookie-parser");
+
 const csrf = require("csurf");
 
-// uso de librerias
+const rutaUsuario = require("./routes/user.routes.js");
 const app = express();
-const PORT = 5000;
-app.set("view engine", "ejs");
-app.set("views", "views");
 
-// estatico, de eso no se mueve
-app.use(express.static(path.join(__dirname, "public")));
-
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
+const cookieParser = require("cookie-parser");
 app.use(cookieParser());
+// const PORT = 5000;
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+
+
+app.get("/", (request, response) => {
+  response.render("index")
+});
+// estatico, de eso no se mueve
 
 // cookies
 app.use(
@@ -38,7 +43,6 @@ app.use((request, response, next) => {
 
 // rutas a utilizar
 
-const rutaUsuario = require("./routes/user.routes");
 app.use("/user", rutaUsuario);
 
 // ERROR 404
