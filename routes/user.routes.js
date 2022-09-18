@@ -7,5 +7,6 @@ router.get("/login", userController.getLogin);
 router.post("/login", userController.postLogin);
 
 router.get("/inicio", userController.menu)
+router.post("/inicio", userController.menu)
 
 module.exports = router;
