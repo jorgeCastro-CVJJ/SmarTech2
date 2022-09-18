@@ -36,13 +36,13 @@
 
 .column a {
   color: #ffffff !important;
-  padding-left: 70px;
+  padding-left: 90px;
   padding-top: 0px;
   margin-top: -25px;
 }
 
 .column {
-  padding: 25px;
+  padding: 40px;
 }
 
 .row {
@@ -60,7 +60,7 @@
 }
 .footer.footer{
   height: 200px;;
-} */
+}  */
 
 /*colores oficiales*/
 :root{
@@ -102,7 +102,7 @@ body{
   background-position: center center;
   background-size: cover;
   height: 100px;
-  flex: 0 0 calc(52%);
+  flex: 0 0 calc(54%);
   position: relative;
 }
 
@@ -172,15 +172,16 @@ body{
 }
 
 .field button[type="submit"] {
+  width: 100%;
   background-color: var(--azulSec1);
   color: white;
   font-size: 22px;
   font-weight: bold;
   border: none;
-  margin-top: 0px;
+  margin-top: 7px;
   transition: background-color .3s ease in-out;
 }
 .field button[type="submit"]:hover{
   cursor: pointer;
-  background-color:var(--azulSec2)
+  background-color:var(--azulSec2);
 }
