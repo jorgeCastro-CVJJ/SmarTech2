@@ -14,10 +14,13 @@ getLogin = (request, response, next) => {
 // }
 
 postLogin = (request, response, next) => {
+ 
   // recuperar usuario busco si existe
   return Usuario.fetchOne(request.body.correo) // regresa el correo del usuario
     .then(([rows, fielData]) => {
       console.log(rows[0].correo); // me da solo el correo 
+      request.session.correoSesion = rows[0].correo;
+      correoSesion = request.session.correoSesion;
       // row me da solo una consulta
       if (rows.length == 1) {
         Usuario.fetchPrivilegio(rows[0].correo) // me da una promesa

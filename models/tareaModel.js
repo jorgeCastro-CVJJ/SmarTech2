@@ -16,5 +16,9 @@ module.exports = class Tarea {
   static fetchAll() {
     return db.execute('SELECT * FROM tarea');
   }
+
+  static asignarColaborador(idEmpleado, idTarea){
+    return db.execute('INSERT INTO ejecuta (idEmpleado, idTarea) VALUES (?,?)', [idEmpleado, idTarea])
+  }
 };
 

@@ -11,10 +11,15 @@ getnuevaTarea = (request, response, next) => {
     .then(([rowsProyecto, fieldData])=> {
         Empleado.fetchAll()
         .then(([rowsEmpleado, fieldData]) => {
+
+            let mensaje = request.session.mensaje ? request.session.mensaje : '';
+            request.session.mensaje = '';
+
             response.render(path.join("regTarea", "regTarea.ejs"), {
                 // aqui mando los datos a la vista
                 proyecto:rowsProyecto,
-                empleado:rowsEmpleado
+                empleado:rowsEmpleado,
+                // mensaje: mensaje,
             })
         })
         .catch((err) => {
@@ -28,18 +33,24 @@ getnuevaTarea = (request, response, next) => {
 
 postnuevaTarea = (request, response, next) => {
     const nuevaTarea = new Tarea(request.body.nombreT, request.body.horasRegistradas, 2);
-    console.log(nuevaTarea);
     nuevaTarea.save()
     .then((result) => {
-        response.status(200).json({
-            salida:"exitoso"
-        })
-    
-        .catch((err) => {
-            console.log(err)
-        })
+        //request.session.mensaje = "Tarea creada exitosamente";
+        console.log(result);
+
     })
+    // iterar con colaboradores pr cada valor en el arreay se haga la asginacion de la tarea con el colaborador
+    console.log(request.body.arrayColaboradores)
+    if (!Array.isArray(request.body.arrayColaboradores))
+    request.body.arrayColaboradores = [request.body.arrayColaboradores];
+    for (colaborador of request.body.arrayColaboradores) 
+        {
+          Tarea.asignarColaborador(colaborador, request.body.idTarea)
+        }
+
 }
+
+
 
 module.exports = {
     getnuevaTarea,
