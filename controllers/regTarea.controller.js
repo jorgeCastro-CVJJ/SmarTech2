@@ -31,23 +31,24 @@ getnuevaTarea = (request, response, next) => {
     })
 };
 
-postnuevaTarea = (request, response, next) => {
+postnuevaTarea = async (request, response, next) => {
+    
     const nuevaTarea = new Tarea(request.body.nombreT, request.body.horasRegistradas, 2);
     nuevaTarea.save()
     .then((result) => {
         //request.session.mensaje = "Tarea creada exitosamente";
-        console.log(result);
-
+        if (!Array.isArray(request.body.arrayColaboradores))
+        request.body.arrayColaboradores = [request.body.arrayColaboradores];
+        console.log("si entro");
+        let tareaReciente = await Tarea.tareaMasReciente();
+        .then((result) => {
+            console.log(tareaReciente[0]);
+            for (colaborador of request.body.arrayColaboradores) {
+              await Tarea.asignarColaborador(colaborador, request.body.idTarea) // recuperar antes el idTarea
+            }
+            await Tarea.colaboradorDeTarea(tareaReciente);
+        })
     })
-    // iterar con colaboradores pr cada valor en el arreay se haga la asginacion de la tarea con el colaborador
-    console.log(request.body.arrayColaboradores)
-    if (!Array.isArray(request.body.arrayColaboradores))
-    request.body.arrayColaboradores = [request.body.arrayColaboradores];
-    for (colaborador of request.body.arrayColaboradores) 
-        {
-          Tarea.asignarColaborador(colaborador, request.body.idTarea)
-        }
-
 }
 
 
