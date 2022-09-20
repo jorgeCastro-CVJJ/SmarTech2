@@ -1,8 +1,24 @@
+body{
+  font-family: var(--fuente);
+  background-color: rgba(0, 43, 73, 0.92);
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+body .menu{
+  font-family: var(--fuente);
+  /* background-color: rgba(0, 43, 73, 0.92); */
+  display:block;
+  align-items: center;
+  height: 100vh; 
+}
+
 .menu {
   /* rectangulo */
   position: static;
   width: 250px;
-  height: 800px;
+  /* height: 700px; */
   left: 70px;
   top: 0px;
   background: #002b49; 
@@ -14,7 +30,7 @@
   font-size: 20px;
   /*line-height: 30px;*/
   padding-left: 10px;
-  padding-top: 50px;
+  padding-top: 15px;
 }
 
 .cerrarSesion {
@@ -22,8 +38,8 @@
   width: 338px;
   height: 0px;
   left: -2px;
-  padding-left: 70px;
-  margin-top: 170px;
+  padding-left: 40px;
+  margin-top: 80px; 
   color: white;
 }
 .icon {
@@ -84,13 +100,7 @@ html{
   box-sizing: inherit;
 }
 
-body{
-  font-family: var(--fuente);
-  background-color: rgba(0, 43, 73, 0.92);
-  display: flex;
-  align-items: center;
-  height: 100vh;
-}
+
 
 .contenedor {
   margin: 0 auto;
