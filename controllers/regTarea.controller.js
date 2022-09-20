@@ -32,11 +32,10 @@ getnuevaTarea = (request, response, next) => {
 };
 
 postnuevaTarea = (request, response, next) => {
-    const nuevaTarea = new Tarea(request.body.nombreT, request.body.horasRegistradas, 2);
+    const nuevaTarea = new Tarea(request.body.nombreT, request.body.horasRegistradas, request.body.nombreP);
     nuevaTarea.save()
         .then(()=> {
             if (request.body.arrayColaboradores.length >= 1) {
-                console.log("si entro");
                 Tarea.tareaMasReciente()
                     .then(([rows, fieldData])=>{
                         console.log(request.body.arrayColaboradores);
@@ -55,9 +54,6 @@ postnuevaTarea = (request, response, next) => {
             }
         }).catch(err => console.log(err));
 };
-
-
-
 
 module.exports = {
     getnuevaTarea,

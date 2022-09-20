@@ -13,11 +13,13 @@ function postTarea(){
   console.log("entra");
   let nombreT = document.getElementById("nombreT");
   let horasRegistradas = document.getElementById("horasTrabajo");
+  let nombreP = document.getElementById('nombreP')
   let ruta = "/registrarTarea/nueva";
   let data = {
     nombreT: nombreT.value,
     horasRegistradas: horasRegistradas.value,
-    arrayColaboradores: arrayColaboradores
+    arrayColaboradores: arrayColaboradores,
+    nombreP: nombreP.value
   }
   console.log(data)
   fetch(ruta, {
@@ -30,6 +32,7 @@ function postTarea(){
 .then(response => response.json())
 .then(response => {
     console.log(response);
+    swal("Good job!", "You clicked the button!", "success");
 }).catch(err => {
     console.log(err);
 });

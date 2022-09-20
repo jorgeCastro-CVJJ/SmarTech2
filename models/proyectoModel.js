@@ -3,14 +3,14 @@ const bcrypt = require("bcryptjs");
 
 module.exports = class Proyecto {
   
-  constructor(unId, unNombreP, unEstatus, unDescripcion, unStack, unStake, unIdEmpleado){
-    this.idProyecto = unId;
-    this.nombreP = unNombreP;
-    this.estatus = unEstatus;
-    this.descripcion = unDescripcion;
-    this.stackTecnologico = unStack;
-    this.stakeholders = unStake;
-    this.idEmpleado = unIdEmpleado;
+  constructor(idProyecto, nombreP, estatus, descripcion, stackTecnologico, stakeholders, idEmpleado){
+    this.idProyecto = this.idProyecto;
+    this.nombreP = nombreP;
+    this.estatus = estatus;
+    this.descripcion = descripcion;
+    this.stackTecnologico = stackTecnologico;
+    this.stakeholders = stakeholders;
+    this.idEmpleado = idEmpleado;
   }
   // hacer un nuevo proyecto, insert en la base de datos
   save(){

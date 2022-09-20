@@ -26,7 +26,7 @@
           <select name="nombreP" id="nombreP">
             <option value="" disabled selected>Selecciona el proyecto</option>
                 <% for (let p of proyecto) { %>
-                    <option value="<%= p.nombreP %>"><%= p.nombreP %></option>
+                    <option value="<%= p.idProyecto %>"><%= p.nombreP %></option>
                 <% } %>
           </select>
         </div>
@@ -123,6 +123,7 @@
 </div>
 </div>
 <!-- </form> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="/js/scriptRegTarea.js"></script>
 </div>
 
