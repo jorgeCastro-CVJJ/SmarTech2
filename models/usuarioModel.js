@@ -13,7 +13,7 @@ module.exports = class Usuario {
   }
 
   static fetchOne(correo) {
-    return db.execute("SELECT correo FROM empleado WHERE correo = ? ", [correo]);
+    return db.execute("SELECT correo, nombre FROM empleado WHERE correo = ? ", [correo]);
   }
 
   static fetchPrivilegio(correo) {

@@ -31,25 +31,31 @@ getnuevaTarea = (request, response, next) => {
     })
 };
 
-postnuevaTarea = async (request, response, next) => {
-    
+postnuevaTarea = (request, response, next) => {
     const nuevaTarea = new Tarea(request.body.nombreT, request.body.horasRegistradas, 2);
     nuevaTarea.save()
-    .then((result) => {
-        //request.session.mensaje = "Tarea creada exitosamente";
-        if (!Array.isArray(request.body.arrayColaboradores))
-        request.body.arrayColaboradores = [request.body.arrayColaboradores];
-        console.log("si entro");
-        let tareaReciente = await Tarea.tareaMasReciente();
-        .then((result) => {
-            console.log(tareaReciente[0]);
-            for (colaborador of request.body.arrayColaboradores) {
-              await Tarea.asignarColaborador(colaborador, request.body.idTarea) // recuperar antes el idTarea
+        .then(()=> {
+            if (request.body.arrayColaboradores.length >= 1) {
+                console.log("si entro");
+                Tarea.tareaMasReciente()
+                    .then(([rows, fieldData])=>{
+                        console.log(request.body.arrayColaboradores);
+                        for (colaborador of request.body.arrayColaboradores) {
+                            console.log(colaborador);
+                            let id_colaborador = colaborador;
+                            Tarea.asignarColaborador(id_colaborador, rows[0].idTarea)
+                                .then(()=>console.log("Tarea asignada a colaborador " + id_colaborador))
+                                .catch(err=>console.log(err)); // recuperar antes el idTarea
+                        }
+                        response.status(200).json({mensaje: "Listo"});
+                    }).catch(err => console.log(err)); 
+                //request.session.mensaje = "Tarea creada exitosamente";
+            } else{
+                console.log("else del if");
             }
-            await Tarea.colaboradorDeTarea(tareaReciente);
-        })
-    })
-}
+        }).catch(err => console.log(err));
+};
+
 
 
 

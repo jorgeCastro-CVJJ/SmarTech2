@@ -19,8 +19,8 @@ postLogin = (request, response, next) => {
   return Usuario.fetchOne(request.body.correo) // regresa el correo del usuario
     .then(([rows, fielData]) => {
       console.log(rows[0].correo); // me da solo el correo 
-      request.session.correoSesion = rows[0].correo;
-      correoSesion = request.session.correoSesion;
+      request.session.nombreSesion = rows[0].nombre;
+      nombreSesion = request.session.nombreSesion;
       // row me da solo una consulta
       if (rows.length == 1) {
         Usuario.fetchPrivilegio(rows[0].correo) // me da una promesa

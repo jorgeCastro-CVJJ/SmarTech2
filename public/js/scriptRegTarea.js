@@ -5,7 +5,7 @@ function agregarColaborador(){
   const colaboradorActual = colaborador.options[colaborador.selectedIndex];
   // aqui escribimos los nombres de los colaboradores
   const lista = document.getElementById("listaColabradores");
-  lista.innerHTML = lista.innerHTML + '<div class="notification is-info is-light py-2 my-3">' + colaboradorActual.innerHTML +' </div>';
+  lista.innerHTML = lista.innerHTML + '<div class="notification is-info is-light py-2 my-3 notificacionAgregarColab">' + colaboradorActual.innerHTML +' </div>';
   arrayColaboradores.push(colaboradorActual.value);
 }
 
@@ -29,7 +29,7 @@ function postTarea(){
 })
 .then(response => response.json())
 .then(response => {
-    
+    console.log(response);
 }).catch(err => {
     console.log(err);
 });
