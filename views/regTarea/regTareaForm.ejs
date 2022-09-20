@@ -1,0 +1,129 @@
+<%- include('../templates/head.ejs') %>
+
+
+
+<!-- en action ponemos la ruta-->
+<!-- <form action="/registrarTarea/nueva" method="POST" class="regTareaForm"> -->
+
+<h3 class="fecha">FECHA: 
+<%= new Date().getDay(); %> /
+<%= new Date().getMonth(); %> /
+<%= new Date().getFullYear(); %> 
+</h3>
+
+<h1 class="crearTarea">Crear Tarea</h1>
+
+<div class="contenedorTarea">
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">Proyecto al que pertence</label>
+  </div>
+  <div class="field-body">
+    <div class="field is-narrow">
+      <div class="control">
+        <div class="select is-fullwidth">
+          <select name="nombreP" id="nombreP">
+            <option value="" disabled selected>Selecciona el proyecto</option>
+                <% for (let p of proyecto) { %>
+                    <option value="<%= p.idProyecto %>"><%= p.nombreP %></option>
+                <% } %>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">Nombre de tarea</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <input class="input" type="text" placeholder="Escribe aqui" id="nombreT" name="nombreT">
+      </div>
+      <p class="help is-danger">
+        This field is required
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">Colaboradores</label>
+  </div>
+  <div class="field-body">
+    <div class="field is-narrow">
+      <div class="control">
+        <%- nombreSesion %>
+      </br>
+        <div class="select is-fullwidth"> 
+          <select name="nombre" id="nombre"> 
+            <option value="" disabled selected> Selecciona a los colaboradores</option>
+            <% for (let e of empleado) { %>
+              <option value ="<%= e.idEmpleado %>"><%= e.nombre%></option>
+            <% } %>
+          </select>
+          <a class="button is-link is-outlined botonAgregarColaborador" onclick="agregarColaborador()"> + </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- desplegar los compañeros-->
+<div class="divColaboradores" id="listaColabradores">
+  <!-- <div class="notification is-info is-light py-2 my-3">
+    <button class="delete"></button>
+   <strong>Nombre </strong> de compañero
+  </div>
+  <div class="notification is-info is-light py-2 my-3">
+    <button class="delete"></button>
+   <strong>Nombre </strong> de compañero
+  </div> -->
+</div>
+
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">HORAS DE TRABAJO</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="field has-addons">
+        <p class="control">
+          <input class="input is-danger" type="number" placeholder="1" id="horasTrabajo" name="horasRegistradas">
+        </p>
+        <p class="control">
+          <a class="button is-static">
+            horas (número entero)
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="field is-grouped is-grouped-centered">
+  <p class="control">
+    <input type="submit" onclick="postTarea()" value="Agregar"  class="button botonAgregarTarea is-success is-outlined">
+    
+  </p>
+  
+  <p class="control">
+    <input type="reset" value="Cancelar" class="button botonCancelarTarea is-danger is-outlined" >
+  </p>
+</div>
+</div>
+<!-- </form> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/js/scriptRegTarea.js"></script>
+</div>
+
