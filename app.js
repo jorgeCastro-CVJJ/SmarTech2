@@ -44,6 +44,9 @@ app.use("/user", rutaUsuario);
 const rutasRegTarea = require("./routes/regTarea.routes");
 app.use("/registrarTarea", rutasRegTarea);
 
+const rutasRegProyecto = require("./routes/regProyecto.routes");
+app.use("/registrarProyecto", rutasRegProyecto);
+
 // ERROR 404
 app.use((request, response, next) => {
   response.status(404);
