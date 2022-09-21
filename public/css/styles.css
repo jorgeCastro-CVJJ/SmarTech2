@@ -13,10 +13,14 @@ body .menu{
   align-items: center;
   height: 100vh; 
 }
-/* 
-body .regT {
-  background-color: #ffffff;
-} */
+
+body .loginForm {
+  font-family: var(--fuente);
+  display: contents;
+  background-color: var(--azulOscuro);
+  align-items: center; 
+  height: 100vh;
+}
 
 .menu {
   /* rectangulo */
@@ -83,6 +87,8 @@ body .regT {
   height: 200px;;
 }  */
 
+/*estilos de login*/
+
 /*colores oficiales*/
 :root{
   --azulOscuro: #002b49;
@@ -103,8 +109,6 @@ html{
 *,*::after, *::before{
   box-sizing: inherit;
 }
-
-
 
 .contenedor {
   margin: 0 auto;
@@ -204,18 +208,35 @@ html{
   background-color:var(--azulSec2);
 }
 
-.contenedorTarea{
-  padding-left: 250px;
-  padding-right: 150px;
+/*estilos de crear tarea*/
+
+.regTarea {
+  /* background-color: #098B90; */
+  margin-left: 23%;
+  padding-top: 10px;
 }
-.crearTarea{
-  font-family: 'Inter';
+
+.crearTarea {
   text-align: center;
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 120px;
-  color: #000000;
+  font-family: var(--fuente);
+  font-weight: bold;
+  font-size: x-large;
+  color: black;
 }
+
+.fecha{
+  text-align: right;
+  font-weight: bold;
+  /* padding-right: 70px;
+  padding-top: 30px; */
+}
+
+.botonAgregarColaborador{
+  margin-left: 330px;
+  
+} 
+
+/*
 
 .botonAgregarTarea{
   margin-left: -380px;
@@ -232,21 +253,6 @@ html{
   margin-right: 150px;
 }
 
-.botonAgregarColaborador{
-  margin-bottom: -10px;
-  margin-left: 330px;
-  margin-top: -40px;
-  margin-right: -100px;
-  gap: 100px;
-}
-
-.fecha{
-  text-align: right;
-  font-weight: bold;
-  padding-right: 70px;
-  padding-top: 30px;
-}
-
 .notificacionAgregarColab{
-  margin-left: 190px;
-}
+  padding-left: 60%;
+} */
