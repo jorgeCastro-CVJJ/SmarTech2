@@ -3,7 +3,7 @@ const { fetchAll } = require("../models/proyectoModel");
 const Proyecto = require("../models/proyectoModel");
 const Tarea  = require("../models/tareaModel");
 const Empleado = require("../models/empleadoModel")
-
+//falta poner sesión
 // es cuabdo quiero algo de la base de datos
 getnuevaTarea = (request, response, next) => {
     console.log(request.session);
@@ -56,15 +56,23 @@ postnuevaTarea = (request, response, next) => {
 };
 
 getTareas = (request, response, next) => {
-    Tarea.fetchAll()
-    .then(([rows, fieldData]) => {
-        
+    Tarea.fetchTareas()
+    .then(([rowsTarea, fieldData]) => {
+        response.render(path.join("verTareas", "verTareas.ejs"), {
+            tarea: rowsTarea,
+        })
     })
     .catch(err => console.log(err))
 };
 
+// menu = (request, response, next) => {
+//     console.log(request.session.privilegios);
+//     return response.render("index.ejs",{listaPrivilegios: request.session.privilegios});
+//   };
+
 module.exports = {
     getnuevaTarea,
-    postnuevaTarea
+    postnuevaTarea,
+    getTareas
   };
   
