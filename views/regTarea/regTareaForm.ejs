@@ -96,7 +96,7 @@
           </div>
           <div class="field-body">
             <div class="field">
-              <div class="contar" id="contar1">0</div>
+              <div class="contar" id="contar">0</div>
               <input type="button" class="btnContador" onclick="sumarCont()" value="+">
               <input type="button" class="btnContador" onclick="restarCont()" value="-">
               </div>
@@ -118,6 +118,22 @@
       </div>
         
         <!-- </form> -->
+        <script>
+        let numero = 0;
+        function sumarCont(){
+          const contador = document.getElementById("contar");
+          numero++;
+          contador.innerHTML = numero1;
+        }
+        function restarCont(){
+          const contador = document.getElementById("contar");
+          if (numero == 0){}
+          else{
+              numero--;
+              contador.innerHTML = numero;
+          }
+        }
+        </script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="/js/scriptRegTarea.js"></script>
         </div>
