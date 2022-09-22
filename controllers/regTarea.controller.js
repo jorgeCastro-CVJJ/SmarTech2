@@ -66,9 +66,10 @@ getTareas = (request, response, next) => {
         Empleado.fetchAll()
         .then(([rowsEmpleados]) => {
             // request.session.usuario = request.session.nombre 
-        response.render(path.join("verTareas.ejs"), {
+        response.render(path.join("verTareas", "verTareas.ejs"), {
             tarea: rowsTarea,
-            empleados: rowsEmpleados
+            empleados: rowsEmpleados,
+            listaPrivilegios: request.session.privilegios,
         })
         })
     })

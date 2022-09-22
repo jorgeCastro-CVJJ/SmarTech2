@@ -1,5 +1,3 @@
-<%- include('templates/head.ejs') %>
-
 <div class="field is-static">
   <h1 class="misTareas">Mis tareas</h1>
 
@@ -17,14 +15,12 @@
       <tbody>
     
           <% for (let t of tarea) { %>
-              
             <tr>
               <td><%= t.nombreT %></td>
               <td><%= t.fecha %></td>
               <td><%= t.nombreP %></td>
               <td><%= t.horasTrabajo %></td>
             </tr>
-                
           <% } %>
       </tbody>
     </div>
