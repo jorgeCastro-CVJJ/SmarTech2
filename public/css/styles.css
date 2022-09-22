@@ -8,7 +8,7 @@ body {
 
 body .menu{
   font-family: var(--fuente);
-  /* background-color: rgba(0, 43, 73, 0.92); */
+  background-color: var(--azulOscuro);
   display:block;
   align-items: center;
   height: 100vh; 
@@ -32,7 +32,6 @@ body .loginForm {
   background: #002b49; 
 
   /* letras */
-  font-family: "Helvetica";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;

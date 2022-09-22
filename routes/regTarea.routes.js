@@ -6,4 +6,5 @@ const regTareaController = require("../controllers/regTarea.controller");
 router.get("/nueva", regTareaController.getnuevaTarea);
 router.post("/nueva", regTareaController.postnuevaTarea);
 
+
 module.exports = router;
