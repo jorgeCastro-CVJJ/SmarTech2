@@ -17,18 +17,14 @@
       <tbody>
     
           <% for (let t of tarea) { %>
-              <% for (let f of tarea) { %>
-                <% for (let p of tarea) { %>
-                  <% for (let h of tarea) { %>
+              
             <tr>
               <td><%= t.nombreT %></td>
-              <td><%= f.fecha %></td>
-              <td><%= p.nombreP %></td>
-              <td><%= h.horasTrabajo %></td>
+              <td><%= t.fecha %></td>
+              <td><%= t.nombreP %></td>
+              <td><%= t.horasTrabajo %></td>
             </tr>
-                  <% } %>
-                <% } %>
-              <% } %>
+                
           <% } %>
       </tbody>
     </div>
