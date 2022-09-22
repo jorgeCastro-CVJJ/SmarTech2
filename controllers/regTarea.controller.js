@@ -38,26 +38,27 @@ getnuevaTarea = (request, response, next) => {
 postnuevaTarea = (request, response, next) => {
     const nuevaTarea = new Tarea(request.body.nombreT, request.body.horasRegistradas, request.body.nombreP);
     nuevaTarea.save()
-        .then(()=> {
-            if (request.body.arrayColaboradores.length >= 1) {
-                Tarea.tareaMasReciente()
-                    .then(([rows, fieldData])=>{
-                        console.log(request.body.arrayColaboradores);
-                        for (colaborador of request.body.arrayColaboradores) {
-                            console.log(colaborador);
-                            let id_colaborador = colaborador;
-                            Tarea.asignarColaborador(id_colaborador, rows[0].idTarea)
-                                .then(()=>console.log("Tarea asignada a colaborador " + id_colaborador))
-                                .catch(err=>console.log(err)); // recuperar antes el idTarea
-                        }
-                        response.status(200).json({mensaje: "Listo"});
-                    }).catch(err => console.log(err)); 
-                //request.session.mensaje = "Tarea creada exitosamente";
-            } else{
-                console.log("else del if");
+    .then(()=> {
+          Tarea.tareaMasReciente()
+          .then(([rows, fieldData])=>{
+            Tarea.asignarColaborador(request.session.idSesion, rows[0].idTarea)
+              .then(()=>console.log("Tarea asignada a colaborador " + request.session.idSesion))
+              .catch(err=>console.log(err));
+            console.log(request.body.arrayColaboradores);
+            for (colaborador of request.body.arrayColaboradores) {
+              console.log(colaborador);
+              let id_colaborador = colaborador;
+              Tarea.asignarColaborador(id_colaborador, rows[0].idTarea)
+                .then(()=>console.log("Tarea asignada a colaborador " + id_colaborador))
+                .catch(err=>console.log(err)); // recuperar antes el idTarea
             }
-        }).catch(err => console.log(err));
-};
+            response.status(200).json({mensaje: "Listo"});
+          }).catch(err => console.log(err)); 
+        //} else{
+        //  console.log("else del if");
+        //}
+      }).catch(err => console.log(err));
+    }
 
 getTareas = (request, response, next) => {
     Tarea.fetchTareas()
