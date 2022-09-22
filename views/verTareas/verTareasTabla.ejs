@@ -1,5 +1,5 @@
 <div class="field is-static">
-  <h1 class="misTareas">Mis tareas</h1>
+  <h1 class="titulo">Mis tareas</h1>
 
   <div class="columns">
     <div class="column">
@@ -18,7 +18,7 @@
             <tr>
               <td><%= t.nombreP %></td>
               <td><%= t.nombreT %></td>
-              <td><%= t.fecha %></td>
+              <td><%= t.fecha.getDate() + "-"+ t.fecha.getMonth()+ "-" + t.fecha.getFullYear();%></td>
               <td><%= t.horasTrabajo %></td>
             </tr>
           <% } %>

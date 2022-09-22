@@ -234,11 +234,25 @@ html{
   margin-left: 40px; 
   font-family: var(--fuente);
   font-size: large;
-} 
+}
+
 .titulo{
+  position:static;
   text-align: center;
   font-family: var(--fuente);
   font-weight: bold;
   font-size: 25px;
   color: black;
+}
+.imagenInicio {
+  position: absolute;
+  width: 912px;
+  height: 509px;
+  left: 400px;
+  top: 60px;
+}
+
+.proyectosExistentes {
+  padding-top: 500px;
+  padding-left: 350px;
 }
