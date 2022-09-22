@@ -2,9 +2,11 @@ const path = require("path");
 const { fetchAll } = require("../models/proyectoModel");
 const Proyecto = require("../models/proyectoModel");
 const Tarea  = require("../models/tareaModel");
-const Empleado = require("../models/empleadoModel")
+const Empleado = require("../models/empleadoModel");
+const Usuario = require("../models/usuarioModel");
+
 //falta poner sesión
-// es cuabdo quiero algo de la base de datos
+// es cuando quiero algo de la base de datos
 getnuevaTarea = (request, response, next) => {
     console.log(request.session);
     Proyecto.fetchAll()
@@ -57,14 +59,15 @@ postnuevaTarea = (request, response, next) => {
 
 getTareas = (request, response, next) => {
     Tarea.fetchTareas()
-    .then(([rowsTarea, fieldData]) => {
-        response.render(path.join("verTareas", "verTareas.ejs"), {
-            tarea: rowsTarea,
+    .then(([rows, fieldData]) => {
+        response.render(path.join("verTareas.ejs"), {
+            tarea: rows,
         })
     })
     .catch(err => console.log(err))
 };
 
+//preguntarle al profe cómo desplegar tareas por sesión
 // menu = (request, response, next) => {
 //     console.log(request.session.privilegios);
 //     return response.render("index.ejs",{listaPrivilegios: request.session.privilegios});

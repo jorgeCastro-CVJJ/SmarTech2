@@ -21,6 +21,7 @@ module.exports = class Tarea {
 //De tarea: idTarea, nombreT, horasTrabajo, idProyecto
 //De proyecto: idProyecto, nombreP, descripcion, stack, stake, estatus
 //De ejecuta: fecha, idEmpleado, idTarea
+//Empleado: nombre, idEmpleado
 
   static fetchAll() {
     return db.execute('SELECT * FROM tarea');
