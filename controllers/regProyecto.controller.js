@@ -8,6 +8,7 @@ getnuevoProyecto = (request, response, next) =>{
   .then(([rowsEmpleado, fielData]) =>{
     response.render(path.join('regProyecto', 'regProyecto.ejs'), {
       empleado:rowsEmpleado,
+      listaPrivilegios: request.session.privilegios,
     })
   })
   .catch((err) => {
