@@ -18,7 +18,7 @@
             <tr>
               <td><%= t.nombreP %></td>
               <td><%= t.nombreT %></td>
-              <td><%= t.fecha %></td>
+              <td><%= t.fecha.getDate() + "-"+ t.fecha.getMonth()+ "-" + t.fecha.getFullYear();%></td>
               <td><%= t.horasTrabajo %></td>
             </tr>
           <% } %>
