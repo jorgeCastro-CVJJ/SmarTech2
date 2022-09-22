@@ -18,12 +18,13 @@ getnuevaTarea = (request, response, next) => {
             let mensaje = request.session.mensaje ? request.session.mensaje : '';
             request.session.mensaje = '';
 
-            response.render(path.join("regTarea", "regTarea.ejs"), {
+            return response.render(path.join("regTarea", "regTarea.ejs"), {
                 // aqui mando los datos a la vista
                 proyecto:rowsProyecto,
                 empleado:rowsEmpleado,
+                listaPrivilegios: request.session.privilegios,
                 // mensaje: mensaje,
-            })
+            });
         })
         .catch((err) => {
             console.log(err)

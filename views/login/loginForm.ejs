@@ -1,29 +1,28 @@
-<%- include('../templates/head.ejs') %>
 
-<div class = "loginForm">
-<div class="contenedor-formulario contenedor">
-    <div class="imagen-formulario">
-        
+    <div class = "loginForm">
+        <div class="contenedor-formulario contenedor">
+            <div class="imagen-formulario">
+                
+            </div>
+
+            <form action="login" method="POST" class="formulario">
+                <div class="texto-formulario">
+                    <h2>¡Bienvenido de nuevo!</h2>
+                    <p>Inicia sesión con tu cuenta</p>
+                </div>
+                <div class="field">
+                    <label for="user" class="usuario-input">Usuario</label>
+                    <input placeholder="Ingresa tu nombre" type="email" id="correo" name="correo" class="input" required>
+                </div>
+                <div class="field">
+                    <label for="contraseña" class="usuario-input">Contraseña</label>
+                    <input placeholder="contraseña" type="password" id="contraseña" class="input" required>
+                </div>
+                <div class="field">
+                    <button class="button is-success" type="submit">
+                    Login
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-
-    <form action="login" method="POST" class="formulario">
-        <div class="texto-formulario">
-            <h2>¡Bienvenido de nuevo!</h2>
-            <p>Inicia sesión con tu cuenta</p>
-        </div>
-        <div class="field">
-            <label for="user" class="usuario-input">Usuario</label>
-            <input placeholder="Ingresa tu nombre" type="email" id="correo" name="correo" class="input" required>
-        </div>
-        <div class="field">
-            <label for="contraseña" class="usuario-input">Contraseña</label>
-            <input placeholder="contraseña" type="password" id="contraseña" class="input" required>
-        </div>
-        <div class="field">
-            <button class="button is-success" type="submit">
-              Login
-            </button>
-          </div>
-    </form>
-</div>
-</div>

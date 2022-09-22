@@ -30,6 +30,7 @@ postLogin = (request, response, next) => {
           for(privilegio of rows) {
             request.session.privilegios.push(privilegio.descripcionPrivilegio); // crear un arreglo privilegios que tiene como llave el nombre del provilegio y el valor de true, con esto comparo si tiene el privilegio o no
           }
+          console.log(response.locals);
           //let listaPrivilegios = request.session.privilegios;  // <-- It's a test
           //console.log(request.session.privilegios) // me da los privilegios
           return response.redirect("/user/inicio");
