@@ -3,6 +3,8 @@
 <div class="field is-static">
   <h1 class="misTareas">Mis tareas</h1>
 
+  <div class="columns">
+    <div class="column">
 <table class="table">
     <thead>
       <tr>
@@ -15,7 +17,10 @@
     <tbody>
       <tr>
         <% for (let t of tarea) { %>
+          
           <td><%= t.nombreT %></td>
       <% } %>
       </tr>
       </tbody>
+    </div>
+  </div>
