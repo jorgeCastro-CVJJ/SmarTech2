@@ -235,6 +235,9 @@ html{
   
 } 
 
-/* .table {
-
-} */
+.table, .misTareas {
+  position: relative;
+  margin-left: 475px;
+  font-family: var(--fuente);
+  font-size: x-large;
+} 
