@@ -3,12 +3,13 @@ const bcrypt = require("bcryptjs");
 
 module.exports = class Proyecto {
   
-  constructor(nombreP, descripcion, estatus, stackTecnologico, stakeholders){
+  constructor(nombreP, descripcion, estatus, stackTecnologico, stakeholders, idProyecto){
     this.nombreP = nombreP;
     this.descripcion = descripcion;
     this.estatus = estatus;
     this.stackTecnologico = stackTecnologico;
     this.stakeholders = stakeholders;
+    //this.idProyecto = this.idProyecto;
   }
 
   // hacer un nuevo proyecto, insert en la base de datos
@@ -19,5 +20,13 @@ module.exports = class Proyecto {
   // jalar todo de la base de datos, 
   static fetchAll() {
     return db.execute('SELECT * FROM proyecto');
+  }
+
+  static proyectoMasReciente() {
+    return db.execute('SELECT idProyecto FROM proyecto ORDER BY idProyecto DESC limit 1')
+  }
+
+  static asignarColaborador(idEmpleado, idProyecto) {
+    return db.execute ('INSERT INTO trabaja (idEmpleado, idProyecto) VALUES (?,?)', [idEmpleado, idProyecto]);
   }
 }

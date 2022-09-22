@@ -1,37 +1,29 @@
 <%- include('../templates/head.ejs') %>
-
-
-<form action="/registrarProyecto/nuevo" method="POST" class="regTareaForm"> 
   
-  <h3 class="fecha">FECHA: 
-    <%= new Date().getDay(); %> /
-    <%= new Date().getMonth(); %> /
-    <%= new Date().getFullYear(); %> 
-  </h3>
+<h3 class="fecha">FECHA: 
+  <%= new Date().getDay(); %> /
+  <%= new Date().getMonth(); %> /
+  <%= new Date().getFullYear(); %> 
+</h3>
 
+<h1 class="crearTarea">Crear Proyecto</h1>
 
-  <h1 class="crearTarea">Crear Proyecto</h1>
-
-  <div class="contenedorTarea">
-
-    <div class="field is-horizontal">
-      <div class="field-label is-normal">
-        <label class="label">Nombre del proyecto</label>
-      </div>
-      <div class="field-body">
-        <div class="field">
-          <div class="control">
-            <input class="input" type="text" placeholder="Escribe aqui" id="nombreProyecto" name="nombreProyecto">
-          </div>
-          <p class="help is-danger">
-            This field is required
-          </p>
+<div class="contenedorTarea">
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Nombre del proyecto</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <input class="input" type="text" placeholder="Escribe aqui" id="nombreP" name="nombreP">
         </div>
+        <p class="help is-danger">
+          Este dato es obligatorio
+        </p>
       </div>
     </div>
-
-  
-
+  </div>
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
@@ -76,18 +68,18 @@
                 <option value ="<%= e.idEmpleado %>"><%= e.nombre%></option>
               <% } %>
             </select>
-            <a class="button is-link is-outlined botonAgregarColaborador"> + </a>
+            <a class="button is-link is-outlined botonAgregarColaborador" onclick="agregarColaborador()"> + </a>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-
-
-
-  <!-- <div class="divColaboradores" id="listaColabradores">
-  </div> -->
+  
+  
+  
+  <!-- desplegar los compañeros-->
+  <div class="divColaboradores" id="listaColabradores">
+  </div>
 
 
   <div class="field is-horizontal">
@@ -120,15 +112,17 @@
 
   <div class="field is-grouped is-grouped-centered">
     <p class="control">
-      <input type="submit"  value="Agregar"  class="button botonAgregarTarea is-success is-outlined">
+      <input type="submit" onclick="postProyecto()" value="Agregar"  class="button botonAgregarTarea is-success is-outlined">
     </p>
     
     <p class="control">
       <input type="reset" value="Cancelar" class="button botonCancelarTarea is-danger is-outlined" >
     </p>
-  </div>
-  </div>
- </form>
 
+  </div>
+  </div>
+
+  <script src="/js/scriptRegProyecto.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </div>
