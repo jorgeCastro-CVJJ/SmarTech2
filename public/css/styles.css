@@ -211,17 +211,11 @@ html{
 
 .regTarea {
   /* background-color: #098B90; */
-  margin-left: 23%;
+  margin-left: 15%;
   padding-top: 10px;
 }
 
-.crearTarea {
-  text-align: center;
-  font-family: var(--fuente);
-  font-weight: bold;
-  font-size: x-large;
-  color: black;
-}
+
 
 .fecha{
   text-align: right;
@@ -241,4 +235,10 @@ html{
   font-family: var(--fuente);
   font-size: large;
 } 
-
+.titulo{
+  text-align: center;
+  font-family: var(--fuente);
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+}

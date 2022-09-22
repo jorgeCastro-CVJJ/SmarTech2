@@ -1,6 +1,6 @@
 const mysql = require("mysql2");
 
-const ENV = 'FER';
+const ENV = 'GABRIEL';
 
 let password = '';
 if (ENV == 'DENISSE') {
