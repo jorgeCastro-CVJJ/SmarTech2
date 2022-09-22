@@ -13,7 +13,15 @@ module.exports = class Tarea {
     return db.execute('INSERT INTO tarea (nombreT, horasTrabajo, idProyecto) VALUES (?,?,?)', [this.nombreT, this.horasRegistradas, this.idProyecto]);
 
   }
+
+  static fetchTareas() {
+    return db.execute('SELECT DISTINCT nombreP, nombreT, fecha, horasTrabajo FROM tarea T, Proyecto P, Ejecuta E WHERE T.idProyecto = P.idProyecto AND T.idTarea = E.idTarea') //Tablas: tarea, proyecto, ejecuta
+  }
   
+//De tarea: idTarea, nombreT, horasTrabajo, idProyecto
+//De proyecto: idProyecto, nombreP, descripcion, stack, stake, estatus
+//De ejecuta: fecha, idEmpleado, idTarea
+
   static fetchAll() {
     return db.execute('SELECT * FROM tarea');
   }

@@ -55,6 +55,14 @@ postnuevaTarea = (request, response, next) => {
         }).catch(err => console.log(err));
 };
 
+getTareas = (request, response, next) => {
+    Tarea.fetchAll()
+    .then(([rows, fieldData]) => {
+        
+    })
+    .catch(err => console.log(err))
+};
+
 module.exports = {
     getnuevaTarea,
     postnuevaTarea
