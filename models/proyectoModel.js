@@ -3,22 +3,30 @@ const bcrypt = require("bcryptjs");
 
 module.exports = class Proyecto {
   
-  constructor(idProyecto, nombreP, estatus, descripcion, stackTecnologico, stakeholders, idEmpleado){
-    this.idProyecto = this.idProyecto;
+  constructor(nombreP, descripcion, estatus, stackTecnologico, stakeholders, idProyecto){
     this.nombreP = nombreP;
-    this.estatus = estatus;
     this.descripcion = descripcion;
+    this.estatus = estatus;
     this.stackTecnologico = stackTecnologico;
     this.stakeholders = stakeholders;
-    this.idEmpleado = idEmpleado;
+    //this.idProyecto = this.idProyecto;
   }
+
   // hacer un nuevo proyecto, insert en la base de datos
   save(){
-    // no hay nada que insertar en tabla proyecto para registrar tarea 
+    return db.execute('INSERT INTO proyecto (nombreP, descripcion, estatus, stackTecnologico, stakeholders) VALUES (?,?,?,?,?)', [this.nombreP, this.descripcion, this.estatus, this.stackTecnologico, this.stakeholders]);
   }
 
   // jalar todo de la base de datos, 
   static fetchAll() {
     return db.execute('SELECT * FROM proyecto');
+  }
+
+  static proyectoMasReciente() {
+    return db.execute('SELECT idProyecto FROM proyecto ORDER BY idProyecto DESC limit 1')
+  }
+
+  static asignarColaborador(idEmpleado, idProyecto) {
+    return db.execute ('INSERT INTO trabaja (idEmpleado, idProyecto) VALUES (?,?)', [idEmpleado, idProyecto]);
   }
 }

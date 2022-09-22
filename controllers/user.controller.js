@@ -22,6 +22,8 @@ postLogin = (request, response, next) => {
       console.log(rows[0].correo); // me da solo el correo 
       request.session.nombreSesion = rows[0].nombre;
       nombreSesion = request.session.nombreSesion;
+      request.session.idSesion = rows[0].idEmpleado;
+      idSesion = request.session.idSesion;
       // row me da solo una consulta
       if (rows.length == 1) {
         Usuario.fetchPrivilegio(rows[0].correo) // me da una promesa
