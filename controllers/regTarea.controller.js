@@ -60,9 +60,14 @@ postnuevaTarea = (request, response, next) => {
 
 getTareas = (request, response, next) => {
     Tarea.fetchTareas()
-    .then(([rows, fieldData]) => {
+    .then(([rowsTarea, fieldData]) => {
+        Empleado.fetchAll()
+        .then(([rowsEmpleados]) => {
+            // request.session.usuario = request.session.nombre 
         response.render(path.join("verTareas.ejs"), {
-            tarea: rows,
+            tarea: rowsTarea,
+            empleados: rowsEmpleados
+        })
         })
     })
     .catch(err => console.log(err))

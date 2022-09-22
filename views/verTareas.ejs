@@ -16,9 +16,12 @@
     </thead>
     <tbody>
       <tr>
-        <% for (let t of tarea) { %>
-          
-          <td><%= t.nombreT %></td>
+        <% for (let e of empleados) { %>
+          <% for (let t of tarea) { %>
+          <% if (e.idEmpleados = e.nombre) { %> 
+              <td><%= t.nombreT %></td>
+          <% } %>
+      <% } %>
       <% } %>
       </tr>
       </tbody>

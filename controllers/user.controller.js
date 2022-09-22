@@ -2,8 +2,10 @@ const path = require("path");
 const Usuario = require("../models/usuarioModel");
 
 getLogin = (request, response, next) => {
+  const usuario = request.session.usuario ? request.session.usuario: '';
   response.render(path.join("login", "login.ejs"), {
     isLoggedIn: request.session.isLoggedIn ? request.session.isLoggedIn : false,
+    usuario: usuario
   });
 };
 
@@ -14,7 +16,6 @@ getLogin = (request, response, next) => {
 // }
 
 postLogin = (request, response, next) => {
- 
   // recuperar usuario busco si existe
   return Usuario.fetchOne(request.body.correo) // regresa el correo del usuario
     .then(([rows, fielData]) => {
