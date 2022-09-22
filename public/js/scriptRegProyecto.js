@@ -7,6 +7,7 @@ function agregarColaborador(){
   const lista = document.getElementById("listaColabradores");
   lista.innerHTML = lista.innerHTML + '<div class="notification is-info is-light py-2 my-3 notificacionAgregarColab">' + colaboradorActual.innerHTML +' </div>';
   arrayColaboradores.push(colaboradorActual.value);
+  console.log(arrayColaboradores);
 }
 
 function postProyecto(){
