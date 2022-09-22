@@ -237,7 +237,8 @@ html{
 
 .table, .misTareas {
   position: relative;
-  margin-left: 420px;
+  margin-left: 40px; 
   font-family: var(--fuente);
-  font-size: small;
+  font-size: large;
 } 
+
