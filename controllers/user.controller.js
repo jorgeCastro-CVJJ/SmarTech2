@@ -23,26 +23,25 @@ postLogin = (request, response, next) => {
       request.session.nombreSesion = rows[0].nombre;
       nombreSesion = request.session.nombreSesion;
       request.session.idSesion = rows[0].idEmpleado;
-      idSesion = request.session.idSesion;
       // row me da solo una consulta
       if (rows.length == 1) {
         Usuario.fetchPrivilegio(rows[0].correo) // me da una promesa
-        .then(( [rows, fielData]) => { // todas las filas de los privilegios
-          request.session.privilegios = []; 
-          for(privilegio of rows) {
-            request.session.privilegios.push(privilegio.descripcionPrivilegio); // crear un arreglo privilegios que tiene como llave el nombre del provilegio y el valor de true, con esto comparo si tiene el privilegio o no
-          }
-          console.log(response.locals);
-          //let listaPrivilegios = request.session.privilegios;  // <-- It's a test
-          //console.log(request.session.privilegios) // me da los privilegios
-          return response.redirect("/user/inicio");
-           //return response.render("index.ejs", {
-           //listaPrivilegios : listaPrivilegios});
-        })
-        .catch((err) => {
-          console.log(err);
-          return response.render("error.ejs");
-        });
+          .then(( [rows, fielData]) => { // todas las filas de los privilegios
+            request.session.privilegios = []; 
+            for(privilegio of rows) {
+              request.session.privilegios.push(privilegio.descripcionPrivilegio); // crear un arreglo privilegios que tiene como llave el nombre del provilegio y el valor de true, con esto comparo si tiene el privilegio o no
+            }
+            console.log(response.locals);
+            //let listaPrivilegios = request.session.privilegios;  // <-- It's a test
+            //console.log(request.session.privilegios) // me da los privilegios
+            return response.redirect("/user/inicio");
+            //return response.render("index.ejs", {
+            //listaPrivilegios : listaPrivilegios});
+          })
+          .catch((err) => {
+            console.log(err);
+            return response.render("error.ejs");
+          });
         // comparo lo que metio con la contra de la base de datos comapre me dice si son equivalentes
         /*
         bcrypt
