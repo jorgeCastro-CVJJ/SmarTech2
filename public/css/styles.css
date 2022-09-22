@@ -230,7 +230,6 @@ html{
   padding-top: 30px; */
 }
 
-<<<<<<< HEAD
 .botonAgregarColaborador{
   margin-left: 330px;
   
@@ -242,3 +241,17 @@ html{
   font-family: var(--fuente);
   font-size: small;
 } 
+
+.imagenInicio {
+  position: absolute;
+  width: 912px;
+  height: 509px;
+  left: 400px;
+  top: 60px;
+}
+
+.proyectosExistentes {
+  padding-top: 500px;
+  padding-left: 350px;
+}
+

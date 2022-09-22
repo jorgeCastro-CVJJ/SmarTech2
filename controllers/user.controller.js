@@ -1,5 +1,6 @@
 const path = require("path");
 const Usuario = require("../models/usuarioModel");
+const Proyecto = require("../models/proyectoModel");
 
 getLogin = (request, response, next) => {
   const usuario = request.session.usuario ? request.session.usuario: '';
@@ -41,7 +42,7 @@ postLogin = (request, response, next) => {
           .catch((err) => {
             console.log(err);
             return response.render("error.ejs");
-          });
+        });
         // comparo lo que metio con la contra de la base de datos comapre me dice si son equivalentes
         /*
         bcrypt
@@ -76,7 +77,13 @@ postLogin = (request, response, next) => {
 
 menu = (request, response, next) => {
   console.log(request.session.privilegios);
-  return response.render("index.ejs",{listaPrivilegios: request.session.privilegios});
+  Proyecto.fetchAll()
+  .then(([rowsProyecto, fielData]) => {
+    return response.render(path.join("index", "index.ejs"), {
+      listaPrivilegios: request.session.privilegios,
+      proyecto:rowsProyecto,
+    });
+  })
 };
 
 module.exports = {
