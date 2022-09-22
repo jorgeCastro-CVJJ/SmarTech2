@@ -11,7 +11,7 @@ if (ENV == 'DENISSE') {
 const pool = mysql.createPool({
   host: "localhost",
   user: "root",
-  database: "reportes_st",
+  database: "eficiencia2_ST",
   password: password,
 });
 
