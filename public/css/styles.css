@@ -234,8 +234,10 @@ html{
   margin-left: 40px; 
   font-family: var(--fuente);
   font-size: large;
-} 
+}
+
 .titulo{
+  position:static;
   text-align: center;
   font-family: var(--fuente);
   font-weight: bold;
