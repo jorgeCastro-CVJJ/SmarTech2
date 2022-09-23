@@ -1,7 +1,7 @@
 body {
   font-family: var(--fuente);
   background-color: rgba(255, 255, 255, 0.92);
-  display: flex;
+  display:flex;
   align-items: center;
   height: 100vh;
 } 
@@ -223,7 +223,7 @@ html{
 }
 
 .botonAgregarColaborador{
-  margin-left: 330px;
+  left: 120%;
   
 } 
 
