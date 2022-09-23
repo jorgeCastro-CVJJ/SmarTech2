@@ -45,7 +45,7 @@ postnuevoProyecto = (request, response, next) => {
 
 getProyectoExistente = (request, response, next) =>{
   Proyecto.fetchAll()
-  .then(([rows, fielData]) =>{
+  .then(([rowsProyecto, fielData]) =>{
     response.render(path.join('proyectosExsistentes', 'proyectosExsistentes.ejs'), {
       proyecto:rowsProyecto,
       listaPrivilegios: request.session.privilegios,
@@ -58,12 +58,14 @@ getProyectoExistente = (request, response, next) =>{
 
 
 getProyectosByUserID = (request, response, next) => {
-  Proyecto.fetchProyectos()
+  Proyecto.fetchProyectos(request.session.idSesion)
   .then(([rowsProyecto, fielData]) => {
     response.render(path.join('misProyectos','misProyectos.ejs'), {
       proyecto:rowsProyecto,
       listaPrivilegios: request.session.privilegios,
     })
+    console.log("This is your log, george")
+    console.log(rowsProyecto)
   })
   .catch((err) => {
     console.log(err);
