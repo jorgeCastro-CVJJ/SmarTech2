@@ -53,40 +53,30 @@
           </div>
         </div>
 
+      <div class="row">
         <div class="field-label is-normal">
-
-          <div class="labelt">
-            <div class="row">
-            <label class="label">Colaboradores</label>
-          </div>
-        </div>
-
-          
-          <div class="field-body">
-            <div class="field is-narrow">
-              <div class="row">
-                <div class="control">
-                <a class="button is-link is-outlined botonAgregarColaborador" onclick="agregarColaborador()"> + </a>
-              
-                <%- nombreSesion %>
-              </br>
-                <div class="select is-fullwidth"> 
-                  <select name="nombre" id="nombre"> 
-                    <option value="" disabled selected> Selecciona a los colaboradores</option>
-                    
-                    <% for (let e of empleado) { %>
-                      <option value ="<%= e.idEmpleado %>"><%= e.nombre%></option>
-                    <% } %>
-                  </select>
+                <div class="field-body">
+                  <div class="field is-narrow">
+                    <div class="control">
+                    <label class="label">Colaboradores</label>
+                      <a class="button is-link is-outlined botonAgregarColaborador" onclick="agregarColaborador()"> + </a>
+                      <%- nombreSesion %>
+                      <div class="select is-fullwidth"> 
+                        <select name="nombre" id="nombre"> 
+                          <option value="" disabled selected> Selecciona a los colaboradores</option>
+                          
+                          <% for (let e of empleado) { %>
+                            <option value ="<%= e.idEmpleado %>"><%= e.nombre%></option>
+                          <% } %>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-        <div class="divColaboradores" id="listaColabradores">
-        </div>
+                <div class="divColaboradores" id="listaColabradores">
+                </div>
 
 
         

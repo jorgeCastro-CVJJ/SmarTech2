@@ -221,6 +221,7 @@ html{
   width: 250px;
   display: flex;
   padding: 13px;
+  position: relative;
 }
 
 .botonTarea {
