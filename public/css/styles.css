@@ -211,8 +211,16 @@ html{
 
 .regTarea {
   /* background-color: #098B90; */
-  margin-left: 15%;
+  left: 27%;
   padding-top: 10px;
+  position:absolute;
+  width: 900px;
+}
+
+.field-label label {
+  width: 250px;
+  display: flex;
+  padding: 13px;
 }
 
 .fecha{
@@ -223,8 +231,9 @@ html{
 }
 
 .botonAgregarColaborador{
-  left: 120%;
-  
+  left: 100%;
+  width: 40px;
+  top: 62px;
 } 
 
 .table {
@@ -260,4 +269,8 @@ html{
 
 .cartaProyectos{
   padding: 2rem;
+}
+
+.field-label label {
+  font-size: x-large; 
 }
