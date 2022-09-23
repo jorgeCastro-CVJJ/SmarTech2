@@ -39,7 +39,10 @@ function postProyecto(){
 .then(response => response.json())
 .then(response => {
     console.log(response);
-    swal("¡Exito!", "Tarea creada correctamente", "success");
+
+    swal("¡Exito!", "Tarea creada correctamente", "success")
+    window.location("/user/inicio")
+    
 }).catch(err => {
     console.log(err);
 });
