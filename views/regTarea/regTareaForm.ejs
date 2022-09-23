@@ -96,12 +96,15 @@
           </div>
           <div class="field-body">
             <div class="field">
-              <input type="button" class="btnContador" onclick="sumarCont()" value="+">
-              <input type="button" class="btnContador" onclick="restarCont()" value="-">
-              
-                <input type="number" id="contar">
-              </div>
-              
+              <div class="field has-addons">
+                <p class="control">
+                  <input class="input is-danger" type="number" placeholder="1" id="horasTrabajo" name="horasRegistradas">
+                </p>
+                <p class="control">
+                  <a class="button is-static">
+                    horas (número entero)
+                  </a>
+                </p>
               </div>
             </div>
           </div>
@@ -109,18 +112,18 @@
 
 
         <div class="field is-grouped is-grouped-centered">
-          <p class="contar2">
+          <p class="control">
             <input type="submit" onclick="postTarea()" value="Agregar"  class="button botonAgregarTarea is-success is-outlined">
             
           </p>
           
-          <p class="contar1">
+          <p class="control">
             <input type="reset" value="Cancelar" class="button botonCancelarTarea is-danger is-outlined" >
           </p>
         </div>
       </div>
         
-        <!-- </form> -->
+        <!-- </form> 
         <script>
         let numero = 0;
         const contador = document.getElementById("contar");
@@ -135,8 +138,8 @@
               numero--;
               contador = numero;
           }
-          return contador;
-        }
+          return contador; 
+        }-->
         </script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="/js/scriptRegTarea.js"></script>
