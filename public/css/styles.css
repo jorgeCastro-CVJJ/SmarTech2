@@ -291,3 +291,10 @@ html{
 .nombreUsuario {
   color: white;
 }
+
+.contenedorTarea {
+  padding-left: 35%;
+  display: block;
+  position: absolute;
+  width:max-content;
+}
