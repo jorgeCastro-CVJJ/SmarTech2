@@ -41,8 +41,7 @@ function postProyecto(){
     console.log(response);
 
     swal("¡Exito!", "Tarea creada correctamente", "success")
-    window.location("/user/inicio")
-    
+
 }).catch(err => {
     console.log(err);
 });
