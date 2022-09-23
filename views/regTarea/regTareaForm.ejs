@@ -1,23 +1,19 @@
 <!-- en action ponemos la ruta-->
 <!-- <form action="/registrarTarea/nueva" method="POST" class="regTareaForm"> -->
 
- <div class="regTarea"> 
-
   <div class="field is-static">
     <h1 class="titulo">Crear Tarea</h1>
-      <h3 class="fecha">FECHA: 
-      <%= new Date().getDay(); %> /
-      <%= new Date().getMonth(); %> /
-      <%= new Date().getFullYear(); %> 
-      </h3>
 
     </div>
 
-      
-          <div class="field-label is-normal">
+    <div class="regTarea"> 
+          <div class="field-label is-normal"> 
+            <div class="labelt">
             <div class="row">
+             
             <label class="label">Proyecto al que pertence</label>
           </div>
+        </div>
           <div class="row">
           <div class="field-body">
             <div class="field is-narrow">
@@ -38,9 +34,12 @@
 
 
           <div class="field-label is-normal">
+            <div class="labelt">
             <div class="row">
+              
             <label class="label">Nombre de tarea</label>
           </div>
+        </div>
           <div class="row">
           <div class="field-body">
             <div class="field">
@@ -55,23 +54,30 @@
         </div>
 
         <div class="field-label is-normal">
-          <div class="row">
+
+          <div class="labelt">
+            <div class="row">
             <label class="label">Colaboradores</label>
           </div>
-          <div class="row">
+        </div>
+
+          
           <div class="field-body">
             <div class="field is-narrow">
-              <div class="control">
+              <div class="row">
+                <div class="control">
+                <a class="button is-link is-outlined botonAgregarColaborador" onclick="agregarColaborador()"> + </a>
+              
                 <%- nombreSesion %>
               </br>
                 <div class="select is-fullwidth"> 
                   <select name="nombre" id="nombre"> 
                     <option value="" disabled selected> Selecciona a los colaboradores</option>
+                    
                     <% for (let e of empleado) { %>
                       <option value ="<%= e.idEmpleado %>"><%= e.nombre%></option>
                     <% } %>
                   </select>
-                  <a class="button is-link is-outlined botonAgregarColaborador" onclick="agregarColaborador()"> + </a>
                 </div>
               </div>
             </div>
@@ -85,17 +91,21 @@
 
         
           <div class="field-label is-normal">
-            <div class="row">
-            <label class="label">HORAS DE TRABAJO </label>
-          </div>
+            <div class="labelt">
+              <div class="row">
+              <label class="label">HORAS DE TRABAJO </label>
+            </div>
+        </div>
           <div class="row">
           <div class="field-body">
             <div class="field">
               <div class="field has-addons">
+                <div class="row">
                 <p class="control">
                   <input class="input is-danger" type="number" placeholder="1" id="horasTrabajo" name="horasRegistradas">
                 </p>
               </div>
+            </div>
             </div>
           </div>
         </div>
