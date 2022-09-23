@@ -15,8 +15,8 @@ module.exports = class Tarea {
   }
 
   static fetchTareas() {
-    return db.execute('SELECT DISTINCT nombreP, nombreT, fecha, horasTrabajo FROM tarea T, Proyecto P, Ejecuta E WHERE T.idProyecto = P.idProyecto AND T.idTarea = E.idTarea') //Tablas: tarea, proyecto, ejecuta
-  }
+    return db.execute('SELECT DISTINCT nombreP, nombreT, fecha, horasTrabajo FROM tarea T, Proyecto P, Ejecuta E, Empleado Em WHERE T.idProyecto = P.idProyecto AND T.idTarea = E.idTarea AND E.idEmpleado = Em.idEmpleado AND E.idEmpleado = ?', [idSesion]) //Tablas: tarea, proyecto, ejecuta
+  } 
   
   
 //De tarea: idTarea, nombreT, horasTrabajo, idProyecto
