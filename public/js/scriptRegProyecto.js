@@ -18,7 +18,7 @@ function postProyecto(){
   let stackTecnologico = document.getElementById('stackTecnologico');
   let stakeholders = document.getElementById('stakeholders');
 
-  let ruta = "/registrarProyecto/nuevo";
+  let ruta = "/proyecto/registrarProyecto";
   let data = {
     nombreP: nombreP.value,
     descripcion: descripcion.value,

@@ -3,7 +3,9 @@ const router = express.Router();
 
 const regProyectoController = require("../controllers/regProyecto.controller");
 
-router.get("/nuevo", regProyectoController.getnuevoProyecto);
-router.post("/nuevo", regProyectoController.postnuevoProyecto);
+router.get("/registrarProyecto", regProyectoController.getnuevoProyecto);
+router.post("/registrarProyecto", regProyectoController.postnuevoProyecto);
+
+router.get("/proyectosExistentes", regProyectoController.getProyectoExistente)
 
 module.exports = router;

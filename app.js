@@ -42,10 +42,10 @@ const rutaUsuario = require("./routes/user.routes.js");
 app.use("/user", rutaUsuario);
 
 const rutasRegTarea = require("./routes/regTarea.routes");
-app.use("/registrarTarea", rutasRegTarea);
+app.use("/tarea", rutasRegTarea);
 
 const rutasRegProyecto = require("./routes/regProyecto.routes");
-app.use("/registrarProyecto", rutasRegProyecto);
+app.use("/proyecto", rutasRegProyecto);
 
 // ERROR 404
 app.use((request, response, next) => {
