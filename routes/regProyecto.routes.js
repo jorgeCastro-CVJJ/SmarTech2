@@ -8,6 +8,6 @@ router.post("/registrarProyecto", regProyectoController.postnuevoProyecto);
 
 router.get("/proyectosExistentes", regProyectoController.getProyectoExistente);
 
-router.get("/misProyectos", regProyectoController.getProyectosByUserID);
+
 
 module.exports = router;
