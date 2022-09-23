@@ -225,6 +225,7 @@ html{
 
 .botonTarea {
   left: 70%;
+  top: 66%;
   background-color: var(--azulSec1);
   color: white;
   border: none;
@@ -255,8 +256,9 @@ html{
   position: absolute;
   font-family: var(--fuente);
   font-size: large;
-  top: 12%;
-  left: 41%;
+  top: 28%;
+  left: 33%;
+  width: 700px;
 }
 
 .titulo{
@@ -266,7 +268,7 @@ html{
   font-weight: bold;
   font-size: 25px;
   color: black;
-  top: 20px;
+  top: 65px;
   left: 50%;
 }
 .imagenInicio {
