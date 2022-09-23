@@ -96,9 +96,12 @@
           </div>
           <div class="field-body">
             <div class="field">
-              <div class="contar" id="contar" type="">0</div>
               <input type="button" class="btnContador" onclick="sumarCont()" value="+">
               <input type="button" class="btnContador" onclick="restarCont()" value="-">
+              
+                <input type="number" id="contar">
+              </div>
+              
               </div>
             </div>
           </div>
@@ -106,12 +109,12 @@
 
 
         <div class="field is-grouped is-grouped-centered">
-          <p class="control">
+          <p class="contar2">
             <input type="submit" onclick="postTarea()" value="Agregar"  class="button botonAgregarTarea is-success is-outlined">
             
           </p>
           
-          <p class="control">
+          <p class="contar1">
             <input type="reset" value="Cancelar" class="button botonCancelarTarea is-danger is-outlined" >
           </p>
         </div>
@@ -120,18 +123,19 @@
         <!-- </form> -->
         <script>
         let numero = 0;
+        const contador = document.getElementById("contar");
         function sumarCont(){
-          const contador = document.getElementById("contar");
           numero++;
-          contador.innerHTML = numero;
+          contador = numero;
         }
         function restarCont(){
-          const contador = document.getElementById("contar");
-          if (numero == 0){}
+          if (numero == 0){
+          }
           else{
               numero--;
-              contador.innerHTML = numero;
+              contador = numero;
           }
+          return contador;
         }
         </script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
