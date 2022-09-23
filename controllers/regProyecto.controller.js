@@ -46,7 +46,7 @@ postnuevoProyecto = (request, response, next) => {
 getProyectoExistente = (request, response, next) =>{
   Proyecto.fetchAll()
   .then(([rowsProyecto, fielData]) =>{
-    response.render(path.join('proyectosExsistentes', 'proyectosExsistentes.ejs'), {
+    response.render(path.join('proyectosExistentes', 'proyectosExistentes.ejs'), {
       proyecto:rowsProyecto,
       listaPrivilegios: request.session.privilegios,
     })
