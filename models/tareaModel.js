@@ -15,7 +15,7 @@ module.exports = class Tarea {
   }
 
   static fetchTareas() {
-    return db.execute('SELECT DISTINCT nombreP, nombreT, fecha, horasTrabajo FROM tarea T, Proyecto P, Ejecuta E, Empleado Em WHERE T.idProyecto = P.idProyecto AND T.idTarea = E.idTarea AND E.idEmpleado = Em.idEmpleado AND E.idEmpleado = ?', [idSesion]) //Tablas: tarea, proyecto, ejecuta
+    return db.execute('SELECT DISTINCT nombreP, nombreT, fecha, horasTrabajo FROM tarea T, proyecto P, ejecuta E, empleado Em WHERE T.idProyecto = P.idProyecto AND T.idTarea = E.idTarea AND E.idEmpleado = Em.idEmpleado AND E.idEmpleado = ?', [idSesion]) //Tablas: tarea, proyecto, ejecuta
   }
   
   
@@ -28,7 +28,7 @@ module.exports = class Tarea {
     return db.execute('SELECT * FROM tarea');
   }
 
- static tareaMasReciente() {
+  static tareaMasReciente() {
     return db.execute(`SELECT idTarea FROM tarea ORDER BY idTarea DESC limit 1`)
   }
 

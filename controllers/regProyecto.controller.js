@@ -56,8 +56,23 @@ getProyectoExistente = (request, response, next) =>{
   })
 };
 
+
+getProyectosByUserID = (request, response, next) => {
+  Proyecto.fetchProyectos()
+  .then(([rowsProyecto, fielData]) => {
+    response.render(path.join('misProyectos','misProyectos.ejs'), {
+      proyecto:rowsProyecto,
+      listaPrivilegios: request.session.privilegios,
+    })
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+}
+
 module.exports = {
   getnuevoProyecto,
   postnuevoProyecto,
-  getProyectoExistente
+  getProyectoExistente,
+  getProyectosByUserID,
 };
