@@ -43,7 +43,21 @@ postnuevoProyecto = (request, response, next) => {
   }).catch(err => console.log(err));
 }
 
+getProyectoExistente = (request, response, next) =>{
+  Proyecto.fetchAll()
+  .then(([rows, fielData]) =>{
+    response.render(path.join('proyectosExsistentes', 'proyectosExsistentes.ejs'), {
+      proyecto:rowsProyecto,
+      listaPrivilegios: request.session.privilegios,
+    })
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+};
+
 module.exports = {
   getnuevoProyecto,
-  postnuevoProyecto
+  postnuevoProyecto,
+  getProyectoExistente
 };
