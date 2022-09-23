@@ -9,11 +9,11 @@ if (ENV == 'DENISSE') {
 
 
 const pool = mysql.createPool({
-  host: "b7wuqmbbhwmvh5oziip7-mysql.services.clever-cloud.com",
-  user: "usvm7wy65kkigu0d",
-  database: "b7wuqmbbhwmvh5oziip7",
-  password: "YhzxFvRqcIwZrqRFCoi3",
-  port:3306
+
+  host: "localhost",
+  user: "root",
+  database: "eficiencia2_ST",
+  password: password,
 });
 
 module.exports = pool.promise();
