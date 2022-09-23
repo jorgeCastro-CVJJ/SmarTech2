@@ -66,7 +66,7 @@ body .menu{
 
 .column {
   padding: 40px;
-}
+} 
 
 .row a{
   display: flex;
@@ -215,8 +215,6 @@ html{
   padding-top: 10px;
 }
 
-
-
 .fecha{
   text-align: right;
   font-weight: bold;
@@ -229,27 +227,30 @@ html{
   
 } 
 
-.table, .misTareas {
-  position: relative;
-  margin-left: 40px; 
+.table {
+  position: absolute;
   font-family: var(--fuente);
   font-size: large;
+  top: 12%;
+  left: 41%;
 }
 
 .titulo{
-  position:static;
+  position: absolute;
   text-align: center;
   font-family: var(--fuente);
   font-weight: bold;
   font-size: 25px;
   color: black;
+  top: 20px;
+  left: 50%;
 }
 .imagenInicio {
   position: absolute;
   width: 912px;
   height: 509px;
-  left: 400px;
-  top: 60px;
+  left: 27%;
+  top: 8%;
 }
 
 .proyectosExistentes {
