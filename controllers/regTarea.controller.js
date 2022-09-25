@@ -76,15 +76,11 @@ getTareas = (request, response, next) => {
     .catch(err => console.log(err))
 };
 
-//preguntarle al profe cómo desplegar tareas por sesión
-// menu = (request, response, next) => {
-//     console.log(request.session.privilegios);
-//     return response.render("index.ejs",{listaPrivilegios: request.session.privilegios});
-//   };
+
 
 module.exports = {
     getnuevaTarea,
     postnuevaTarea,
-    getTareas
+    getTareas,
   };
   

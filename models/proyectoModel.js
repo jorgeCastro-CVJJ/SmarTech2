@@ -35,4 +35,8 @@ module.exports = class Proyecto {
   static asignarColaborador(idEmpleado, idProyecto) {
     return db.execute ('INSERT INTO trabaja (idEmpleado, idProyecto) VALUES (?,?)', [idEmpleado, idProyecto]);
   }
+
+  static buscar(valor) {
+    return db.execute('SELECT * FROM proyecto WHERE nombreP like ?', ['%' + valor + '%']);
+  }
 }

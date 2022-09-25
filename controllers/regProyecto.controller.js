@@ -72,9 +72,21 @@ getProyectosByUserID = (request, response, next) => {
   })
 }
 
+getBuscar = (request, response, next) => {
+  Proyecto.buscar(request.params.valor)
+  .then(([rows, fielData]) => {
+      response.status(200).json({proyecto: rows});
+  })
+  .catch(err => {
+      console.log(err);
+      response.status(500).json({message: "ERROR 500"});
+  });
+};
+
 module.exports = {
   getnuevoProyecto,
   postnuevoProyecto,
   getProyectoExistente,
   getProyectosByUserID,
+  getBuscar
 };

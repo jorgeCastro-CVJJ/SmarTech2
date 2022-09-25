@@ -13,7 +13,7 @@ function postTarea(){
   console.log("entra");
   let nombreT = document.getElementById("nombreT");
   let horasRegistradas = document.getElementById("horasTrabajo");
-  let nombreP = document.getElementById('nombreP')
+  let nombreP = document.getElementById('buscar')
   let ruta = "/tarea/registrarTarea";
   let data = {
     nombreT: nombreT.value,

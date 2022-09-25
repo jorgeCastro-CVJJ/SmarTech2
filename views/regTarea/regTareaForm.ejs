@@ -10,6 +10,7 @@
           <div class="field-label is-normal"> 
             <div class="labelt">
             <div class="row">
+              
              
             <label class="label">Proyecto al que pertence</label>
           </div>
@@ -18,13 +19,11 @@
           <div class="field-body">
             <div class="field is-narrow">
               <div class="control">
-                <div class="select is-fullwidth">
-                  <select name="nombreP" id="nombreP">
-                    <option value="" disabled selected>Selecciona el proyecto</option>
-                        <% for (let p of proyecto) { %>
-                            <option value="<%= p.idProyecto %>"><%= p.nombreP %></option>
-                        <% } %>
-                  </select>
+                <div class="input-field">
+                  <input class="input" type="text" placeholder="Proyecto..." name="nombreP" id="buscar">
+                </div>
+                <div id="listaProyectos">
+                  
                 </div>
               </div>
             </div>
@@ -113,13 +112,63 @@
           </p>
         </div>
       </div>
+
+      <script>
+        const accion_asincrona = () => {
+          const valor = document.getElementById('buscar').value;
+          //función que manda la petición asíncrona
+          fetch('/proyecto/buscar/' + valor, {
+            method: 'GET',
+          }).then(result => {
+            return result.json(); //Regresa otra promesa
+          }).then(data => {
+            //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+            console.log(data);
+            
+            let html = '';
+            if (data.proyecto.length > 0) {
+              html = '';
+                for (p of data.proyecto) {
+                  html += '<div class="card">';
+                  html += '<header class="card-header">';
+                  html += '<p class="card-header-title">';
+                  html += p.nombreP;
+                  html += '</p>';
+                  html += '</header>';
+                  html += '</div>';
+
+
+
+
+                  // html += '<div class="select">';
+                  // html += '<select>';
+                  // html += '<option>Select dropdown</option>'
+                  // for (let p of proyecto) {
+                  //   html += 'option value='
+                  //   p.idProyecto
+                  //   html += '</option>'
+
+                    // html += p.nombreP;
+                    // html += '<br>';
+                  // }
+                }
+            } else {
+              html = '<h2>No hay proyectos registrados que coincidan con los criterios de búsqueda</h2>';
+            }
+                document.getElementById("listaProyectos").innerHTML = html;
+            }).catch(err => {
+                console.log(err);
+             });
+          };
+        document.getElementById('buscar').onkeyup = accion_asincrona
+      </script>
         
         <!-- </form> 
         <script>
         let numero = 0;
         const contador = document.getElementById("contar");
         function sumarCont(){
-          numero++;
+          numero;
           contador = numero;
         }
         function restarCont(){
