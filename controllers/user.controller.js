@@ -87,9 +87,16 @@ menu = (request, response, next) => {
   })
 };
 
+logout = (request, response, next) => {
+  request.session.destroy(() => {
+      response.redirect('/user/login'); //eliminar sesión 
+  });
+};
+
 module.exports = {
   getLogin,
   postLogin,
   menu,
+  logout,
 };
 // en vistas poner if pasar arreglo de privilegios a la vista e ir comparando 

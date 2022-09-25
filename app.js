@@ -47,6 +47,8 @@ app.use("/tarea", rutasRegTarea);
 const rutasRegProyecto = require("./routes/regProyecto.routes");
 app.use("/proyecto", rutasRegProyecto);
 
+
+
 // ERROR 404
 app.use((request, response, next) => {
   response.status(404);
