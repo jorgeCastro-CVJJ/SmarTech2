@@ -32,7 +32,7 @@
 
         <script>
           const asyncFunc = () => {
-              const valor = document.getElementById('fechas').value;
+              const valor = document.getElementById('buscar').value;
   
               //función que manda la petición asíncrona
               fetch('/tareas/buscar/' + valor, {
@@ -47,7 +47,7 @@
   
                   if (data.fechas.length > 0) {
                       html += '<div class="row">';
-                      for (e of data.fechas) {      
+                      for (t of data.fechas) {      
                           html += t.fecha; 
                       }
                       html += '</div>';
@@ -55,13 +55,13 @@
                       html = '<h2>No hay tareas registradas en el periodo seleccionado.</h2>';
                   }
   
-                  document.getElementById("fechas").innerHTML = html;
+                  document.getElementById("buscar").innerHTML = html;
               }).catch(err => {
                   console.log(err);
               });
           };
   
-          document.getElementById('fecha').onkeyup = asyncFunc;
+          document.getElementById('buscar').onkeyup = asyncFunc;
       </script>
   
       <a href="/tarea/registrarTarea"><button class="botonTarea">Registrar nueva tarea</button></a>
