@@ -17,9 +17,9 @@
             <th><abbr title="Horas">Horas</abbr></th>
           </tr>
         </thead>
-      <tbody>
 
-        
+    <div id="lista_fechas">
+      <tbody>        
         <% for (let t of tarea) { %>
           <tr>
             <td><%= t.nombreP %></td>
@@ -27,9 +27,10 @@
             <td><%= t.fecha.getDate() + "-"+ t.fecha.getMonth()+ "-" + t.fecha.getFullYear();%></td>
             <td><%= t.horasTrabajo %></td>
           </tr>
-        <% } %>
-    </tbody>
-
+          <% } %>
+      </tbody>
+    </div>
+    
         <script>
           const asyncFunc = () => {
               const valor = document.getElementById('buscar').value;
@@ -45,9 +46,9 @@
   
                   let html = '';
   
-                  if (data.fechas.length > 0) {
+                  if (data.tareas.length > 0) {
                       html += '<div class="row">';
-                      for (t of data.fechas) {      
+                      for (t of data.tareas) {      
                           html += t.fecha; 
                       }
                       html += '</div>';
@@ -55,7 +56,7 @@
                       html = '<h2>No hay tareas registradas en el periodo seleccionado.</h2>';
                   }
   
-                  document.getElementById("buscar").innerHTML = html;
+                  document.getElementById("lista_fechas").innerHTML = html;
               }).catch(err => {
                   console.log(err);
               });

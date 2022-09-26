@@ -300,3 +300,14 @@ html{
   margin-left: 20%;
   width:max-content;
 }
+
+.cartaProyectos {
+  width: 600px; 
+  margin-bottom: 80%;
+  margin-left: 20%;
+  
+}
+
+.card {
+  margin-left: 70px;
+}

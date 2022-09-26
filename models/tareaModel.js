@@ -39,5 +39,10 @@ module.exports = class Tarea {
   static asignarColaborador(idEmpleado, idTarea) {
     return db.execute('INSERT INTO ejecuta (idEmpleado, idTarea) VALUES (?,?)', [idEmpleado, idTarea]);
   }
+
+  
+  static find(valor) {
+    return db.execute('SELECT * FROM tareas WHERE fecha like ?', ['%' + valor + '%']);
+  }
 };
 
