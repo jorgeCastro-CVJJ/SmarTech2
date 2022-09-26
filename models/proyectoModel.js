@@ -9,7 +9,7 @@ module.exports = class Proyecto {
     this.estatus = estatus;
     this.stackTecnologico = stackTecnologico;
     this.stakeholders = stakeholders;
-    //this.idProyecto = this.idProyecto;
+    this.idProyecto = this.idProyecto;
   }
 
   // hacer un nuevo proyecto, insert en la base de datos
