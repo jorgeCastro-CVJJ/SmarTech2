@@ -24,6 +24,7 @@
                 </div>
                 <div id="listaProyectos">
                   
+                  
                 </div>
               </div>
             </div>
@@ -45,9 +46,6 @@
               <div class="control">
                 <input class="input" type="text" placeholder="Escribe aqui" id="nombreT" name="nombreT">
               </div>
-              <p class="help is-danger">
-                This field is required
-              </p>
             </div>
           </div>
         </div>
@@ -112,56 +110,6 @@
           </p>
         </div>
       </div>
-
-      <script>
-        const accion_asincrona = () => {
-          const valor = document.getElementById('buscar').value;
-          //función que manda la petición asíncrona
-          fetch('/proyecto/buscar/' + valor, {
-            method: 'GET',
-          }).then(result => {
-            return result.json(); //Regresa otra promesa
-          }).then(data => {
-            //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
-            console.log(data);
-            
-            let html = '';
-            if (data.proyecto.length > 0) {
-              html = '';
-                for (p of data.proyecto) {
-                  html += '<div class="card">';
-                  html += '<header class="card-header">';
-                  html += '<p class="card-header-title">';
-                  html += p.nombreP;
-                  html += '</p>';
-                  html += '</header>';
-                  html += '</div>';
-
-
-
-
-                  // html += '<div class="select">';
-                  // html += '<select>';
-                  // html += '<option>Select dropdown</option>'
-                  // for (let p of proyecto) {
-                  //   html += 'option value='
-                  //   p.idProyecto
-                  //   html += '</option>'
-
-                    // html += p.nombreP;
-                    // html += '<br>';
-                  // }
-                }
-            } else {
-              html = '<h2>No hay proyectos registrados que coincidan con los criterios de búsqueda</h2>';
-            }
-                document.getElementById("listaProyectos").innerHTML = html;
-            }).catch(err => {
-                console.log(err);
-             });
-          };
-        document.getElementById('buscar').onkeyup = accion_asincrona
-      </script>
         
         <!-- </form> 
         <script>
