@@ -294,8 +294,9 @@ html{
 }
 
 .contenedorTarea {
-  padding-left: 35%;
+  /* padding-left: 35%;
   display: block;
-  position: absolute;
+  position: absolute; */
+  margin-left: 20%;
   width:max-content;
 }
