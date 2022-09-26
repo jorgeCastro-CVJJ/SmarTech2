@@ -76,11 +76,22 @@ getTareas = (request, response, next) => {
     .catch(err => console.log(err))
 };
 
+getBuscar = (request, response, next) => {
 
+    Fechas.find(request.params.valor)
+        .then(([rows, fieldData]) => {
+            response.status(200).json({fechas: rows});
+        })
+        .catch(err => { 
+            console.log(err);
+            response.status(500).json({message: "ERROR 500"});
+        });
+};
 
 module.exports = {
     getnuevaTarea,
     postnuevaTarea,
     getTareas,
+    getBuscar,
   };
   

@@ -7,4 +7,6 @@ router.get("/nueva", regTareaController.consultarTareas);
 // router.post("/nueva", regTareaController.postnuevaTarea);
 
 
+
+
 module.exports = router;

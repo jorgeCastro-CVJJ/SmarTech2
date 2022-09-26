@@ -9,21 +9,61 @@
           <tr>
             <th><abbr title="Proyecto">Proyecto</abbr></th>
             <th><abbr title="Tarea">Tarea</abbr></th>
-            <th><abbr title="Fecha">Fecha</abbr></th>
+            <th><abbr title="Fecha">
+              <div class="input-field">
+                <input id="buscar" type="text" placeholder="Fecha">
+              </div>
+            </abbr></th>
             <th><abbr title="Horas">Horas</abbr></th>
           </tr>
         </thead>
       <tbody>
-    
-          <% for (let t of tarea) { %>
-            <tr>
-              <td><%= t.nombreP %></td>
-              <td><%= t.nombreT %></td>
-              <td><%= t.fecha.getDate() + "-"+ t.fecha.getMonth()+ "-" + t.fecha.getFullYear();%></td>
-              <td><%= t.horasTrabajo %></td>
-            </tr>
-          <% } %>
-      </tbody>
+
+        
+        <% for (let t of tarea) { %>
+          <tr>
+            <td><%= t.nombreP %></td>
+            <td><%= t.nombreT %></td>
+            <td><%= t.fecha.getDate() + "-"+ t.fecha.getMonth()+ "-" + t.fecha.getFullYear();%></td>
+            <td><%= t.horasTrabajo %></td>
+          </tr>
+        <% } %>
+    </tbody>
+
+        <script>
+          const asyncFunc = () => {
+              const valor = document.getElementById('fechas').value;
+  
+              //función que manda la petición asíncrona
+              fetch('/tareas/buscar/' + valor, {
+                  method: 'GET',
+              }).then(result => {
+                  return result.json(); //Regresa otra promesa
+              }).then(data => {
+                  //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+                  console.log(data);
+  
+                  let html = '';
+  
+                  if (data.fechas.length > 0) {
+                      html += '<div class="row">';
+                      for (e of data.fechas) {      
+                          html += t.fecha; 
+                      }
+                      html += '</div>';
+                  } else {
+                      html = '<h2>No hay tareas registradas en el periodo seleccionado.</h2>';
+                  }
+  
+                  document.getElementById("fechas").innerHTML = html;
+              }).catch(err => {
+                  console.log(err);
+              });
+          };
+  
+          document.getElementById('fecha').onkeyup = asyncFunc;
+      </script>
+  
       <a href="/tarea/registrarTarea"><button class="botonTarea">Registrar nueva tarea</button></a>
     </div>
   </div>
