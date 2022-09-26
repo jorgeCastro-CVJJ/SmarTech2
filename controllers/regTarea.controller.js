@@ -70,6 +70,7 @@ getTareas = (request, response, next) => {
             tarea: rowsTarea,
             empleados: rowsEmpleados,
             listaPrivilegios: request.session.privilegios,
+            idSesion: request.session.idSesion,
         })
         })
     })

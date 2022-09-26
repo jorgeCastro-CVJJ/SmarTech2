@@ -1,7 +1,7 @@
 const mysql = require("mysql2");
 
 
-
+/*
 const ENV = 'DENISSE';
 
 let password = '';
@@ -19,8 +19,7 @@ const pool = mysql.createPool({
 });
 
 module.exports = pool.promise();
-/*
-const mysql = require("mysql2");
+*/
 
 const pool = mysql.createPool({
   host: "b7wuqmbbhwmvh5oziip7-mysql.services.clever-cloud.com",
@@ -30,4 +29,4 @@ const pool = mysql.createPool({
   port:3306
 });
 
-module.exports = pool.promise();*/
+module.exports = pool.promise();
