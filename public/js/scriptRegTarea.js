@@ -71,7 +71,7 @@ const accion_asincrona = () => {
           for (p of data.proyecto) {
             html += `<div class="card" id="drop-card">`;
             html += '<header class="card-header">';
-            html += `<p class="card-header-title"  data-proyecto="${p.nombreP}" data-proyectoID=${p.idProyecto}>`;
+            html += `<p class="card-header-title"  data-proyecto="${p.idProyecto}" data-proyectoID=${p.idProyecto}>`;
             html += p.nombreP;
             html += '</p>';
             html += '</header>';
