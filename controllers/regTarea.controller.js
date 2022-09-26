@@ -36,7 +36,7 @@ getnuevaTarea = (request, response, next) => {
 };
 
 postnuevaTarea = (request, response, next) => {
-    const nuevaTarea = new Tarea(request.body.nombreT, request.body.horasRegistradas, request.body.nombreP);
+    const nuevaTarea = new Tarea(request.body.nombreT, request.body.horasRegistradas, request.body.idProyecto);
     nuevaTarea.save()
     .then(()=> {
           Tarea.tareaMasReciente()

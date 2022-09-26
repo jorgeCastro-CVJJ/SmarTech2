@@ -1,6 +1,6 @@
 const arrayColaboradores  = [];
-// se cambia al hacer click en busqueda click
-let proyecto = null;
+//let proyecto = null;
+
 
 function agregarColaborador(){
   const colaborador = document.getElementById("nombre");
@@ -12,19 +12,21 @@ function agregarColaborador(){
 }
 
 function postTarea(){
-  console.log("entra");
   let nombreT = document.getElementById("nombreT");
   let horasRegistradas = document.getElementById("horasTrabajo");
-  let nombreP = document.getElementById('buscar')
+  let nombreP = document.getElementById('buscar');
+  // se cambia al hacer click en busqueda click
+  let idProyecto = document.getElementById('idProyecto');
+
   let ruta = "/tarea/registrarTarea";
   let data = {
     nombreT: nombreT.value,
     horasRegistradas: horasRegistradas.value,
     arrayColaboradores: arrayColaboradores,
     nombreP: nombreP.value,
-    idProyecto: proyecto
+    idProyecto: idProyecto.value,
   }
-  console.log(data)
+  console.log(data);
   fetch(ruta, {
     method: 'POST',
     headers: {
@@ -45,13 +47,20 @@ function busquedaClick(event){
    // event target es una referencua al elemento que la activo
    //evento es el que llega por ser event listener
   const nombreProyecto = event.target.dataset.proyecto;
+  // en nombreProyecto estou obteniendo el valor de los seleccionados
+  // AL HACER CLICK SE OBTIENE EL VALOR OSEA EL NOMBRE
   document.getElementById("buscar").value = nombreProyecto;
+  // DESPLIGA EL NOMBRE DEL PROYECTO SELECCIONADO
+  console.log(nombreProyecto)
   // se despliega en la barra de buscar
   document.getElementById("listaProyectos").innerHTML = "";
   // guardar el id del proyecto
   // para la variable global guardar el proyecto al que se le hizo click
-  proyecto = event.target.dataset.proyectoID;
-  console.log(proyecto);
+  //proyecto = event.target.dataset.proyectoID;
+  let html = '';
+  html += `<input type="hidden" name="idProyecto" id="idProyecto" value="${p.idProyecto}">`;
+  //html += `<input type="text" name="nombreP" id="nombreP"  value="${p.nombreP}">`;    
+  document.getElementById("listaProyectos").innerHTML = html;
 }
 
 const accion_asincrona = () => {
@@ -71,9 +80,11 @@ const accion_asincrona = () => {
           for (p of data.proyecto) {
             html += `<div class="card" id="drop-card">`;
             html += '<header class="card-header">';
-            html += `<p class="card-header-title"  data-proyecto="${p.idProyecto}" data-proyectoID=${p.idProyecto}>`;
+            html += `<p class="card-header-title"  data-proyecto="${p.nombreP}" data-proyectoID=${p.idProyecto}>`;
             html += p.nombreP;
             html += '</p>';
+            // html += `<input type="hidden" name="idProyecto" id="idProyecto"  value="${p.idProyecto}">`;
+            // html += `<input type="text" name="nombreP" id="nombreP"  value="${p.nombreP}">`;       
             html += '</header>';
             html += '</div>';
           }
