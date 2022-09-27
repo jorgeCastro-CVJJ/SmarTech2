@@ -62,17 +62,21 @@
               }).then(data => {
                   //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
                   console.log(data.fechas);
-  
                   let html = '';
                   if (data.fechas.length > 0) {                 
-                    html += '<div>'
+                    html += '<div>';
+                    html += '<table class="table">';
+                    html += '<thead>';
                     for(let f of (data.fechas)) {
-                      html += '</tr>';
+                      html += '<tr>';
                       html += f.nombreP;
                       html += f.nombreT;
                       html += new Date(f.fecha).toLocaleString('ES-mx');
                       html += f.horasTrabajo;
+                      html += '</tr>';
                     };
+                    html += '</table>';
+                    html += '</thead>';
                     html += '</div>'                   
                   } else {
                       html = '<h2>No hay tareas registradas en el periodo seleccionado.</h2>';
