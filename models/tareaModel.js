@@ -41,8 +41,8 @@ module.exports = class Tarea {
   }
 
   
-  static find(valor) {
-    return db.execute('SELECT * FROM tareas WHERE fecha like ?', ['%' + valor + '%']);
+  static buscar(fechaInicio, fechaFin) {
+    return db.execute('SELECT * FROM tarea WHERE fecha BETWEEN ? AND ?', [fechaInicio, fechaFin]);
   }
 };
 

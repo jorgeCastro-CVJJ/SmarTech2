@@ -11,7 +11,8 @@
             <th><abbr title="Tarea">Tarea</abbr></th>
             <th><abbr title="Fecha">
               <div class="input-field">
-                <input id="buscar" type="date">
+                <input id="fechaInicio" type="date">
+                <input id="fechaFin" type="date">
               </div>
             </abbr></th>
             <th><abbr title="Horas">Horas</abbr></th>
@@ -33,10 +34,11 @@
     
         <script>
           const asyncFunc = () => {
-              const valor = document.getElementById('buscar').value;
-  
+              const fechaInicio = document.getElementById('fechaInicio').value;
+              const fechaFin = document.getElementById('fechaFin').value
+
               //función que manda la petición asíncrona
-              fetch('/tareas/buscar/' + valor, {
+              fetch('/tarea/buscar/' + fechaInicio + '/' + fechaFin, {
                   method: 'GET',
               }).then(result => {
                   return result.json(); //Regresa otra promesa
@@ -47,22 +49,24 @@
                   let html = '';
   
                   if (data.tareas.length > 0) {
-                      html += '<div class="row">';
-                      for (t of data.tareas) {      
-                          html += t.fecha; 
+                    
+                      for (t of data.tareas) {  
+                        html += '<div>';    
+                        html += lista_fechas; 
+                        html += '</div>';
                       }
-                      html += '</div>';
+                      
                   } else {
                       html = '<h2>No hay tareas registradas en el periodo seleccionado.</h2>';
                   }
-  
+                
                   document.getElementById("lista_fechas").innerHTML = html;
               }).catch(err => {
                   console.log(err);
               });
           };
   
-          document.getElementById('buscar').onkeyup = asyncFunc;
+          document.getElementById('fechaFin').oninput = asyncFunc;
       </script>
   
       <a href="/tarea/registrarTarea"><button class="botonTarea">Registrar nueva tarea</button></a>

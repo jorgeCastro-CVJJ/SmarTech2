@@ -79,7 +79,7 @@ getTareas = (request, response, next) => {
 
 getBuscar = (request, response, next) => {
 
-    Fechas.find(request.params.valor)
+    Tarea.buscar(request.params.fechaInicio, request.params.fechaFin)
         .then(([rows, fieldData]) => {
             response.status(200).json({fechas: rows});
         })

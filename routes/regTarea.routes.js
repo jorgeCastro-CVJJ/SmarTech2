@@ -6,6 +6,6 @@ const regTareaController = require("../controllers/regTarea.controller");
 router.get("/registrarTarea", regTareaController.getnuevaTarea);
 router.post("/registrarTarea", regTareaController.postnuevaTarea);
 router.get("/misTareas", regTareaController.getTareas);
-router.get('/buscar/:valor', regTareaController.getBuscar);
+router.get('/buscar/:fechaInicio/:fechaFin', regTareaController.getBuscar);
 
 module.exports = router;
