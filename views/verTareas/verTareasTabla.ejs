@@ -42,7 +42,7 @@
           <tr>
             <td><%= t.nombreP %></td>
             <td><%= t.nombreT %></td>
-            <td><%= t.fecha.getDate() + "-"+ t.fecha.getMonth()+ "-" + t.fecha.getFullYear();%></td>
+            <td><%= new Date(t.fecha).toLocaleString('ES-mx');%></td>
             <td><%= t.horasTrabajo %></td>
           </tr>
           <% } %>
@@ -61,14 +61,18 @@
                   return result.json(); //Regresa otra promesa
               }).then(data => {
                   //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
-                  console.log(data);
+                  console.log(data.fechas);
   
                   let html = '';
-                  if (data.fecha > 0) {                 
+                  if (data.fechas.length > 0) {                 
                     html += '<div>'
-                    html += '<tr>';
-                    
-                    html += '</tr>';
+                    for(let f of (data.fechas)) {
+                      html += '</tr>';
+                      html += f.nombreP;
+                      html += f.nombreT;
+                      html += new Date(f.fecha).toLocaleString('ES-mx');
+                      html += f.horasTrabajo;
+                    };
                     html += '</div>'                   
                   } else {
                       html = '<h2>No hay tareas registradas en el periodo seleccionado.</h2>';
