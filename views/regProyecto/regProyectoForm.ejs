@@ -102,7 +102,8 @@
 
   <div class="field is-grouped is-grouped-centered">
     <p class="control">
-      <input type="submit" onclick="postProyecto()" value="Agregar"  class="button botonAgregarTarea is-success is-outlined">
+      <input type="submit" onclick="postProyecto()" value="Agregar" id= "submitbtn"
+       class="button botonAgregarTarea is-success is-outlined">
     </p>
     
     <p class="control">
@@ -112,7 +113,17 @@
   </div>
   </div>
 
+  <script>
+    if (nombreP != "" || descripcion != "" || estatus != "" || stackTecnologico != "" || stakeholders != ""){
+      const submitbtn = document.getElementById('submitbtn');
+      submitbtn.disabled = true;
+    } else if (nombreP == "" || descripcion == "" || estatus == "" || stackTecnologico == "" || stakeholders == ""){
+      const submitbtn = document.getElementById('submitbtn');
+      submitbtn.disabled = false;
+    }
+  </script>
   <script src="/js/scriptRegProyecto.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
 
 </div>
