@@ -46,3 +46,26 @@ function postProyecto(){
     console.log(err);
 });
 }
+
+const input = document.querySelector('input');
+
+input.addEventListener('input',botonDeshabilitado);
+/*nombreP.addEventListener('nombreP',botonDeshabilitado);
+descripcion.addEventListener('descripcion',botonDeshabilitado);
+estatus.addEventListener('estatus',botonDeshabilitado);
+stackTecnologico.addEventListener('stackTecnologico',botonDeshabilitado);
+stakeholders.addEventListener('stakeholders',botonDeshabilitado);*/
+
+function botonDeshabilitado(){
+  const nombreP = document.querySelector('nombreP');
+  const descripcion = document.querySelector('descripcion');
+  const estatus = document.querySelector('estatus');
+  const stackTecnologico = document.querySelector('stackTecnologico');
+  const stakeholders = document.querySelector('stakeholders');
+  const submitbtn = document.getElementById('submitbtn');
+  if (nombreP == "" || descripcion == "" || estatus == "" || stackTecnologico == "" || stakeholders == ""){
+    submitbtn.disabled = true;
+  } 
+  else if (nombreP != "" || descripcion != "" || estatus != "" || stackTecnologico != "" || stakeholders != "")
+    submitbtn.disabled = false;
+}
