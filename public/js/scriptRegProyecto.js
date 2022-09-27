@@ -46,4 +46,3 @@ function postProyecto(){
     console.log(err);
 });
 }
-
