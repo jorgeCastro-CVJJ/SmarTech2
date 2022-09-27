@@ -51,9 +51,9 @@ postnuevaTarea = (request, response, next) => {
                 .then(()=>console.log("Tarea asignada a colaborador " + id_colaborador))
                 .catch(err=>console.log(err)); // recuperar antes el idTarea
             }
-            response.status(200).json({mensaje: "Listo"});
-            // mensaje de exito
             request.session.mensaje = "Tarea creada correctamente";
+            response.status(200).json({mensaje: "Listo"});
+            // mensaje de exit
           }).catch(err => console.log(err)); 
       }).catch(err => console.log(err));
     }
@@ -99,18 +99,3 @@ module.exports = {
     getTareas,
     getBuscar,
 };
-  
-
-/*
-
- <% if(mensaje != "") {  %>
-
-<div class="notification is-success is-light">
-  <button class="delete"></button>
-  ¡Exito!
-  Tarea creada <strong>correctamente</strong>
-</div>
-
-<% } %> 
-
-*/
