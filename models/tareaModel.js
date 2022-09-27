@@ -42,7 +42,7 @@ module.exports = class Tarea {
 
   
   static buscar(fechaInicio, fechaFin) {
-    return db.execute('SELECT * FROM tarea WHERE fecha BETWEEN ? AND ?', [fechaInicio, fechaFin]);
+    return db.execute('SELECT * FROM ejecuta WHERE fecha BETWEEN ? AND ?', [fechaInicio, fechaFin]);
   }
 };
 
