@@ -1,6 +1,23 @@
 
 <div class="field is-static">
   <h1 class="titulo">Mis tareas</h1>
+  
+  <script>
+    let data = {
+      nombreP: nombreP.value,
+      nombreT: nombreT.value,
+      horasRegistradas: horasRegistradas.value,
+      fecha: t.fecha    
+    }
+    console.log(data)
+    fetch(ruta, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body:JSON.stringify(data)
+  })
+</script>
 
   <div class="columns">
     <div class="column">
@@ -47,20 +64,20 @@
                   console.log(data);
   
                   let html = '';
-  
-                  if (data.tareas.length > 0) {
-                    
-                      for (t of data.tareas) {  
-                        html += '<div>';    
-                        html += lista_fechas; 
-                        html += '</div>';
-                      }
-                      
+                  if (data.fecha > 0) {                 
+                    html += '<div>'
+                    html += '<tr>';
+                    html += '<td><%= data.nombreP %></td>';
+                    html += '<td><%= data.nombreT %></td>';
+                    html += '<td><%= data.fecha.getDate() + "-"+ data.fecha.getMonth()+ "-" + data.fecha.getFullYear();%></td>';
+                    html += '<td><%= data.horasTrabajo %></td>';
+                    html += '</tr>';
+                    html += '</div>'                   
                   } else {
                       html = '<h2>No hay tareas registradas en el periodo seleccionado.</h2>';
                   }
-                
                   document.getElementById("lista_fechas").innerHTML = html;
+                
               }).catch(err => {
                   console.log(err);
               });
