@@ -52,6 +52,7 @@ postnuevaTarea = (request, response, next) => {
                 .then(()=>console.log("Tarea asignada a colaborador " + id_colaborador))
                 .catch(err=>console.log(err)); // recuperar antes el idTarea
             }
+            //mensaje
             response.status(200).json({mensaje: "Listo"});
           }).catch(err => console.log(err)); 
         //} else{
@@ -60,11 +61,14 @@ postnuevaTarea = (request, response, next) => {
       }).catch(err => console.log(err));
     }
 
+    // aqui paso mensaje en el template de a vista ver tareas y en la vista digo si esta variable se encuetra imprimo el mensaje
 getTareas = (request, response, next) => {
     Tarea.fetchTareas()
     .then(([rowsTarea, fieldData]) => {
         Empleado.fetchAll()
         .then(([rowsEmpleados]) => {
+
+            
             // request.session.usuario = request.session.nombre 
         response.render(path.join("verTareas", "verTareas.ejs"), {
             tarea: rowsTarea,
