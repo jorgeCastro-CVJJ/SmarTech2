@@ -36,8 +36,9 @@ function postTarea(){
 })
 .then(response => response.json())
 .then(response => {
-    console.log(response);
-    swal("¡Exito!", "Tarea creada correctamente", "success");
+  window.location.href = '/tarea/misTareas';
+    //console.log(response);
+    //swal("¡Exito!", "Tarea creada correctamente", "success");
 }).catch(err => {
     console.log(err);
 });
