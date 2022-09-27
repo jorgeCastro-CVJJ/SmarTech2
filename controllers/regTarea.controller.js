@@ -6,6 +6,7 @@ const Empleado = require("../models/empleadoModel");
 const Usuario = require("../models/usuarioModel");
 const { request } = require("http");
 
+
 //falta poner sesión
 // es cuando quiero algo de la base de datos
 getnuevaTarea = (request, response, next) => {
@@ -15,15 +16,13 @@ getnuevaTarea = (request, response, next) => {
         Empleado.fetchAll()
         .then(([rowsEmpleado, fieldData]) => {
 
-            let mensaje = request.session.mensaje ? request.session.mensaje : '';
-            request.session.mensaje = '';
+           
 
             return response.render(path.join("regTarea", "regTarea.ejs"), {
-                // aqui mando los datos a la vista
                 proyecto:rowsProyecto,
                 empleado:rowsEmpleado,
                 listaPrivilegios: request.session.privilegios,
-                // mensaje: mensaje,
+                
             });
         })
         .catch((err) => {
@@ -52,29 +51,30 @@ postnuevaTarea = (request, response, next) => {
                 .then(()=>console.log("Tarea asignada a colaborador " + id_colaborador))
                 .catch(err=>console.log(err)); // recuperar antes el idTarea
             }
-            //mensaje
             response.status(200).json({mensaje: "Listo"});
+            // mensaje de exito
+            request.session.mensaje = "Tarea creada correctamente";
           }).catch(err => console.log(err)); 
-        //} else{
-        //  console.log("else del if");
-        //}
       }).catch(err => console.log(err));
     }
 
     // aqui paso mensaje en el template de a vista ver tareas y en la vista digo si esta variable se encuetra imprimo el mensaje
 getTareas = (request, response, next) => {
+     // creo la variable de sesion para el mensaje de exito
+     let mensaje = request.session.mensaje ? request.session.mensaje : '';
+     request.session.mensaje = '';
+
     Tarea.fetchTareas()
     .then(([rowsTarea, fieldData]) => {
         Empleado.fetchAll()
         .then(([rowsEmpleados]) => {
-
-            
-            // request.session.usuario = request.session.nombre 
-        response.render(path.join("verTareas", "verTareas.ejs"), {
+            response.render(path.join("verTareas", "verTareas.ejs"), {
             tarea: rowsTarea,
             empleados: rowsEmpleados,
             listaPrivilegios: request.session.privilegios,
             idSesion: request.session.idSesion,
+            // paso el mensaje a el template
+            mensaje: mensaje,
         })
         })
     })
@@ -98,5 +98,19 @@ module.exports = {
     postnuevaTarea,
     getTareas,
     getBuscar,
-  };
+};
   
+
+/*
+
+ <% if(mensaje != "") {  %>
+
+<div class="notification is-success is-light">
+  <button class="delete"></button>
+  ¡Exito!
+  Tarea creada <strong>correctamente</strong>
+</div>
+
+<% } %> 
+
+*/
