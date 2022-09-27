@@ -66,12 +66,12 @@ getTareas = (request, response, next) => {
         Empleado.fetchAll()
         .then(([rowsEmpleados]) => {
             // request.session.usuario = request.session.nombre 
-        response.render(path.join("verTareas", "verTareas.ejs"), {
-            tarea: rowsTarea,
-            empleados: rowsEmpleados,
-            listaPrivilegios: request.session.privilegios,
-            idSesion: request.session.idSesion,
-        })
+            response.render(path.join("verTareas", "verTareas.ejs"), {
+                tarea: rowsTarea,
+                empleados: rowsEmpleados,
+                listaPrivilegios: request.session.privilegios,
+                idSesion: request.session.idSesion,
+            })
         })
     })
     .catch(err => console.log(err))
