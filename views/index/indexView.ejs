@@ -8,9 +8,19 @@
     <select name="nombreP" id="nombreP">
       <option value="" disabled selected>Selecciona el proyecto</option>
           <% for (let p of proyecto) { %>
-              <option value="<%= p.idProyecto %>"><%= p.nombreP %></option>
+            <option value="<%= p.idProyecto %>"><%= p.nombreP %></option>  
           <% } %>
     </select>
-  <!-- <a class="button is-link is-outlined botonAgregarColaborador"> Consultar </a> -->
+
+    <script>
+      // cuando se seleeciona un proyecto entra
+      function handleProyectSelect(event)  {
+        console.log("Si estoy funcionando :(")
+        // redirigue a la vista 
+        window.location = "/proyecto/existente/" + event.target.value;
+      }
+      //al path le añade el numero del proyecto, nombreP es una referencia al elemento que selecciona los datos
+      document.getElementById("nombreP").addEventListener('change', handleProyectSelect);
+    </script>
   </div>
 </div>

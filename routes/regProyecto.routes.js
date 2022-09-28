@@ -12,4 +12,6 @@ router.get("/misProyectos", regProyectoController.getProyectosByUserID);
 
 router.get("/buscar/:valor", regProyectoController.getBuscar)
 
+router.get("/existente/:idProyecto", regProyectoController.getProyectosExistentes)
+
 module.exports = router;
