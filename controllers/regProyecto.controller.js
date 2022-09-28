@@ -86,14 +86,16 @@ getBuscar = (request, response, next) => {
 
 getProyectosExistentes = (request, response, next) => {
   Proyecto.fetchOne(request.params.idProyecto)
-  .then(([rows, fielData]) => {
-    response.render(path.join('proyectosExsistentes', 'proyectosExsistentes.ejs'), {
+  .then(([rowsProyecto, fielData]) => {
+    return response.render(path.join('proyectosExsistentes', 'proyectosExsistentes.ejs'), {
       proyecto:fielData,
+      proyecto: rowsProyecto,
       listaPrivilegios: request.session.privilegios,
     })
   })
   .catch(err => {
-    console.log(err);});
+    console.log(err);
+  });
 }
 
 module.exports = {

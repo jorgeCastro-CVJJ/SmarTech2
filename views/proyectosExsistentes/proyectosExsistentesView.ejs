@@ -1,8 +1,26 @@
+<h1 class="titulo"> 
+  <body>        
+    <% for (let p of proyecto) { %>
+        <p><%= p.nombreP %></p>
+      <% } %>
+    </body>
+</h1>
+
 <figure class="image is-128x128">
   <img src="../../public/media/paginaInicio.png" alt="imagen descriptiva de proyecto">
 </figure>
 
-<p> descripcion </p>
+
+
+<div class="descripcionProyectos">
+  <p>
+    <% for (let p of proyecto) { %>
+      <p><%= p.descripcion %></p>
+    <% } %>
+  </p>
+</div>
+
+
 
 <div class="field is-horizontal">
   <div class="field-label is-normal">
@@ -10,12 +28,15 @@
   </div>
   <div class="field-body">
     <div class="field">
-      <div class="control">
-        <input class="input" type="text" placeholder="En proceso" id="nombreT" name="nombreT "disabled>
-      </div>
+      <p class="control">
+        <% for (let p of proyecto) { %>
+          <p><%= p.estatus %></p>
+        <% } %>
+      </p>
     </div>
   </div>
 </div>
+
 
 <div class="field is-horizontal">
   <div class="field-label is-normal">
@@ -23,9 +44,11 @@
   </div>
   <div class="field-body">
     <div class="field">
-      <div class="control">
-        <input class="input" type="text" placeholder=" NODE" id="nombreT" name="nombreT "disabled>
-      </div>
+      <p class="control">
+        <% for (let p of proyecto) { %>
+          <p><%= p.stackTecnologico %></p>
+        <% } %>
+      </p>
     </div>
   </div>
 </div>
@@ -36,22 +59,28 @@
   </div>
   <div class="field-body">
     <div class="field">
-      <div class="control">
-        <input class="input" type="text" placeholder="Sabritas" id="nombreT" name="nombreT "disabled>
-      </div>
+      <p class="control">
+        <% for (let p of proyecto) { %>
+          <p><%= p.stakeholders %></p>
+        <% } %>
+      </p>
     </div>
   </div>
 </div>
 
+<!-- 
 <div class="field is-horizontal">
   <div class="field-label is-normal">
     <label class="label">Colaboradores</label>
   </div>
   <div class="field-body">
     <div class="field">
-      <div class="control">
-        <input class="input" type="text" placeholder="Denisse" id="nombreT" name="nombreT "disabled>
-      </div>
+      <p class="control">
+        <% for (let p of proyecto) { %>
+          <p><%= p.colaboradores %></p>
+        <% } %>
+      </p>
     </div>
   </div>
 </div>
+ -->

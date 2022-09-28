@@ -32,7 +32,6 @@ module.exports = class Proyecto {
 
   }
 
-
   static proyectoMasReciente() {
     return db.execute('SELECT idProyecto FROM proyecto ORDER BY idProyecto DESC limit 1')
   }
