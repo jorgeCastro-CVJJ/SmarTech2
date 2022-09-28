@@ -27,6 +27,10 @@ module.exports = class Proyecto {
     return db.execute('SELECT DISTINCT nombreP, descripcion, estatus, stackTecnologico, stakeholders FROM proyecto p, trabaja t WHERE p.idProyecto = t.idProyecto AND t.idEmpleado = ? ', [idSesion]) //Tablas: tarea, proyecto, ejecuta
   }
 
+  static fetchOne(idProyecto){
+    return db.execute('SELECT * FROM proyecto WHERE idProyecto = ?', [idProyecto]);
+
+  }
 
   static proyectoMasReciente() {
     return db.execute('SELECT idProyecto FROM proyecto ORDER BY idProyecto DESC limit 1')

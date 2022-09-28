@@ -1,6 +1,7 @@
 const path = require("path");
 const Proyecto = require("../models/proyectoModel");
-const Empleado = require("../models/empleadoModel")
+const Empleado = require("../models/empleadoModel");
+const { error } = require("console");
 
 getnuevoProyecto = (request, response, next) =>{
   console.log(request.session);
@@ -83,10 +84,25 @@ getBuscar = (request, response, next) => {
   });
 };
 
+getProyectosExistentes = (request, response, next) => {
+  Proyecto.fetchOne(request.params.idProyecto)
+  .then(([rowsProyecto, fielData]) => {
+    return response.render(path.join('proyectosExsistentes', 'proyectosExsistentes.ejs'), {
+      proyecto:fielData,
+      proyecto: rowsProyecto,
+      listaPrivilegios: request.session.privilegios,
+    })
+  })
+  .catch(err => {
+    console.log(err);
+  });
+}
+
 module.exports = {
   getnuevoProyecto,
   postnuevoProyecto,
   getProyectoExistente,
   getProyectosByUserID,
-  getBuscar
+  getBuscar,
+  getProyectosExistentes,
 };

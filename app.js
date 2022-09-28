@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const session = require("express-session");
 const csrf = require("csurf");
+const morgan = require("morgan");
 
 // uso de librerias
 const app = express();
@@ -14,6 +15,7 @@ app.set("views", "views");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(morgan("combined"));
 
 app.get("/", (request, response) => {
   response.render("index")
