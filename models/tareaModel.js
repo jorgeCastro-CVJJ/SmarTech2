@@ -40,7 +40,11 @@ module.exports = class Tarea {
     return db.execute('INSERT INTO ejecuta (idEmpleado, idTarea) VALUES (?,?)', [idEmpleado, idTarea]);
   }
 
-  
+  //tarea, proyecto = idProyecto
+  static fetchHoras() {
+    return db.execute('SELECT SUM(horasTrabajo) FROM tarea T, proyecto P WHERE T.idProyecto = P.idProyecto');
+  }
+
   static buscar(fechaInicio, fechaFin) {
     return db.execute('SELECT * FROM ejecuta WHERE fecha BETWEEN ? AND ?', [fechaInicio, fechaFin]);
   }
