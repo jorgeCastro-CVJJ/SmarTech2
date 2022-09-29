@@ -1,6 +1,7 @@
 const path = require("path");
 const Proyecto = require("../models/proyectoModel");
 const Empleado = require("../models/empleadoModel");
+const Trabaja = require("../models/trabajaModel");
 const { error } = require("console");
 
 getnuevoProyecto = (request, response, next) =>{
@@ -87,16 +88,24 @@ getBuscar = (request, response, next) => {
 getProyectosExistentes = (request, response, next) => {
   Proyecto.fetchOne(request.params.idProyecto)
   .then(([rowsProyecto, fielData]) => {
-    return response.render(path.join('proyectosExsistentes', 'proyectosExsistentes.ejs'), {
-      proyecto:fielData,
-      proyecto: rowsProyecto,
-      listaPrivilegios: request.session.privilegios,
+    Trabaja.fetchEmpleadosProyecto(request.params.idProyecto)
+    .then(([rowsTrabaja, fillData]) => {
+        console.log(request.session);
+        response.render(path.join('proyectosExsistentes', 'proyectosExsistentes.ejs'), {
+        proyecto:fielData,
+        proyecto: rowsProyecto,
+        trabaja: rowsTrabaja,
+        trabaja:fillData,
+        listaPrivilegios: request.session.privilegios,
+      })
     })
   })
   .catch(err => {
     console.log(err);
   });
 }
+
+
 
 module.exports = {
   getnuevoProyecto,

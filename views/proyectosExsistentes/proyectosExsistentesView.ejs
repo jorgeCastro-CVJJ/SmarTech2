@@ -1,86 +1,48 @@
-<h1 class="titulo"> 
-  <body>        
+<column class="proyectosEx">
+  <h1 class="tituloProyectoE"> 
+    <body>        
+      <% for (let p of proyecto) { %>
+          <p><%= p.nombreP %></p>
+        <% } %>
+      </body>
+  </h1>
+
+  <div class="imagenExistente">
+    <img src="../../media/fotoProyecto.jpeg" alt="imagen descriptiva de proyecto">
+  </div>
+  
+  <div class="descripcionProyectos">
     <% for (let p of proyecto) { %>
-        <p><%= p.nombreP %></p>
-      <% } %>
-    </body>
-</h1>
-
-<figure class="image is-128x128">
-  <img src="../../public/media/paginaInicio.png" alt="imagen descriptiva de proyecto">
-</figure>
-
-
-
-<div class="descripcionProyectos">
-  <p>
-    <% for (let p of proyecto) { %>
-      <p><%= p.descripcion %></p>
+      <%= p.descripcion %>
     <% } %>
-  </p>
-</div>
+  </div>
+
+  
+
+  <label class="label estatusPE">Estatus:  
+    <% for (let p of proyecto) { %>
+      <%= p.estatus %>
+    <% } %>
+  </label>
 
 
+  <label class="label stackPE">Stack Tecnologico:  
+    <% for (let p of proyecto) { %>
+      <%= p.stackTecnologico %>
+    <% } %>
+  </label>
 
-<div class="field is-horizontal">
-  <div class="field-label is-normal">
-    <label class="label">Estatus</label>
-  </div>
-  <div class="field-body">
-    <div class="field">
-      <p class="control">
-        <% for (let p of proyecto) { %>
-          <p><%= p.estatus %></p>
-        <% } %>
-      </p>
-    </div>
-  </div>
-</div>
+  <label class="label stakePE">Stakeholders:  
+    <% for (let p of proyecto) { %>
+      <%= p.stakeholders %>
+    <% } %>
+  </label>
 
 
-<div class="field is-horizontal">
-  <div class="field-label is-normal">
-    <label class="label">Stack Tecnologico</label>
-  </div>
-  <div class="field-body">
-    <div class="field">
-      <p class="control">
-        <% for (let p of proyecto) { %>
-          <p><%= p.stackTecnologico %></p>
-        <% } %>
-      </p>
-    </div>
-  </div>
-</div>
-
-<div class="field is-horizontal">
-  <div class="field-label is-normal">
-    <label class="label">Stakeholders</label>
-  </div>
-  <div class="field-body">
-    <div class="field">
-      <p class="control">
-        <% for (let p of proyecto) { %>
-          <p><%= p.stakeholders %></p>
-        <% } %>
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- 
-<div class="field is-horizontal">
-  <div class="field-label is-normal">
-    <label class="label">Colaboradores</label>
-  </div>
-  <div class="field-body">
-    <div class="field">
-      <p class="control">
-        <% for (let p of proyecto) { %>
-          <p><%= p.colaboradores %></p>
-        <% } %>
-      </p>
-    </div>
-  </div>
-</div>
- -->
+  <label class="label colaboradoresPE">Colaboradores:  
+    <% for (let t of trabaja) { %>
+      <%= t.idEmpleado %>
+    <% } %>
+  </label>
+  
+</column>
