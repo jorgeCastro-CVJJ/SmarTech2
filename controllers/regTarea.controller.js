@@ -3,6 +3,7 @@ const { fetchAll } = require("../models/proyectoModel");
 const Proyecto = require("../models/proyectoModel");
 const Tarea  = require("../models/tareaModel");
 const Empleado = require("../models/empleadoModel");
+const Ejecuta = require("../models/ejecutaModel")
 const Usuario = require("../models/usuarioModel");
 const { request } = require("http");
 
@@ -93,9 +94,27 @@ getBuscar = (request, response, next) => {
         });
 };
 
+getHorasXtarea = (request, response, next) => {
+    Tarea.fetchOne(request.param.idProyecto)
+    .then(([rowsTarea, fillData]) => {
+        Ejecuta.fetchFechaEmpleado(request.param.idTarea)
+        .then(([rowsEjecuta, fillDataE]) => {
+            response.render(path.join("horasXtarea", "horasXtarea.ejs" ), {
+                tarea: rowsTarea,
+                ejecuta: rowsEjecuta,
+                listaPrivilegios: request.session.privilegios,
+            })
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    })
+}
+
 module.exports = {
     getnuevaTarea,
     postnuevaTarea,
     getTareas,
     getBuscar,
+    getHorasXtarea,
 };

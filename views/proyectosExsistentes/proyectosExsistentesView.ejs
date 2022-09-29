@@ -1,10 +1,8 @@
-<column class="proyectosEx">
-  <h1 class="tituloProyectoE"> 
-    <body>        
+
+  <h1 class="tituloProyectoE">        
       <% for (let p of proyecto) { %>
           <p><%= p.nombreP %></p>
         <% } %>
-      </body>
   </h1>
 
   <div class="imagenExistente">
@@ -16,8 +14,6 @@
       <%= p.descripcion %>
     <% } %>
   </div>
-
-  
 
   <label class="label estatusPE">Estatus:  
     <% for (let p of proyecto) { %>
@@ -47,9 +43,23 @@
     </ul>
   </label>
 
+  <label class="label idProyectoE"> Número de Proyecto:  
+    <% for (let p of proyecto) { %>
+      <%= p.idProyecto %>
+    <% } %>
+  </label>
+
   <button class="button is-info is-outlined botonRegreso"><a href="/user/inicio"> Regresar</a></button>
 
-  <button class="button is-link is-outlined botonDetalles">Detalle de horas</button>
+  <button class="button is-link is-outlined botonDetalles" onclick="verHorasTarea()">Detalle de horas</button> 
+  <!-- <a href="/user/inicio"></a> -->
 
-  
-</column>
+  <script>
+    // cuando se seleeciona un proyecto entra
+    function verHorasTarea(event)  {
+      // redirigue a la vista 
+      window.location = "/tarea/horasTarea/" + event.target.id;
+    }
+    //al path le añade el numero del proyecto, nombreP es una referencia al elemento que selecciona los datos
+    document.getElementById("idProyecto").addEventListener('click', verHorasTarea);
+  </script>
