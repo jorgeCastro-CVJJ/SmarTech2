@@ -1,6 +1,14 @@
 const mysql = require("mysql2");
 
+//======================CLOUD SQL (HOST EN GOOGLE CLOUD PLATFORM)======================================================//
+const pool = mysql.createPool({
 
+  host: "34.71.226.216",
+  user: "root",
+  database: "eficiencia2_ST",
+  password: "Denisse",
+});
+//=====================================================================================================================//
 /*
 const ENV = 'DENISSE';
 
@@ -9,7 +17,6 @@ if (ENV == 'DENISSE') {
   password = 'root'
 }
 
-
 const pool = mysql.createPool({
 
   host: "localhost",
@@ -17,10 +24,9 @@ const pool = mysql.createPool({
   database: "eficiencia2_ST",
   password: password,
 });
-
-module.exports = pool.promise();
 */
-
+//======================CLEVER CLOUD DATABASE CONECCTION===============================================================//
+/*
 const pool = mysql.createPool({
   host: "b7wuqmbbhwmvh5oziip7-mysql.services.clever-cloud.com",
   user: "usvm7wy65kkigu0d",
@@ -28,5 +34,7 @@ const pool = mysql.createPool({
   password: "YhzxFvRqcIwZrqRFCoi3",
   port:3306
 });
+*/
 
 module.exports = pool.promise();
+
