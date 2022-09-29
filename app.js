@@ -17,9 +17,29 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan("combined"));
 
-app.get("/", (request, response) => {
-  response.render("index")
-});
+
+
+//=======================================================//
+const { auth } = require('express-openid-connect');
+const { requiresAuth } = require('express-openid-connect')
+
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: 'a long, randomly-generated string stored in env',
+  baseURL: 'http://localhost:5000',
+  clientID: 'xUtC1IKlUaHmPZn6ltl5eRKCEm6WjIpr',
+  issuerBaseURL: 'https://dev-seqft5sb.us.auth0.com'
+};
+
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
+
+// // req.isAuthenticated is provided from the auth router
+// app.get('/', requiresAuth(), (req, res) => {
+//   res.render('index');
+// });
+//======================================================//
 
 // cookies
 app.use(
@@ -41,16 +61,19 @@ app.use((request, response, next) => {
 
 // rutas a utilizar
 const rutaUsuario = require("./routes/user.routes.js");
-app.use("/user", rutaUsuario);
+app.use("/user", requiresAuth(), rutaUsuario);
 
 const rutasRegTarea = require("./routes/regTarea.routes");
-app.use("/tarea", rutasRegTarea);
+app.use("/tarea", requiresAuth(), rutasRegTarea);
 
 const rutasRegProyecto = require("./routes/regProyecto.routes");
 app.use("/proyecto", rutasRegProyecto);
 
 const rutasReporte = require("./routes/reporte.routes");
 app.use("/reporte", rutasReporte);
+app.get("/", requiresAuth(), (request, response) => {
+  response.render("index")
+});
 
 // ERROR 404
 app.use((request, response, next) => {
