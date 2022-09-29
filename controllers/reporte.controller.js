@@ -4,19 +4,20 @@ const Tarea  = require("../models/tareaModel");
 const Empleado = require("../models/empleadoModel");
 const Usuario = require("../models/usuarioModel");
 const Reporte = require("../models/reporteModel");
-const { Module } = require("module");
+// const { Module } = require("module");
 
 postnuevoReporte = (request, response, next) => {
     Reporte.fetchHoras()
-    .then(([rowsTarea, fieldData]) => {
-        // response.render("crearReporte","crearReporteForm.ejs"), 
-        {
-        horas: rowsTarea
-        } 
+    .then(([rowsReporte, fieldData]) => {
+        return response.render(path.join("reporte", "crearReporte"), {
+            horas:rowsReporte,
+            listaPrivilegios: request.session.privilegios,
+        });
     })
     Proyecto.fetchAll()
     .then(([rowsProyecto, fieldData]) => {
         proyecto: rowsProyecto
+        listaPrivilegios: request.session.privilegios
     })
         .catch(err => { 
         console.log(err)
