@@ -13,9 +13,11 @@ module.exports = class Trabaja {
   save(){
     
   }
-  
+
   static fetchEmpleadosProyecto (idProyecto){
-    return db.execute('SELECT idEmpleado FROM trabaja WHERE idProyecto = ?' , [idProyecto]);
+    //return db.execute('SELECT idEmpleado FROM trabaja WHERE idProyecto = ?', [idProyecto]);
+    return db.execute('SELECT E.nombre FROM trabaja as T, empleado as E WHERE T.idEmpleado = E.idEmpleado AND idProyecto = ?' , [idProyecto]);
   }
 }
 
+// SELECT E.nombre FROM trabaja as T, empleado as E WHERE T.idEmpleado = E.idEmpleado AND idProyecto = ?' , [idProyecto]'
