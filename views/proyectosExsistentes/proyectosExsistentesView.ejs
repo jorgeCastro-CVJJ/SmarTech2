@@ -39,10 +39,17 @@
   </label>
 
 
-  <label class="label colaboradoresPE">Colaboradores:  
-    <% for (let t of trabaja) { %>
-      <%= t.idEmpleado %>
-    <% } %>
+  <label class="label colaboradoresPE">Colaboradores: 
+    <ul >
+      <% for (let t of trabaja) { %>
+        <li class="listaColabs"><%= t.nombre %></li>
+      <% } %>
+    </ul>
   </label>
+
+  <button class="button is-info is-outlined botonRegreso"><a href="/user/inicio"> Regresar</a></button>
+
+  <button class="button is-link is-outlined botonDetalles">Detalle de horas</button>
+
   
 </column>

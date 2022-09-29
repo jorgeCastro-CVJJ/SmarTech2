@@ -425,6 +425,15 @@ html{
   line-height: 30px;
 
   color: #000000;
-  
+}
 
+.botonRegreso{
+  top:400px;
+  bottom: 100px;
+  left: 160px;
+}
+
+.botonDetalles{
+  top:400px;
+  left: 200px;
 }

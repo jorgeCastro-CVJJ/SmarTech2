@@ -90,22 +90,18 @@ getProyectosExistentes = (request, response, next) => {
   .then(([rowsProyecto, fielData]) => {
     Trabaja.fetchEmpleadosProyecto(request.params.idProyecto)
     .then(([rowsTrabaja, fillData]) => {
-        console.log(request.session);
-        response.render(path.join('proyectosExsistentes', 'proyectosExsistentes.ejs'), {
-        proyecto:fielData,
-        proyecto: rowsProyecto,
-        trabaja: rowsTrabaja,
-        trabaja:fillData,
-        listaPrivilegios: request.session.privilegios,
+      console.log(rowsTrabaja);
+      response.render(path.join('proyectosExsistentes', 'proyectosExsistentes.ejs'), {
+          proyecto: rowsProyecto,
+          trabaja: rowsTrabaja,
+          listaPrivilegios: request.session.privilegios,
+        })
       })
     })
-  })
   .catch(err => {
     console.log(err);
   });
 }
-
-
 
 module.exports = {
   getnuevoProyecto,
