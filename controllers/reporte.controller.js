@@ -7,9 +7,10 @@ const Reporte = require("../models/reporteModel");
 const { Module } = require("module");
 
 postnuevoReporte = (request, response, next) => {
-    Tarea.fetchHoras()
+    Reporte.fetchHoras()
     .then(([rowsTarea, fieldData]) => {
-        response.render("crearReporte"), {
+        // response.render("crearReporte","crearReporteForm.ejs"), 
+        {
         horas: rowsTarea
         } 
     })
