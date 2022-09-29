@@ -29,7 +29,6 @@ module.exports = class Proyecto {
 
   static fetchOne(idProyecto){
     return db.execute('SELECT * FROM proyecto WHERE idProyecto = ?', [idProyecto]);
-
   }
 
   static proyectoMasReciente() {

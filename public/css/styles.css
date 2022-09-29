@@ -316,3 +316,115 @@ html{
   bottom:35%;
   margin-left: 65%;
 }
+
+/* PANTALLA DE INICIO POR PROYECTO */
+
+
+
+.tituloProyectoE{
+  position: absolute;
+  text-align: center;
+  width: 290px;
+  height: 61px;
+  left: 723px;
+  top: 80px;
+
+  font-family: var(--fuente);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 61px;
+  /* identical to box height */
+  color: #000000;
+}
+
+.imagenExistente {
+  position: absolute;
+  align-items: center;
+  width: 500px;
+  left: 620px;
+  top: 170px;
+}
+
+.descripcionProyectos{
+  position: absolute;
+  text-align: center;
+  width: 758px;
+  height: 84px;
+  left: 500px;
+  top: 420px;
+
+  font-family: var(--fuente);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 42px;
+
+  color: #000000;
+}
+
+.estatusPE{
+  position: absolute;
+  /* width: 244px; */
+  height: 30px;
+  left: 415px;
+  top: 500px;
+
+  font-family: var(--fuente);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 30px;
+
+  color: #000000;
+}
+
+.stackPE{
+  position: absolute;
+  /* width: 244px; */
+  height: 30px;
+  left: 415px;
+  top: 570px;
+
+  font-family: var(--fuente);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 205px;
+  line-height: 30px;
+
+  color: #000000;
+}
+
+.stakePE{
+  position: absolute;
+  /* width: 244px; */
+  height: 30px;
+  left: 415px;
+  top: 640px;
+
+  font-family: var(--fuente);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 30px;
+
+  color: #000000;
+}
+
+.colaboradoresPE{
+  position: absolute;
+  /* width: 244px; */
+  height: 30px;
+  left: 415px;
+  top: 710px;
+
+  font-family: var(--fuente);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 30px;
+
+  color: #000000;
+  
+
+}
