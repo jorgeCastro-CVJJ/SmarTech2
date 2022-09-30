@@ -92,18 +92,11 @@ getBuscar = (request, response, next) => {
 };
 
 getHorasXtarea = (request, response, next) => {
-    Tarea.fetchOne(request.param.idProyecto)
+    Tarea.fetchOne(request.params.idProyecto)
     .then(([rowsTarea, fillData]) => {
-        Ejecuta.fetchFechaEmpleado(request.param.idTarea)
-        .then(([rowsEjecuta, fillDataE]) => {
-            response.render(path.join("horasXtarea", "horasXtarea.ejs" ), {
-                tarea: rowsTarea,
-                ejecuta: rowsEjecuta,
-                listaPrivilegios: request.session.privilegios,
-            })
-        })
-        .catch(err => {
-            console.log(err)
+        response.render(path.join("horasXtarea", "horasXtarea.ejs"), {
+            tarea: rowsTarea,
+            listaPrivilegios: request.session.privilegios,
         })
     })
 }
