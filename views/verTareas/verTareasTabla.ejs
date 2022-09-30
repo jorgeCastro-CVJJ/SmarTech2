@@ -11,10 +11,10 @@
   
   <script>
     let data = {
-      nombreP: nombreP.value,
-      nombreT: nombreT.value,
-      horasRegistradas: horasRegistradas.value,
-      fecha: t.fecha    
+      nombreP: tarea.nombreP,
+      nombreT: tarea.nombreT,
+      horasRegistradas: tarea.horasRegistradas,
+      fecha: tarea.fecha   
     }
     console.log(data)
     fetch(ruta, {
@@ -44,16 +44,16 @@
         </thead>
 
     <div id="lista_fechas">
-      <script>asyncFunc()</script>
-      <tbody>        
-        <% for (let t of tarea) { %>
-          <tr>
-            <td><%= t.nombreP %></td>
-            <td><%= t.nombreT %></td>
-            <td><%= new Date(t.fecha).toLocaleString('ES-mx');%></td>
-            <td><%= t.horasTrabajo %></td>
-          </tr>
-          <% } %>
+        <tbody>        
+          <% for (let t of tarea) { %>
+            <tr>
+              <td><%= t.nombreP %></td>
+              <td><%= t.nombreT %></td>
+              <td><%= new Date(t.fecha).toLocaleString('ES-mx');%></td>
+              <td><%= t.horasTrabajo %></td>
+            </tr>
+            <% } %>
+        </tbody>
       </tbody>
     </div>
     
@@ -75,8 +75,21 @@
                     html += '<div>';
                     html += '<table class="table">';
                     html += '<thead>';
-                      html += '<tr>';
+                    html += '<tr>';
+                    html += '<th><abbr title="Proyecto">Proyecto</th>';
+                    html += '<th><abbr title="Tarea">Tarea</abbr></th>';
+                    html += '<th><abbr title="Fecha">';
+                    html += '<div class="input-field>';
+                    html += '<input id="fechaInicio" type="date">';
+                    html += '<input id="fechaFin" type="date">'; 
+                    html += '</div>';
+                    html += '</abbr></th>';
+                    html += '<th><abbr title="Horas">Horas</abbr></th>';
+                    html += '</tr>';
+                    html += '</thead>';
+                    html += '<tbody>';  
                     for(let f of (data.fechas)) {
+                      html += '<tr>';
                       html += '<td>';
                       html += f.nombreP;
                       html += '</td>';
@@ -88,9 +101,10 @@
                       html += '</td>';
                       html += '<td>';
                       html += f.horasTrabajo;  
-                      html += '</td>';          
+                      html += '</td>'; 
+                      html += '</tr>';         
                     };
-                    html += '</tr>';
+                    html += '</tbody>';
                     html += '</table>';
                     html += '</thead>';
                     html += '</div>'                   
