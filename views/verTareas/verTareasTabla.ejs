@@ -44,6 +44,7 @@
         </thead>
 
     <div id="lista_fechas">
+      <script>asyncFunc()</script>
       <tbody>        
         <% for (let t of tarea) { %>
           <tr>
@@ -74,14 +75,22 @@
                     html += '<div>';
                     html += '<table class="table">';
                     html += '<thead>';
-                    for(let f of (data.fechas)) {
                       html += '<tr>';
+                    for(let f of (data.fechas)) {
+                      html += '<td>';
                       html += f.nombreP;
+                      html += '</td>';
+                      html += '<td>';
                       html += f.nombreT;
+                      html += '</td>';
+                      html += '<td>';
                       html += new Date(f.fecha).toLocaleString('ES-mx');
-                      html += f.horasTrabajo;
-                      html += '</tr>';
+                      html += '</td>';
+                      html += '<td>';
+                      html += f.horasTrabajo;  
+                      html += '</td>';          
                     };
+                    html += '</tr>';
                     html += '</table>';
                     html += '</thead>';
                     html += '</div>'                   
