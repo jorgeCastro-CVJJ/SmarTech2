@@ -66,6 +66,7 @@ function botonDeshabilitado(){
   if (nombreP == "" || descripcion == "" || estatus == "" || stackTecnologico == "" || stakeholders == ""){
     submitbtn.disabled = true;
   } 
-  else if (nombreP != "" || descripcion != "" || estatus != "" || stackTecnologico != "" || stakeholders != "")
+  else if (nombreP != "" || descripcion != "" || estatus != "" || stackTecnologico != "" || stakeholders != "") {
     submitbtn.disabled = false;
+  }
 }

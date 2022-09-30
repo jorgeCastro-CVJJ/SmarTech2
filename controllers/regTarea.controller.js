@@ -16,9 +16,6 @@ getnuevaTarea = (request, response, next) => {
     .then(([rowsProyecto, fieldData])=> {
         Empleado.fetchAll()
         .then(([rowsEmpleado, fieldData]) => {
-
-           
-
             return response.render(path.join("regTarea", "regTarea.ejs"), {
                 proyecto:rowsProyecto,
                 empleado:rowsEmpleado,
