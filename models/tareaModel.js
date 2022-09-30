@@ -28,6 +28,12 @@ module.exports = class Tarea {
     return db.execute('SELECT * FROM tarea');
   }
 
+  static fetchOne(idProyecto) {
+    return db.execute('SELECT * FROM tarea WHERE idProyecto = ?', [idProyecto])
+  }
+
+  
+
   static tareaMasReciente() {
     return db.execute(`SELECT idTarea FROM tarea ORDER BY idTarea DESC limit 1`)
   }

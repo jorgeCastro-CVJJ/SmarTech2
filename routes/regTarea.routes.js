@@ -7,5 +7,6 @@ router.get("/registrarTarea", regTareaController.getnuevaTarea);
 router.post("/registrarTarea", regTareaController.postnuevaTarea);
 router.get("/misTareas", regTareaController.getTareas);
 router.get('/buscar/:fechaInicio/:fechaFin', regTareaController.getBuscar);
+router.get('/horasTarea/:idProyecto', regTareaController.getHorasXtarea)
 
 module.exports = router;

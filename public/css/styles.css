@@ -327,7 +327,7 @@ html{
   width: 290px;
   height: 61px;
   left: 723px;
-  top: 80px;
+  top: 30px;
 
   font-family: var(--fuente);
   font-style: normal;
@@ -429,11 +429,14 @@ html{
 
 .botonRegreso{
   top:400px;
-  bottom: 100px;
-  left: 160px;
+  left: 800px;
 }
 
 .botonDetalles{
   top:400px;
-  left: 200px;
+  left: 500px;
+}
+
+.idProyectoE{
+  margin-top: -650px;
 }
