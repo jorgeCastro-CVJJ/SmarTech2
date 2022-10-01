@@ -46,8 +46,8 @@ module.exports = class Tarea {
     return db.execute('INSERT INTO ejecuta (idEmpleado, idTarea) VALUES (?,?)', [idEmpleado, idTarea]);
   }
 
-  static buscar(fechaInicio, fechaFin) {
-    return db.execute('SELECT * FROM ejecuta WHERE fecha BETWEEN ? AND ?', [fechaInicio, fechaFin]);
+  static buscar(idSesion, fechaInicio, fechaFin) {
+    return db.execute('SELECT DISTINCT nombreP, nombreT, fecha, horasTrabajo FROM tarea T, proyecto P, ejecuta E, empleado Em WHERE T.idProyecto = P.idProyecto AND T.idTarea = E.idTarea AND E.idEmpleado = Em.idEmpleado AND E.idEmpleado = ? AND fecha BETWEEN ? AND ?', [idSesion, fechaInicio, fechaFin]);
   }
 };
 
