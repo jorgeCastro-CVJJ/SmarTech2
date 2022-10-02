@@ -440,3 +440,13 @@ html{
 .idProyectoE{
   margin-top: -650px;
 }
+
+.inputs_reporte {
+  margin-left: 40%;
+  width: 600px;
+}
+
+.fechas_reporte {
+  margin-left: 2%;
+  margin-top: 2px;
+}
