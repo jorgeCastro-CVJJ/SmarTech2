@@ -100,4 +100,14 @@ const accion_asincrona = () => {
 };
 
 document.getElementById('buscar').onkeyup = accion_asincrona
-        
+
+function deshabilitarTarea() {
+  if (document.getElementById("buscar").value==""
+  || document.getElementById("nombreT").value==""
+  || document.getElementById("horasTrabajo").value=="") {
+    document.getElementById('submitTareabtn').disabled = true;
+  }
+  else {
+    document.getElementById('submitTareabtn').disabled = false;
+  }
+}
