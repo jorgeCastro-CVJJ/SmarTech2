@@ -6,6 +6,8 @@ function horasMedioT() {
     console.log(typeof parseInt(personalMedioT));
     console.log(typeof parseInt(number1));
 }
+/*PREGUNTAR A LALO PORQUE LA MULTIPLICACION NO FUNCIONA 
+(SALE NaN Y LOS MULTIPLOS SON OBJETOS (NO NUMEROS))*/
 
 function horasCompletoT() {
     const personalCompletoT = document.getElementById("personalCompletoT");
