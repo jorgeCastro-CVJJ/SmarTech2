@@ -39,17 +39,17 @@
 
   <button class="button is-info is-outlined botonRegreso"><a href="/user/inicio"> Regresar</a></button>
 
-  <button class="button is-link is-outlined botonDetalles" id="botonDetalles" data-idProyecto="<% proyecto[0].idProyecto %>">Detalle de horas</button> 
-  <!-- <a href="/user/inicio"></a> -->
+  <a class="button is-info is-outlined botonDetalles" href="/tarea/horasTarea/<%=proyecto[0].idProyecto%>">Detalle de horas</a> 
+ 
 
-  <script>
+  <!-- <script>
     // cuando se seleeciona un proyecto entra
     function verHorasTarea(event)  {
       console.log("hola si entra :)", event)
       // redirigue a la vista 
-      window.location = "/tarea/horasTarea/" + event.target.dataset.idProyecto;
+      window.location = "/tarea/horasTarea/<%proyecto[0].idProyecto%>" ;//+ event.target.dataset.idProyecto;
     }
 
     //al path le añade el numero del proyecto, nombreP es una referencia al elemento que selecciona los datos
     document.getElementById("botonDetalles").addEventListener('click', verHorasTarea);
-  </script>
+  </script> -->

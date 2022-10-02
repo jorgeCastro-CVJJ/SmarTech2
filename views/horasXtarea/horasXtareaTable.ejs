@@ -1,8 +1,22 @@
-  
-
-<h1 class="tituloProyectoE">        
-  <% for (let t of tarea) { %>
-      <p><%= t.nombreT %></p>
+<div class="card">
+  <table class="table is-fillwidth">
+    <thead>
+      <tr>
+        <th>Tarea</th>
+        <th>Fecha</th>
+        <th>Horas</th>
+        <th>Colaboradores</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (let t of tarea) { %>
+      <tr>
+        <td><%= t.nombreT%></td>
+        <td><%= t.fecha %></td>
+        <td><%= t.horasTrabajo%></td>
+        <td><%= t.nombre %></td>
+      </tr>
     <% } %>
-</h1>
-
+    </tbody>
+  </table>
+</div>

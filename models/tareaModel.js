@@ -29,7 +29,7 @@ module.exports = class Tarea {
   }
 
   static fetchOne(idProyecto) {
-    return db.execute('SELECT T.nombreT, EJ.fecha, T.horasTrabajo, E.nombre FROM tarea as T, ejecuta as EJ, empleado as E WHERE T.idTarea = EJ.idTarea AND E.idEmpleado = EJ.idEmpleado AND T.idProyecto = ?', [idProyecto])
+    return db.execute('SELECT P.nombreP, T.nombreT, EJ.fecha, T.horasTrabajo, E.nombre FROM tarea as T, ejecuta as EJ, empleado as E, proyecto as P WHERE T.idTarea = EJ.idTarea AND E.idEmpleado = EJ.idEmpleado AND P.idProyecto = T.idProyecto AND T.idProyecto = ?', [idProyecto])
   }  
 
   static tareaMasReciente() {
