@@ -8,7 +8,7 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <input class="input" type="text" placeholder="Escribe aqui" id="nombreP" name="nombreP">
+          <input class="input" type="text" onkeyup="deshabilitar()" placeholder="Escribe aqui" id="nombreP" name="nombreP">
         </div>
         <p class="help is-danger">
           Este dato es obligatorio
@@ -24,7 +24,7 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <input class="input" type="text" placeholder="Escribe aqui" id="descripcion" name="descripcion">
+          <input class="input" type="text" onkeyup="deshabilitar()" placeholder="Escribe aqui" id="descripcion" name="descripcion">
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <input class="input" type="text" placeholder="Escribe aqui" id="estatus" name="estatus">
+          <input class="input" type="text" onkeyup="deshabilitar()" placeholder="Escribe aqui" id="estatus" name="estatus">
         </div>
       </div>
     </div>
@@ -81,7 +81,7 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <input class="input" type="text" placeholder="Escribe aqui" id="stackTecnologico" name="stackTecnologico">
+          <input class="input" type="text" onkeyup="deshabilitar()" placeholder="Escribe aqui" id="stackTecnologico" name="stackTecnologico">
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <input class="input" type="text" placeholder="Escribe aqui" id="stakeholders" name="stakeholders">
+          <input class="input" type="text" onkeyup="deshabilitar()" placeholder="Escribe aqui" id="stakeholders" name="stakeholders">
         </div>
       </div>
     </div>
@@ -102,7 +102,7 @@
 
   <div class="field is-grouped is-grouped-centered">
     <p class="control">
-      <input type="submit" onclick="postProyecto()" value="Agregar" disabled id= "submitbtn"
+      <input type="submit" value="Agregar" disabled id= "submitbtn"
        class="button botonAgregarTarea is-success is-outlined">
     </p>
     

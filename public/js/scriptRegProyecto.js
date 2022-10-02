@@ -47,26 +47,15 @@ function postProyecto(){
 });
 }
 
-const input = document.querySelector('input');
-
-input.addEventListener('input',botonDeshabilitado);
-/*nombreP.addEventListener('nombreP',botonDeshabilitado);
-descripcion.addEventListener('descripcion',botonDeshabilitado);
-estatus.addEventListener('estatus',botonDeshabilitado);
-stackTecnologico.addEventListener('stackTecnologico',botonDeshabilitado);
-stakeholders.addEventListener('stakeholders',botonDeshabilitado);*/
-
-function botonDeshabilitado(){
-  const nombreP = document.querySelector('nombreP');
-  const descripcion = document.querySelector('descripcion');
-  const estatus = document.querySelector('estatus');
-  const stackTecnologico = document.querySelector('stackTecnologico');
-  const stakeholders = document.querySelector('stakeholders');
-  const submitbtn = document.getElementById('submitbtn');
-  if (nombreP == "" || descripcion == "" || estatus == "" || stackTecnologico == "" || stakeholders == ""){
-    submitbtn.disabled = true;
-  } 
-  else if (nombreP != "" || descripcion != "" || estatus != "" || stackTecnologico != "" || stakeholders != "") {
-    submitbtn.disabled = false;
+function deshabilitar() {
+  if (document.getElementById("nombreP").value==""
+  || document.getElementById("descripcion").value==""
+  || document.getElementById("estatus").value==""
+  || document.getElementById("stackTecnologico").value==""
+  || document.getElementById("stakeholders").value=="") {
+    document.getElementById('submitbtn').disabled = true;
+  }
+  else {
+    document.getElementById('submitbtn').disabled = false;
   }
 }
