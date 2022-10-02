@@ -1,8 +1,6 @@
 
   <h1 class="tituloProyectoE">        
-      <% for (let p of proyecto) { %>
-          <p><%= p.nombreP %></p>
-        <% } %>
+    <%= proyecto[0].nombreP %>
   </h1>
 
   <div class="imagenExistente">
@@ -10,28 +8,20 @@
   </div>
   
   <div class="descripcionProyectos">
-    <% for (let p of proyecto) { %>
-      <%= p.descripcion %>
-    <% } %>
+    <%= proyecto[0].descripcion %>
   </div>
 
   <label class="label estatusPE">Estatus:  
-    <% for (let p of proyecto) { %>
-      <%= p.estatus %>
-    <% } %>
+    <%= proyecto[0].estatus %>
   </label>
 
 
   <label class="label stackPE">Stack Tecnologico:  
-    <% for (let p of proyecto) { %>
-      <%= p.stackTecnologico %>
-    <% } %>
+    <%= proyecto[0].stackTecnologico %>
   </label>
 
   <label class="label stakePE">Stakeholders:  
-    <% for (let p of proyecto) { %>
-      <%= p.stakeholders %>
-    <% } %>
+    <%= proyecto[0].stakeholders %>
   </label>
 
 
@@ -44,22 +34,22 @@
   </label>
 
   <label class="label idProyectoE" id="idProyecto"> Número de Proyecto:  
-    <% for (let p of proyecto) { %>
-      <%= p.idProyecto %>
-    <% } %>
+    <%= proyecto[0].idProyecto %>
   </label>
 
   <button class="button is-info is-outlined botonRegreso"><a href="/user/inicio"> Regresar</a></button>
 
-  <button class="button is-link is-outlined botonDetalles" onclick="verHorasTarea()">Detalle de horas</button> 
-  <!-- <a href="/user/inicio"></a> -->
+  <a class="button is-info is-outlined botonDetalles" href="/tarea/horasTarea/<%=proyecto[0].idProyecto%>">Detalle de horas</a> 
+ 
 
-  <script>
+  <!-- <script>
     // cuando se seleeciona un proyecto entra
     function verHorasTarea(event)  {
+      console.log("hola si entra :)", event)
       // redirigue a la vista 
-      window.location = "/tarea/horasTarea/" + event.target.id;
+      window.location = "/tarea/horasTarea/<%proyecto[0].idProyecto%>" ;//+ event.target.dataset.idProyecto;
     }
+
     //al path le añade el numero del proyecto, nombreP es una referencia al elemento que selecciona los datos
-    document.getElementById("idProyecto").addEventListener('click', verHorasTarea);
-  </script>
+    document.getElementById("botonDetalles").addEventListener('click', verHorasTarea);
+  </script> -->

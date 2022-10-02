@@ -29,10 +29,8 @@ module.exports = class Tarea {
   }
 
   static fetchOne(idProyecto) {
-    return db.execute('SELECT * FROM tarea WHERE idProyecto = ?', [idProyecto])
-  }
-
-  
+    return db.execute('SELECT P.nombreP, T.nombreT, EJ.fecha, T.horasTrabajo, E.nombre FROM tarea as T, ejecuta as EJ, empleado as E, proyecto as P WHERE T.idTarea = EJ.idTarea AND E.idEmpleado = EJ.idEmpleado AND P.idProyecto = T.idProyecto AND T.idProyecto = ?', [idProyecto])
+  }  
 
   static tareaMasReciente() {
     return db.execute(`SELECT idTarea FROM tarea ORDER BY idTarea DESC limit 1`)
