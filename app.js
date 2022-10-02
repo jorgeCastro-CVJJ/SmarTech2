@@ -67,7 +67,7 @@ const rutasRegTarea = require("./routes/regTarea.routes");
 app.use("/tarea", requiresAuth(), rutasRegTarea);
 
 const rutasRegProyecto = require("./routes/regProyecto.routes");
-app.use("/proyecto", rutasRegProyecto);
+app.use("/proyecto",requiresAuth(), rutasRegProyecto);
 
 const rutasReporte = require("./routes/reporte.routes");
 app.use("/reporte", rutasReporte);
