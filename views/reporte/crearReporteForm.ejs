@@ -15,16 +15,16 @@
             <div class="inputs_reporte">
                 <div class = "field is-horizontal"> 
                     <label class = "label">Personal de Medio Tiempo</label>
-                    <input class = "input" type = "number" placeholder = "Ingresar" id = "medioT" name = "medioT">   
+                    <input class = "input" type = "number" placeholder = "Ingresar" onkeyup="horasMedioT()" id = "personalMedioT">   
                     <label class = "label">Horas</label>  
-                    <input class = "input" type = "number" id= "horasMedioT">                              
+                    <div class = "horasMedioT" type = "number" id= "horasMedioT">0</div>                            
                 </div>
 
                 <div class="field is-horizontal">
                     <label class = "label">Personal de Tiempo Completo</label>  
-                    <input class = "input" type = "number" placeholder = "Ingresar" id = "completoT" name = "completoT">
+                    <input class = "input" type = "number" placeholder = "Ingresar" onkeyup="horasCompletoT()" id = "PersonalCompletoT">
                     <label class = "label">Horas</label>  
-                    <input class = "input" type = "number" id= "horasCompletoT">                       
+                    <div class = "horasCompletoT" type = "number" id= "horasCompletoT">0</div>                      
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Total de personal</label>
@@ -42,3 +42,4 @@
         </div>
     </div>
 </div>
+<script src="/js/scriptReporte.js"></script>
