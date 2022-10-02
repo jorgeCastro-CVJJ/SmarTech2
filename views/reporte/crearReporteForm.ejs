@@ -1,24 +1,32 @@
 <div class="titulo">Reporte semanal NatDev</div>
 
 <div class="columns">
-    <div class="reporte">
-        <div class="column">
-            <div class = "row" style="padding: 15%; margin-left: 10px;">
-                <h6>Fecha inicio: </h6>
-                <h6>Fecha fin: </h6>
-                <h6>Número reporte: </h6>
-                <h7>Proporción: </h7>
+    <div class="column">
+        <div class="reporte">
+            <div class="fechas_reporte">
+                <div class = "row">
+                    <h6>Fecha inicio: </h6>
+                    <h6>Fecha fin: </h6>
+                    <h6>Número reporte: </h6>
+                    <h7>Proporción: </h7>
+                </div>
             </div>
 
-            <div class = "row">
-                <label class = "label">Personal de Medio Tiempo</label>
-                <input class = "input" type = "number" placeholder = "Ingresar" id = "medioT" name = "medioT">
+            <div class="inputs_reporte">
+                <div class = "field is-horizontal"> 
+                    <label class = "label">Personal de Medio Tiempo</label>
+                    <input class = "input" type = "number" placeholder = "Ingresar" id = "medioT" name = "medioT">   
+                    <label class = "label">Horas</label>  
+                    <input class = "input" type = "number" id= "horas">                              
+                </div>
+
+                <div class="field is-horizontal">
+                    <label class = "label">Personal de Tiempo Completo</label>  
+                    <input class = "input" type = "number" placeholder = "Ingresar" id = "completoT" name = "completoT">
+                    <label class = "label">Horas</label>  
+                    <input class = "input" type = "number" id= "horas">                       
+                </div>
             </div>
-            <div class = "row">
-                <label class = "label">Personal de Tiempo Completo</label>
-                <input class = "input" type = "number" placeholder = "Ingresar" id = "completoT" name = "completoT">
-            </div>
-            
         </div>
     </div>
 </div>
