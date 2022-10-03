@@ -1,28 +1,23 @@
 function funcionesMedioT() {
-    function horasMedioT();
-    function personal();
-    function horasEsperadas();
+    horasMedioT();
+    personal();
+    horasEsperadas();
 }
 
 function funcionesCompletoT() {
-    function horasCompletoT();
-    function personal();
-    function horasEsperadas();
+    horasCompletoT();
+    personal();
+    horasEsperadas();
 }
 
 function horasMedioT() {
-    const personalMedioT = document.getElementById("personalMedioT");
+    const personalMedioT = document.getElementById("personalMedioT").value;
     const horasMedioT = document.getElementById("horasMedioT");
-    number1 = 34;
-    horasMedioT.innerHTML = personalMedioT * number1;
-    console.log(typeof parseInt(personalMedioT));
-    console.log(typeof parseInt(number1));
+    horasMedioT.innerHTML = parseInt(personalMedioT) * 34;
 }
-/*PREGUNTAR A LALO PORQUE LA MULTIPLICACION NO FUNCIONA 
-(SALE NaN Y LOS MULTIPLOS SON OBJETOS (NO NUMEROS))*/
 
 function horasCompletoT() {
-    const personalCompletoT = document.getElementById("personalCompletoT");
+    const personalCompletoT = document.getElementById("personalCompletoT").value;
     const horasCompletoT = document.getElementById("horasCompletoT");
     horasCompletoT.innerHTML = personalCompletoT * 48;
 }
