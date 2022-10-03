@@ -14,3 +14,19 @@ function horasCompletoT() {
     const horasCompletoT = document.getElementById("horasCompletoT");
     horasCompletoT.innerHTML = personalCompletoT * 48;
 }
+
+function personal() {
+    const personalMedioT = document.getElementById("personalMedioT");
+    const personalCompletoT = document.getElementById("personalCompletoT");
+    const personalTotal = document.getElementById("personalTotal");
+    personalTotal.innerHTML = personalMedioT + personalCompletoT;
+}
+
+function horasEsperadas() {
+    const horasMedioT = document.getElementById("horasMedioT");
+    const horasCompletoT = document.getElementById("horasCompletoT");
+    const personalMedioT = document.getElementById("personalMedioT");
+    const personalCompletoT = document.getElementById("personalCompletoT");
+    const horasEsperadas = document.getElementById("horasEsperadas");
+    horasEsperadas.innerHTML = (horasMedioT * personalMedioT) + (horasCompletoT * personalCompletoT);
+}

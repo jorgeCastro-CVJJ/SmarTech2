@@ -20,28 +20,32 @@
             <div class="inputs_reporte">
                 <div class = "field is-horizontal"> 
                     <label class = "label">Personal de Medio Tiempo</label>
-                    <input class = "input" type = "number" placeholder = "Ingresar" onkeyup="horasMedioT()" id = "personalMedioT">   
+                    <input class = "input" type = "number" min="0" placeholder = "Ingresar" 
+                    onkeyup="horasMedioT()" onkeyup="personalTotal()" onkeyup="horasEsperadas()" 
+                    id = "personalMedioT">   
                     <label class = "label">Horas</label>  
                     <div class = "horasMedioT" type = "number" id= "horasMedioT">0</div>                            
                 </div>
 
                 <div class="field is-horizontal">
                     <label class = "label">Personal de Tiempo Completo</label>
-                    <input class = "input" type = "number" placeholder = "Ingresar" onkeyup="horasCompletoT()" id = "PersonalCompletoT">
+                    <input class = "input" type = "number" min="0" placeholder = "Ingresar" 
+                    onkeyup="horasCompletoT()" onkeyup="personalTotal()" onkeyup="horasEsperadas()" 
+                    id = "PersonalCompletoT">
                     <label class = "label">Horas</label>  
                     <div class = "horasCompletoT" type = "number" id= "horasCompletoT">0</div>                      
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Total de personal</label>
-                    <input class = "input" type = "number" id= "totalPersonal">  
+                    <div class = "totalPersonal" type = "number" id= "totalPersonal">0</div> 
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Horas Esperadas</label>
-                    <input class = "input" type = "number" id= "horasEsperadas">  
+                    <div type = "number" id= "horasEsperadas">0</div>
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Horas de Vacaciones</label>
-                    <input class = "input" type = "number" id= "horasVacaciones">  
+                    <input class = "input" type = "number" min = "0" id= "horasVacaciones">  
                 </div>
             </div>
         </div>
