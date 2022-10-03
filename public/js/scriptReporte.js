@@ -13,20 +13,20 @@ function funcionesCompletoT() {
 function horasMedioT() {
     const personalMedioT = document.getElementById("personalMedioT").value;
     const horasMedioT = document.getElementById("horasMedioT");
-    horasMedioT.innerHTML = parseInt(personalMedioT) * 34;
+    horasMedioT.innerHTML = personalMedioT * 34;
+    personal();
 }
 
 function horasCompletoT() {
     const personalCompletoT = document.getElementById("personalCompletoT").value;
     const horasCompletoT = document.getElementById("horasCompletoT");
     horasCompletoT.innerHTML = personalCompletoT * 48;
+    personal();
 }
 
 function personal() {
-    const personalMedioT = document.getElementById("personalMedioT");
-    const personalCompletoT = document.getElementById("personalCompletoT");
-    const personalTotal = document.getElementById("personalTotal");
-    personalTotal.innerHTML = personalMedioT + personalCompletoT;
+    const totalPersonal = document.getElementById("totalPersonal");
+    totalPersonal.innerHTML = personalMedioT + personalCompletoT;
 }
 
 function horasEsperadas() {
