@@ -99,7 +99,6 @@ const accion_asincrona = () => {
       });
 };
 
-document.getElementById('buscar').onkeyup = accion_asincrona
 
 function deshabilitarTarea() {
   if (document.getElementById("buscar").value==""
@@ -111,3 +110,12 @@ function deshabilitarTarea() {
     document.getElementById('submitTareabtn').disabled = false;
   }
 }
+
+/*Llamada de funciones*/
+document.getElementById("buscar").onkeyup = accion_asincrona;
+document.getElementById("submitTareabtn").onclick = postTarea;
+document.getElementById("buscar").onkeyup = deshabilitarTarea;
+document.getElementById("nombreT").onkeyup = deshabilitarTarea;
+document.getElementById("horasTrabajo").onkeyup = deshabilitarTarea;
+document.getElementById("horasTrabajo").onclick = deshabilitarTarea;
+document.getElementById("agregarColaborador").onclick = agregarColaborador;

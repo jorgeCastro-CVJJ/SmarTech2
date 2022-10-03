@@ -25,8 +25,10 @@ function horasCompletoT() {
 }
 
 function personal() {
+    const personalMedioT = document.getElementById("personalMedioT").value;
+    const personalCompletoT = document.getElementById("personalCompletoT").value;
     const totalPersonal = document.getElementById("totalPersonal");
-    totalPersonal.innerHTML = personalMedioT + personalCompletoT;
+    totalPersonal.innerHTML = parseInt(personalMedioT) + parseInt(personalCompletoT);
 }
 
 function horasEsperadas() {
@@ -37,3 +39,10 @@ function horasEsperadas() {
     const horasEsperadas = document.getElementById("horasEsperadas");
     horasEsperadas.innerHTML = (horasMedioT * personalMedioT) + (horasCompletoT * personalCompletoT);
 }
+
+/*document.getElementById("personalMedioT").onkeyup = horasMedioT;
+document.getElementById("personalMedioT").onkeyup = personal;
+document.getElementById("personalMedioT").onkeyup = horasEsperadas;
+document.getElementById("personalCompletoT").onkeyup = horasCompletoT;
+document.getElementById("personalCompletoT").onkeyup = personal;
+document.getElementById("personalCompletoT").onkeyup = horasEsperadas;*/

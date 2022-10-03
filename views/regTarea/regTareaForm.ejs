@@ -21,7 +21,7 @@
           <div class="field is-narrow">
             <div class="control">
               <div class="input-field">
-                <input class="input" type="text" onkeyup="deshabilitarTarea()" placeholder="Proyecto..." name="nombreP" id="buscar">
+                <input class="input" type="text" placeholder="Proyecto..." name="nombreP" id="buscar">
               </div>
               <div id="listaProyectos">
 
@@ -42,7 +42,7 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input class="input" type="text" onkeyup="deshabilitarTarea()" placeholder="Escribe aqui" id="nombreT" name="nombreT">
+              <input class="input" type="text" placeholder="Escribe aqui" id="nombreT" name="nombreT">
             </div>
           </div>
         </div>
@@ -53,7 +53,7 @@
             <div class="field is-narrow">
               <div class="control">
                 <label class="label">Colaboradores</label>
-                <a class="button is-link is-outlined botonAgregarColaborador" onclick="agregarColaborador()"> + </a>
+                <a class="button is-link is-outlined botonAgregarColaborador" id="agregarColaborador"> + </a>
                 <%- nombreSesion %>
                 <div class="select is-fullwidth"> 
                   <select name="nombre" id="nombre"> 
@@ -88,7 +88,7 @@
               <div class="field has-addons">
                 <div class="row">
                   <p class="control">
-                    <input class="input is-danger" type="number" min="0" onkeyup="deshabilitarTarea()" placeholder="1" id="horasTrabajo" name="horasRegistradas">
+                    <input class="input is-danger" type="number" min="0" placeholder="1" id="horasTrabajo" name="horasRegistradas">
                   </p>
                 </div>
               </div>
@@ -99,7 +99,8 @@
 
       <div class="field is-grouped is-grouped-centered">
         <p class="control">
-          <input type="submit" onclick="postTarea()" value="Agregar" disabled id="submitTareabtn" class="button botonAgregarTarea is-success is-outlined">
+          <input type="button" value="Agregar" disabled id="submitTareabtn" 
+          class="button botonAgregarTarea is-success is-outlined">
         </p>
           
             
@@ -111,23 +112,5 @@
     </div>
   <!-- </form> -->
 </div>        
-        <!-- </form> 
-        <script>
-        let numero = 0;
-        const contador = document.getElementById("contar");
-        function sumarCont(){
-          numero;
-          contador = numero;
-        }
-        function restarCont(){
-          if (numero == 0){
-          }
-          else{
-              numero--;
-              contador = numero;
-          }
-          return contador; 
-        }
-        </script>-->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="/js/scriptRegTarea.js"></script>

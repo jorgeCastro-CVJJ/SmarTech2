@@ -61,3 +61,9 @@ function deshabilitar() {
 }
 
 document.getElementById("submitbtn").onclick = postProyecto;
+document.getElementById("nombreP").onkeyup = deshabilitar;
+document.getElementById("descripcion").onkeyup = deshabilitar;
+document.getElementById("estatus").onkeyup = deshabilitar;
+document.getElementById("stackTecnologico").onkeyup = deshabilitar;
+document.getElementById("stakeholders").onkeyup = deshabilitar;
+document.getElementById ("agregarColaborador").onclick = agregarColaborador;
