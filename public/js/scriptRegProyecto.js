@@ -59,3 +59,5 @@ function deshabilitar() {
     document.getElementById('submitbtn').disabled = false;
   }
 }
+
+document.getElementById("submitbtn").onclick = postProyecto;

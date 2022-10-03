@@ -8,38 +8,6 @@
 
 <div class="field is-static">
   <h1 class="titulo">Mis tareas</h1>
-  <script>
-  
-  let nombreP = document.getElementById("nombreP");
-  let nombreT = document.getElementById('nombreT');
-  let fecha = document.getElementById('fecha');
-  let horasTrabajo = document.getElementById('horasTrabajo');
-
-  let ruta = "/tarea/misTareas";
-
-    let data = {
-      nombreP: nombreP,
-      nombreT: nombreT,
-      fecha: fecha, 
-      horasTrabajo: horasTrabajo  
-    }
-    console.log(data)
-    fetch(ruta, {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body:JSON.stringify(data)
-    }) 
-    .then(response => response.json())
-    .then(data => {
-      console.log("respuesta:");
-      console.log(data);
-    }).catch(err => {
-      console.log(err);
-    });
-  
-</script>
 
   <div class="columns">
     <div class="column">
@@ -58,8 +26,7 @@
           </tr>
         </thead>
 
-    <div id="lista_fechas is-fullwidth">
-      <tbody>        
+      <tbody id="lista_fechas">        
         <% for (let t of tarea) { %>
           <tr>
             <td><%= t.nombreP %></td>
@@ -69,7 +36,6 @@
           </tr>
           <% } %>
       </tbody>
-    </div>
     
         <script>
           const asyncFunc = () => {
@@ -86,22 +52,6 @@
                   console.log(data.fecha);
                   let html = '';
                   if (data.fecha.length > 0) {                 
-                    html += '<div>';
-                    html += '<table class="table">';
-                    html += '<thead>';
-                    html += '<tr>';
-                    html += '<th><abbr title="Proyecto">Proyecto</th>';
-                    html += '<th><abbr title="Tarea">Tarea</abbr></th>';
-                    html += '<th><abbr title="Fecha">';
-                    html += '<div class="input-field>';
-                    html += '<input id="fechaInicio" type="date">';
-                    html += '<input id="fechaFin" type="date">'; 
-                    html += '</div>';
-                    html += '</abbr></th>';
-                    html += '<th><abbr title="Horas">Horas</abbr></th>';
-                    html += '</tr>';
-                    html += '</thead>';
-                    html += '<tbody>';  
                     for(let f of (data.fecha)) {
                       html += '<tr>';
                       html += '<td>';
@@ -117,11 +67,7 @@
                       html += f.horasTrabajo;  
                       html += '</td>'; 
                       html += '</tr>';         
-                    };
-                    html += '</tbody>';
-                    html += '</table>';
-                    html += '</thead>';
-                    html += '</div>'                   
+                    };                 
                   } else {
                       html = '<h2>No hay tareas registradas en el periodo seleccionado.</h2>';
                   }

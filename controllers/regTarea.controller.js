@@ -84,7 +84,7 @@ getBuscar = (request, response, next) => {
     Tarea.buscar(request.session.idSesion, request.params.fechaInicio, request.params.fechaFin)
         .then(([rows, fieldData]) => {
             console.log("Los datos son:",rows)
-            response.status(200).json({consulta: rows});
+            response.status(200).json({fecha: rows});
         })
         .catch(err => { 
             console.log(err);
