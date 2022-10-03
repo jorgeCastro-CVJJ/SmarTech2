@@ -458,3 +458,11 @@ html{
   width: 100%;
   border-radius: none;
 }
+
+.tituloproyecto2{
+  margin-top: -500px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+
+}
