@@ -1,3 +1,15 @@
+function funcionesMedioT() {
+    function horasMedioT();
+    function personal();
+    function horasEsperadas();
+}
+
+function funcionesCompletoT() {
+    function horasCompletoT();
+    function personal();
+    function horasEsperadas();
+}
+
 function horasMedioT() {
     const personalMedioT = document.getElementById("personalMedioT");
     const horasMedioT = document.getElementById("horasMedioT");
