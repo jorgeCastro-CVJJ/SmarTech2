@@ -225,8 +225,8 @@ html{
 }
 
 .botonTarea {
-  left: 70%;
-  top: 66%;
+  left: 72%;
+  top: 10%;
   background-color: var(--azulSec1);
   color: white;
   border: none;
@@ -323,10 +323,9 @@ html{
 
 .tituloProyectoE{
   position: absolute;
-  text-align: center;
   width: 290px;
   height: 61px;
-  left: 723px;
+  left: 680px;
   top: 30px;
 
   font-family: var(--fuente);
@@ -340,18 +339,16 @@ html{
 
 .imagenExistente {
   position: absolute;
-  align-items: center;
   width: 500px;
-  left: 620px;
+  left: 500px;
   top: 170px;
 }
 
 .descripcionProyectos{
   position: absolute;
-  text-align: center;
   width: 758px;
   height: 84px;
-  left: 500px;
+  left: 550px;
   top: 420px;
 
   font-family: var(--fuente);
@@ -429,12 +426,12 @@ html{
 
 .botonRegreso{
   top:400px;
-  left: 800px;
+  left: 750px;
 }
 
 .botonDetalles{
   top:400px;
-  left: 500px;
+  left: 450px;
 }
 
 .idProyectoE{
@@ -460,6 +457,11 @@ html{
 }
 
 .tablahorasXtarea{
-  margin-top: -260px;
-  margin-left: 160px;
+  margin-top: -135px;
+  margin-left: -510px;
+}
+
+.horasTotales{
+  margin-top: -250px;
+  margin-left: 415px;
 }

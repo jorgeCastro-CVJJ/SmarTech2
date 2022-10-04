@@ -1,6 +1,17 @@
-<h1 class="tituloProyectoE"> <%= tarea[0].nombreP %></h1>
+<div>
+  <h1 class="tituloProyectoE"> <%= tarea[0].nombreP %></h1>
+  <div class="notification is-info horasTotales">
+    <strong>HORAS TOTALES:  
+    <%= proyecto[0].horas %> </strong>
+    <div type="number" id="horasTotalesProyecto">
+
+    </div>
+  </div>
+</div>
+
 
 <div class="card">
+  
   <table class="table is-fillwidth tablahorasXtarea">
     <thead>
       <tr>
@@ -15,10 +26,15 @@
     <tbody>
       <% for (let t of tarea) { %>
       <tr>
-        <td><%= tarea[0].nombreT%></td>
-        <td><%= tarea[0].fecha %></td>
-        <td><%= tarea[0].horasTrabajo%></td>
-        <td><%= tarea[0].nombre %></td>
+        <td><%= t.nombreT %></td>
+        <td><%= new Date(t.fecha).toLocaleString('ES-mx'); %></td>
+        <td id="horasTrabajo"><%= t.horasTrabajo %></td>
+        <br>
+        <td>
+          <% for (let c of t.colaboradores) { %>
+            <%= c.nombre %></br>
+          <% } %>
+        </td>
       </tr>
     <% } %>
     </tbody>

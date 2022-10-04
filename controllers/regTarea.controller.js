@@ -92,11 +92,24 @@ getBuscar = (request, response, next) => {
         });
 };
 
-getHorasXtarea = (request, response, next) => {
-    Tarea.fetchOne(request.params.idProyecto)
-    .then(([rowsTarea, fillData]) => {
+getHorasXtarea = async (request, response, next) => {
+    let tareas;
+    await Proyecto.horasTotales(request.params.idProyecto)
+    .then( async ([rowsHoras, fielData]) => {
+        await Proyecto.getTareas(request.params.idProyecto)
+            .then( async ([rowsTarea, fillData]) => {
+                console.log(rowsTarea);
+                for(let tarea of rowsTarea){
+                    [rowsColab, fieldData] = await Tarea.getColaboradores(tarea.idTarea);
+                    tarea.colaboradores = rowsColab;
+                }
+                console.log(rowsHoras[0]);
+                tareas = rowsTarea;
+                proyecto = rowsHoras;
+            });
+
         response.render(path.join("horasXtarea", "horasXtarea.ejs"), {
-            tarea: rowsTarea,
+            tarea: tareas,
             listaPrivilegios: request.session.privilegios,
         })
     })
