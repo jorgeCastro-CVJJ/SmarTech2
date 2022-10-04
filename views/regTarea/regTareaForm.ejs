@@ -54,15 +54,14 @@
               <div class="control">
                 <label class="label">Colaboradores</label>
                 <a class="button is-link is-outlined botonAgregarColaborador" onclick="agregarColaborador()" id="agregarColaborador"> + </a>
-                <%- nombreSesion %>
+                <%= nombreSesion %>
                 <div class="select is-fullwidth"> 
                   <select name="nombre" id="nombre"> 
-                    <option value="" disabled selected> Selecciona a los colaboradores</option>        
-                    <% for (let e of empleado) {%>
-                      <% if (e.idEmpleado == idSesion){ %>
-                        <% continue; %>
-                      <% } %> 
-                      <option value ="<%= e.idEmpleado %>"><%= e.nombre%></option>
+                    <option value="" disabled selected> Selecciona a los colaboradores</option>   
+                    <% for (let e of empleado) { %>
+                      <% if (e.idEmpleado != idSesion){ %>
+                        <option value ="<%= e.idEmpleado %>"><%= e.nombre %></option>                       
+                      <% } %>
                     <% } %>
                   </select>
                 </div>
@@ -71,7 +70,7 @@
           </div>
         </div>
       </div>
-      
+      <!--- Si está en esta sección, se debe de quitar del dropdown.-->
       <div class="divColaboradores" id="listaColabradores">
 
       </div>
