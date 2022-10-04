@@ -1,7 +1,11 @@
 <div>
   <h1 class="tituloProyectoE"> <%= tarea[0].nombreP %></h1>
   <div class="notification is-info horasTotales">
-    <strong>HORAS TOTALES </strong>
+    <strong>HORAS TOTALES:  
+    <%= proyecto[0].horas %> </strong>
+    <div type="number" id="horasTotalesProyecto">
+
+    </div>
   </div>
 </div>
 
@@ -24,7 +28,7 @@
       <tr>
         <td><%= t.nombreT %></td>
         <td><%= new Date(t.fecha).toLocaleString('ES-mx'); %></td>
-        <td><%= t.horasTrabajo %></td>
+        <td id="horasTrabajo"><%= t.horasTrabajo %></td>
         <br>
         <td>
           <% for (let c of t.colaboradores) { %>

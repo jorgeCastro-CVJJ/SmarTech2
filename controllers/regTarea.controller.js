@@ -94,20 +94,24 @@ getBuscar = (request, response, next) => {
 
 getHorasXtarea = async (request, response, next) => {
     let tareas;
-    await Proyecto.getTareas(request.params.idProyecto)
-        .then( async ([rowsTarea, fillData]) => {
-            console.log(rowsTarea);
-            for(let tarea of rowsTarea){
-                [rowsColab, fieldData] = await Tarea.getColaboradores(tarea.idTarea);
-                tarea.colaboradores = rowsColab;
-            }
-            console.log(rowsTarea);
-            tareas = rowsTarea;
-        });
+    await Proyecto.horasTotales(request.params.idProyecto)
+    .then( async ([rowsHoras, fielData]) => {
+        await Proyecto.getTareas(request.params.idProyecto)
+            .then( async ([rowsTarea, fillData]) => {
+                console.log(rowsTarea);
+                for(let tarea of rowsTarea){
+                    [rowsColab, fieldData] = await Tarea.getColaboradores(tarea.idTarea);
+                    tarea.colaboradores = rowsColab;
+                }
+                console.log(rowsHoras[0]);
+                tareas = rowsTarea;
+                proyecto = rowsHoras;
+            });
 
-    response.render(path.join("horasXtarea", "horasXtarea.ejs"), {
-        tarea: tareas,
-        listaPrivilegios: request.session.privilegios,
+        response.render(path.join("horasXtarea", "horasXtarea.ejs"), {
+            tarea: tareas,
+            listaPrivilegios: request.session.privilegios,
+        })
     })
 }
 
