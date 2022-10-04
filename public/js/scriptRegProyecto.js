@@ -60,6 +60,7 @@ function deshabilitar() {
   }
 }
 
+/*Llamada de funciones*/
 document.getElementById("submitbtn").onclick = postProyecto;
 document.getElementById("nombreP").onkeyup = deshabilitar;
 document.getElementById("descripcion").onkeyup = deshabilitar;

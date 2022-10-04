@@ -110,12 +110,6 @@ function deshabilitarTarea() {
     document.getElementById('submitTareabtn').disabled = false;
   }
 }
-
+document.getElementById("submitTareabtn").onclick = postTarea;
 /*Llamada de funciones*/
 document.getElementById("buscar").onkeyup = accion_asincrona;
-document.getElementById("submitTareabtn").onclick = postTarea;
-document.getElementById("buscar").onkeyup = deshabilitarTarea;
-document.getElementById("nombreT").onkeyup = deshabilitarTarea;
-document.getElementById("horasTrabajo").onkeyup = deshabilitarTarea;
-document.getElementById("horasTrabajo").onclick = deshabilitarTarea;
-document.getElementById("agregarColaborador").onclick = agregarColaborador;
