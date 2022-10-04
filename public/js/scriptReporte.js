@@ -1,20 +1,9 @@
-function funcionesMedioT() {
-    horasMedioT();
-    personal();
-    horasEsperadas();
-}
-
-function funcionesCompletoT() {
-    horasCompletoT();
-    personal();
-    horasEsperadas();
-}
-
 function horasMedioT() {
     const personalMedioT = document.getElementById("personalMedioT").value;
     const horasMedioT = document.getElementById("horasMedioT");
     horasMedioT.innerHTML = personalMedioT * 34;
     personal();
+    horasEsperadas();
 }
 
 function horasCompletoT() {
@@ -22,6 +11,7 @@ function horasCompletoT() {
     const horasCompletoT = document.getElementById("horasCompletoT");
     horasCompletoT.innerHTML = personalCompletoT * 48;
     personal();
+    horasEsperadas();
 }
 
 function personal() {
@@ -32,12 +22,11 @@ function personal() {
 }
 
 function horasEsperadas() {
-    const horasMedioT = document.getElementById("horasMedioT");
-    const horasCompletoT = document.getElementById("horasCompletoT");
-    const personalMedioT = document.getElementById("personalMedioT");
-    const personalCompletoT = document.getElementById("personalCompletoT");
+    const personalMedioT = document.getElementById("personalMedioT").value;
+    const personalCompletoT = document.getElementById("personalCompletoT").value;
     const horasEsperadas = document.getElementById("horasEsperadas");
-    horasEsperadas.innerHTML = (horasMedioT * personalMedioT) + (horasCompletoT * personalCompletoT);
+    const horasVacaciones = document.getElementById("horasVacaciones").value;
+    horasEsperadas.innerHTML = parseInt(personalCompletoT * 48) + parseInt(personalMedioT * 34) - parseInt(horasVacaciones);
 }
 
 /*document.getElementById("personalMedioT").onkeyup = horasMedioT;
