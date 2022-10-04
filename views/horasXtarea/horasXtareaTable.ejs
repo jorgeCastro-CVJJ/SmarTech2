@@ -1,21 +1,24 @@
-<h1 class="tituloproyecto2"> <%= tarea[0].nombreP %></h1>
+<h1 class="tituloProyectoE"> <%= tarea[0].nombreP %></h1>
+
 <div class="card">
-  <table class="table is-fillwidth">
+  <table class="table is-fillwidth tablahorasXtarea">
     <thead>
       <tr>
         <th>Tarea</th>
         <th>Fecha</th>
         <th>Horas</th>
         <th>Colaboradores</th>
+        <th> Edicion </th>
+        <th> Borrar </th>
       </tr>
     </thead>
     <tbody>
       <% for (let t of tarea) { %>
       <tr>
-        <td><%= t.nombreT%></td>
-        <td><%= t.fecha %></td>
-        <td><%= t.horasTrabajo%></td>
-        <td><%= t.nombre %></td>
+        <td><%= tarea[0].nombreT%></td>
+        <td><%= tarea[0].fecha %></td>
+        <td><%= tarea[0].horasTrabajo%></td>
+        <td><%= tarea[0].nombre %></td>
       </tr>
     <% } %>
     </tbody>

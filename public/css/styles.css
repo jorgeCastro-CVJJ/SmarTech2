@@ -459,10 +459,7 @@ html{
   border-radius: none;
 }
 
-.tituloproyecto2{
-  margin-top: -500px;
-  text-align: center;
-  font-size: 26px;
-  font-weight: bold;
-
+.tablahorasXtarea{
+  margin-top: -260px;
+  margin-left: 160px;
 }
