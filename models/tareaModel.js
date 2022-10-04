@@ -47,5 +47,9 @@ module.exports = class Tarea {
   static buscar(idSesion, fechaInicio, fechaFin) {
     return db.execute('SELECT DISTINCT nombreP, nombreT, fecha, horasTrabajo FROM tarea T, proyecto P, ejecuta E, empleado Em WHERE T.idProyecto = P.idProyecto AND T.idTarea = E.idTarea AND E.idEmpleado = Em.idEmpleado AND E.idEmpleado = ? AND fecha BETWEEN ? AND ?', [idSesion, fechaInicio, fechaFin]);
   }
+
+  static getColaboradores(idTarea){
+    return db.execute('SELECT E.nombre FROM empleado as E, ejecuta as EJ where E.idEmpleado = EJ.idEmpleado AND EJ.idTarea = ?', [idTarea]);
+  }
 };
 
