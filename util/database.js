@@ -3,7 +3,7 @@ const mysql = require("mysql2");
 //======================CLOUD SQL (HOST EN GOOGLE CLOUD PLATFORM)======================================================//
 const pool = mysql.createPool({
 
-  host: "34.71.226.216",
+  host: "34.68.24.158",
   user: "root",
   database: "eficiencia2_ST",
   password: "Denisse",
