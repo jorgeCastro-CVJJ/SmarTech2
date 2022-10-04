@@ -457,6 +457,11 @@ html{
 }
 
 .tablahorasXtarea{
-  margin-top: -210px;
-  margin-left: 100px;
+  margin-top: -135px;
+  margin-left: -510px;
+}
+
+.horasTotales{
+  margin-top: -250px;
+  margin-left: 431px;
 }
