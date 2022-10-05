@@ -3,6 +3,7 @@ const arrayColaboradores  = [];
 function agregarColaborador(){
   const colaborador = document.getElementById("nombre");
   const colaboradorActual = colaborador.options[colaborador.selectedIndex];
+  colaborador.remove(colaborador.selectedIndex);
   // aqui escribimos los nombres de los colaboradores
   const lista = document.getElementById("listaColabradores");
   lista.innerHTML = lista.innerHTML + '<div class="notification is-info is-light py-2 my-3 notificacionAgregarColab">' + colaboradorActual.innerHTML +' </div>';

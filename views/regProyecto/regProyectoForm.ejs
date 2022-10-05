@@ -48,13 +48,15 @@
     <div class="field-body">
       <div class="field is-narrow">
         <div class="control">
-          <%- nombreSesion %>
+          <%= nombreSesion %>
         </br>
           <div class="select is-fullwidth"> 
             <select name="nombre" id="nombre"> 
               <option value="" disabled selected> Selecciona a los colaboradores</option>
               <% for (let e of empleado) { %>
-                <option value ="<%= e.idEmpleado %>"><%= e.nombre%></option>
+                <% if (e.idEmpleado != idSesion){ %>
+                  <option value ="<%= e.idEmpleado %>"><%= e.nombre %></option>                       
+                <% } %>
               <% } %>
             </select>
             <a class="button is-link is-outlined botonAgregarColaborador" id="agregarColaborador"> + </a>
@@ -100,7 +102,7 @@
   <div class="field is-grouped is-grouped-centered">
     <p class="control">
       <input type="button" value="Agregar" disabled id= "submitbtn"
-       class="button botonAgregarTarea is-success is-outlined">
+      class="button botonAgregarTarea is-success is-outlined">
     </p>
     
 
