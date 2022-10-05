@@ -26,6 +26,8 @@
           </tr>
         </thead>
 
+    <div class="section">
+      
       <tbody id="lista_fechas">        
         <% for (let t of tarea) { %>
           <tr>
@@ -36,7 +38,8 @@
           </tr>
           <% } %>
       </tbody>
-    
+    </div>
+
         <script>
           const asyncFunc = () => {
               const fechaInicio = document.getElementById('fechaInicio').value;
