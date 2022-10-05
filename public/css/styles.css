@@ -446,6 +446,26 @@ html{
   margin-top: 10%;
 }
 
+#tabla_reporte {
+  margin-top: 400px;
+  margin-left: 0%;
+}
+
+.table thead td, .table thead th {
+  color: white !important;
+  background-color: #009879;
+}
+
+.table tbody td {
+  background-color: greenyellow;
+  color: rgb(0, 172, 32);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.table thead{
+  background-color: #009879
+}
+
 .fechas_reporte {
   margin-left: 2%;
   margin-top: 2px;

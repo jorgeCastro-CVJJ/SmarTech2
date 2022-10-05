@@ -53,4 +53,28 @@
         </div>
     </div>
 </div>
+
+    <table class="table" id="tabla_reporte">
+        <thead>
+        <tr>
+            <th><abbr title="Proyecto">Proyecto</abbr></th>
+            <th><abbr title="Tarea">Horas registradas</abbr></th>
+            <th><abbr title="Horas">Horas reales</abbr></th>
+        </tr>
+        </thead>
+
+        
+        <tbody>        
+            <% for (let h of horas) { %>
+                <tr>
+                    <td><%= h.nombreP %></td> 
+                    <td><%= h.horasTrabajo %></td> 
+                    <td><input type="number"></td>
+                </tr>
+             <% } %>
+            
+        </tbody>
+
+
+
 <script src="/js/scriptReporte.js"></script>

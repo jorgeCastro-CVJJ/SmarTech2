@@ -22,7 +22,7 @@ module.exports = class Reporte {
 
       //tarea, proyecto = idProyecto
   static fetchHoras() {
-    return db.execute('SELECT SUM(horasTrabajo) FROM tarea T, proyecto P WHERE T.idProyecto = P.idProyecto');
+    return db.execute('SELECT SUM(horasTrabajo) as horasTrabajo, nombreP FROM tarea T, proyecto P WHERE T.idProyecto = P.idProyecto GROUP BY nombreP');
   }
 
 }
