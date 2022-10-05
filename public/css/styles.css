@@ -459,7 +459,7 @@ html{
 
 .tablahorasXtarea{
   margin-top: -135px;
-  margin-left: -510px;
+  margin-left: -530px;
 }
 
 .horasTotales{
@@ -470,4 +470,10 @@ html{
 .seleccionarProyecto{
   top: 10px;
   left: -80px;
+}
+
+#botonBorrar22,
+#botonEditar{
+  max-width: 15%;
+  margin-left: 10%;
 }

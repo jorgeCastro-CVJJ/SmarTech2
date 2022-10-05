@@ -9,4 +9,6 @@ router.get("/misTareas", regTareaController.getTareas);
 router.get('/buscar/:fechaInicio/:fechaFin', regTareaController.getBuscar);
 router.get('/horasTarea/:idProyecto', regTareaController.getHorasXtarea)
 
+router.post('/borrar', regTareaController.postBorrarTarea);
+
 module.exports = router;

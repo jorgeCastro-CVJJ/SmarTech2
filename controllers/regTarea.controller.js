@@ -115,10 +115,27 @@ getHorasXtarea = async (request, response, next) => {
     })
 }
 
+postBorrarTarea = (request, response, next) => {
+    Tarea.getTodoTarea(request.body.idTarea)
+    .then(([rowsTarea, fielData]) => {
+        Tarea.borrar(rows[0])
+        .then(() => {
+            response.redirect('/user/inicio');
+        })
+        .catch(err =>{
+            console.log(err);
+        })
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
 module.exports = {
     getnuevaTarea,
     postnuevaTarea,
     getTareas,
     getBuscar,
     getHorasXtarea,
+    postBorrarTarea,
 };
