@@ -51,5 +51,14 @@ module.exports = class Tarea {
   static getColaboradores(idTarea){
     return db.execute('SELECT E.nombre FROM empleado as E, ejecuta as EJ where E.idEmpleado = EJ.idEmpleado AND EJ.idTarea = ?', [idTarea]);
   }
+
+  static getTodoTarea(idTarea){
+    return db.execute('SELECT * FROM tarea as T, ejecuta as E WHERE T.idTarea = E.idTarea AND T.idTarea = ?', [idTarea]);
+  }
+
+  // static Borrar(idTarea){
+  //   return db.execute('DELETE FROM tarea WHERE idTarea = ? ; DELETE FROM ejecuta WHERE idTarea = ?', [idTarea]);
+  // }
+
 };
 
