@@ -37,6 +37,7 @@ postnuevoProyecto = (request, response, next) => {
             .then(()=>console.log("Proyecto asignado a colaborador " + id_colaborador))
             .catch(err=>console.log(err)); // recuperar antes el idTarea
         }
+        request.session.mensaje = "Tarea creada correctamente";
         response.status(200).json({mensaje: "Listo"});
       }).catch(err => console.log(err)); 
     //} else{
@@ -60,10 +61,13 @@ getProyectoExistente = (request, response, next) =>{
 
 
 getProyectosByUserID = (request, response, next) => {
+  let mensaje = request.session.mensaje ? request.session.mensaje : '';
+  request.session.mensaje = '';
   Proyecto.fetchProyectos(request.session.idSesion)
   .then(([rowsProyecto, fielData]) => {
     response.render(path.join('misProyectos','misProyectos.ejs'), {
       proyecto:rowsProyecto,
+      mensaje: mensaje,
       listaPrivilegios: request.session.privilegios,
     })
     console.log("This is your log, george")
