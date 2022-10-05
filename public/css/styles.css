@@ -314,7 +314,8 @@ html{
 
 .exitoTarea{
   bottom:35%;
-  margin-left: 65%;
+  margin-top: -100px;
+  margin-left: 10px;
 }
 
 /* PANTALLA DE INICIO POR PROYECTO */
