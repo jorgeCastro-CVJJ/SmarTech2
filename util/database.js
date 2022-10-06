@@ -10,8 +10,8 @@ const mysql = require("mysql2");
 // });
 //=====================================================================================================================//
 
-const ENV = 'DENISSE';
-//const ENV = 'PROD';
+// const ENV = 'DENISSE';
+const ENV = 'PROD';
 
 let host = '';
 let password = '';
