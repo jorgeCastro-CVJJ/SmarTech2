@@ -17,9 +17,10 @@
             <th><abbr title="Proyecto">Proyecto</abbr></th>
             <th><abbr title="Tarea">Tarea</abbr></th>
             <th><abbr title="Fecha">
-              Fecha
-              <button class="js-modal-trigger" data-target="filtro_fechas"><img src="../../media/filtrar (1).png" width="20px"; height="20px">
-              </button>
+              <div class="input-field">
+                <input id="fechaInicio" type="date">
+                <input id="fechaFin" type="date">
+              </div>
             </abbr></th>
             <th><abbr title="Horas">Horas</abbr></th>
           </tr>
@@ -87,7 +88,7 @@
   </div>
 </div>
 
-<div id="filtro_fechas" class="modal">
+<!-- <div id="filtro_fechas" class="modal">
   <div class="modal-background"></div>
   <div class="modal-content">
     <div class="box is-horizontal">
@@ -98,12 +99,12 @@
         <input id="fechaFin" type="date">
       </div>
     </div>
-  </div>
+  </div> -->
 
   <button class="modal-close is-short" aria-label="close"></button>
 </div>
 
-<script>
+<!-- <script>
   document.addEventListener('DOMContentLoaded', () => {
   // Functions to open and close a modal
   function openModal($el) {
@@ -148,4 +149,4 @@
     }
   });
 });
-</script>
+</script> -->
