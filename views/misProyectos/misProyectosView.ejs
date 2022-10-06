@@ -1,17 +1,17 @@
 <% if(mensaje != "") {  %>
 
     <div class="notification is-success is-light exitoTarea">
-      Proyecto creado <strong>correctamente</strong>
+    Proyecto creado <strong>correctamente</strong>
     </div>
     
 <% } %>
         <h1 class="titulo">Mis Proyectos</h1>
         
-            <div class="cartaProyectos">
-                <div class="columns is-multiline">
-                    <% for (let p of proyecto) { %>
-                    <div class="column is-half">
-                        <div class="card is-narrow">
+            <div class="column is-mobile">
+                <div class="columns">
+                    <% for (let p of misproyectos) { %>
+                    <div class="column">
+                        <div class="card auto">
                             <div class="card-content">
                                 <p class="title">
                                     <%= p.nombreP %>
@@ -27,6 +27,32 @@
                             </div>
                         </div>
                     </div>
+                    <% } %>
+                </div>  
+            </div>
+
+            <div class="column is-mobile">
+                <div class="columns">
+                    <% for (let t of todosproyectos) { %>
+                            <% if (misproyectos.nombreP != t.nombreP) { %>
+                                <div class="column">
+                                    <div class="card auto">
+                                        <div class="card-content">
+                                            <p class="title">
+                                                <%= t.nombreP %>
+                                            </p>
+                                            <p class="subtitle">
+                                                <%= t.descripcion %>
+                                            </p>
+                                            <div class="content">
+                                                Stack Tecnológico: <%= t.stackTecnologico %> <br>
+                                                Estatus: <%= t.estatus%>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
                     <% } %>
                 </div>  
             </div>

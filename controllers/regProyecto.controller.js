@@ -65,18 +65,25 @@ getProyectosByUserID = (request, response, next) => {
   request.session.mensaje = '';
   Proyecto.fetchProyectos(request.session.idSesion)
   .then(([rowsProyecto, fielData]) => {
-    response.render(path.join('misProyectos','misProyectos.ejs'), {
-      proyecto:rowsProyecto,
-      mensaje: mensaje,
-      listaPrivilegios: request.session.privilegios,
+    Proyecto.fetchNotMyProyectos(request.session.idSesion)
+    .then(([rowsTodos,fielData]) => {
+      response.render(path.join('misProyectos','misProyectos.ejs'), {
+        misproyectos:rowsProyecto,
+        todosproyectos:rowsTodos,
+        mensaje: mensaje,
+        listaPrivilegios: request.session.privilegios,
     })
-    console.log("This is your log, george")
-    console.log(rowsProyecto)
+    console.log()
+  })
+
+    
   })
   .catch((err) => {
     console.log(err);
   })
 }
+
+
 
 getBuscar = (request, response, next) => {
   Proyecto.buscar(request.params.valor)
