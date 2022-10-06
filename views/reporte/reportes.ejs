@@ -2,31 +2,56 @@
 
   <div class="field-label is-horizontal">
     <label class="label">Reporte semanal:</label>
-    <button class="js-modal-trigger" data-target="modal-js-example">
+    <button class="js-modal-trigger" data-target="filtro_fecha_reporte">
       Selecciona la semana
     </button>
   </div>
 
   <div class="titulo2">Modificar reporte:</div>
 
-  <div class="field-label is-normal">
+  <div class="field-label is-horizontal">
     <label class="label">Reporte semanal:</label>
+    <button class="js-modal-trigger" data-target="filtro_fecha_modificar">
+      Selecciona la semana
+    </button>
   </div>
 
-  <button><a href="crearReporteForm.ejs"></a></button>
-
-  <div id="modal-js-example" class="modal">
+  <div id="filtro_fecha_reporte" class="modal">
     <div class="modal-background"></div>
   
     <div class="modal-content">
       <div class="box">
-        <p>Modal JS example</p>
-        <!-- Your content -->
+        <p>Fecha inicio:</p>
+        <p>Fecha fin:</p>
+        <div class="input-field">
+          <input id="fechaInicio" type="date">
+          <input id="fechaFin" type="date">
+        </div>
       </div>
     </div>
   
     <button class="modal-close is-large" aria-label="close"></button>
   </div>
+
+  
+  <div id="filtro_fecha_modificar" class="modal">
+    <div class="modal-background"></div>
+  
+    <div class="modal-content">
+      <div class="box">
+        <p>Fecha inicio:</p>
+        <p>Fecha fin:</p>
+        <div class="input-field">
+          <input id="fechaInicio" type="date">
+          <input id="fechaFin" type="date">
+        </div>
+      </div>
+    </div>
+  
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+  <a href="/views/"><button>Boton</button></a>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {

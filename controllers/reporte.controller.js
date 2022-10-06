@@ -19,6 +19,8 @@ postnuevoReporte = (request, response, next) => {
     });
 }
 
+
+
 module.exports = {
     postnuevoReporte,
 }
