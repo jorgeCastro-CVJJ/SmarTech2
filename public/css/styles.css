@@ -453,12 +453,12 @@ html{
 
 .table thead td, .table thead th {
   color: white !important;
-  background-color: #009879;
+  background-color: #000000;
 }
 
 .table tbody td {
-  background-color: greenyellow;
-  color: rgb(0, 172, 32);
+  background-color: rgb(211, 217, 203);
+  color: rgb(0, 0, 0);
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
@@ -497,4 +497,10 @@ html{
 #botonEditar{
   max-width: 15%;
   margin-left: 10%;
+}
+
+#listaColabsRegistrados{
+  margin-right: 420px;
+  margin-top: -37px;
+  font-style:italic;
 }

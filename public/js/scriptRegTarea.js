@@ -43,6 +43,32 @@ function postTarea(){
 });
 }
 
+function postTareaEditada(){
+  let nombreT = document.getElementById("nombreT");
+  let horasRegistradas = document.getElementById("horasTrabajo");
+  var pathArray = window.location.pathname.split('/');
+  let ruta = "/tarea/editar/" + pathArray[pathArray.length-1];
+  let data = {
+    nombreT: nombreT.value,
+    horasRegistradas: horasRegistradas.value,
+    arrayColaboradores: arrayColaboradores,
+  }
+  console.log(data);
+  fetch(ruta, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body:JSON.stringify(data)
+})
+.then(response => response.json())
+.then(response => {
+  window.location.href = '/tarea/horasTarea/'+ response.idProyecto; // LEES OBJETO RESPONSE PARA SACAR EL OBJETO
+}).catch(err => {
+    console.log(err);
+});
+}
+
 function busquedaClick(event){
    // event target es una referencua al elemento que la activo
    //evento es el que llega por ser event listener
@@ -111,6 +137,17 @@ function deshabilitarTarea() {
     document.getElementById('submitTareabtn').disabled = false;
   }
 }
+
+function deshabilitarTareaEditar() {
+  if (document.getElementById("nombreT").value==""
+  || document.getElementById("horasTrabajo").value=="") {
+    document.getElementById('submitTareabtn').disabled = true;
+  }
+  else {
+    document.getElementById('submitTareabtn').disabled = false;
+  }
+}
+
 document.getElementById("submitTareabtn").onclick = postTarea;
 /*Llamada de funciones*/
 document.getElementById("buscar").onkeyup = accion_asincrona;

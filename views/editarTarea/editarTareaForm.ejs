@@ -1,36 +1,15 @@
 <!-- en action ponemos la ruta-->
 
+
+<!-- quitar en el script el que vea que tengo un nombre registrado -->
 <div class="field is-static">
-  <h1 class="titulo">Crear Tarea</h1>
+  <h1 class="titulo">Editar Tarea</h1>
 </div>
 
 
 <div class="regTarea"> 
 <!--   
   <form action="/tarea/registrarTarea" method="POST" class="regTareaForm"> -->
-
-
-    <div class="field-label is-normal"> 
-      <div class="labelt">
-        <div class="row">    
-              <label class="label">Proyecto al que pertence</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="field-body">
-          <div class="field is-narrow">
-            <div class="control">
-              <div class="input-field">
-                <input class="input" type="text" placeholder="Proyecto..." onkeyup="deshabilitarTarea()" name="nombreP" id="buscar">
-              </div>
-              <div id="listaProyectos">
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> 
 
     <div class="field-label is-normal">
       <div class="labelt">
@@ -42,20 +21,30 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input class="input" type="text" placeholder="Escribe aqui" onkeyup="deshabilitarTarea()" id="nombreT" name="nombreT">
+              <input value = "<%= tarea[0].nombreT %>" class="input" type="text" placeholder="Escribe aqui" onkeyup="deshabilitarTareaEditar()" id="nombreT" name="nombreT">
             </div>
           </div>
         </div>
       </div>
-      
+
+      <div class="label" >
+        <div class="row">
+          <label class="label">Colaboradores Registrados: </label>
+        </div>
+        <ul id="listaColabsRegistrados">
+          <% for (let t of tarea) { %>
+            <li><%= t.nombre %></li>
+          <% } %>
+        </ul>
+      </div>
+              
       <div class="row">
         <div class="field-label is-normal">
           <div class="field-body">
             <div class="field is-narrow">
               <div class="control">
-                <label class="label">Colaboradores</label>
+                <label class="label">Colaboradores Reales</label>
                 <a class="button is-link is-outlined botonAgregarColaborador" onclick="agregarColaborador()" id="agregarColaborador"> + </a>
-                <%= nombreSesion %>
                 <div class="select is-fullwidth"> 
                   <select name="nombre" id="nombre"> 
                     <option value="" disabled selected> Selecciona a los colaboradores</option>   
@@ -79,7 +68,7 @@
       <div class="field-label is-normal">
         <div class="labelt">
           <div class="row">
-            <label class="label">HORAS DE TRABAJO </label>
+            <label class="label">HORAS DE TRABAJO  </label>
           </div>
         </div>
         <div class="row">
@@ -88,7 +77,7 @@
               <div class="field has-addons">
                 <div class="row">
                   <p class="control">
-                    <input class="input is-danger" type="number" min="0" placeholder="1" onkeyup="deshabilitarTarea()" id="horasTrabajo" name="horasRegistradas">
+                    <input value = "<%= tarea[0].horasTrabajo %>" class="input is-danger" type="number" min="0" placeholder="1" onkeyup="deshabilitarTareaEditar()" id="horasTrabajo" name="horasRegistradas">
                   </p>
                 </div>
               </div>
@@ -99,14 +88,9 @@
 
       <div class="field is-grouped is-grouped-centered">
         <p class="control">
-          <input type="submit" onclick="postTarea()" value="Agregar" disabled id="submitTareabtn" 
+          <input type="submit" onclick="postTareaEditada()" value="Agregar" disabled id="submitTareabtn" 
           class="button botonAgregarTarea is-success is-outlined">
         </p>
-          
-            
-            <!-- <p class="control">
-              <input type="reset" value="Cancelar" class="button botonCancelarTarea is-danger is-outlined" >
-            </p> -->
       </div>
 
     </div>

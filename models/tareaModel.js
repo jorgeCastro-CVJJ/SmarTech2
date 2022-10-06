@@ -53,8 +53,9 @@ module.exports = class Tarea {
   }
 
   static getTodoTarea(idTarea){
-    return db.execute('SELECT * FROM tarea as T, ejecuta as E WHERE T.idTarea = E.idTarea AND T.idTarea = ?', [idTarea]);
+    return db.execute('SELECT * FROM tarea as T, ejecuta as E, empleado as Em WHERE T.idTarea = E.idTarea AND Em.idEmpleado = E.idEmpleado AND T.idTarea = ?', [idTarea]);
   }
+
 
   // static Borrar(idTarea){
   //   return db.execute('DELETE FROM tarea WHERE idTarea = ? ; DELETE FROM ejecuta WHERE idTarea = ?', [idTarea]);

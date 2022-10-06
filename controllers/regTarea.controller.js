@@ -115,20 +115,60 @@ getHorasXtarea = async (request, response, next) => {
     })
 }
 
-postBorrarTarea = (request, response, next) => {
-    Tarea.getTodoTarea(request.body.idTarea)
-    .then(([rowsTarea, fielData]) => {
-        Tarea.borrar(rows[0])
-        .then(() => {
-            response.redirect('/user/inicio');
-        })
-        .catch(err =>{
-            console.log(err);
-        })
+// postBorrarTarea = (request, response, next) => {
+//     Tarea.getTodoTarea(request.body.idTarea)
+//     .then(([rowsTarea, fielData]) => {
+//         Tarea.borrar(rows[0])
+//         .then(() => {
+//             response.redirect('/user/inicio');
+//         })
+//         .catch(err =>{
+//             console.log(err);
+//         })
+//     })
+//     .catch(err => {
+//         console.log(err)
+//     })
+// }
+
+getEditarTarea = (request, response, next) => {
+    Tarea.getTodoTarea(request.params.idTarea)
+    .then(([rowsTarea, fielData]) =>{
+        Empleado.fetchAll()
+        .then(([rowsEmplead, fielData]) => {
+            response.render(path.join("editarTarea", "editarTarea.ejs"), {
+                tarea: rowsTarea,
+                empleado: rowsEmplead,
+                listaPrivilegios: request.session.privilegios,
+            })
+        });
     })
-    .catch(err => {
-        console.log(err)
-    })
+}
+ 
+postEditarTarea = (request, response, next) => {
+//  //update
+//  const nuevaTarea = new Tarea(request.body.nombreT, request.body.horasRegistradas);
+//     nuevaTarea.save()
+//     .then(()=> {
+//         Tarea.tareaMasReciente()
+//         .then(([rows, fieldData])=>{
+//             Tarea.asignarColaborador(request.session.idSesion, rows[0].idTarea)
+//             .then(()=>console.log("Tarea asignada a colaborador " + request.session.idSesion))
+//             .catch(err=>console.log(err));
+//             console.log(request.body.arrayColaboradores);
+//             for (colaborador of request.body.arrayColaboradores) {
+//                 console.log(colaborador);
+//                 let id_colaborador = colaborador;
+//                 Tarea.asignarColaborador(id_colaborador, rows[0].idTarea)
+//                 .then(()=>console.log("Tarea asignada a colaborador " + id_colaborador))
+//                 .catch(err=>console.log(err)); // recuperar antes el idTarea
+//             }
+//             request.session.mensaje = "Tarea creada correctamente";
+//             response.status(200).json({mensaje: "Listo"}); // MANDARLE EL OBJETO YA LISTO PARA EL CIENTE
+                                                            // EN EL CLIENTE LEES EL OBJETO PARA SACAR EL ID DEL PROYECTO Y REDIRIGIR 
+//             // mensaje de exit
+//         }).catch(err => console.log(err)); 
+//     }).catch(err => console.log(err));
 }
 
 module.exports = {
@@ -137,5 +177,6 @@ module.exports = {
     getTareas,
     getBuscar,
     getHorasXtarea,
-    postBorrarTarea,
+    getEditarTarea,
+    postEditarTarea,
 };
