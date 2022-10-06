@@ -131,9 +131,19 @@ getHorasXtarea = async (request, response, next) => {
 //     })
 // }
 
+borrarColaborador = (request, response, next) => {
+    Tarea.borrarColaborador(request.params.id)
+    // recuperarr idtare de ejecuta
+    .then(([rowsBorar, fielData])=> {
+        tarea: rowsBorar;
+        response.redirect("/tarea/horasTarea/");
+    })
+}
+
 getEditarTarea = (request, response, next) => {
     Tarea.getTodoTarea(request.params.idTarea)
     .then(([rowsTarea, fielData]) =>{
+        console.log(rowsTarea);
         Empleado.fetchAll()
         .then(([rowsEmplead, fielData]) => {
             response.render(path.join("editarTarea", "editarTarea.ejs"), {
@@ -146,6 +156,14 @@ getEditarTarea = (request, response, next) => {
 }
  
 postEditarTarea = (request, response, next) => {
+    Tarea.getUnaTarea(request.params.idTarea)
+    .then(([rowsTarea,fielData]) => {
+        rowsTarea[0].nombreT = request.body.nombreT,
+        rowsTarea[0].horasTrabajo = request.body.horasRegistradas,
+        Tarea.editarTablaTarea(rowsTarea[0])
+        .then(() => {
+        })
+    })
 //  //update
 //  const nuevaTarea = new Tarea(request.body.nombreT, request.body.horasRegistradas);
 //     nuevaTarea.save()

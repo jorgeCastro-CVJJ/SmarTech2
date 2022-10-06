@@ -48,6 +48,6 @@ module.exports = class Proyecto {
   }
 
   static horasTotales(idProyecto){
-    return db.execute('SELECT sum(horasTrabajo) as `horas` FROM tarea, proyecto WHERE proyecto.idProyecto = tarea.idTarea AND proyecto.idProyecto = ? ',[idProyecto]);
+    return db.execute('SELECT sum(horasTrabajo) as `horas` FROM tarea, proyecto WHERE proyecto.idProyecto = tarea.idProyecto AND proyecto.idProyecto = ? ',[idProyecto]);
   }
 }

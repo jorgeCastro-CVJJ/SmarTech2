@@ -11,6 +11,7 @@ router.get('/horasTarea/:idProyecto', regTareaController.getHorasXtarea)
 
 router.get('/editar/:idTarea', regTareaController.getEditarTarea);
 router.post('/editar',  regTareaController.postEditarTarea);
+// router.post('/borrar/:id', regTareaController.borrarColaborador);
 
 // router.post('/borrar/:idTarea', regTareaController.postBorrarTarea);
 
