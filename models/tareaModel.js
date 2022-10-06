@@ -68,6 +68,9 @@ module.exports = class Tarea {
     return db.execute('delete from ejecuta where id= ?', [id])
   }
 
+  static ejecutaIdTarea(idTarea){
+    return db.execute('SELECT E.idTarea FROM ejecuta as E, tarea as T WHERE E.idTarea = T.idTarea AND E.idTarea = ?', [idTarea])
+  }
 
   // static Borrar(idTarea){
   //   return db.execute('DELETE FROM tarea WHERE idTarea = ? ; DELETE FROM ejecuta WHERE idTarea = ?', [idTarea]);

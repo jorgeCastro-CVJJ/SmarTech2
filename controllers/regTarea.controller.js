@@ -132,12 +132,13 @@ getHorasXtarea = async (request, response, next) => {
 // }
 
 borrarColaborador = (request, response, next) => {
-    Tarea.borrarColaborador(request.params.id)
-    // recuperarr idtare de ejecuta
-    .then(([rowsBorar, fielData])=> {
-        tarea: rowsBorar;
-        response.redirect("/tarea/horasTarea/");
-    })
+    Tarea.ejecutaIdTarea(request.body.idTarea)
+    .then(([rowsID, fieldata])=>{
+        Tarea.borrarColaborador(request.params.id)
+        .thwn(([rowsBorrar, fielData]) => {
+            response.redirect("tarea/horasTarea/")
+        });
+    });
 }
 
 getEditarTarea = (request, response, next) => {
