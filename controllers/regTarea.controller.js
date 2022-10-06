@@ -132,16 +132,18 @@ getHorasXtarea = async (request, response, next) => {
 // }
 
 borrarColaborador = (request, response, next) => {
-    Tarea.ejecutaIdTarea(request.body.idTarea)
+    Tarea.getIdTarea(request.params.id)
     .then(([rowsID, fieldata])=>{
         Tarea.borrarColaborador(request.params.id)
-        .thwn(([rowsBorrar, fielData]) => {
-            response.redirect("tarea/horasTarea/")
+        .then(() => {
+            response.redirect("/tarea/editar/" + rowsID[0].idTarea);
         });
     });
 }
 
 getEditarTarea = (request, response, next) => {
+    // devolver las tareas
+    // los colaboradores de la tarea
     Tarea.getTodoTarea(request.params.idTarea)
     .then(([rowsTarea, fielData]) =>{
         console.log(rowsTarea);
@@ -198,4 +200,5 @@ module.exports = {
     getHorasXtarea,
     getEditarTarea,
     postEditarTarea,
+    borrarColaborador,
 };

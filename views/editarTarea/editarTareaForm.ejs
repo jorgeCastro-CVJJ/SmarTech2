@@ -33,7 +33,11 @@
         </div>
         <ul id="listaColabsRegistrados">
           <% for (let t of tarea) { %>
-            <li><%= t.nombre %> <a href="/tarea/eliminar/<%= t.id %>"><img src="../../media/borrar.png" id="borrarColab"></a> </li>
+            <li><%= t.nombre %> 
+              <% if( tarea.length > 1) { %>
+                <a href="/tarea/eliminar/<%= t.ID %>"><img src="../../media/borrar.png" id="borrarColab"></a> 
+              <% } %>
+              </li>
           <% } %>
         </ul>
       </div>
