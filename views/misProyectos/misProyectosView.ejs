@@ -1,36 +1,84 @@
 <% if(mensaje != "") {  %>
 
-    <div class="notification is-success is-light exitoTarea">
-      Proyecto creado <strong>correctamente</strong>
+    <div class="notification is-success is-light exitoTarea" >
+    Proyecto creado <strong>correctamente</strong>
     </div>
     
 <% } %>
-        <h1 class="titulo">Mis Proyectos</h1>
-        
-            <div class="cartaProyectos">
-                <div class="columns is-multiline">
-                    <% for (let p of proyecto) { %>
-                    <div class="column is-half">
-                        <div class="card is-narrow">
-                            <div class="card-content">
-                                <p class="title">
-                                    <%= p.nombreP %>
-                                </p>
-                                <p class="subtitle">
-                                    <%= p.descripcion %>
-                                </p>
-                                <div class="content">
-                                    Stack Tecnológico: <%= p.stackTecnologico %> <br>
-                                    Estatus: <%= p.estatus%>
-
-                                </div>
+    <h1 class="titulo">Mis Proyectos</h1>
+    <div class="parte-arriba">
+        <div class="swiper MySwipper">
+            <div class="swiper-wrapper">
+                <% for (let p of misproyectos) { %>
+                    <div class="swiper-slide card is-4by3">
+                        <div class="card-content">
+                            <div class="title">
+                                <%= p.nombreP %>
                             </div>
-                        </div>
+                            <div class="subtitle">
+                                <%= p.descripcion %>
+                            </div>
+                            <div class="content">
+                                Stack Tecnológico: <%= p.stackTecnologico %> <br>
+                                Estatus: <%= p.estatus%>
+                            </div>
+                        </div> 
                     </div>
-                    <% } %>
-                </div>  
+                <% } %>
             </div>
-        
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+            
+        </div>
+    </div>
 
+    <div class="parta-abajo">
+        <div class="swiper MySwipper">
+            <div class="swiper-wrapper">
+                <% for (let t of todosproyectos) { %>
+                    <div class="swiper-slide card">
+                        <div class="card-content">
+                            <div class="title">
+                                <%= t.nombreP %>
+                            </div>
+                            <div class="subtitle">
+                                <%= t.descripcion %>
+                            </div>
+                            <div class="content">
+                                Stack Tecnológico: <%= t.stackTecnologico %> <br>
+                                Estatus: <%= t.estatus%>
+                            </div>
+                        </div> 
+                    </div>
+                <% } %>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+            
+        </div>
+    </div>
 
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    slidesPerGroup: 3,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
 

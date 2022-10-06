@@ -24,8 +24,18 @@ module.exports = class Proyecto {
 
   // Obtiene los proyectos "asignados" que tiene el usuario
   static fetchProyectos(idSesion) {
-    return db.execute('SELECT DISTINCT nombreP, descripcion, estatus, stackTecnologico, stakeholders FROM proyecto p, trabaja t WHERE p.idProyecto = t.idProyecto AND t.idEmpleado = ? ', [idSesion]) //Tablas: tarea, proyecto, ejecuta
+    return db.execute(`SELECT DISTINCT nombreP, descripcion, estatus, stackTecnologico, stakeholders 
+    FROM proyecto p, trabaja t 
+    WHERE p.idProyecto = t.idProyecto 
+    AND t.idEmpleado = ?`, [idSesion]) //Tablas: tarea, proyecto, ejecuta
   }
+
+static fetchNotMyProyectos(idSesion) {
+  return db.execute(`SELECT DISTINCT nombreP, descripcion, estatus, stackTecnologico, stakeholders 
+  FROM proyecto p, trabaja t 
+  WHERE p.idProyecto = t.idProyecto 
+  AND t.idEmpleado <> ?;`, [idSesion])
+}
 
   static fetchOne(idProyecto){
     return db.execute('SELECT * FROM proyecto WHERE idProyecto = ?', [idProyecto]);

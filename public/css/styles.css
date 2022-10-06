@@ -285,6 +285,7 @@ html{
   padding-left: 350px;
 }
 
+
 .cartaProyectos{
   padding: 2rem;
 }
@@ -313,6 +314,7 @@ html{
 }
 
 .exitoTarea{
+  position:absolute;
   bottom:35%;
   margin-top: -100px;
   margin-left: 10px;
@@ -490,6 +492,11 @@ table tbody tr:nth-child(even) {
   left: -80px;
 }
 
+.titulo-medio{
+  top:10px;
+  margin-left: 415px
+}
+
 #botonBorrar22,
 #botonEditar{
   max-width: 15%;
@@ -506,3 +513,29 @@ table tbody tr:nth-child(even) {
   max-width: 2.9%;
   margin-left: 2%;
 }
+
+.proyecto{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.cartita{
+  border-radius: 25px;
+  background-color: #FFF;
+
+}
+
+.slide-content{
+  margin: 0 40px;
+}
+
+.slide-container{
+  max-width: 1120px;
+  width: 100%;
+  background-color: gray;
+
+}
+

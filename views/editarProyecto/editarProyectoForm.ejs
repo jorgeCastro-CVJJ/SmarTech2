@@ -1,0 +1,116 @@
+<h1 class="titulo">Editar Proyecto</h1>
+
+<div class="contenedorTarea">
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Nombre del proyecto</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <input class="input" type="text" placeholder="Escribe aqui" id="nombreP" name="nombreP">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Descripción</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <input class="input" type="text" placeholder="Escribe aqui" id="descripcion" name="descripcion">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Estatus</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <input class="input" type="text" placeholder="Escribe aqui" id="estatus" name="estatus">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Colaboradores</label>
+    </div>
+    <div class="field-body">
+      <div class="field is-narrow">
+        <div class="control">
+          <%= nombreSesion %>
+        </br>
+          <div class="select is-fullwidth"> 
+            <select name="nombre" id="nombre"> 
+              <option value="" disabled selected> Selecciona a los colaboradores</option>
+              <% for (let e of empleado) { %>
+                <% if (e.idEmpleado != idSesion){ %>
+                  <option value ="<%= e.idEmpleado %>"><%= e.nombre %></option>                       
+                <% } %>
+              <% } %>
+            </select>
+            <a class="button is-link is-outlined botonAgregarColaborador" id="agregarColaborador"> + </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <!-- desplegar los compañeros-->
+  <div class="divColaboradores" id="listaColabradores">
+  </div>
+
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Stack Tecnológico</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <input class="input" type="text" placeholder="Escribe aqui" id="stackTecnologico" name="stackTecnologico">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Stakeholders</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <input class="input" type="text" placeholder="Escribe aqui" id="stakeholders" name="stakeholders">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-grouped is-grouped-centered">
+    <p class="control">
+      <input type="button" value="Agregar" disabled id= "submitbtn"
+      class="button botonAgregarTarea is-success is-outlined">
+    </p>
+    
+
+  </div>
+  </div>
+
+  <script src="/js/scriptRegProyecto.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
+
+</div>
