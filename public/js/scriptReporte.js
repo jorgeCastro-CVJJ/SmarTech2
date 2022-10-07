@@ -27,8 +27,14 @@ function horasEsperadas() {
     const horasEsperadas = document.getElementById("horasEsperadas");
     const horasVacaciones = document.getElementById("horasVacaciones").value;
     horasEsperadas.innerHTML = parseInt(personalCompletoT * 48) + parseInt(personalMedioT * 34) - parseInt(horasVacaciones * 1);
+    eficiencia();
+    if (horasEsperadas < 0){
+        console.log("Negativo");
+        alert("Las horas de vacaciones no pueden ser mayor que las horas esperadas");
+    }
 }
 
+/*En construcción*/
 function eficiencia() {
     const proporcion = document.getElementById("proporcion").value;
     const horasEsperadas = document.getElementById("horasEsperadas").value;
@@ -36,9 +42,32 @@ function eficiencia() {
     porcentajeEficiencia.innerHTML = parseInt(horasEsperadas * 1) * parseInt(proporcion * 1);
 }
 
-/*document.getElementById("personalMedioT").onkeyup = horasMedioT;
-document.getElementById("personalMedioT").onkeyup = personal;
-document.getElementById("personalMedioT").onkeyup = horasEsperadas;
-document.getElementById("personalCompletoT").onkeyup = horasCompletoT;
-document.getElementById("personalCompletoT").onkeyup = personal;
-document.getElementById("personalCompletoT").onkeyup = horasEsperadas;*/
+/*let totalHoras = 0;
+let celdasHorasReales = document.querySelectorAll('td + td');
+for (let i = 0; i < celdasHorasReales.length; i++){
+    total += parseInt(celdasHorasReales[i].firstChild.data);
+}
+let nuevaFila  = document.createElement('tr');
+let celdaTotal = document.createElement('td');
+let textoCeldaTotal = document.createTextNode('Total: ');
+celdaTotal.appendChild(textoCeldaTotal);
+nuevaFila.appendChild(celdaTotal);
+
+let celdaValorTotal = document.createElement('td');
+let textoCeldaValorTotal = document.createTextNode(total);
+celdaValorTotal.appendChild(textoCeldaValorTotal);
+nuevaFila.appendChild(celdaValorTotal);
+
+document.getElementById('table').appendChild(nuevaFila);*/
+
+window.addEventListener("load", function(){
+    sumHoras();
+})
+
+function sumHoras(){
+    let totalHoras = 0;
+    const horasTrabajo = document.getElementById("horasTrabajo");
+    for (let i = 0; i < horasTrabajo.rows; i++){
+        console.log(horasTrabajo);
+    }
+}
