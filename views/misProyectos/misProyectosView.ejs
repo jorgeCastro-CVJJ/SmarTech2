@@ -16,12 +16,12 @@
                     <div class="swiper-wrapper">
                         <% for (let p of misproyectos) { %>
                             <% if (p.estatus != "Finalizado") { %>
-                                <div class="swiper-slide card">
+                                <div class="swiper-slide card" id="gris-clare">
                                     <div class="card-content">
-                                        <div class="title">
+                                        <div class="title" id="blanco">
                                             <%= p.nombreP %>
                                         </div>
-                                        <div class="subtitle">
+                                        <div class="subtitle" id="blanco">
                                             <%= p.descripcion %>
                                         </div>
                                         <div class="content">
@@ -51,12 +51,12 @@
                     <div class="swiper-wrapper">
                         <% for (let t of todosproyectos) { %>
                             <% if (t.estatus != 'Finalizado') { %>
-                                <div class="swiper-slide card">
+                                <div class="swiper-slide card" id="azul">
                                     <div class="card-content">
-                                        <div class="title">
+                                        <div class="title" id="blanco">
                                             <%= t.nombreP %>
                                         </div>
-                                        <div class="subtitle">
+                                        <div class="subtitle" id="blanco">
                                             <%= t.descripcion %>
                                         </div>
                                         <div class="content">
@@ -72,7 +72,7 @@
                             <% } %>
                         <% } %>
                     </div>
-                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-next derecha"></div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-pagination"></div>
                 </div>

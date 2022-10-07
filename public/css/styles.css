@@ -575,13 +575,32 @@ table tbody tr:nth-child(even) {
   margin-left: 100px !important;
 }
 
+
+
 .swiper .card{
   max-width: 40%;
   max-height: 250px;
   margin-left: 30px;
   margin-right: 30px;;
 }
+.swiper-button-next .derecha{
+  position:relative;
+  margin-left: 300px;
+  padding-left: 400px;
+}
 
+#azul{
+  background-color: var(--azulOscuro);
+  color:whitesmoke;
+}
+#blanco{
+  color:whitesmoke;
+}
+
+#gris-clare {
+  background-color: var(--grisCool);
+  color:whitesmoke
+}
 
 .columns .colProyecto {
   margin-left: 70px !important;
