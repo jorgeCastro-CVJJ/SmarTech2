@@ -248,9 +248,9 @@ html{
 }
 
 .botonAgregarColaborador{
-  left: 100%;
+  left: 330px;
   width: 40px;
-  top: 62px;
+  top: -40px;
 } 
 
 .table {
