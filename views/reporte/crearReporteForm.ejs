@@ -11,7 +11,7 @@
                     <div class="field is-horizontal">
                         <h6>Fecha fin: </h6>
                         <h6 style="margin-left: 800px;">Verdadero porcentaje de eficiencia: </h6> 
-                        <label class = "porcentajeEficiencia" type = "number" id = "porcentajeEficiencia" >0</label>
+                        <label class = "porcentajeEficiencia" type = "number" id = "porcentajeEficiencia" value = "0">0</label>
                     </div>
                     <h6>Número reporte: </h6>
                 </div>
@@ -47,8 +47,8 @@
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Horas de Vacaciones</label>
-                    <input class = "input" type = "number" min = "0" 
-                    onkeyup="horasEsperadas()" onclick="horasEsperadas()" 
+                    <input class = "input" type = "number" min = "0"
+                    onkeyup="horasEsperadas()" onclick="horasEsperadas()"
                     value = "0" id= "horasVacaciones">  
                 </div>
             </div>
@@ -70,8 +70,8 @@
             <% for (let h of horas) { %>
                 <tr>
                     <td><%= h.nombreP %></td> 
-                    <td><%= h.horasTrabajo %></td> 
-                    <td><input type="number"></td>
+                    <td id = "horasTrabajo"><%= h.horasTrabajo %></td> 
+                    <td><input value = "0" type="number" id = "horasReales" min = "0"></td>
                 </tr>
              <% } %>
             
