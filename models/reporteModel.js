@@ -17,12 +17,18 @@ module.exports = class Reporte {
     }
 
     static fetchReporte() {
-        db.execute("SELECT * from reportefinal")
+       return db.execute("SELECT noReporte, proporcion, eficiencia, horasModificadas, horasVacaciones FROM reporteFinal")
     }
+
+  //   static fetchHorasReporte(idSesion, fechaInicio, fechaFinal) {
+  //    return db.execute('SELECT fechaInicio, fechaFinal FROM reporteFinal WHERE fechaInicio ? AND fechaFinal ?', [idSesion, fechaInicio, fechaFinal])
+  //  }
 
       //tarea, proyecto = idProyecto
   static fetchHoras() {
     return db.execute('SELECT SUM(horasTrabajo) as horasTrabajo, nombreP FROM tarea T, proyecto P WHERE T.idProyecto = P.idProyecto GROUP BY nombreP');
   }
+
+
 
 }
