@@ -71,3 +71,36 @@ function sumHoras(){
         console.log(horasTrabajo);
     }
 }
+
+function postNuevoReporte() {
+    let proporcion = document.getElementById("proporcion");
+    let porcentajeEficiencia = document.getElementById("porcentajeEficiencia");
+    let personalMedioT = document.getElementById('personalMedioT');
+    let personalCompletoT = document.getElementById('personalCompletoT');
+    let horasVacaciones = document.getElementById('horasVacaciones');
+    let descripcion = document.getElementById('descripcion');
+
+    let ruta = "/reporte/registrarReporte";
+    let data = {
+        proporcion: proporcion.value,
+        porcentajeEficiencia: porcentajeEficiencia.value,
+        personalMedioT: personalMedioT.value,
+        personalCompletoT: personalCompletoT.value,
+        horasVacaciones: horasVacaciones.value,
+        descripcion: descripcion
+    }
+    console.log(data);
+    fetch(ruta, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(response => {
+    window.location.href = '/reporte/nuevoReporte';
+    }).catch(err => {
+        console.log(err);
+    });
+      }
