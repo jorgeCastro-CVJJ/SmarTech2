@@ -5,11 +5,13 @@
                 <div class = "row">
                     <div class="field is-horizontal">
                         <h6>Fecha inicio: </h6>
-                        <h6 style="margin-left: 800px;">Proporción: </h6>   
+                        <h6 style="margin-left: 800px;">Proporción: </h6> 
+                        <input class = "proporcion" type = "number" min = "0" id = "idProporcion" placeholder = "0.85">  
                     </div>
                     <div class="field is-horizontal">
                         <h6>Fecha fin: </h6>
                         <h6 style="margin-left: 800px;">Verdadero porcentaje de eficiencia: </h6> 
+                        <label class = "porcentajeEficiencia" type = "numer" id = "porcentajeEficiencia" >0</label>
                     </div>
                     <h6>Número reporte: </h6>
                 </div>
@@ -37,7 +39,7 @@
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Total de personal</label>
-                    <div type = "number" id= "totalPersonal" value = "0">0</div> 
+                    <div type = "number" id= "totalPersonal" min = "0" value = "0">0</div> 
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Horas Esperadas</label>

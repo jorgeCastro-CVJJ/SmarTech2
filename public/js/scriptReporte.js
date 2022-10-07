@@ -18,7 +18,7 @@ function personal() {
     const personalMedioT = document.getElementById("personalMedioT").value;
     const personalCompletoT = document.getElementById("personalCompletoT").value;
     const totalPersonal = document.getElementById("totalPersonal");
-    totalPersonal.innerHTML = parseInt(personalMedioT) + parseInt(personalCompletoT);
+    totalPersonal.innerHTML = parseInt(personalMedioT * 1) + parseInt(personalCompletoT * 1);
 }
 
 function horasEsperadas() {
@@ -26,7 +26,7 @@ function horasEsperadas() {
     const personalCompletoT = document.getElementById("personalCompletoT").value;
     const horasEsperadas = document.getElementById("horasEsperadas");
     const horasVacaciones = document.getElementById("horasVacaciones").value;
-    horasEsperadas.innerHTML = parseInt(personalCompletoT * 48) + parseInt(personalMedioT * 34) - parseInt(horasVacaciones);
+    horasEsperadas.innerHTML = parseInt(personalCompletoT * 48) + parseInt(personalMedioT * 34) - parseInt(horasVacaciones * 1);
 }
 
 /*document.getElementById("personalMedioT").onkeyup = horasMedioT;
