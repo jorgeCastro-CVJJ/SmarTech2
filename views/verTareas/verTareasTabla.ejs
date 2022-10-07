@@ -17,9 +17,16 @@
             <th><abbr title="Proyecto">Proyecto</abbr></th>
             <th><abbr title="Tarea">Tarea</abbr></th>
             <th><abbr title="Fecha">
-              Fecha
-              <button class="js-modal-trigger" data-target="filtro_fechas"><img src="../../media/filtrar (1).png" width="20px"; height="20px">
-              </button>
+              <!-- <button class="js-modal-trigger" data-target="filtro_fechas"><img src="../../media/filtrar (1).png" width="20px"; height="20px">
+              </button> -->
+              <div class="input-field is-horizontal">
+                <p>Fecha inicio:</p>
+                <input id="fechaInicio" type="date">
+              </div>
+              <div class="input-field is-horizontal">
+              <p>Fecha fin:</p>
+                <input id="fechaFin" type="date">
+              </div>
             </abbr></th>
             <th><abbr title="Horas">Horas</abbr></th>
           </tr>
@@ -86,21 +93,29 @@
     </div>
   </div>
 </div>
-
+<!-- 
 <div id="filtro_fechas" class="modal">
   <div class="modal-background"></div>
-  <div class="modal-content">
-    <div class="box is-horizontal">
-      <p>Fecha inicio:</p>
-      <p>Fecha fin:</p>
-      <div class="input-field">
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Modal title</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="input-field is-horizontal">
+        <p>Fecha inicio:</p>
         <input id="fechaInicio" type="date">
+      </div>
+      <div class="input-field is-horizontal">
+      <p>Fecha fin:</p>
         <input id="fechaFin" type="date">
       </div>
-    </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success">Aceptar</button>
+      <button class="button" id="botonAceptar">Cancelar</button>
+    </footer>
   </div>
-
-  <button class="modal-close is-short" aria-label="close"></button>
 </div>
 
 <script>
@@ -148,4 +163,4 @@
     }
   });
 });
-</script>
+</script> -->
