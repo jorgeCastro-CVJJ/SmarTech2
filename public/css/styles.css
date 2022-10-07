@@ -253,6 +253,13 @@ html{
   top: -40px;
 } 
 
+.botonAgregarColabProyecto{
+  position: fixed;
+  left: 100%;
+  width: 40px;
+  bottom: 40px;
+  margin-left: 10px;
+} 
 .table {
   position: absolute;
   font-family: var(--fuente);
@@ -262,15 +269,16 @@ html{
   width: 700px;
 }
 
-.titulo{
-  position: absolute;
+.titulo {
+  position: fixed;
   text-align: center;
   font-family: var(--fuente);
   font-weight: bold;
   font-size: 25px;
   color: black;
+  margin-left: 50%;
   top: 65px;
-  left: 50%;
+
 }
 .imagenInicio {
   position: absolute;
@@ -309,9 +317,6 @@ html{
   
 }
 
-.card {
-  margin-left: 70px;
-}
 
 .exitoTarea{
   position:absolute;
@@ -493,8 +498,29 @@ table tbody tr:nth-child(even) {
 }
 
 .titulo-medio{
-  top:10px;
-  margin-left: 415px
+  position: center;
+  text-align: center;
+  font-family: var(--fuente);
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+  margin-left: 40%;
+}
+
+.titulo-MisProyectos{
+  position: top;
+  text-align: center;
+  font-family: var(--fuente);
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+  margin-left: 5%;
+
+}
+
+.notificacionAgregarColab {
+  padding-left: 10px;
+  margin-left: 235px;
 }
 
 #botonBorrar22,
@@ -514,6 +540,27 @@ table tbody tr:nth-child(even) {
   margin-left: 2%;
 }
 
+#borrarColabEditProyecto{
+  width: 20px;
+  margin-left: 300px;
+}
+
+#editarProyecto{
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  margin: 2px;
+  padding-left: 110px;
+}
+
+#borrarProyecto{
+  position:fixed;
+  width: 20px;
+  height: 20px;
+  margin: 2px;
+  padding-left: 110px;
+}
+
 .proyecto{
   min-height: 100vh;
   display: flex;
@@ -522,23 +569,27 @@ table tbody tr:nth-child(even) {
   background-color: black;
 }
 
-.cartita{
-  border-radius: 25px;
-  background-color: #FFF;
-
+.swiper{
+  max-width: 800px;
+  min-width: 600px;
+  margin-left: 100px !important;
 }
 
-.slide-content{
-  margin: 0 40px;
+.swiper .card{
+  max-width: 40%;
+  max-height: 250px;
+  margin-left: 30px;
+  margin-right: 30px;;
 }
 
-.slide-container{
-  max-width: 1120px;
-  width: 100%;
-  background-color: gray;
 
+.columns .colProyecto {
+  margin-left: 70px !important;
 }
 
+.field .is-horizontal .proyectoVista{
+  margin-left: 100px !important;
+}
 .crear {
   position: absolute;
   left: 500px;

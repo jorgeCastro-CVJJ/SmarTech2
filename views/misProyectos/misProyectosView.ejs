@@ -5,58 +5,78 @@
     </div>
     
 <% } %>
-    <h1 class="titulo">Mis Proyectos</h1>
-    <div class="parte-arriba">
-        <div class="swiper MySwipper">
-            <div class="swiper-wrapper">
-                <% for (let p of misproyectos) { %>
-                    <div class="swiper-slide card is-4by3">
-                        <div class="card-content">
-                            <div class="title">
-                                <%= p.nombreP %>
-                            </div>
-                            <div class="subtitle">
-                                <%= p.descripcion %>
-                            </div>
-                            <div class="content">
-                                Stack Tecnológico: <%= p.stackTecnologico %> <br>
-                                Estatus: <%= p.estatus%>
-                            </div>
-                        </div> 
+    
+    <div class="columns colProyecto">
+        <div class="column is-full">    
+            <h1 class="titulo-MisProyectos">Mis Proyectos</h1>
+            <br>
+            <br>  
+            <div class="field is-horizontal proyectoVista">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <% for (let p of misproyectos) { %>
+                            <% if (p.estatus != "Finalizado") { %>
+                                <div class="swiper-slide card">
+                                    <div class="card-content">
+                                        <div class="title">
+                                            <%= p.nombreP %>
+                                        </div>
+                                        <div class="subtitle">
+                                            <%= p.descripcion %>
+                                        </div>
+                                        <div class="content">
+                                            Stack Tecnológico: <%= p.stackTecnologico %> <br>
+                                            Estatus: <%= p.estatus%>
+                                            <a href="/proyecto/editar/<%= p.idProyecto %>"><img src="../../media/editar.png" id="editarProyecto"></a>
+                                            <a href="/proyecto/eliminar/<%= p.idProyecto %>"><img src="../../media/borrar.png" id="borrarProyecto"></a>
+                                            
+                                        </div>
+                                    </div> 
+                                </div>
+                            <% } %>
+                        <% } %>
                     </div>
-                <% } %>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
-            
-        </div>
-    </div>
-
-    <div class="parta-abajo">
-        <div class="swiper MySwipper">
-            <div class="swiper-wrapper">
-                <% for (let t of todosproyectos) { %>
-                    <div class="swiper-slide card">
-                        <div class="card-content">
-                            <div class="title">
-                                <%= t.nombreP %>
-                            </div>
-                            <div class="subtitle">
-                                <%= t.descripcion %>
-                            </div>
-                            <div class="content">
-                                Stack Tecnológico: <%= t.stackTecnologico %> <br>
-                                Estatus: <%= t.estatus%>
-                            </div>
-                        </div> 
+            <br>
+            <div class="field is-horizontal">
+                <h1 class="titulo-medio">TODOS PROYECTOS</h1>
+            </div>
+            <br>
+            <div class="field is-horizontal proyectoVista">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <% for (let t of todosproyectos) { %>
+                            <% if (t.estatus != 'Finalizado') { %>
+                                <div class="swiper-slide card">
+                                    <div class="card-content">
+                                        <div class="title">
+                                            <%= t.nombreP %>
+                                        </div>
+                                        <div class="subtitle">
+                                            <%= t.descripcion %>
+                                        </div>
+                                        <div class="content">
+                                            Stack Tecnológico: <%= t.stackTecnologico %> <br>
+                                            Estatus: <%= t.estatus%>
+                                        <% if(listaPrivilegios.indexOf('ModProyectos') != -1) {  %>
+                                            <a href="/proyecto/editar/<%= t.idProyecto %>"><img src="../../media/editar.png" id="editarProyecto"></a>
+                                            <a href="/proyecto/eliminar/<%= t.idProyecto %>"><img src="../../media/borrar.png" id="borrarProyecto"></a>
+                                        <% } %>
+                                        </div>
+                                    </div> 
+                                </div>
+                            <% } %>
+                        <% } %>
                     </div>
-                <% } %>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
-            
         </div>
     </div>
 
@@ -66,9 +86,9 @@
 <!-- Initialize Swiper -->
 <script>
   var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    slidesPerGroup: 3,
+    slidesPerView: 2,
+    spaceBetween: 15,
+    slidesPerGroup: 2,
     loop: true,
     loopFillGroupWithBlank: true,
     pagination: {
