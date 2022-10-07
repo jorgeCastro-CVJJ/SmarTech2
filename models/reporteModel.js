@@ -13,7 +13,7 @@ module.exports = class Reporte {
     };
 
     save() {
-        return db.execute('INSERT INTO reporteFinal (proporcion, personalCompleto, personalMedio, horasVacaciones, horasModificadas) VALUES (?,?,?,?,?)', [this.proporcion, this.personalCompleto, this.personalMedio, this.horasVacaciones, this.horasModificadas]);
+        return db.execute('INSERT INTO reporteFinal (proporcion, personalCompleto, personalMedio, horasVacaciones, horasModificadas, descripcion) VALUES (?,?,?,?,?,?)', [this.proporcion, this.personalCompleto, this.personalMedio, this.horasVacaciones, this.horasModificadas, this.descripcion]);
     }
 
     static fetchReporte() {
