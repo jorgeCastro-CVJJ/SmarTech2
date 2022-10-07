@@ -2,22 +2,20 @@ const db = require("../util/database");
 const bcrypt = require("bcryptjs");
 
 module.exports = class Reporte {
-    constructor(noReporte, proporcion, eficiencia, horasModificadas, horasVacaciones, personalCompleto, personalMedio) {
-        this.noReporte = noReporte, 
+    constructor(proporcion, horasVacaciones, personalCompleto, personalMedio, descripcion) {
         this.proporcion = proporcion,
-        this.eficiencia = eficiencia, 
-        this.horasModificadas = horasModificadas,
         this.horasVacaciones = horasVacaciones, 
         this.personalCompleto = personalCompleto,
         this.personalMedio = personalMedio
+        this.descripcion = descripcion
     };
 
     save() {
-        return db.execute('INSERT INTO reporteFinal (proporcion, personalCompleto, personalMedio, horasVacaciones, horasModificadas, descripcion) VALUES (?,?,?,?,?,?)', [this.proporcion, this.personalCompleto, this.personalMedio, this.horasVacaciones, this.horasModificadas, this.descripcion]);
+        return db.execute('INSERT INTO reporteFinal (proporcion, horasVacaciones, personalCompleto, personalMedio, descripcion) VALUES (?,?,?,?,?)', [this.proporcion, this.horasVacaciones, this.personalCompleto, this.personalMedio, this.descripcion]);
     }
 
     static fetchReporte() {
-       return db.execute("SELECT noReporte, proporcion, eficiencia, horasModificadas, horasVacaciones FROM reporteFinal")
+       return db.execute("SELECT proporcion, horasVacaciones, personalCompleto, personalMedio, descripcion FROM reporteFinal")
     }
 
   //   static fetchHorasReporte(idSesion, fechaInicio, fechaFinal) {

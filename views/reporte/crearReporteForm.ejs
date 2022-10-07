@@ -51,6 +51,11 @@
                     onkeyup="horasEsperadas()" onclick="horasEsperadas()"
                     value = "0" id= "horasVacaciones">  
                 </div>
+                <div class="field is-horizontal">
+                    <label class = "label">Descripcion</label>
+                    <input id = "descripcion" type ="text" placeholder="Ingresar">
+                    <input type="submit" id = "reportebtn" value = "Guardar" onclick="postNuevoReporte()">
+                </div>
             </div>
         </div>
     </div>
@@ -76,7 +81,6 @@
              <% } %>
             
         </tbody>
-<input type="submit" id = "reportebtn" value = "Guardar" onclick="guardar()">
 
 
 <script src="/js/scriptReporte.js"></script>

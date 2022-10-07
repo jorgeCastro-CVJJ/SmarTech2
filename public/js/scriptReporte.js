@@ -1,7 +1,7 @@
 function horasMedioT() {
     const personalMedioT = document.getElementById("personalMedioT").value;
     const horasMedioT = document.getElementById("horasMedioT");
-    horasMedioT.innerHTML = personalMedioT * 34;
+    horasMedioT.innerHTML = parseInt(personalMedioT) * 34;
     personal();
     horasEsperadas();
 }
@@ -9,7 +9,7 @@ function horasMedioT() {
 function horasCompletoT() {
     const personalCompletoT = document.getElementById("personalCompletoT").value;
     const horasCompletoT = document.getElementById("horasCompletoT");
-    horasCompletoT.innerHTML = personalCompletoT * 48;
+    horasCompletoT.innerHTML = parseInt(personalCompletoT) * 48;
     personal();
     horasEsperadas();
 }
@@ -33,6 +33,8 @@ function horasEsperadas() {
         alert("Las horas de vacaciones no pueden ser mayor que las horas esperadas");
     }
 }
+
+
 
 /*En construcción*/
 function eficiencia() {
@@ -68,26 +70,24 @@ function sumHoras(){
     let totalHoras = 0;
     const horasTrabajo = document.getElementById("horasTrabajo");
     for (let i = 0; i < horasTrabajo.rows; i++){
-        console.log(horasTrabajo);
+        console.log(horasTrabajo.rows[i]);
     }
 }
 
 function postNuevoReporte() {
     let proporcion = document.getElementById("proporcion");
-    let porcentajeEficiencia = document.getElementById("porcentajeEficiencia");
-    let personalMedioT = document.getElementById('personalMedioT');
-    let personalCompletoT = document.getElementById('personalCompletoT');
     let horasVacaciones = document.getElementById('horasVacaciones');
+    let personalCompletoT = document.getElementById('personalCompletoT');
+    let personalMedioT = document.getElementById('personalMedioT');
     let descripcion = document.getElementById('descripcion');
 
     let ruta = "/reporte/registrarReporte";
     let data = {
         proporcion: proporcion.value,
-        porcentajeEficiencia: porcentajeEficiencia.value,
-        personalMedioT: personalMedioT.value,
-        personalCompletoT: personalCompletoT.value,
         horasVacaciones: horasVacaciones.value,
-        descripcion: descripcion
+        personalCompletoT: personalCompletoT.value,
+        personalMedioT: personalMedioT.value,
+        descripcion: descripcion.value
     }
     console.log(data);
     fetch(ruta, {
@@ -103,4 +103,4 @@ function postNuevoReporte() {
     }).catch(err => {
         console.log(err);
     });
-      }
+}
