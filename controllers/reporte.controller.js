@@ -35,7 +35,20 @@ getReportes = (request, response, next) => {
     });
 }
 
+postReporte = (request, response, next) => {
+    const nuevoReporte = new Reporte(request.body.proporcion, request.body.personalCompleto, request.body.personalMedio, request.body.horasVacaciones, request.body.horasModificadas, request.body.descripcion);
+    console.log(nuevoReporte);
+    nuevoReporte.save()
+    .then(() => {
+        console.log(nuevoReporte)
+    })
+    .catch(err => {
+        console.log(err)
+    });
+}
+
 module.exports = {
     postnuevoReporte,
-    getReportes
+    getReportes,
+    postReporte
 }
