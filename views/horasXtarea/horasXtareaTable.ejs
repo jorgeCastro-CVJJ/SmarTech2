@@ -19,7 +19,8 @@
         <th>Fecha</th>
         <th>Horas</th>
         <th>Colaboradores</th>
-        <th> Acciones </th>
+        <th> Editar </th>
+        <th> Borrar </th>
       </tr>
     </thead>
     <tbody>
@@ -34,8 +35,8 @@
             <%= c.nombre %></br>
           <% } %>
         </td>
-        <td> <a href="/tarea/editar/<%= t.idTarea %>"><img src="../../media/editar.png" alt="boton editar" id="botonEditar"></a>
-          <img src="../../media/borrar.png" alt="boton borrar" id="botonBorrar22"></td>
+        <td> <a href="/tarea/editar/<%= t.idTarea %>"><img src="../../media/editar.png" alt="boton editar" id="botonEditar"></a></td>
+        <td> <a href="/tarea/eliminarTarea/<%= t.idTarea %>"><img src="../../media/borrar.png" alt="boton borrar" id="botonBorrar22"></a></td>
       </tr>
     <% } %>
     </tbody>

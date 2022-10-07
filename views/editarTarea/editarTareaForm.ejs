@@ -7,7 +7,7 @@
 </div>
 
 
-<div class="regTarea"> 
+<div class="editarTarea"> 
 <!--   
   <form action="/tarea/registrarTarea" method="POST" class="regTareaForm"> -->
 
@@ -33,12 +33,31 @@
         </div>
         <ul id="listaColabsRegistrados">
           <% for (let t of tarea) { %>
-            <li><%= t.nombre %> <a href="/tarea/eliminar/<%= t.id %>"><img src="../../media/borrar.png" id="borrarColab"></a> </li>
+            <li><%= t.nombre %> 
+              <% if( tarea.length > 1) { %>
+                <a href="/tarea/eliminar/<%= t.ID %>"><img src="../../media/borrar.png" id="borrarColab"></a> 
+              <% } %>
+              </li>
           <% } %>
         </ul>
       </div>
+
+      <div class="label" >
+        <div class="row">
+          <label class="label">Agregar Colaboradores: </label>
+        </div>
+        <div id="cajaColabs">
+          <ul id="agregarColaboradores">
+            <% for (let e of empleado) { %>
+              <li><%= e.nombre %> 
+                  <a href="/tarea/agregar/<%= tarea[0].ID %>"><img src="../../media/agregar.webp" id="addColab"></a> 
+                </li>
+            <% } %>
+          </ul>
+      </div>
+      </div>
               
-      <div class="row">
+      <!-- <div class="row">
         <div class="field-label is-normal">
           <div class="field-body">
             <div class="field is-narrow">
@@ -59,11 +78,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <!--- Si está en esta sección, se debe de quitar del dropdown.-->
-      <div class="divColaboradores" id="listaColabradores">
-
-      </div>
+      </div>Si está en esta sección, se debe de quitar del dropdown.
+      <div class="divColaboradores" id="listaColabradores"></div>-->
     
       <div class="field-label is-normal">
         <div class="labelt">
@@ -88,7 +104,7 @@
 
       <div class="field is-grouped is-grouped-centered">
         <p class="control">
-          <input type="submit" onclick="postTareaEditada()" value="Agregar" disabled id="submitTareabtn" 
+          <input type="submit" onclick="postTareaEditada()" value="Agregar"
           class="button botonAgregarTarea is-success is-outlined">
         </p>
       </div>
@@ -97,4 +113,27 @@
   <!-- </form> -->
 </div>        
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="/js/scriptRegTarea.js"></script>
+
+<script>
+  function postTareaEditada(){
+  let nombreT = document.getElementById("nombreT");
+  let horasRegistradas = document.getElementById("horasTrabajo");
+  var pathArray = window.location.pathname.split('/');
+  let ruta = "/tarea/editar/" + pathArray[pathArray.length-1];
+  let data = {
+    nombreT: nombreT.value,
+    horasRegistradas: horasRegistradas.value,
+  }
+  console.log(data);
+  fetch(ruta, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body:JSON.stringify(data)
+})
+.catch(err => {
+    console.log(err);
+});
+}
+</script>

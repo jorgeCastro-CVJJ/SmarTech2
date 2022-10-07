@@ -10,9 +10,10 @@ router.get('/buscar/:fechaInicio/:fechaFin', regTareaController.getBuscar);
 router.get('/horasTarea/:idProyecto', regTareaController.getHorasXtarea)
 
 router.get('/editar/:idTarea', regTareaController.getEditarTarea);
-router.post('/editar',  regTareaController.postEditarTarea);
-// router.post('/borrar/:id', regTareaController.borrarColaborador);
+router.post('/editar/:idTarea',  regTareaController.postEditarTarea);
+router.get('/eliminar/:id', regTareaController.borrarColaborador);
+router.get('/agregar/:id', regTareaController.agregarColaborador);
 
-// router.post('/borrar/:idTarea', regTareaController.postBorrarTarea);
+router.get('/eliminarTarea/:idTarea', regTareaController.borrarTarea);
 
 module.exports = router;
