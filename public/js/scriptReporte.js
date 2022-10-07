@@ -29,6 +29,13 @@ function horasEsperadas() {
     horasEsperadas.innerHTML = parseInt(personalCompletoT * 48) + parseInt(personalMedioT * 34) - parseInt(horasVacaciones * 1);
 }
 
+function eficiencia() {
+    const proporcion = document.getElementById("proporcion").value;
+    const horasEsperadas = document.getElementById("horasEsperadas").value;
+    const porcentajeEficiencia = document.getElementById("porcentajeEficiencia");
+    porcentajeEficiencia.innerHTML = parseInt(horasEsperadas * 1) * parseInt(proporcion * 1);
+}
+
 /*document.getElementById("personalMedioT").onkeyup = horasMedioT;
 document.getElementById("personalMedioT").onkeyup = personal;
 document.getElementById("personalMedioT").onkeyup = horasEsperadas;
