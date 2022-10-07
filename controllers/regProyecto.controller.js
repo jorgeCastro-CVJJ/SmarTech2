@@ -3,6 +3,7 @@ const Proyecto = require("../models/proyectoModel");
 const Empleado = require("../models/empleadoModel");
 const Trabaja = require("../models/trabajaModel");
 const { error } = require("console");
+const { response } = require("express");
 
 getnuevoProyecto = (request, response, next) =>{
   console.log(request.session);
@@ -73,7 +74,7 @@ getProyectosByUserID = (request, response, next) => {
         mensaje: mensaje,
         listaPrivilegios: request.session.privilegios,
     })
-    console.log()
+    console.log(rowsProyecto)
   })
 
     
@@ -83,6 +84,29 @@ getProyectosByUserID = (request, response, next) => {
   })
 }
 
+getEditarProyecto = (request,response,next) => {
+  Proyecto.fetchOne(request.params.idProyecto)
+  .then(([rowsProyecto,fieldata]) => {
+    Empleado.fetchAll()
+    .then(async ([rowsEmpleado,fieldata]) => {
+      response.render(path.join('editarProyecto', 'editarProyecto.ejs'), {
+        proyecto: rowsProyecto,
+        empleado: rowsEmpleado,
+        listaPrivilegios: request.session.privilegios,
+      })
+    })
+  })
+  .catch(err => {
+    console.log(err);
+    response.status(500).json({message: "EROOR 500"});
+  })
+}
+
+postEditarProyecto = (request, response, next) => {
+  Proyecto.fetchOne(request.params.idProyecto)
+  .then(([rowsProyecto,fieldata]) => {
+  })
+}
 
 
 getBuscar = (request, response, next) => {
@@ -121,4 +145,5 @@ module.exports = {
   getProyectosByUserID,
   getBuscar,
   getProyectosExistentes,
+  getEditarProyecto
 };

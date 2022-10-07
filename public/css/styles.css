@@ -248,9 +248,11 @@ html{
 }
 
 .botonAgregarColaborador{
+  position: fixed;
   left: 100%;
   width: 40px;
-  top: 62px;
+  bottom: 40px;
+  margin-left: 10px;
 } 
 
 .table {
@@ -262,15 +264,16 @@ html{
   width: 700px;
 }
 
-.titulo{
-  position: absolute;
+.titulo {
+  position: fixed;
   text-align: center;
   font-family: var(--fuente);
   font-weight: bold;
   font-size: 25px;
   color: black;
+  margin-left: 50%;
   top: 65px;
-  left: 50%;
+
 }
 .imagenInicio {
   position: absolute;
@@ -309,9 +312,6 @@ html{
   
 }
 
-.card {
-  margin-left: 70px;
-}
 
 .exitoTarea{
   position:absolute;
@@ -493,8 +493,29 @@ table tbody tr:nth-child(even) {
 }
 
 .titulo-medio{
-  top:10px;
-  margin-left: 415px
+  position: center;
+  text-align: center;
+  font-family: var(--fuente);
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+  margin-left: 40%;
+}
+
+.titulo-MisProyectos{
+  position: top;
+  text-align: center;
+  font-family: var(--fuente);
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+  margin-left: 5%;
+
+}
+
+.notificacionAgregarColab {
+  padding-left: 10px;
+  margin-left: 235px;
 }
 
 #botonBorrar22,
@@ -509,6 +530,32 @@ table tbody tr:nth-child(even) {
   font-style:italic;
 }
 
+#borrarColab{
+  max-width: 2.9%;
+  margin-left: 2%;
+}
+
+#borrarColabEditProyecto{
+  width: 20px;
+  margin-left: 300px;
+}
+
+#editarProyecto{
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  margin: 2px;
+  padding-left: 110px;
+}
+
+#borrarProyecto{
+  position:fixed;
+  width: 20px;
+  height: 20px;
+  margin: 2px;
+  padding-left: 110px;
+}
+
 .proyecto{
   min-height: 100vh;
   display: flex;
@@ -517,20 +564,85 @@ table tbody tr:nth-child(even) {
   background-color: black;
 }
 
-.cartita{
-  border-radius: 25px;
-  background-color: #FFF;
-
+.swiper{
+  max-width: 800px;
+  min-width: 600px;
+  margin-left: 100px !important;
 }
 
-.slide-content{
-  margin: 0 40px;
+.swiper .card{
+  max-width: 40%;
+  max-height: 250px;
+  margin-left: 30px;
+  margin-right: 30px;;
 }
 
-.slide-container{
-  max-width: 1120px;
-  width: 100%;
-  background-color: gray;
 
+.columns .colProyecto {
+  margin-left: 70px !important;
 }
 
+.field .is-horizontal .proyectoVista{
+  margin-left: 100px !important;
+}
+.crear {
+  position: absolute;
+  left: 500px;
+  top: 100px;
+  width: 600px;
+}
+#li, 
+#addColab{
+  max-width:20px;
+  margin-left: 10px;
+  
+}
+
+.modificar {
+  position: absolute;
+  left: 500px;
+  top: 400px;
+  width: 600px;
+}
+
+.boton_crearReporte {
+  position: absolute;
+  right: 50px;
+  top: 220px;
+  width: 100px;
+  height: 50px;
+  background-color: #00A99D;
+  border: none;
+  color: white;
+  border-radius: 10px;
+}
+
+.boton_crearReporte:hover {
+  background-color:#00bdc7;
+  cursor: pointer;
+}
+
+#reporteSemanal {
+  position: absolute;
+  left: 300px;
+  top: 150px;
+}
+
+#reporteSemanal2 {
+  position: absolute;
+  left: 300px;
+  top: 450px;
+}
+#cajaColabs{
+  margin-right: 320px;
+  
+  /* text-align: left; */
+}
+
+.editarTarea {
+  /* background-color: #098B90; */
+  left: 27%;
+  padding-top: 150px;
+  position:absolute;
+  width: 900px;
+}

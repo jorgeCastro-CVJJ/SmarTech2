@@ -14,4 +14,7 @@ router.get("/buscar/:valor", regProyectoController.getBuscar)
 
 router.get("/existente/:idProyecto", regProyectoController.getProyectosExistentes)
 
+router.get("/editar/:idProyecto", regProyectoController.getEditarProyecto)
+//router.post("/editar/", regProyectoController.postEditarProyecto)
+
 module.exports = router;
