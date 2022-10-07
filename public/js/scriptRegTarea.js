@@ -51,7 +51,6 @@ function postTareaEditada(){
   let data = {
     nombreT: nombreT.value,
     horasRegistradas: horasRegistradas.value,
-    arrayColaboradores: arrayColaboradores,
   }
   console.log(data);
   fetch(ruta, {
