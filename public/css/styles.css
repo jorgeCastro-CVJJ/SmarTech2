@@ -539,3 +539,23 @@ table tbody tr:nth-child(even) {
 
 }
 
+#li, 
+#addColab{
+  max-width:20px;
+  margin-left: 10px;
+  
+}
+
+#cajaColabs{
+  margin-right: 320px;
+  
+  /* text-align: left; */
+}
+
+.editarTarea {
+  /* background-color: #098B90; */
+  left: 27%;
+  padding-top: 150px;
+  position:absolute;
+  width: 900px;
+}
