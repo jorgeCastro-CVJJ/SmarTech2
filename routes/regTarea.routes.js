@@ -12,7 +12,7 @@ router.get('/horasTarea/:idProyecto', regTareaController.getHorasXtarea)
 router.get('/editar/:idTarea', regTareaController.getEditarTarea);
 router.post('/editar/:idTarea',  regTareaController.postEditarTarea);
 router.get('/eliminar/:id', regTareaController.borrarColaborador);
-router.get('/agregar/:id', regTareaController.agregarColaborador);
+router.get('/asignar/:idTarea/empleado/:idEmpleado', regTareaController.agregarColaborador);
 
 router.get('/eliminarTarea/:idTarea', regTareaController.borrarTarea);
 

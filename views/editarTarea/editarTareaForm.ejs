@@ -50,7 +50,7 @@
           <ul id="agregarColaboradores">
             <% for (let e of empleado) { %>
               <li><%= e.nombre %> 
-                  <a href="/tarea/agregar/<%= tarea[0].ID %>"><img src="../../media/agregar.webp" id="addColab"></a> 
+                  <a href="/tarea/asignar/<%= tarea[0].idTarea %>/empleado/<%= e.idEmpleado %>"><img src="../../media/agregar.webp" id="addColab"></a> 
                 </li>
             <% } %>
           </ul>

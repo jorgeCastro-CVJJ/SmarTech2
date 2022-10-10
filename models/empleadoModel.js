@@ -21,4 +21,9 @@ module.exports = class Empleado {
   static fetchAll() {
     return db.execute('SELECT * FROM empleado');
   }
+
+  static getEmpleadosNoRegistrados(idTarea) {
+    return db.execute('SELECT E.nombre, E.idEmpleado FROM empleado as E WHERE E.idEmpleado NOT IN (SELECT E.idEmpleado FROM empleado as E, ejecuta as EJ WHERE E.idEmpleado = EJ.idEmpleado AND EJ.idTarea = ?)', [idTarea])
+
+  }
 }

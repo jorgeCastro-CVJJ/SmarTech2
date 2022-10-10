@@ -77,11 +77,14 @@ module.exports = class Tarea {
   }
 
   static borrarTarea(idTarea){
-    return db.execute('delete from tarea where idTarea = ?', [idTarea])
+    return db.execute('delete from tarea where idTarea = ?', [idTarea]);
   }
 
+  static getIdTareaAgregarColab(idTarea){
+    return db.execute ('SELECT * from tarea WHERE idTarea = ?', [idTarea]);
+  }
 
-
+  
   // static Borrar(idTarea){
   //   return db.execute('DELETE FROM tarea WHERE idTarea = ? ; DELETE FROM ejecuta WHERE idTarea = ?', [idTarea]);
   // }

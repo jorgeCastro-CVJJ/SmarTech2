@@ -125,20 +125,14 @@ borrarColaborador = (request, response, next) => {
     });
 }
 
+//TRABAJANDO DENISSE
 agregarColaborador = (request, response, next) => {
-    Tarea.getIdTarea(request.params.id)
-    .then(([rowsID, fielData]) => {
-        Tarea.asignarColaborador(request.body.idEmpleado, rowsID[0].idTarea)
-        .then(([rows, fielData]) => {
-            for (colaborador of request.body.arrayColaboradores) {
-                console.log(colaborador);
-                let id_colaborador = colaborador;
-                Tarea.asignarColaborador(id_colaborador, rows[0].idTarea)
-                .then(()=>console.log("Tarea asignada a colaborador " + id_colaborador))
-                .catch(err=>console.log(err)); // recuperar antes el idTarea
-            }   
-            response.redirect("/tarea/editar/" + rowsID[0].idTarea); 
-        })  
+    Tarea.getIdTareaAgregarColab(request.params.idTarea)
+    .then(([rows, fielData]) => {
+        Tarea.asignarColaborador(request.params.idEmpleado, request.params.idTarea)
+        .then(() => {
+            response.redirect("/tarea/editar/" + rows[0].idTarea);
+        })
     })
 }
 
@@ -147,7 +141,7 @@ getEditarTarea = (request, response, next) => {
     // los colaboradores de la tarea
     Tarea.getTodoTarea(request.params.idTarea)
     .then(([rowsTarea, fielData]) =>{
-        Empleado.fetchAll()
+        Empleado.getEmpleadosNoRegistrados(request.params.idTarea)
         .then(([rowsEmplead, fielData]) => {
             response.render(path.join("editarTarea", "editarTarea.ejs"), {
                 tarea: rowsTarea,
@@ -184,15 +178,24 @@ borrarTarea = (request, response, next) => {
     })
 }
 
-//     borrarColaborador = (request, response, next) => {
+// agregarColaborador = (request, response, next) => {
 //     Tarea.getIdTarea(request.params.id)
-//     .then(([rowsID, fieldata])=>{
-//         Tarea.borrarColaborador(request.params.id)
-//         .then(() => {
-//             response.redirect("/tarea/editar/" + rowsID[0].idTarea);
-//         });
-//     });
+//     .then(([rowsID, fielData]) => {
+//         Tarea.asignarColaborador(request.body.idEmpleado, rowsID[0].idTarea)
+//         .then(([rows, fielData]) => {
+//             for (colaborador of request.body.arrayColaboradores) {
+//                 console.log(colaborador);
+//                 let id_colaborador = colaborador;
+//                 Tarea.asignarColaborador(id_colaborador, rows[0].idTarea)
+//                 .then(()=>console.log("Tarea asignada a colaborador " + id_colaborador))
+//                 .catch(err=>console.log(err)); // recuperar antes el idTarea
+//             }   
+//             response.redirect("/tarea/editar/" + rowsID[0].idTarea); 
+//         })  
+//     })
 // }
+
+
 
 module.exports = {
     getnuevaTarea,
