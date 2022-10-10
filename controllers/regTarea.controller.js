@@ -125,7 +125,6 @@ borrarColaborador = (request, response, next) => {
     });
 }
 
-//TRABAJANDO DENISSE
 agregarColaborador = (request, response, next) => {
     Tarea.getIdTareaAgregarColab(request.params.idTarea)
     .then(([rows, fielData]) => {
