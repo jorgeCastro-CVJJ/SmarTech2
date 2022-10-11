@@ -54,7 +54,6 @@
                 <div class="field is-horizontal">
                     <label class = "label">Descripcion</label>
                     <input id = "descripcion" type ="text" placeholder="Ingresar">
-                    <input type="submit" id = "reportebtn" value = "Guardar" onclick="postNuevoReporte()">
                 </div>
             </div>
         </div>
@@ -79,8 +78,15 @@
                     <td><input value = "0" type="number" id = "horasReales" min = "0"></td>
                 </tr>
              <% } %>
+             <tr>
+                <td> <b> TOTAL </b> </td>
+                <td id = "sumHorasTrabajo"></td> 
+
+            </tr>
             
         </tbody>
-
+        
+        <!--Botón de guardar-->
+        <input type="submit" id = "reportebtn" value = "Guardar" onclick="postNuevoReporte()">
 
 <script src="/js/scriptReporte.js"></script>
