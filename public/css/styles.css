@@ -502,21 +502,20 @@ html{
 }
 
 .table thead td, .table thead th {
-  color: white !important;
+  color: #0F1C24 !important;
+  font-weight: bold;
   padding-left: 20px;
   margin-top: 10px;
-  background-color: #47697d;
+  background-color: #96bed6;
 }
 
 table tbody tr:nth-child(odd) {
-  color: white  !important;
-  font-weight: bolder;
-	background: #5989a5;
+  color: #0F1C24  !important;
+	background: #ACCADC;
 }
 table tbody tr:nth-child(even) {
-  color:white !important;
-  font-weight: bolder;
-	background: #6d9cb7;
+  color:#0F1C24 !important;
+	background: #BDD6E5;
 }
 
 .fechas_reporte {
