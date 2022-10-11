@@ -1,5 +1,43 @@
-<div class="box">
-  <a href="/tarea/registrarTarea"><img class="imagenInicio" src="../media/paginaInicio.png" alt="foto llamativa de inicio"/></a>
+<canvas id="grafica" style="width: 60px; height: 20px;">
+ <script>
+  const $grafica = document.querySelector("#grafica");
+// Las etiquetas son las que van en el eje X. 
+const etiquetas = ["Enero", "Febrero", "Marzo", "Abril"]
+// Podemos tener varios conjuntos de datos. Comencemos con uno
+const eficienciaSemanal = {
+    label: "Eficiencia semanal",
+    data: [
+      // <% for (let e of eficiencia) { %>
+      //   <%= e.valor %>,  
+      // <% } %>
+      2000, 1500, 8000, 5102
+    ], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+    backgroundColor: 'rgba(54, 162, 235, 0.2)', // Color de fondo
+    borderColor: 'rgba(54, 162, 235, 1)', // Color del borde
+    borderWidth: 1,// Ancho del borde
+};
+new Chart($grafica, {
+    type: 'bar',// Tipo de gráfica
+    data: {
+        labels: etiquetas,
+        datasets: [
+            eficienciaSemanal,
+            // Aquí más datos...
+        ]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }],
+        },
+    }
+});
+ </script>
+</canvas>
+
     <div class="field is-horizontal proyectosExistentes">
      <div class="field-label is-normal">
     <label class="label">Proyectos Existentes</label>

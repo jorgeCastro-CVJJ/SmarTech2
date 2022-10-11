@@ -80,9 +80,11 @@ menu = (request, response, next) => {
   console.log(request.session.privilegios);
   Proyecto.fetchAll()
   .then(([rowsProyecto, fielData]) => {
+
     return response.render(path.join("index", "index.ejs"), {
       listaPrivilegios: request.session.privilegios,
-      proyecto:rowsProyecto,
+      proyecto: rowsProyecto,
+      
     });
   })
 };
