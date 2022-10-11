@@ -8,18 +8,21 @@ const bcrypt = require('bcryptjs');
 getLogin = (request, response, next) => {
   const Usuario = request.session.usuario ? request.session.usuario: '';
   response.render(path.join("login", "login.ejs"), {
-    isLoggedIn: request.session.isLoggedIn ? request.session.isLoggedIn : false,
+    isLoggedIn: request.session,
     usuario: Usuario
   });
 };
 
 
-get_login = (req, res, next) => {
-  response.render(path.join('login', 'login.ejs'), {
-    correo: request.session.correo ? request.session.correo: ''
-  })
-  console.log(request.session)
-};
+// get_login = (req, res, next) => {
+//   const Usuario = request.session.usuario ? request.session.usuario: '';
+//   response.render(path.join('login', 'login.ejs'), {
+//     isLoggedIn: request.session.isLoggedIn ? request.session.isLoggedIn: false,
+//     usuario: Usuario 
+//   })
+//   console.log(isLoggedIn)
+//   console.log(Usuario)
+// };
 
 postLogin = (request, response, next) => {
   // recuperar usuario busco si existe
@@ -30,6 +33,8 @@ postLogin = (request, response, next) => {
       nombreSesion = request.session.nombreSesion;
       request.session.idSesion = rows[0].idEmpleado;
       idSesion = request.session.idSesion;
+      request.session.isLoggedIn = true;
+      console.log(request.session.isLoggedIn)
       // row me da solo una consulta
       if (rows.length == 1) {
         Usuario.fetchPrivilegio(rows[0].correo) // me da una promesa
@@ -46,7 +51,7 @@ postLogin = (request, response, next) => {
             return response.render("error.ejs");
         });
         // comparo lo que metio con la contra de la base de datos comapre me dice si son equivalentes
-        
+        /*
         bcrypt
           .compare(request.body.contraseña, rows[0].contraseña)
           .then((doMatch) => {
@@ -65,7 +70,7 @@ postLogin = (request, response, next) => {
           .catch((err) => {
             response.redirect("/login");
           });
-
+*/
       } else {
         console.log("el user o contra no existe");
         return response.render("error.ejs");
@@ -90,7 +95,7 @@ menu = (request, response, next) => {
 
 logout = (request, response, next) => {
   request.session.destroy(() => {
-      response.render(path.join('login','login.ejs')); //eliminar sesión 
+      response.redirect(path.join('user','login')); //eliminar sesión 
   });
 };
 
@@ -99,6 +104,5 @@ module.exports = {
   postLogin,
   menu,
   logout,
-  get_login
 };
 // en vistas poner if pasar arreglo de privilegios a la vista e ir comparando 

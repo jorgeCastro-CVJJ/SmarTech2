@@ -12,8 +12,8 @@ router.get('/login', userController.getLogin)
 
 router.post('/login', userController.postLogin);
 
-router.get('/inicio',  userController.menu);
-router.post('/inicio',  userController.menu);
+router.get('/inicio', isAuth, userController.menu);
+router.post('/inicio', isAuth, userController.menu);
 
 router.get('/logout', userController.logout)
 

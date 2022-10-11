@@ -24,6 +24,7 @@ app.use(
   session({
     secret: "jdfefwedewdwefsdsfsfsefewwfcvbjkygfvjm",
     resave: false, //La sesión no se guardará en cada petición, sino sólo se guardará si algo cambió
+    // cookie: {maxAge : 30000},
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
   })
   );
@@ -48,7 +49,10 @@ app.use("/tarea", rutasRegTarea);
 app.use("/user", rutaUsuario);
 app.use("/proyecto", rutasRegProyecto);
 app.use("/reporte",  rutasReporte);
-app.use('/', rutaUsuario);
+
+app.get('/', (request, response, next) => {
+  response.redirect("/user/login"); //Manda la respuesta
+})
 
 
 // ERROR 404
