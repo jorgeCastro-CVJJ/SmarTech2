@@ -1,6 +1,9 @@
 const path = require("path");
 const Usuario = require("../models/usuarioModel");
 const Proyecto = require("../models/proyectoModel");
+const { response } = require("express");
+const { request } = require("http");
+const bcrypt = require('bcryptjs');
 
 getLogin = (request, response, next) => {
   const Usuario = request.session.usuario ? request.session.usuario: '';
@@ -8,6 +11,14 @@ getLogin = (request, response, next) => {
     isLoggedIn: request.session.isLoggedIn ? request.session.isLoggedIn : false,
     usuario: Usuario
   });
+};
+
+
+get_login = (req, res, next) => {
+  response.render(path.join('login', 'login.ejs'), {
+    correo: request.session.correo ? request.session.correo: ''
+  })
+  console.log(request.session)
 };
 
 postLogin = (request, response, next) => {
@@ -35,9 +46,9 @@ postLogin = (request, response, next) => {
             return response.render("error.ejs");
         });
         // comparo lo que metio con la contra de la base de datos comapre me dice si son equivalentes
-        /*
+        
         bcrypt
-          .compare(request.body.nombre, rows[0].nombre)
+          .compare(request.body.contraseña, rows[0].contraseña)
           .then((doMatch) => {
             // si coincide creo mis variables de sesion y lo dirigio a nfomes
             if (doMatch) {
@@ -49,12 +60,12 @@ postLogin = (request, response, next) => {
             }
             // no existe
             else console.log("El usuario no existe");
-            return response.redirect("/user/login");
+            return response.redirect("/login");
           })
           .catch((err) => {
-            response.redirect("/user/login");
+            response.redirect("/login");
           });
-        */
+
       } else {
         console.log("el user o contra no existe");
         return response.render("error.ejs");
@@ -88,5 +99,6 @@ module.exports = {
   postLogin,
   menu,
   logout,
+  get_login
 };
 // en vistas poner if pasar arreglo de privilegios a la vista e ir comparando 

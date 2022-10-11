@@ -5,7 +5,6 @@ const path = require("path");
 const session = require("express-session");
 const csrf = require("csurf");
 const morgan = require("morgan");
-const isAuth = require('./util/isAuth.js');
 require('dotenv').config();
 
 // uso de librerias
@@ -18,7 +17,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan("combined"));
-app.use(express.urlencoded({extended:true}));
+// app.use(express.urlencoded({extended: false}));
 
 // cookies
 app.use(
@@ -28,6 +27,7 @@ app.use(
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
   })
   );
+  
   
   /* evitar mal uso de ruteo
 const csrfProtection = csrf();
@@ -39,15 +39,15 @@ app.use((request, response, next) => {
 });*/
 
 // rutas a utilizar
-const rutaUsuario = require("./routes/user.routes.js");
+const rutaUsuario = require("./routes/user.routes");
 const rutasRegTarea = require("./routes/regTarea.routes");
 const rutasRegProyecto = require("./routes/regProyecto.routes");
 const rutasReporte = require("./routes/reporte.routes");
 
-app.use("/tarea", isAuth, rutasRegTarea);
-app.use("/user",  rutaUsuario);
-app.use("/proyecto", isAuth, rutasRegProyecto);
-app.use("/reporte", isAuth, rutasReporte);
+app.use("/tarea", rutasRegTarea);
+app.use("/user", rutaUsuario);
+app.use("/proyecto", rutasRegProyecto);
+app.use("/reporte",  rutasReporte);
 app.use('/', rutaUsuario);
 
 
