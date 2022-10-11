@@ -2,7 +2,7 @@
 
 module.exports = (request, response, next) => {
   if (!request.session.isLoggedIn) {
-    return response.redirect("/login");
+    return response.status(403).redirect("/login");
   }
   next();
 };

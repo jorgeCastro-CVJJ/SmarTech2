@@ -1,14 +1,14 @@
-
-   <aside class="menu">
+<!-- MENU  -->
+    <aside class="menu">
       <ul class="menu-list">
         <div class="columns">
-          <div class="column">
+          <div class="column is-flex-direction-column">
             <div class="nombreUsuario"><%= nombreSesion %> </div>
-            <div class="row">
-              <img class="icon" src="/media/home-free-icon-font.png" alt="inicio" />
+            <div class="menu-label">
+              <img class="icon" src="../../public/media/home-free-icon-font.png" alt="inicio" />
               <a href="/user/inicio">Inicio</a>
             </div>
-            <div class="row">
+            <div class="menu-label">
               <img
                 class="icon"
                 src="/media/form-free-icon-font.png"
@@ -38,7 +38,7 @@
             <div class="row">
               <img
                 class="icon"
-                src="/media/agregar-archivo.png"
+                src="/media/document-free-icon-font.png"
                 alt="crear reporte"
               />
               <a href="/reporte/nuevoReporte">Reportes</a>
@@ -50,7 +50,7 @@
                 src="/media/exit-free-icon-font.png"
                 alt="cerrar sesión"
               />
-              <a href="/logout">Cerrar sesión</a>
+              <a href="/user/logout">Cerrar sesión</a>
             </div>
           </div>
         </div>

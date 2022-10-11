@@ -5,6 +5,8 @@ const path = require("path");
 const session = require("express-session");
 const csrf = require("csurf");
 const morgan = require("morgan");
+const isAuth = require('./util/isAuth.js');
+require('dotenv').config();
 
 // uso de librerias
 const app = express();
@@ -16,10 +18,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan("combined"));
-
-app.get("/", (request, response) => {
-  response.render("index")
-});
+app.use(express.urlencoded({extended:true}));
 
 // cookies
 app.use(
@@ -28,9 +27,9 @@ app.use(
     resave: false, //La sesión no se guardará en cada petición, sino sólo se guardará si algo cambió
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
   })
-);
-
-/* evitar mal uso de ruteo
+  );
+  
+  /* evitar mal uso de ruteo
 const csrfProtection = csrf();
 app.use(csrfProtection);
 
@@ -41,16 +40,16 @@ app.use((request, response, next) => {
 
 // rutas a utilizar
 const rutaUsuario = require("./routes/user.routes.js");
-app.use("/user", rutaUsuario);
-
 const rutasRegTarea = require("./routes/regTarea.routes");
-app.use("/tarea", rutasRegTarea);
-
 const rutasRegProyecto = require("./routes/regProyecto.routes");
-app.use("/proyecto", rutasRegProyecto);
-
 const rutasReporte = require("./routes/reporte.routes");
-app.use("/reporte", rutasReporte);
+
+app.use("/tarea", isAuth, rutasRegTarea);
+app.use("/user",  rutaUsuario);
+app.use("/proyecto", isAuth, rutasRegProyecto);
+app.use("/reporte", isAuth, rutasReporte);
+app.use('/', rutaUsuario);
+
 
 // ERROR 404
 app.use((request, response, next) => {
@@ -58,4 +57,5 @@ app.use((request, response, next) => {
   response.send("Error 404: El recurso solicitado no existe"); //Manda la respuesta
 });
 
-app.listen(5000);
+app.listen(process.env.PORT);
+console.log(`App is listening on ${process.env.PORT}`)
