@@ -19,7 +19,7 @@ function postProyecto(){
   let stackTecnologico = document.getElementById('stackTecnologico');
   let stakeholders = document.getElementById('stakeholders');
 
-  let ruta = "/proyecto/editarProyecto/";
+  let ruta = "/proyecto/registrarProyecto/";
   let data = {
     nombreP: nombreP.value,
     descripcion: descripcion.value,
@@ -52,10 +52,10 @@ function deshabilitar() {
   || document.getElementById("estatus").value==""
   || document.getElementById("stackTecnologico").value==""
   || document.getElementById("stakeholders").value=="") {
-    document.getElementById('submitbtn').disabled = true;
+    document.getElementById('submitProyectobtn').disabled = true;
   }
   else {
-    document.getElementById('submitbtn').disabled = false;
+    document.getElementById('submitProyectobtn').disabled = false;
   }
 }
 
@@ -106,13 +106,5 @@ console.log(ruta)
 
 
 
-
-document.getElementById('submitProyectobtn').onclick=postProyectoEditado;
 /*Llamada de funciones*/
-document.getElementById("submitbtn").onclick = postProyecto;
-document.getElementById("nombreP").onkeyup = deshabilitar;
-document.getElementById("descripcion").onkeyup = deshabilitar;
-document.getElementById("estatus").onkeyup = deshabilitar;
-document.getElementById("stackTecnologico").onkeyup = deshabilitar;
-document.getElementById("stakeholders").onkeyup = deshabilitar;
-document.getElementById ("agregarColaborador").onclick = agregarColaborador;
+document.getElementById('submitProyectobtn').onclick=postProyecto;

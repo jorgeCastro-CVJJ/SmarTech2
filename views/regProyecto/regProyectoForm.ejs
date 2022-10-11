@@ -8,7 +8,7 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <input class="input" type="text" placeholder="Escribe aqui" id="nombreP" name="nombreP">
+          <input class="input" type="text" placeholder="Escribe aqui"  onkeyup="deshabilitar()" id="nombreP" name="nombreP">
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <input class="input" type="text" placeholder="Escribe aqui" id="descripcion" name="descripcion">
+          <input class="input" type="text" placeholder="Escribe aqui" onkeyup="deshabilitar()" id="descripcion" name="descripcion">
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <input class="input" type="text" placeholder="Escribe aqui" id="estatus" name="estatus">
+          <input class="input" type="text" placeholder="Escribe aqui" onkeyup="deshabilitar()" id="estatus" name="estatus">
         </div>
       </div>
     </div>
@@ -59,7 +59,7 @@
                 <% } %>
               <% } %>
             </select>
-            <a class="button is-link is-outlined botonAgregarColaborador" id="agregarColaborador"> + </a>
+            <a class="button is-link is-outlined botonAgregarColaborador" onclick="agregarColaborador()" id="agregarColaborador"> + </a>
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <input class="input" type="text" placeholder="Escribe aqui" id="stackTecnologico" name="stackTecnologico">
+          <input class="input" type="text" placeholder="Escribe aqui" onkeyup="deshabilitar()" id="stackTecnologico" name="stackTecnologico">
         </div>
       </div>
     </div>
@@ -93,7 +93,7 @@
     <div class="field-body">
       <div class="field">
         <div class="control">
-          <input class="input" type="text" placeholder="Escribe aqui" id="stakeholders" name="stakeholders">
+          <input class="input" type="text" placeholder="Escribe aqui" onkeyup="deshabilitar()" id="stakeholders" name="stakeholders">
         </div>
       </div>
     </div>
@@ -101,7 +101,7 @@
 
   <div class="field is-grouped is-grouped-centered">
     <p class="control">
-      <input type="button" value="Agregar" disabled id= "submitbtn"
+      <input type="button" value="Agregar" disabled id= "submitProyectobtn" onclick="postProyecto()"
       class="button botonAgregarTarea is-success is-outlined">
     </p>
     

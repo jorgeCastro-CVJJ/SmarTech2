@@ -44,34 +44,14 @@ function eficiencia() {
     porcentajeEficiencia.innerHTML = parseInt(horasEsperadas * 1) * parseInt(proporcion * 1);
 }
 
-/*let totalHoras = 0;
-let celdasHorasReales = document.querySelectorAll('td + td');
-for (let i = 0; i < celdasHorasReales.length; i++){
-    total += parseInt(celdasHorasReales[i].firstChild.data);
-}
-let nuevaFila  = document.createElement('tr');
-let celdaTotal = document.createElement('td');
-let textoCeldaTotal = document.createTextNode('Total: ');
-celdaTotal.appendChild(textoCeldaTotal);
-nuevaFila.appendChild(celdaTotal);
-
-let celdaValorTotal = document.createElement('td');
-let textoCeldaValorTotal = document.createTextNode(total);
-celdaValorTotal.appendChild(textoCeldaValorTotal);
-nuevaFila.appendChild(celdaValorTotal);
-
-document.getElementById('table').appendChild(nuevaFila);*/
-
+/*Row de total*/
 window.addEventListener("load", function(){
     sumHoras();
 })
 
 function sumHoras(){
-    let totalHoras = 0;
-    const horasTrabajo = document.getElementById("horasTrabajo");
-    for (let i = 0; i < horasTrabajo.rows; i++){
-        console.log(horasTrabajo.rows[i]);
-    }
+    const sumHorasTrabajo = document.getElementById("sumHorasTrabajo").value;
+    var totalHoras = 0;
 }
 
 function postNuevoReporte() {
