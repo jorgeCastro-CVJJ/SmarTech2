@@ -6,7 +6,9 @@
                     <div class="field is-horizontal">
                         <h6>Fecha inicio: </h6>
                         <h6 style="margin-left: 800px;">Proporción: </h6> 
-                        <input class = "proporcion" type = "number" min = "0" onkeyup="eficiencia()" id = "proporcion" placeholder = "0.85">  
+                        <input class = "proporcion" type = "number" min = "0" 
+                        onkeyup="eficiencia()" onclick="eficiencia()" id = "proporcion" 
+                        placeholder = "0.85">  
                     </div>
                     <div class="field is-horizontal">
                         <h6>Fecha fin: </h6>
@@ -74,15 +76,10 @@
             <% for (let h of horas) { %>
                 <tr>
                     <td><%= h.nombreP %></td> 
-                    <td id = "horasTrabajo"><%= h.horasTrabajo %></td> 
+                    <td><input id = "horasTrabajo" type = "number" value="<%= h.horasTrabajo %>" readonly></td> 
                     <td><input value = "0" type="number" id = "horasReales" min = "0"></td>
                 </tr>
              <% } %>
-             <tr>
-                <td> <b> TOTAL </b> </td>
-                <td id = "sumHorasTrabajo"></td> 
-
-            </tr>
             
         </tbody>
         
