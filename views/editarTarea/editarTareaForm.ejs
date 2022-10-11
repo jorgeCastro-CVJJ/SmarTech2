@@ -35,7 +35,7 @@
           <% for (let t of tarea) { %>
             <li><%= t.nombre %> 
               <% if( tarea.length > 1) { %>
-                <a href="/tarea/eliminar/<%= t.ID %>"><img src="../../media/borrar.png" id="borrarColab"></a> 
+                <a href="/tarea/eliminar/<%= t.ID %>"><img src="../../media/menos.png" id="borrarColab"></a> 
               <% } %>
               </li>
           <% } %>
@@ -50,36 +50,13 @@
           <ul id="agregarColaboradores">
             <% for (let e of empleado) { %>
               <li><%= e.nombre %> 
-                  <a href="/tarea/asignar/<%= tarea[0].idTarea %>/empleado/<%= e.idEmpleado %>"><img src="../../media/agregar.webp" id="addColab"></a> 
+                  <a href="/tarea/asignar/<%= tarea[0].idTarea %>/empleado/<%= e.idEmpleado %>"><img src="../../media/mas.png" id="addColab"></a> 
                 </li>
             <% } %>
           </ul>
       </div>
       </div>
-              
-      <!-- <div class="row">
-        <div class="field-label is-normal">
-          <div class="field-body">
-            <div class="field is-narrow">
-              <div class="control">
-                <label class="label">Agregar Colaboradores</label>
-                <a class="button is-link is-outlined botonAgregarColaborador" onclick="agregarColaborador()" id="agregarColaborador"> + </a>
-                <div class="select is-fullwidth"> 
-                  <select name="nombre" id="nombre"> 
-                    <option value="" disabled selected> Selecciona a los colaboradores</option>   
-                    <% for (let e of empleado) { %>
-                      <% if (e.idEmpleado != idSesion){ %>
-                        <option value ="<%= e.idEmpleado %>"><%= e.nombre %></option>                       
-                      <% } %>
-                    <% } %>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>Si está en esta sección, se debe de quitar del dropdown.
-      <div class="divColaboradores" id="listaColabradores"></div>-->
+            
     
       <div class="field-label is-normal">
         <div class="labelt">
