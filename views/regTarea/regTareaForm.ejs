@@ -1,116 +1,86 @@
-<!-- en action ponemos la ruta-->
-
-<div class="field is-static">
-  <h1 class="titulo">Crear Tarea</h1>
-</div>
+<h1 class="tituloProyecto">Crear Tarea</h1>
 
 
-<div class="regTarea"> 
-<!--   
-  <form action="/tarea/registrarTarea" method="POST" class="regTareaForm"> -->
+<div class="contenedorTarea"> 
 
-
-    <div class="field-label is-normal"> 
-      <div class="labelt">
-        <div class="row">    
-              <label class="label">Proyecto al que pertence</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="field-body">
-          <div class="field is-narrow">
-            <div class="control">
-              <div class="input-field">
-                <input class="input" type="text" placeholder="Proyecto..." onkeyup="deshabilitarTarea()" name="nombreP" id="buscar">
-              </div>
-              <div id="listaProyectos">
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> 
-
-    <div class="field-label is-normal">
-      <div class="labelt">
-        <div class="row">
-          <label class="label">Nombre de tarea</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <input class="input" type="text" placeholder="Escribe aqui" onkeyup="deshabilitarTarea()" id="nombreT" name="nombreT">
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="field-label is-normal">
-          <div class="field-body">
-            <div class="field is-narrow">
-              <div class="control">
-                <label class="label">Colaboradores</label>
-                <a class="button is-link is-outlined botonAgregarColaborador" onclick="agregarColaborador()" id="agregarColaborador"> + </a>
-                <%= nombreSesion %>
-                <div class="select is-fullwidth"> 
-                  <select name="nombre" id="nombre"> 
-                    <option value="" disabled selected> Selecciona a los colaboradores</option>   
-                    <% for (let e of empleado) { %>
-                      <% if (e.idEmpleado != idSesion){ %>
-                        <option value ="<%= e.idEmpleado %>"><%= e.nombre %></option>                       
-                      <% } %>
-                    <% } %>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--- Si está en esta sección, se debe de quitar del dropdown.-->
-      <div class="divColaboradores" id="listaColabradores">
-
-      </div>
-    
-      <div class="field-label is-normal">
-        <div class="labelt">
-          <div class="row">
-            <label class="label">HORAS DE TRABAJO </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="field-body">
-            <div class="field">
-              <div class="field has-addons">
-                <div class="row">
-                  <p class="control">
-                    <input class="input is-danger" type="number" min="0" placeholder="1" onkeyup="deshabilitarTarea()" id="horasTrabajo" name="horasRegistradas">
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="field is-grouped is-grouped-centered">
-        <p class="control">
-          <input type="submit" onclick="postTarea()" value="Agregar" disabled id="submitTareabtn" 
-          class="button botonAgregarTarea is-success is-outlined">
-        </p>
-          
-            
-            <!-- <p class="control">
-              <input type="reset" value="Cancelar" class="button botonCancelarTarea is-danger is-outlined" >
-            </p> -->
-      </div>
-
+  <div class="field is-horizontal"> 
+    <div class="field-label is-normal">  
+      <label class="label">Proyecto al que pertence</label>
     </div>
-  <!-- </form> -->
-</div>        
+    <div class="field-body busqueda">
+      <div class="field">
+        <div class="control">
+          <input class="input" type="text" placeholder="Proyecto..." onkeyup="deshabilitarTarea()" name="nombreP" id="buscar">
+          <div id="listaProyectos"></div>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Nombre de tarea</label>
+    </div>
+    <div class="field-body nomTarea">
+      <div class="field">
+        <div class="control">
+          <input class="input" type="text" placeholder="Escribe aqui" onkeyup="deshabilitarTarea()" id="nombreT" name="nombreT">
+        </div>
+      </div>
+    </div>
+  </div>
+
+      
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Colaboradores</label>
+    </div>
+    <div class="field-body">
+      <div class="field is-narrow">
+        <div class="control nombresesion">
+          <%= nombreSesion %> </br>
+          <div class="select is-fullwidth"> 
+            <select name="nombre" id="nombre"> 
+              <option value="" disabled selected> Selecciona a los colaboradores</option>   
+              <% for (let e of empleado) { %>
+                <% if (e.idEmpleado != idSesion){ %>
+                  <option value ="<%= e.idEmpleado %>"><%= e.nombre %></option>                       
+                <% } %>
+              <% } %>
+            </select>
+            <a class="button is-link is-outlined botonAgregarColaboradorTarea" onclick="agregarColaborador()" id="agregarColaborador"> + </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divColaboradores" id="listaColabradores"></div>
+
+    
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">HORAS DE TRABAJO </label>
+    </div>
+    <div class="field-body horasT">
+      <div class="field">
+        <div class="field has-addons">
+          <p class="control">
+            <input class="input is-danger" type="number" min="0" placeholder="1" onkeyup="deshabilitarTarea()" id="horasTrabajo" name="horasRegistradas">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="field is-grouped is-grouped-centered">
+    <p class="control">
+      <input type="submit" onclick="postTarea()" value="Agregar" disabled id="submitTareabtn" class="button botonAgregarTarea is-success is-outlined">
+    </p>
+  </div>
+
+</div>
+      
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="/js/scriptRegTarea.js"></script>

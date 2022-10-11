@@ -57,6 +57,12 @@ body .menu{
   font-style: normal; */
 }
 
+.imagenMenu{
+  width: 100px;
+  margin-left: 55px;
+  margin-top: 10px;
+}
+
 .column a {
   color: #ffffff !important;
   padding-left: 140px;
@@ -217,6 +223,18 @@ html{
   width: 900px;
 }
 
+.busqueda,
+.nomTarea,
+.horasT{
+  margin-left: -40px;
+  margin-top: 10px;
+}
+
+.colabs{
+  margin-left: -100px;
+}
+
+
 .field-label label {
   width: 250px;
   display: flex;
@@ -234,6 +252,7 @@ html{
   border-radius: 7px;
   position: absolute;
 }
+
 
 
 .fecha{
@@ -272,7 +291,17 @@ html{
   font-weight: bold;
   font-size: 25px;
   color: black;
-  margin-left: 50%;
+  margin-left: 35%;
+  top: 65px;
+}
+.tituloProyecto{
+  position: fixed;
+  text-align: center;
+  font-family: var(--fuente);
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+  margin-left: 52%;
   top: 65px;
 
 }
@@ -296,16 +325,34 @@ html{
 
 .nombreUsuario {
   color: white;
+  margin-left: 10px;
+  margin-top: 25px;
 }
 
-.contenedorTarea {
-  /* padding-left: 35%;
-  display: block;
-  position: absolute; */
-  margin-left: 20%;
+
+.contenedorProyecto{
+  margin-left: 18%;
+  margin-top: 4%;
   width:max-content;
 }
 
+.contenedorTarea{
+  margin-left: 16%;
+  margin-top: 2%;
+}
+
+.nombresesion{
+  margin-left: -14%;
+}
+
+.botonAgregarColaboradorTarea{
+  margin-left: 108%;
+  margin-top: -12%;
+}
+
+.botonAgregarTarea{
+  margin-top: 30%;
+}
 .cartaProyectos {
   width: 600px; 
   margin-bottom: 80%;
@@ -458,18 +505,18 @@ html{
   color: white !important;
   padding-left: 20px;
   margin-top: 10px;
-  background-color:#be9943;
+  background-color: #47697d;
 }
 
 table tbody tr:nth-child(odd) {
-  color: #212B35  !important;
-  font-weight: bold;
-	background: #d0b580
+  color: white  !important;
+  font-weight: bolder;
+	background: #5989a5;
 }
 table tbody tr:nth-child(even) {
-  color:#212B35 !important;
-  font-weight: bold;
-	background: #ac9f68
+  color:white !important;
+  font-weight: bolder;
+	background: #6d9cb7;
 }
 
 .fechas_reporte {
@@ -486,7 +533,7 @@ table tbody tr:nth-child(even) {
 
 .tablahorasXtarea{
   margin-top: -135px;
-  margin-left: -530px;
+  margin-left: -450px;
 }
 
 .horasTotales{
@@ -538,7 +585,7 @@ table tbody tr:nth-child(even) {
 }
 
 #borrarColab{
-  max-width: 2.9%;
+  max-width: 3.5%;
   margin-left: 2%;
 }
 
