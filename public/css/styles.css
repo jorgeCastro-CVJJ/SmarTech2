@@ -225,9 +225,8 @@ html{
 }
 
 .botonTarea {
-  left: 72%;
-  top: 10%;
-  background-color: var(--azulSec1);
+  left: 165%;
+  top: -220%;
   color: white;
   border: none;
   width: 190px;
@@ -236,9 +235,6 @@ html{
   position: absolute;
 }
 
-.botonTarea:hover {
-  background-color: var(--azulSec2);
-}
 
 .fecha{
   text-align: right;
@@ -460,14 +456,20 @@ html{
 
 .table thead td, .table thead th {
   color: white !important;
-  background-color: var(--azulSec2);
+  padding-left: 20px;
+  margin-top: 10px;
+  background-color:#be9943;
 }
 
 table tbody tr:nth-child(odd) {
-	background: #07999e3d
+  color: #212B35  !important;
+  font-weight: bold;
+	background: #d0b580
 }
 table tbody tr:nth-child(even) {
-	background: #098c9063
+  color:#212B35 !important;
+  font-weight: bold;
+	background: #ac9f68
 }
 
 .fechas_reporte {
