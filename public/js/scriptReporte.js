@@ -34,14 +34,13 @@ function horasEsperadas() {
     }
 }
 
-
-
 /*En construcción*/
 function eficiencia() {
+    console.log("Funciona")
     const proporcion = document.getElementById("proporcion").value;
     const horasEsperadas = document.getElementById("horasEsperadas").value;
     const porcentajeEficiencia = document.getElementById("porcentajeEficiencia");
-    porcentajeEficiencia.innerHTML = parseInt(horasEsperadas * 1) * parseInt(proporcion * 1);
+    porcentajeEficiencia.innerHTML = parseInt(horasEsperadas * 1) + parseInt(proporcion * 1);
 }
 
 /*Row de total*/
@@ -50,8 +49,12 @@ window.addEventListener("load", function(){
 })
 
 function sumHoras(){
-    const sumHorasTrabajo = document.getElementById("sumHorasTrabajo").value;
-    var totalHoras = 0;
+    var horasTrabajo = document.getElementById("horasTrabajo").value;
+    horasTotales = 0;
+    for (i = 0; i < horasTrabajo; i++){
+
+        console.log(horasTrabajo.values);
+    }
 }
 
 function postNuevoReporte() {
