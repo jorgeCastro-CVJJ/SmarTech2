@@ -24,7 +24,7 @@ app.use(
   session({
     secret: "jdfefwedewdwefsdsfsfsefewwfcvbjkygfvjm",
     resave: false, //La sesión no se guardará en cada petición, sino sólo se guardará si algo cambió
-    // cookie: {maxAge : 30000},
+    cookie: {maxAge : 30000},
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
   })
   );

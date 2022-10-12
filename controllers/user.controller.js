@@ -14,16 +14,6 @@ getLogin = (request, response, next) => {
 };
 
 
-// get_login = (req, res, next) => {
-//   const Usuario = request.session.usuario ? request.session.usuario: '';
-//   response.render(path.join('login', 'login.ejs'), {
-//     isLoggedIn: request.session.isLoggedIn ? request.session.isLoggedIn: false,
-//     usuario: Usuario 
-//   })
-//   console.log(isLoggedIn)
-//   console.log(Usuario)
-// };
-
 postLogin = (request, response, next) => {
   // recuperar usuario busco si existe
   return Usuario.fetchOne(request.body.correo) // regresa el correo del usuario
@@ -95,7 +85,7 @@ menu = (request, response, next) => {
 
 logout = (request, response, next) => {
   request.session.destroy(() => {
-      response.redirect(path.join('user','login')); //eliminar sesión 
+      response.redirect(path.join('login')); //eliminar sesión 
   });
 };
 

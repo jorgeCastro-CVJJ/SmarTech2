@@ -103,9 +103,11 @@ getEditarProyecto = (request,response,next) => {
 }
 
 postEditarProyecto = (request, response, next) => {
-  Proyecto.fetchOne(request.params.idProyecto)
-  .then(([rowsProyecto,fieldata]) => {
-  })
+  Proyecto.updateProyecto(request.params.idProyecto, 
+    request.body.nombreP, request.body.descripcion, 
+    request.body.estatus, request.body.stackTecnologico, 
+    request.body.stakeholders)
+  response.status(200).redirect('/proyecto/misProyectos')
 }
 
 
@@ -145,5 +147,6 @@ module.exports = {
   getProyectosByUserID,
   getBuscar,
   getProyectosExistentes,
-  getEditarProyecto
+  getEditarProyecto,
+  postEditarProyecto,
 };
