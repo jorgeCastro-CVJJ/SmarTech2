@@ -4,6 +4,6 @@
 module.exports = (request, response, next) => {
     if (request.session.privilegios.indexOf('EliminarPersonas') != -1) {
         console.log(request.session.privilegios.indexOf('EliminarPersonas'))
-    } else {return response.status(403).redirect("/user/inicio");}
+    } else {return response.status(403).redirect("back");}
     next();
 };

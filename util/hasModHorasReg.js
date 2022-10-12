@@ -4,6 +4,6 @@
 module.exports = (request, response, next) => {
     if (request.session.privilegios.indexOf('ModHorasReg') != -1) {
         console.log(request.session.privilegios.indexOf('ModHorasReg'))
-    } else {return response.status(403).redirect("/user/inicio");}
+    } else {return response.status(403).redirect("back");}
     next();
 };
