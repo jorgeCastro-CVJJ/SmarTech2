@@ -2,8 +2,8 @@
 // existe pero no lo tiene, lo regresa 
 
 module.exports = (request, response, next) => {
-    if (request.session.privilegios.indexOf('RegNuevoProyecto') != -1) {
-        console.log(request.session.privilegios.indexOf('RegNuevoProyecto'))
+    if (request.session.privilegios.indexOf('ModificarTarea') != -1) {
+        console.log(request.session.privilegios.indexOf('ModificarTarea'))
     } else {return response.status(403).redirect("/user/inicio");}
     next();
 };

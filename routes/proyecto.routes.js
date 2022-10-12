@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const regProyectoController = require("../controllers/regProyecto.controller");
 const isAuth = require('../util/isAuth');
 const hasRegNuevoProyecto = require('../util/hasRegNuevoProyecto');
-
-const regProyectoController = require("../controllers/regProyecto.controller");
+const hasEditarProyecto = require("../util/hasEditarProyecto");
 
 router.get("/registrarProyecto", isAuth, hasRegNuevoProyecto, regProyectoController.getnuevoProyecto);
 router.post("/registrarProyecto", isAuth, hasRegNuevoProyecto, regProyectoController.postnuevoProyecto);
@@ -16,7 +16,7 @@ router.get("/buscar/:valor", isAuth, regProyectoController.getBuscar)
 
 router.get("/existente/:idProyecto", isAuth, regProyectoController.getProyectosExistentes)
 
-router.get("/editar/:idProyecto", isAuth, regProyectoController.getEditarProyecto)
-router.post("/editar/:idProyecto", regProyectoController.postEditarProyecto)
+router.get("/editar/:idProyecto", isAuth, hasEditarProyecto, regProyectoController.getEditarProyecto)
+router.post("/editar/:idProyecto", hasEditarProyecto, regProyectoController.postEditarProyecto)
 
 module.exports = router;

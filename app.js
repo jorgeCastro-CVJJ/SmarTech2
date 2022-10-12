@@ -41,8 +41,8 @@ app.use((request, response, next) => {
 
 // rutas a utilizar
 const rutaUsuario = require("./routes/user.routes");
-const rutasRegTarea = require("./routes/regTarea.routes");
-const rutasRegProyecto = require("./routes/regProyecto.routes");
+const rutasRegTarea = require("./routes/tarea.routes");
+const rutasRegProyecto = require("./routes/proyecto.routes");
 const rutasReporte = require("./routes/reporte.routes");
 
 app.use("/tarea", rutasRegTarea);
