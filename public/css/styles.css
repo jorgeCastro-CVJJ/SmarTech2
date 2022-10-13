@@ -704,7 +704,7 @@ table tbody tr:nth-child(even) {
 #reporteSemanal2 {
   position: absolute;
   left: 300px;
-  top: 450px;
+  top: 410px;
 }
 #cajaColabs{
   margin-right: 320px;
@@ -725,8 +725,4 @@ table tbody tr:nth-child(even) {
   max-width: 800px;
   margin-left: 30%;
   display: flexbox;
-}
-
-#nombreR {
-  top: 200%;
 }
