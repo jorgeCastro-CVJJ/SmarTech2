@@ -93,6 +93,10 @@ getBuscar = (request, response, next) => {
 };
 
 getHorasXtarea = async (request, response, next) => {
+    // regresar el mensaje
+    // let mensaje = request.session.mensaje ? request.session.mensaje : '';
+    //  request.session.mensaje = '';
+     
     let tareas;
     await Proyecto.horasTotales(request.params.idProyecto)
     .then( async ([rowsHoras, fielData]) => {
@@ -106,6 +110,8 @@ getHorasXtarea = async (request, response, next) => {
                 console.log(rowsHoras[0]);
                 tareas = rowsTarea;
                 proyecto = rowsHoras;
+                // regresar el mensaje
+                // mensaje =  mensaje;
             });
 
         response.render(path.join("horasXtarea", "horasXtarea.ejs"), {
@@ -159,12 +165,11 @@ postEditarTarea = (request, response, next) => {
         console.log(rowsTarea);
         Tarea.editarTablaTarea(rowsTarea[0].nombreT, rowsTarea[0].horasTrabajo, rowsTarea[0].idTarea)
         .then(() => {
-            response.redirect("/tarea/horasTarea/" + rowsTarea[0].idProyecto); 
-        })
-    })
-    .catch(err => {
-        console.log(err);
-    })
+            request.session.mensaje = "Tarea editada correctamente";
+            response.status(200).json({mensaje: "Listo"});
+            // mensaje de exit
+          }).catch(err => console.log(err)); 
+    }).catch(err => console.log(err));
 }
 
 borrarTarea = (request, response, next) => {
@@ -176,24 +181,6 @@ borrarTarea = (request, response, next) => {
         })
     })
 }
-
-// agregarColaborador = (request, response, next) => {
-//     Tarea.getIdTarea(request.params.id)
-//     .then(([rowsID, fielData]) => {
-//         Tarea.asignarColaborador(request.body.idEmpleado, rowsID[0].idTarea)
-//         .then(([rows, fielData]) => {
-//             for (colaborador of request.body.arrayColaboradores) {
-//                 console.log(colaborador);
-//                 let id_colaborador = colaborador;
-//                 Tarea.asignarColaborador(id_colaborador, rows[0].idTarea)
-//                 .then(()=>console.log("Tarea asignada a colaborador " + id_colaborador))
-//                 .catch(err=>console.log(err)); // recuperar antes el idTarea
-//             }   
-//             response.redirect("/tarea/editar/" + rowsID[0].idTarea); 
-//         })  
-//     })
-// }
-
 
 
 module.exports = {
