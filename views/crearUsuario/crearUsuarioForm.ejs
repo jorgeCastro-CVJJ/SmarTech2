@@ -1,0 +1,46 @@
+
+<!-- <div class="columns"> -->
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">From</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control">
+              <input class="input is-static" type="email" value="me@example.com" readonly>
+            </p>
+          </div>
+        </div>
+      </div>
+    <!-- <div class="column is-flex-direction"> -->
+            <h1 class="title"> Registar Nuevo Empleado</h1>
+        <form action="" method="POST">    
+        <fieldset>
+            <div class="filed is-horizontal">
+                <legend>Datos del usuario</legend>
+                <label for="nombre">Nombre Completo del Empleado</label><br>
+                <input class="input" placeholder="Helena Cobo Reyes" id="nombre" name="nombre" type="text" required>
+            </div>
+            <div class="field is-horizontal">
+                <label for="rol">Rol que tendrá el nuevo usuario</label>
+                <select class="select">
+                    <option>Selecciona un rol</option>
+                    <option></option>
+                    <option></option>
+                    <option></option>
+                </select>
+            </div>
+            <div class="filed is-horizontal">
+                <label for="nombre">Correo del Usuario</label><br>
+                <input class="input"  placeholder="helenacobo@tec.mx" id="correo" name="correo" type="email" required>
+            </div>
+            <div class="field is-horizontal">
+                <label for="password">Password</label><br>
+                <input class="input"  placeholder="*******" id="contraseña" name="contraseña" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+            </div>
+        </fieldset>
+        <br>
+        <input type="submit" class="btn" value="Registrar">
+        </form>
+    <!-- </div> -->
+<!-- </div> -->

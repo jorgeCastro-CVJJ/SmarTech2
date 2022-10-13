@@ -17,14 +17,14 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan("combined"));
-// app.use(express.urlencoded({extended: false}));
+
 
 // cookies
 app.use(
   session({
     secret: "jdfefwedewdwefsdsfsfsefewwfcvbjkygfvjm",
     resave: false, //La sesión no se guardará en cada petición, sino sólo se guardará si algo cambió
-    cookie: {maxAge : 30000},
+    cookie: {maxAge : 300000},
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
   })
   );
