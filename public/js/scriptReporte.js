@@ -49,11 +49,16 @@ window.addEventListener("load", function(){
 })
 
 function sumHoras(){
-    var horasTrabajo = document.getElementById("horasTrabajo").value;
+    const totalHorasTrabajo = document.getElementById("totalHorasTrabajo");
     horasTotales = 0;
-    for (i = 0; i < horasTrabajo; i++){
-
-        console.log(horasTrabajo.values);
+    horasTotales2 = 0;
+    for (let proyecto of nombreP){
+        let id = "horasTrabajo['" + proyecto + "']";
+        let id2 = "horasReales['" + proyecto + "']";
+        horasTotales += parseInt( document.getElementById(id).value );
+        horasTotales2 += parseInt( document.getElementById(id2).value ) * 1;
+        totalHorasTrabajo.innerHTML = horasTotales;
+        totalHorasReales.innerHTML = parseInt(horasTotales2);
     }
 }
 
