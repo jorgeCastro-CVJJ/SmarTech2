@@ -1,80 +1,83 @@
 const path = require("path");
 const Usuario = require("../models/usuarioModel");
 const Proyecto = require("../models/proyectoModel");
+const { response } = require("express");
+const { request } = require("http");
+const bcrypt = require('bcryptjs');
 const Reporte = require("../models/reporteModel");
 
 getLogin = (request, response, next) => {
-  const usuario = request.session.usuario ? request.session.usuario: '';
+  const Usuario = request.session.usuario ? request.session.usuario: '';
   response.render(path.join("login", "login.ejs"), {
-    isLoggedIn: request.session.isLoggedIn ? request.session.isLoggedIn : false,
-    usuario: usuario
+    isLoggedIn: request.session,
+    usuario: Usuario
   });
 };
-
-// exports.login = (request, response, next) => {
-//   if(RegNuevoProyecto in request.session.privilegios) {
-
-//   }
-// }
 
 postLogin = (request, response, next) => {
   // recuperar usuario busco si existe
   return Usuario.fetchOne(request.body.correo) // regresa el correo del usuario
     .then(([rows, fielData]) => {
-      console.log(rows[0].correo); // me da solo el correo 
+      // console.log(rows[0].correo); // me da solo el correo
+      // console.log(rows[0].contraseña); 
+
       request.session.nombreSesion = rows[0].nombre;
       nombreSesion = request.session.nombreSesion;
       request.session.idSesion = rows[0].idEmpleado;
       idSesion = request.session.idSesion;
+      // console.log(request.session.isLoggedIn)
+      
       // row me da solo una consulta
       if (rows.length == 1) {
-        Usuario.fetchPrivilegio(rows[0].correo) // me da una promesa
-          .then(( [rows, fielData]) => { // todas las filas de los privilegios
-            request.session.privilegios = []; 
-            for(privilegio of rows) {
-              request.session.privilegios.push(privilegio.descripcionPrivilegio); // crear un arreglo privilegios que tiene como llave el nombre del provilegio y el valor de true, con esto comparo si tiene el privilegio o no
+        console.log(request.body.contraseña, 'ex')
+        console.log(rows[0].contraseña)
+        bcrypt.compare(request.body.contraseña, rows[0].contraseña)
+          .then(doMatch => {
+            if (doMatch) {
+              request.session.isLoggedIn = true;
+              request.session.user = rows[0].nombre;
+              request.session.save(err => {
+                Usuario.fetchPrivilegio(rows[0].correo) 
+                  .then(( [rows, fielData]) => {
+                    request.session.privilegios = []; 
+                    for(privilegio of rows) {
+                      request.session.privilegios.push(privilegio.descripcionPrivilegio); // crear un arreglo privilegios que tiene como llave el nombre del provilegio y el valor de true, con esto comparo si tiene el privilegio o no
+                    }
+                    console.log(response.locals);
+                    return response.redirect("/user/inicio")
+                  })
+                  .catch(err => {
+                    response.render("error.ejs", {
+                      isLoggedIn: request.session.isLoggedIn ? request.session.isLoggedIn : false,
+                    })
+                  })
+                }) // termina .save          
+            } else {
+              console.log('El usuario o contraseña no existe')
+              return response.redirect('/user/login')
             }
-            console.log(response.locals);
-            //let listaPrivilegios = request.session.privilegios;  // <-- It's a test
-            //console.log(request.session.privilegios) // me da los privilegios
-            return response.redirect("/user/inicio");
-            //return response.render("index.ejs", {
-            //listaPrivilegios : listaPrivilegios});
+           //then doMatch 
+          
           })
           .catch((err) => {
             console.log(err);
             return response.render("error.ejs");
-        });
-        // comparo lo que metio con la contra de la base de datos comapre me dice si son equivalentes
-        /*
-        bcrypt
-          .compare(request.body.nombre, rows[0].nombre)
-          .then((doMatch) => {
-            // si coincide creo mis variables de sesion y lo dirigio a nfomes
-            if (doMatch) {
-              request.session.isLoggedIn = true;
-              request.session.user = rows[0].nombre;
-              return request.session.save((err) => {
-                response.redirect("/enviar/informes");
-              });
-            }
-            // no existe
-            else console.log("El usuario no existe");
-            return response.redirect("/user/login");
           })
-          .catch((err) => {
-            response.redirect("/user/login");
-          });
-        */
       } else {
         console.log("el user o contra no existe");
         return response.render("error.ejs");
       }
-    })
+    }) //Then Usuario fetchOne
     .catch((err) => {
       console.log(err);
       return response.render("error.ejs");
     });
+};
+
+logout = (request, response, next) => {
+  request.session.destroy(() => {
+    response.redirect(path.join('login')); //eliminar sesión 
+  });
 };
 
 menu = (request, response, next) => {
@@ -92,16 +95,35 @@ menu = (request, response, next) => {
   })
 };
 
-logout = (request, response, next) => {
-  request.session.destroy(() => {
-      response.redirect('/user/login'); //eliminar sesión 
-  });
+getCrearUsuario = (request, response, next) => {
+  let mensaje = request.session.mensaje ? request.session.mensaje : '';
+  request.session.mensaje = '';
+  response.render(path.join('CrearUsuario','CrearUsuario.ejs'), {
+    listaPrivilegios: request.session.privilegios,
+    mensaje: mensaje,
+  })
+};
+
+postCrearUsuario = (request, response, next) => {
+  console.log(request.body)
+  const nuevoUsuario = new Usuario(request.body.nombre, request.body.correo, request.body.contraseña)
+  console.log(nuevoUsuario)
+  nuevoUsuario.save()
+    .then(() => {
+      response.redirect('/user/crearUsuario');
+    })
+    .catch(err => {
+      console.log(err);
+      response.redirect('/user/inicio')
+    });
 };
 
 module.exports = {
   getLogin,
   postLogin,
-  menu,
   logout,
+  menu,
+  getCrearUsuario,
+  postCrearUsuario
 };
 // en vistas poner if pasar arreglo de privilegios a la vista e ir comparando 
