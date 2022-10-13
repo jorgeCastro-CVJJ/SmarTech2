@@ -1,6 +1,7 @@
 const path = require("path");
 const Usuario = require("../models/usuarioModel");
 const Proyecto = require("../models/proyectoModel");
+const Reporte = require("../models/reporteModel");
 
 getLogin = (request, response, next) => {
   const usuario = request.session.usuario ? request.session.usuario: '';
@@ -80,11 +81,13 @@ menu = (request, response, next) => {
   console.log(request.session.privilegios);
   Proyecto.fetchAll()
   .then(([rowsProyecto, fielData]) => {
-
-    return response.render(path.join("index", "index.ejs"), {
+    Reporte.fetchHoras()
+    .then(([rowsReporte, fieldData]) => {
+      return response.render(path.join("index", "index.ejs"), {
       listaPrivilegios: request.session.privilegios,
       proyecto: rowsProyecto,
-      
+      reporte: rowsReporte 
+      })
     });
   })
 };

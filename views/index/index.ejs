@@ -1,5 +1,7 @@
 <%- include('../templates/head.ejs') %>
 <%- include('../templates/menu.ejs') %>
-<%-include('indexView.ejs') %> 
+<%-include('indexView.ejs', {
+    reporte: reporte,
+}) %> 
 
 <%- include('../templates/footer.ejs') %>
