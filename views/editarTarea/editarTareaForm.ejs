@@ -8,6 +8,9 @@
 
 
 <div class="editarTarea"> 
+
+  <input class="input" type="hidden" value="<%= tarea[0].idProyecto %>" id="idProyecto" name="idProyecto">
+  <% console.log (tarea[0].idProyecto) %>
 <!--   
   <form action="/tarea/registrarTarea" method="POST" class="regTareaForm"> -->
 
@@ -81,7 +84,7 @@
 
       <div class="field is-grouped is-grouped-centered">
         <p class="control">
-          <input type="submit" onclick="postTareaEditada()" value="Agregar"
+          <input type="submit" onclick="postTareaEditada()" value="Guardar cambios"
           class="button botonAgregarTarea is-success is-outlined">
         </p>
       </div>
@@ -92,7 +95,8 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
-  function postTareaEditada(){
+function postTareaEditada(){
+  let idProyecto = document.getElementById("idProyecto")
   let nombreT = document.getElementById("nombreT");
   let horasRegistradas = document.getElementById("horasTrabajo");
   var pathArray = window.location.pathname.split('/');
@@ -100,21 +104,23 @@
   let data = {
     nombreT: nombreT.value,
     horasRegistradas: horasRegistradas.value,
-  }
-  console.log(data);
-  fetch(ruta, {
-    method: 'POST',
-    headers: {
+    idProyecto: idProyecto.value,
+    }
+    console.log(data);
+    fetch(ruta, {
+      method: 'POST',
+      headers: {
         'Content-Type': 'application/json'
-    },
-    body:JSON.stringify(data)
-  })
-.then(response => response.json())
-.then(response => {
-  window.location.href = '/tarea/horasTarea/';
-}).catch(err => {
+      },
+      body:JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(response => {
+      window.location = '/tarea/horasTarea/' + response.idProyecto; 
+  }).catch(err => {
     console.log(err);
-});
+  });
 }
 
 </script>
+
