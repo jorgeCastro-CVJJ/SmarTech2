@@ -286,13 +286,13 @@ html{
 }
 
 .titulo {
-  position: fixed;
+  position: absolute;
   text-align: center;
   font-family: var(--fuente);
   font-weight: bold;
   font-size: 25px;
   color: black;
-  margin-left: 35%;
+  margin-left: 52%;
   top: 65px;
 }
 .tituloProyecto{
@@ -507,16 +507,16 @@ html{
   font-weight: bold;
   padding-left: 20px;
   margin-top: 10px;
-  background-color: #96bed6;
+  background-color: #1D9C61;
 }
 
 table tbody tr:nth-child(odd) {
   color: #0F1C24  !important;
-	background: #ACCADC;
+	background: #1d9c6156;
 }
 table tbody tr:nth-child(even) {
   color:#0F1C24 !important;
-	background: #BDD6E5;
+	background: #1d9c61c0;
 }
 
 .fechas_reporte {
@@ -718,4 +718,15 @@ table tbody tr:nth-child(even) {
   padding-top: 150px;
   position:absolute;
   width: 900px;
+}
+
+#grafica{
+  position: absolute;
+  max-width: 800px;
+  margin-left: 30%;
+  display: flexbox;
+}
+
+#nombreR {
+  top: 200%;
 }

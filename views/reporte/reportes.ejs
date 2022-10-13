@@ -15,16 +15,19 @@
   <div class="titulo" style="top: 330px">Modificar reporte:</div>
 
   <p id="reporteSemanal2">Reporte semanal:</p>
- <div class="modificar">
-  
-  <div class="input-field is-horizontal">
-    
-      <p>Fecha inicio:</p>
-    <input id="fechaInicio" type="date">
-    
-    <p>Fecha fin:</p>
-      <input id="fechaFin" type="date">
-    </div>
+ 
+<div class="modificar">
+  <div class="field is-horizontal reportesExistentes">
+ <div class="select is-link seleccionarReporte">
+   <select name="nombreR" id="nombreR">
+     <option value="" disabled selected>Selecciona el reporte</option>
+         <% for (let r of reporte) { %>
+           <option value="<%= r.descripcion %>"><%= r.descripcion %></option>  
+         <% } %>
+   </select>
+
+ </div>
+</div>
 
 </div>
 
