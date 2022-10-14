@@ -23,11 +23,11 @@
               </button> -->
               <div class="input-field is-horizontal">
                 <p>Fecha inicio:</p>
-                <input id="fechaInicio" type="date">
+                <input id="fechaInicio" type="date" onclick = "validarFechas()">
               </div>
               <div class="input-field is-horizontal">
               <p>Fecha fin:</p>
-                <input id="fechaFin" type="date">
+                <input id="fechaFin" type="date" onclick = "validarFechas()">
               </div>
             </abbr></th>
             <th><abbr title="Horas">Horas</abbr></th>
@@ -93,8 +93,12 @@
           function validarFechas(){
             var fechaInicio = document.getElementById("FechaInicio");
             var fechaFin = document.getElementById("fechaFin");
-            if (Date.parse(fechaInicio) < Date.parse(fechaFin)){
-              alert("La fecha inicial debe ser menor a la fecha final")
+            if (Date.parse(fechaInicio) == Date.parse(fechaFin)){
+              console.log("La fecha inicial es igual a la fecha final");
+            }
+            else if(Date.parse(fechaInicio) > Date.parse(fechaFin)){
+              console.log("fechaI>fechaF");
+              alert("La fecha inicial debe ser menor a la fecha final");
             }
           }
       </script>
