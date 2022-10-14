@@ -27,8 +27,8 @@ module.exports = class Reporte {
     return db.execute('SELECT SUM(horasTrabajo) as horasTrabajo, nombreP FROM tarea T, proyecto P WHERE T.idProyecto = P.idProyecto GROUP BY nombreP');
   }
 
-  // static buscarReporteFecha(idSesion, fechaInicio, fechaFin) {
-  //   return db.execute('SELECT SUM(horasTrabajo) as horasTrabajo, nombreP FROM tarea T, proyecto P, empleado E WHERE E.idEmpleado = ? AND fecha BETWEEN ? AND ?', [idSesion, fechaInicio, fechaFin]);
-  // }
+  static buscarReporteFecha(fechaInicio, fechaFin) {
+    return db.execute('SELECT SUM(horasTrabajo) as horasTrabajo, nombreP FROM tarea T, proyecto P, empleado E, trabaja Tr WHERE T.idProyecto = P.idProyecto AND Tr.fecha BETWEEN ? AND ?', [fechaInicio, fechaFin]);
+  }
 
 }

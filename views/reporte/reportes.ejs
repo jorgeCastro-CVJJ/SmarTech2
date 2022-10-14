@@ -5,10 +5,11 @@
   <div class="input-field is-horizontal">
 
     <p>Fecha inicio:</p>
-    <input id="fechaInicio" type="date">
+    <input id="fechaInicio" type="date" value="">
+
   
   <p>Fecha fin:</p>
-    <input id="fechaFin" type="date">
+    <input id="fechaFin" type="date" value="">
   </div>
 </div>
 
@@ -31,4 +32,15 @@
 
 </div>
 
-  <a href="/reporte/crearReporte"><button class="boton_crearReporte">Crear reporte</button></a>
+  document.getElementById('btnCrearReporte').onclick = asyncFunc;
+</script>
+
+<script>
+  function handleReporteSelect(event)  {
+    window.location = "/reporte/existente/" + event.target.value;
+  }
+  //al path le añade el numero del proyecto, nombreP es una referencia al elemento que selecciona los datos
+  document.getElementById("btnCrearReporte").addEventListener('change', handleReporteSelect);
+</script>
+
+  <a href="/reporte/crearReporte"><button class="boton_crearReporte" id="btnCrearReporte">Crear reporte</button></a>
