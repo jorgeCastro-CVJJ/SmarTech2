@@ -5,7 +5,6 @@
 const $grafica = document.querySelector("#grafica");
 // Las etiquetas son las que van en el eje X. 
 const etiquetas = [ <% for (let r of reporte) { %> '<%= r.nombreP %>', <% } %> ];
-console.log(etiquetas);
 // Podemos tener varios conjuntos de datos. Comencemos con uno
 const eficienciaSemanal = {
     label: "Eficiencia semanal",
