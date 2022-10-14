@@ -89,6 +89,14 @@
           };
   
           document.getElementById('fechaFin').oninput = asyncFunc;
+
+          function validarFechas(){
+            var fechaInicio = document.getElementById("FechaInicio");
+            var fechaFin = document.getElementById("fechaFin");
+            if (Date.parse(fechaInicio) < Date.parse(fechaFin)){
+              alert("La fecha inicial debe ser menor a la fecha final")
+            }
+          }
       </script>
   
       <a href="/tarea/registrarTarea"><button class="button is-info botonTarea">Registrar nueva tarea</button></a>
