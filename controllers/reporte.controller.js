@@ -49,7 +49,7 @@ postReporte = (request, response, next) => {
 
 getBuscarReporte = (request, response, next) => {
 
-    Reporte.buscar(request.session.idSesion, request.params.fechaInicio, request.params.fechaFin)
+    Reporte.buscarReporteFecha(request.params.fechaInicio, request.params.fechaFin)
         .then(([rows, fieldData]) => {
             console.log("Los datos del reporte son:", rows)
             response.status(200).json({fecha: rows});
@@ -63,5 +63,6 @@ getBuscarReporte = (request, response, next) => {
 module.exports = {
     postnuevoReporte,
     getReportes,
-    postReporte
+    postReporte,
+    getBuscarReporte
 }
