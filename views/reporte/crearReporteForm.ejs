@@ -1,27 +1,32 @@
 <div class="titulo">Reporte semanal NatDev</div>
 
-        <div class="reporte">
             <div class="fechas_reporte">
                 <div class = "row">
-                    <div class="field is-horizontal">
+                    <div class="input-field is-normal">
                         <h6>Fecha inicio: </h6>
-                        <h6 style="margin-left: 800px;">Proporción: </h6> 
-                        <label class = "proporcion" type = "number" id = "proporcion" value = "0">0</label>
-                    </div>
-                    <div class = "field is-horizontal">
-                        <h6 style = "margin-left: 800px;">Porcentaje: </h6>
-                        <input class = "porcentaje" type = "number" id = "porcentaje"
-                        onkeyup="eficiencia()" onclick="eficiencia()" placeholder="0.85" value = "0.85">
-                    </div>
-                    <div class="field is-horizontal">
+                        <input id="fechaInicio" type="date">
                         <h6>Fecha fin: </h6>
-                        <h6 style="margin-left: 800px;">Verdadero porcentaje de eficiencia: </h6> 
-                        <label class = "porcentajeEficiencia" type = "number" id = "porcentajeEficiencia" value = "0">0</label>
+                        <input id="fechaFin" type="date">
+                        <h6>Número reporte: </h6>
                     </div>
-                    <h6>Número reporte: </h6>
                 </div>
             </div>
 
+            <div class="columns">
+                <div class="column">
+                    <div class="porcentajes">
+                        <h6>Porcentaje: </h6>
+                        <input class = "porcentaje" type = "number" id = "porcentaje"
+                        onkeyup="eficiencia()" onclick="eficiencia()" placeholder="0.85" value = "0.85">
+                        <h6>Verdadero porcentaje de eficiencia: </h6> 
+                        <label class = "porcentajeEficiencia" type = "number" id = "porcentajeEficiencia" value = "0">0</label>  
+                        
+                        <h6>Proporción: </h6> 
+                        <label class = "proporcion" type = "number" id = "proporcion" value = "0">0</label>
+                    </div>
+                </div>
+            </div>
+                
     <div class="columns">
         <div class="column">
             <div class="inputs_reporte">
@@ -63,7 +68,6 @@
             </div>
         </div>
     </div>
-</div>
 
     <table class="table" id="tabla_reporte">
         <thead>
@@ -75,7 +79,7 @@
         </thead>
 
         
-        <tbody> 
+        <tbody id="datos_tabla"> 
             <script>
                 const nombreP = new Array();
             </script>       
@@ -98,5 +102,46 @@
 
         <!--Botón de guardar-->
         <input type="submit" id = "reportebtn" value = "Guardar" onclick="postNuevoReporte()">
+
+        <script>
+            const asyncFunc = () => {
+                const fechaInicio = document.getElementById('fechaInicio').value;
+                const fechaFin = document.getElementById('fechaFin').value
+  
+                //función que manda la petición asíncrona
+                fetch('/reporte/buscar/' + fechaInicio + '/' + fechaFin, {
+                    method: 'GET',
+                }).then(result => {
+                    return result.json(); //Regresa otra promesa
+                }).then(data => {
+                    //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+                    console.log(data.fecha);
+                    let html = '';
+                    if (data.fecha.length > 0) {                 
+                      for(let f of (data.fecha)) {
+                        html += '<tr>';
+                        html += '<td>';
+                        html += f.nombreP;
+                        html += '</td>';
+                        html += '<td>';
+                        html += f.horasTrabajo;  
+                        html += '</td>'; 
+                        html += '<td>';
+                        html += '<input>';  
+                        html += '</td>'; 
+                        html += '</tr>';         
+                      };                 
+                    } else {
+                        html = '<h2>No hay proyectos registrados en el periodo seleccionado.</h2>';
+                    }
+                    document.getElementById("datos_tabla").innerHTML = html;
+                  
+                }).catch(err => {
+                    console.log(err);
+                });
+            };
+    
+            document.getElementById('fechaFin').oninput = asyncFunc;
+        </script>
 
 <script src="/js/scriptReporte.js"></script>
