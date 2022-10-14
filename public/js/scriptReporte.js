@@ -49,6 +49,7 @@ window.addEventListener("load", function(){
 })
 
 function sumHoras(){
+    const totalHorasTrabajo = document.getElementById("totalHorasTrabajo");
     var horasTrabajo = document.getElementById("horasTrabajo").value;
     horasTotales = 0;
     for (i = 0; i < horasTrabajo; i++){

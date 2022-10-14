@@ -47,6 +47,19 @@ postReporte = (request, response, next) => {
     });
 }
 
+getBuscarReporte = (request, response, next) => {
+
+    Reporte.buscar(request.session.idSesion, request.params.fechaInicio, request.params.fechaFin)
+        .then(([rows, fieldData]) => {
+            console.log("Los datos del reporte son:", rows)
+            response.status(200).json({fecha: rows});
+        })
+        .catch(err => { 
+            console.log(err);
+            response.status(500).json({message: "ERROR 500"});
+        });
+};
+
 module.exports = {
     postnuevoReporte,
     getReportes,
