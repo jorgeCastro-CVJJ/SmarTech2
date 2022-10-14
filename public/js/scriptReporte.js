@@ -37,10 +37,13 @@ function horasEsperadas() {
 /*En construcción*/
 function eficiencia() {
     console.log("Funciona")
-    const proporcion = document.getElementById("proporcion").value;
+    const proporcion = document.getElementById("proporcion");
     const horasEsperadas = document.getElementById("horasEsperadas").value;
+    const totalHorasReales = document.getElementById("totalHorasReales").value;
     const porcentajeEficiencia = document.getElementById("porcentajeEficiencia");
-    porcentajeEficiencia.innerHTML = parseInt(horasEsperadas * 1) + parseInt(proporcion * 1);
+    console.log(totalHorasReales);
+    proporcion.innerHTML = parseFloat(totalHorasReales) / parseFloat(horasEsperadas);
+    porcentajeEficiencia.innerHTML = parseFloat(proporcion * 1);
 }
 
 /*Row de total*/

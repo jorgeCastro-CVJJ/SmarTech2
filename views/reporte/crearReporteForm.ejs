@@ -6,9 +6,12 @@
                     <div class="field is-horizontal">
                         <h6>Fecha inicio: </h6>
                         <h6 style="margin-left: 800px;">Proporción: </h6> 
-                        <input class = "proporcion" type = "number" min = "0" 
-                        onkeyup="eficiencia()" onclick="eficiencia()" id = "proporcion" 
-                        placeholder = "0.85">  
+                        <label class = "proporcion" type = "number" id = "proporcion" value = "0">0</label>
+                    </div>
+                    <div class = "field is-horizontal">
+                        <h6 style = "margin-left: 800px;">Porcentaje: </h6>
+                        <input class = "porcentaje" type = "number" id = "porcentaje"
+                        onkeyup="eficiencia()" onclick="eficiencia()" placeholder="0.85" value = "0.85">
                     </div>
                     <div class="field is-horizontal">
                         <h6>Fecha fin: </h6>
