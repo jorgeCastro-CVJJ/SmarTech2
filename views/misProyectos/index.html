@@ -3,49 +3,194 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../../css/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../../public/css/styles.css" type="text/css" />
     <!-- Link Swiper's CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
     
-    <link rel="stylesheet" href="../../css/normalize.css" type="text/css"/>
+    <link rel="stylesheet" href="../../public/css/normalize.css" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-<link
-      rel="icon"
-      href="https://storage.googleapis.com/natgas/others/logos/natgas-logo-simple.png"
-      type="image/png"
-/>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-      
-    />
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-  </head>
-  <body class="proyecto">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://storage.googleapis.com/natgas/others/logos/natgas-logo-simple.png" type="image/png"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
-    <div class="slide-container">
-        <div class="slide-content">
-            <div class="card-wrapper">
-                <div class="cartita">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-                        <div class="card-content">
-                            <h2 class="title"> Titulo</h2>
-                            <p class="content"> The lorem text is the section that contains</p>
-                            <p class="content"> StakeHolders </p>
-                            <button class="button">Editar</button>
-                        </div>
-                    </div>
-                </div>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+  </head>
+  <body>
+<!-- MENU  -->
+
+    <aside class="menu">
+      <ul class="menu-list">
+        <div class="columns">
+          <div class="column is-flex-direction-column">
+            <div class="nombreUsuario"><%= nombreSesion %> </div>
+            <div class="menu-label">
+              <img class="icon" src="../../public/media/home-free-icon-font.png" alt="inicio" />
+              <a href="/user/inicio">Inicio</a>
             </div>
+            <div class="menu-label">
+              <img
+                class="icon"
+                src="/media/form-free-icon-font.png"
+                alt="proyectos"
+              />
+              <a href="/proyecto/misProyectos">Proyectos</a>
+            </div>
+            <div class="row">
+              <img
+                class="icon"
+                src="/media/list-check-free-icon-font.png"
+                alt="crear proyecto"
+              />
+              <a href="/tarea/misTareas">Mis Tareas</a>
+            </div>
+            <% if(listaPrivilegios.indexOf('RegNuevoProyecto') != -1) {  %>
+              <div class="row">
+                <img
+                  class="icon"
+                  src="/media/edit-free-icon-font.png"
+                  alt="tareas"
+                />
+                <a href="/proyecto/registrarProyecto">Crear Proyecto</a>
+              </div>
+              <% } %> 
+              <% if(listaPrivilegios.indexOf('RegHorasAusentes') != -1) {  %>
+            <div class="row">
+              <img
+                class="icon"
+                src="/media/document-free-icon-font.png"
+                alt="crear reporte"
+              />
+              <a href="/reporte/nuevoReporte">Reportes</a>
+            </div>
+            <% } %>
+            <div class="row">
+              <img
+                class="icon"
+                src="/media/exit-free-icon-font.png"
+                alt="cerrar sesión"
+              />
+              <a href="/user/logout">Cerrar sesión</a>
+            </div>
+          </div>
         </div>
-    </div>
-    
+        <!-- <li class="cerrarSesion">Cerrar Sesion</li> -->
+      </ul>
+    </aside>
+<!-- Termina MENU -->
+<!-- Inicia Página -->
+
+<% if(mensaje != "") {  %>
+
+  <div class="notification is-success is-light exitoTarea" >
+  Proyecto creado <strong>correctamente</strong>
+  </div>
+  
+<% } %>
+  
+  <div class="columns colProyecto">
+      <div class="column is-full">    
+          <h1 class="titulo-MisProyectos">Mis Proyectos</h1>
+          <br>
+          <br>  
+          <div class="field is-horizontal proyectoVista">
+              <div class="swiper mySwiper">
+                  <div class="swiper-wrapper">
+                      <% for (let p of misproyectos) { %>
+                          <% if (p.estatus != "Finalizado") { %>
+                              <div class="swiper-slide card" id="gris-clare">
+                                  <div class="card-content">
+                                      <div class="title" id="blanco">
+                                          <%= p.nombreP %>
+                                      </div>
+                                      <div class="subtitle" id="blanco">
+                                          <%= p.descripcion %>
+                                      </div>
+                                      <div class="content">
+                                          Stack Tecnológico: <%= p.stackTecnologico %> <br>
+                                          Estatus: <%= p.estatus%>
+                                          <a href="/proyecto/editar/<%= p.idProyecto %>"><img src="../../media/editar.png" id="editarProyecto"></a>
+                                          <a href="/proyecto/eliminar/<%= p.idProyecto %>"><img src="../../media/borrar.png" id="borrarProyecto"></a>
+                                          
+                                      </div>
+                                  </div> 
+                              </div>
+                          <% } %>
+                      <% } %>
+                  </div>
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-pagination"></div>
+              </div>
+          </div>
+          <br>
+          <div class="field is-horizontal">
+              <h1 class="titulo-medio">TODOS PROYECTOS</h1>
+          </div>
+          <br>
+          <div class="field is-horizontal proyectoVista">
+              <div class="swiper mySwiper">
+                  <div class="swiper-wrapper">
+                      <% for (let t of todosproyectos) { %>
+                          <% if (t.estatus != 'Finalizado') { %>
+                              <div class="swiper-slide card" id="azul">
+                                  <div class="card-content">
+                                      <div class="title" id="blanco">
+                                          <%= t.nombreP %>
+                                      </div>
+                                      <div class="subtitle" id="blanco">
+                                          <%= t.descripcion %>
+                                      </div>
+                                      <div class="content">
+                                          Stack Tecnológico: <%= t.stackTecnologico %> <br>
+                                          Estatus: <%= t.estatus%>
+                                      <% if(listaPrivilegios.indexOf('ModProyectos') != -1) {  %>
+                                          <a href="/proyecto/editar/<%= t.idProyecto %>"><img src="../../media/editar.png" id="editarProyecto"></a>
+                                          <a href="/proyecto/eliminar/<%= t.idProyecto %>"><img src="../../media/borrar.png" id="borrarProyecto"></a>
+                                      <% } %>
+                                      </div>
+                                  </div> 
+                              </div>
+                          <% } %>
+                      <% } %>
+                  </div>
+                  <div class="swiper-button-next derecha"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-pagination"></div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+var swiper = new Swiper(".mySwiper", {
+  slidesPerView: 2,
+  spaceBetween: 15,
+  slidesPerGroup: 2,
+  loop: true,
+  loopFillGroupWithBlank: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
+</script>
+Termina Página -->
+<!-- Inicia FOOTER -->
+<!-- <footer class="footer">
+    <img src="../media/logo.png" alt="logo de nat gas">
+</footer> -->
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </body>
 </html>
