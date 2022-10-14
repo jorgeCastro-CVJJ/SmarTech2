@@ -80,7 +80,7 @@
                 <tr>
                     <td><%= h.nombreP %></td> 
                     <td><input id = "horasTrabajo['<%= h.nombreP %>']" type = "number" value="<%= h.horasTrabajo %>" readonly></td> 
-                    <td><input value = "<%= h.horasTrabajo %>" type="number" id = "horasReales['<%= h.nombreP %>']" min = "0" onkeyup="sumHoras()" onclick="sumHoras()"></td>
+                    <td><input value = "<%= h.horasTrabajo %>" type="number" id = "horasReales['<%= h.nombreP %>']" min = "0" placeholder="0" onkeyup="sumHoras()" onclick="sumHoras()"></td>
                 </tr>
                 <script>
                     nombreP.push("<%= h.nombreP %>");
@@ -88,8 +88,8 @@
              <% } %>
             <tr>
                 <td><b>TOTAL</b></td>
-                <td id = "totalHorasTrabajo"></td>
-                <td id = "totalHorasReales"></td>
+                <td id = "totalHorasTrabajo" type = "number" value = "0"></td>
+                <td id = "totalHorasReales" type = "number"></td>
             </tr>
         </tbody>
         

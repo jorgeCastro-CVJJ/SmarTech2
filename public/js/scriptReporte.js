@@ -49,17 +49,18 @@ window.addEventListener("load", function(){
 })
 
 function sumHoras(){
-    const totalHorasTrabajo = document.getElementById("totalHorasTrabajo");
     horasTotales = 0;
     horasTotales2 = 0;
     for (let proyecto of nombreP){
         let id = "horasTrabajo['" + proyecto + "']";
         let id2 = "horasReales['" + proyecto + "']";
         horasTotales += parseInt( document.getElementById(id).value );
-        horasTotales2 += parseInt( document.getElementById(id2).value ) * 1;
+        horasTotales2 += parseInt( document.getElementById(id2).value );
         totalHorasTrabajo.innerHTML = horasTotales;
-        totalHorasReales.innerHTML = parseInt(horasTotales2);
+        totalHorasReales.innerHTML = parseInt(horasTotales2 * 1);
     }
+    console.log(typeof(totalHorasTrabajo));
+    console.log(typeof(totalHorasTotales));
 }
 
 function postNuevoReporte() {
