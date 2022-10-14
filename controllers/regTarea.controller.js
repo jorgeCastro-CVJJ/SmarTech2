@@ -159,18 +159,26 @@ getEditarTarea = (request, response, next) => {
  
 postEditarTarea = (request, response, next) => {
     Tarea.getUnaTarea(request.params.idTarea)
-    .then(([rowsTarea,fielData]) => {
-        rowsTarea[0].nombreT = request.body.nombreT,
-        rowsTarea[0].horasTrabajo = request.body.horasRegistradas,
-        console.log(rowsTarea);
-        Tarea.editarTablaTarea(rowsTarea[0].nombreT, rowsTarea[0].horasTrabajo, rowsTarea[0].idTarea)
-        .then(() => {
-            request.session.mensaje = "Tarea editada correctamente";
-            response.status(200).json({mensaje: "Listo"});
-            // mensaje de exit
-          }).catch(err => console.log(err)); 
-    }).catch(err => console.log(err));
-}
+        .then(([rowsTarea, fielData]) => {
+            (rowsTarea[0].nombreT = request.body.nombreT),
+                (rowsTarea[0].horasTrabajo = request.body.horasRegistradas),
+                //console.log(rowsTarea);
+                Tarea.editarTablaTarea(
+                    rowsTarea[0].nombreT,
+                    rowsTarea[0].horasTrabajo,
+                    rowsTarea[0].idTarea
+                )
+                    .then(([rowsTarea, fielData]) => {
+                        response
+                            .status(200)
+                            // manda el id del proyecto
+                            .json({ mensaje: 'Tarea editada correctamente', idProyecto: rowsTarea[0].idProyecto });
+                        // mensaje de exit
+                    })
+                    .catch((err) => console.log(err));
+        })
+        .catch((err) => console.log(err));
+};
 
 borrarTarea = (request, response, next) => {
     Tarea.getIdBorrar(request.params.idTarea)

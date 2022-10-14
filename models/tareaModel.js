@@ -56,8 +56,17 @@ module.exports = class Tarea {
     return db.execute('SELECT * FROM tarea as T, ejecuta as E, empleado as Em WHERE T.idTarea = E.idTarea AND Em.idEmpleado = E.idEmpleado AND T.idTarea = ?', [idTarea]);
   }
 
-  static editarTablaTarea(nombreT, horasTrabajo, idTarea){
-    return db.execute('UPDATE tarea SET nombreT = ? , horasTrabajo = ? WHERE idTarea = ?', [nombreT, horasTrabajo, idTarea])
+  static async editarTablaTarea(nombreT, horasTrabajo, idTarea) {
+    try {
+        await db.execute(
+            'UPDATE tarea SET nombreT = ? , horasTrabajo = ? WHERE idTarea = ?',
+            [nombreT, horasTrabajo, idTarea]
+        );
+        const editted = await db.execute('SELECT idProyecto from tarea WHERE idTarea = ?', [idTarea])
+        return editted;
+    } catch (error) {
+        console.log(error);
+    }
   }
 
   static getUnaTarea(idTarea){

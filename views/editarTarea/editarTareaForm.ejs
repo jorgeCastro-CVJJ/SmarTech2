@@ -10,9 +10,6 @@
 <div class="editarTarea"> 
 
   <input class="input" type="hidden" value="<%= tarea[0].idProyecto %>" id="idProyecto" name="idProyecto">
-  <% console.log (tarea[0].idProyecto) %>
-<!--   
-  <form action="/tarea/registrarTarea" method="POST" class="regTareaForm"> -->
 
     <div class="field-label is-normal">
       <div class="labelt">
@@ -104,7 +101,7 @@ function postTareaEditada(){
   let data = {
     nombreT: nombreT.value,
     horasRegistradas: horasRegistradas.value,
-    idProyecto: idProyecto.value,
+    idProyecto: idProyecto.value
     }
     console.log(data);
     fetch(ruta, {
@@ -116,6 +113,7 @@ function postTareaEditada(){
     })
     .then(response => response.json())
     .then(response => {
+      console.log(response);
       window.location = '/tarea/horasTarea/' + response.idProyecto; 
   }).catch(err => {
     console.log(err);
