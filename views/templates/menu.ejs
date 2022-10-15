@@ -1,62 +1,98 @@
 
-   <aside class="menu">
+  <aside class="menu">
+      <div class="row">
+        <img class="imagenMenu" src="/media/logo.png" alt="logoNatGas" />
+      </div>
+      <p class="menu-label" >
+        <%= nombreSesion %>
+      </p>
       <ul class="menu-list">
-        <div class="columns">
-          <div class="column">
-            <div class="row">
-              <img class="imagenMenu" src="/media/logo.png" alt="logoNatGas" />
-            </div>
-            <div class="nombreUsuario"><%= nombreSesion %> </div>
-            <div class="row">
-              <img class="icon" src="/media/home-free-icon-font.png" alt="inicio" />
-              <a href="/user/inicio">Inicio</a>
-            </div>
-            <div class="row">
-              <img
-                class="icon"
-                src="/media/form-free-icon-font.png"
-                alt="proyectos"
-              />
-              <a href="/proyecto/misProyectos">Proyectos</a>
-            </div>
-            <div class="row">
-              <img
-                class="icon"
-                src="/media/list-check-free-icon-font.png"
-                alt="crear proyecto"
-              />
-              <a href="/tarea/misTareas">Mis Tareas</a>
-            </div>
-            <% if(listaPrivilegios.indexOf('RegNuevoProyecto') != -1) {  %>
-              <div class="row">
-                <img
-                  class="icon"
-                  src="/media/crear.png"
-                  alt="tareas"
-                />
-                <a href="/proyecto/registrarProyecto">Crear Proyecto</a>
-              </div>
-              <% } %> 
-              <% if(listaPrivilegios.indexOf('RegHorasAusentes') != -1) {  %>
-            <div class="row">
-              <img
-                class="icon"
-                src="/media/contrato.png"
-                alt="crear reporte"
-              />
-              <a href="/reporte/nuevoReporte">Reportes</a>
-            </div>
-            <% } %>
-            <div class="row">
-              <img
-                class="icon cerrarSesionIcon"
-                src="/media/exit-free-icon-font.png"
-                alt="cerrar sesión"
-              />
-              <a href="/user/logout">Cerrar sesión</a>
-            </div>
-          </div>
-        </div>
-        <!-- <li class="cerrarSesion">Cerrar Sesion</li> -->
+        <li><a href="/user/inicio"><img class="icon icon-us" src="/media/home-free-icon-font.png" alt="inicio" />Inicio</a></li>
+      </ul>
+      <p class="menu-label">
+        Empleados
+      </p>
+      <ul class="menu-list">
+        <li><a href="/user/crearUsuario"><img class="icon icon-us" src="/media/crear_usuario.svg" alt="Registrar Empleado" />Registrar Empleado</a></li>
+        <li><a href="/user/crearUsuario"><img class="icon icon-us" src="/media/ver_empleados.svg" alt="inicio" />Ver Empleados</a></li>
+      </ul>
+      <p class="menu-label">
+        Proyectos
+      </p>
+      <ul class="menu-list">
+        <li><a href="/proyecto/misProyectos"><img class="icon icon-us" src="/media/form-free-icon-font.png" alt="MisProyectos"/>Mis Proyectos</a></li>
+        <li><a href="/proyecto/registrarProyecto"><img class="icon icon-us" src="/media/crear.png" alt="Crear Proyectos"/>Crear Proyecto</a></li>
+      </ul>
+      <p class="menu-label">
+        Tareas
+      </p>
+      <ul class="menu-list">
+        <li><a href="/tarea/misTareas"><img class="icon icon-us" src="/media/mis_tareas.svg" alt="Mis Tareas"/>Mis Tareas</a></li>
+        <li><a href="/tarea/registrarTarea"><img class="icon icon-us" src="/media/nueva_tarea.svg" alt="Registrar Tarea"/>Registrar Tarea</a></li>
+      </ul>
+      <p class="menu-label">
+        Reportes
+      </p>
+      <ul class="menu-list">
+        <li><a href="/reporte/nuevoReporte"><img class="icon icon-us" src="/media/contrato.png" alt="Crear Reporte"/>Crear Reporte</a></li>
+      </ul>
+      <p class="menu-label">
+        
+      </p>
+      <ul class="menu-list cerrarSesion">
+        
+        <li><a href="/user/logout"><img class="icon icon-us" src="/media/exit-free-icon-font.png" alt="Cerrar Sesión"/>Cerrar Sesión</a></li>
       </ul>
     </aside>
+<!-- 
+    <div class="columns">
+      <div class="column">
+        <div class="row  menu-item-hover-red">
+        </div>
+        <div class="row">
+          <img
+            class="icon"
+            src="/media/form-free-icon-font.png"
+            alt="proyectos"
+          />
+          <a href="/proyecto/misProyectos">Proyectos</a>
+        </div>
+        <div class="row">
+          <img
+            class="icon"
+            src="/media/list-check-free-icon-font.png"
+            alt="crear proyecto"
+          />
+          <a href="/tarea/misTareas">Mis Tareas</a>
+        </div>
+        <% if(listaPrivilegios.indexOf('RegNuevoProyecto') != -1) {  %>
+          <div class="row">
+            <img
+              class="icon"
+              src="/media/crear.png"
+              alt="tareas"
+            />
+            <a href="/proyecto/registrarProyecto">Crear Proyecto</a>
+          </div>
+          <% } %> 
+          <% if(listaPrivilegios.indexOf('RegHorasAusentes') != -1) {  %>
+        <div class="row">
+          <img
+            class="icon"
+            src="/media/contrato.png"
+            alt="crear reporte"
+          />
+          <a href="/reporte/nuevoReporte">Reportes</a>
+        </div>
+        <% } %>
+        <div class="row">
+          <img
+            class="icon cerrarSesionIcon"
+            src="/media/exit-free-icon-font.png"
+            alt="cerrar sesión"
+          />
+          <a href="/user/logout">Cerrar sesión</a>
+        </div>
+      </div>
+    </div> -->
+  
