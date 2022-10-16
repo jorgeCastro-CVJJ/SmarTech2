@@ -93,6 +93,10 @@ getBuscar = (request, response, next) => {
 };
 
 getHorasXtarea = async (request, response, next) => {
+    // regresar el mensaje
+    // let mensaje = request.session.mensaje ? request.session.mensaje : '';
+    //  request.session.mensaje = '';
+     
     let tareas;
     await Proyecto.horasTotales(request.params.idProyecto)
     .then( async ([rowsHoras, fielData]) => {
@@ -106,6 +110,8 @@ getHorasXtarea = async (request, response, next) => {
                 console.log(rowsHoras[0]);
                 tareas = rowsTarea;
                 proyecto = rowsHoras;
+                // regresar el mensaje
+                // mensaje =  mensaje;
             });
 
         response.render(path.join("horasXtarea", "horasXtarea.ejs"), {
@@ -153,19 +159,27 @@ getEditarTarea = (request, response, next) => {
  
 postEditarTarea = (request, response, next) => {
     Tarea.getUnaTarea(request.params.idTarea)
-    .then(([rowsTarea,fielData]) => {
-        rowsTarea[0].nombreT = request.body.nombreT,
-        rowsTarea[0].horasTrabajo = request.body.horasRegistradas,
-        console.log(rowsTarea);
-        Tarea.editarTablaTarea(rowsTarea[0].nombreT, rowsTarea[0].horasTrabajo, rowsTarea[0].idTarea)
-        .then(() => {
-            response.redirect("/tarea/horasTarea/" + rowsTarea[0].idProyecto); 
+        .then(([rowsTarea, fielData]) => {
+            (rowsTarea[0].nombreT = request.body.nombreT),
+                (rowsTarea[0].horasTrabajo = request.body.horasRegistradas),
+                //console.log(rowsTarea);
+                Tarea.editarTablaTarea(
+                    rowsTarea[0].nombreT,
+                    rowsTarea[0].horasTrabajo,
+                    rowsTarea[0].idTarea
+                )
+                    .then(([rowsTarea, fielData]) => {
+                        
+                        response
+                            .status(200)
+                            // manda el id del proyecto
+                            .json({ mensaje: 'Tarea editada correctamente', idProyecto: rowsTarea[0].idProyecto });
+                        // mensaje de exit
+                    })
+                    .catch((err) => console.log(err));
         })
-    })
-    .catch(err => {
-        console.log(err);
-    })
-}
+        .catch((err) => console.log(err));
+};
 
 borrarTarea = (request, response, next) => {
     Tarea.getIdBorrar(request.params.idTarea)
@@ -176,24 +190,6 @@ borrarTarea = (request, response, next) => {
         })
     })
 }
-
-// agregarColaborador = (request, response, next) => {
-//     Tarea.getIdTarea(request.params.id)
-//     .then(([rowsID, fielData]) => {
-//         Tarea.asignarColaborador(request.body.idEmpleado, rowsID[0].idTarea)
-//         .then(([rows, fielData]) => {
-//             for (colaborador of request.body.arrayColaboradores) {
-//                 console.log(colaborador);
-//                 let id_colaborador = colaborador;
-//                 Tarea.asignarColaborador(id_colaborador, rows[0].idTarea)
-//                 .then(()=>console.log("Tarea asignada a colaborador " + id_colaborador))
-//                 .catch(err=>console.log(err)); // recuperar antes el idTarea
-//             }   
-//             response.redirect("/tarea/editar/" + rowsID[0].idTarea); 
-//         })  
-//     })
-// }
-
 
 
 module.exports = {
