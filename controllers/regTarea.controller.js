@@ -169,6 +169,7 @@ postEditarTarea = (request, response, next) => {
                     rowsTarea[0].idTarea
                 )
                     .then(([rowsTarea, fielData]) => {
+                        
                         response
                             .status(200)
                             // manda el id del proyecto
