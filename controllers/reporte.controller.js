@@ -71,7 +71,7 @@ getPDF = async(request, responde, next) => {
     doc.pipe(fs.createWriteStream('reporteSemanal.pdf'));
 
     doc
-        .image("logo.png", 50, 45, {width: 50})
+        .image("../public/media/logo.png", 50, 45, {width: 50})
         .fillColor("#4444444")
         .fontSize(20)
         .text("Prueba", 110, 57)
