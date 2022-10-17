@@ -49,17 +49,20 @@
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Total de personal</label>
-                    <div type = "number" id= "totalPersonal" min = "0" value = "0">0</div> 
+                    <div type = "number" id= "totalPersonal" min = "0" value = "0"
+                    pattern="^[0-9]+" oninput="this.value = Math.max(this.value, 0)">0</div> 
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Horas Esperadas</label>
-                    <div type = "number" id= "horasEsperadas" min = "0" value = "0">0</div>
+                    <div type = "number" id= "horasEsperadas" min = "0" value = "0"
+                    pattern="^[0-9]+" oninput="this.value = Math.max(this.value, 0)">0</div>
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Horas de Vacaciones</label>
                     <input class = "input" type = "number" min = "0"
                     onkeyup="horasEsperadas()" onclick="horasEsperadas()"
-                    value = "0" id= "horasVacaciones">  
+                    value = "0" id= "horasVacaciones" pattern="^[0-9]+"
+                    oninput="this.value = Math.max(this.value, 0)">  
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Descripcion</label>
