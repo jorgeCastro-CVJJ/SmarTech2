@@ -28,7 +28,7 @@ module.exports = class Reporte {
   }
 
   static buscarReporteFecha(fechaInicio, fechaFin) {
-    return db.execute('SELECT DISTINCT SUM(horasTrabajo) as horasTrabajo, nombreP FROM tarea T, proyecto P, trabaja Tr WHERE T.idProyecto = P.idProyecto AND Tr.fecha BETWEEN ? AND ? GROUP BY nombreP', [fechaInicio, fechaFin]);
+    return db.execute('SELECT SUM(horasTrabajo) as horasTrabajo, nombreP FROM tarea T, proyecto P, trabaja Tr WHERE T.idProyecto = P.idProyecto AND Tr.fecha BETWEEN ? AND ? GROUP BY nombreP', [fechaInicio, fechaFin]);
   }
 
 }

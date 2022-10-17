@@ -51,8 +51,11 @@ getBuscarReporte = (request, response, next) => {
 
     Reporte.buscarReporteFecha(request.params.fechaInicio, request.params.fechaFin)
         .then(([rows, fieldData]) => {
-            console.log("Los datos del reporte son:", rows)
-            response.status(200).json({fecha: rows});
+            Reporte.fetchReporte()
+            .then(([rowsRep, fieldData]) => {
+                 console.log("Los datos del reporte son:", rows)
+            response.status(200).json({fecha: rows, reporte: rowsRep});
+            })
         })
         .catch(err => { 
             console.log(err);

@@ -495,22 +495,10 @@ html{
   margin-top: -650px;
 }
 
-.inputs_reporte {
-  position: absolute;
-  left: 35%;
-  width: 600px;
-  margin-top: 50px;
-}
-
 .porcentajes {
   position: absolute;
   margin-left: 55%;
   top: 136px;
-}
-
-#tabla_reporte {
-  top: 830px;
-  left: 32%;
 }
 
 .table thead td, .table thead th {
@@ -775,4 +763,17 @@ th,td {
 #dataTables_scrollBody {
   position: absolute;
   margin-left: 90%;
+}
+
+#tabla_reporte_wrapper {
+  position: absolute;
+  top: 700px;
+  left: 35%;
+}
+
+.inputs_reporte {
+  position: absolute;
+  left: 35%;
+  width: 600px;
+  margin-top: 2px;
 }
