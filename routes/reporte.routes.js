@@ -9,4 +9,6 @@ router.post("/registrarReporte", isAuth,reporteController.postReporte);
 
 router.get('/buscar/:fechaInicio/:fechaFin', isAuth, reporteController.getBuscarReporte);
 
+router.get("/existente/:descripcion", isAuth, reporteController.getReporteExistente)
+
 module.exports = router;

@@ -63,9 +63,28 @@ getBuscarReporte = (request, response, next) => {
         });
 };
 
+getReporteExistente = (request, response, next) =>{
+    Reporte.fetchReporte()
+    .then(([rowsReporte, fielData]) =>{
+        Reporte.fetchHoras() 
+            .then(([rowsHoras, fieldData]) => {
+                response.render(path.join('reporte', 'reportesExistentes.ejs'), {
+                reporteN: rowsReporte,
+                horas: rowsHoras,
+                listaPrivilegios: request.session.privilegios,
+            })
+           
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  };
+
 module.exports = {
     postnuevoReporte,
     getReportes,
     postReporte,
-    getBuscarReporte
+    getBuscarReporte,
+    getReporteExistente
 }
