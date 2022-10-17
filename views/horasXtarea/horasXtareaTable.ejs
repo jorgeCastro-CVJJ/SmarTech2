@@ -17,7 +17,6 @@
     <thead>
       <tr>
         <th>Tarea</th>
-        <th>Fecha</th>
         <th>Horas</th>
         <th>Colaboradores</th>
         <th> Editar </th>
@@ -28,7 +27,6 @@
       <% for (let t of tarea) { %>
       <tr>
         <td><%= t.nombreT %></td>
-        <td><%= new Date(t.fecha).toLocaleString('ES-mx'); %></td>
         <td id="horasTrabajo"><%= t.horasTrabajo %></td>
         <br>
         <td>

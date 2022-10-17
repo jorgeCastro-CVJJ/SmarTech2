@@ -93,10 +93,9 @@ module.exports = class Tarea {
     return db.execute ('SELECT * from tarea WHERE idTarea = ?', [idTarea]);
   }
 
-  
-  // static Borrar(idTarea){
-  //   return db.execute('DELETE FROM tarea WHERE idTarea = ? ; DELETE FROM ejecuta WHERE idTarea = ?', [idTarea]);
-  // }
+  static asignarColaborador(idEmpleado, idTarea) {
+    return db.execute('INSERT INTO ejecuta (idEmpleado, idTarea) VALUES (?,?)', [idEmpleado, idTarea]);
+  }
 
 };
 

@@ -41,9 +41,8 @@ postnuevaTarea = (request, response, next) => {
             Tarea.asignarColaborador(request.session.idSesion, rows[0].idTarea)
               .then(()=>console.log("Tarea asignada a colaborador " + request.session.idSesion))
               .catch(err=>console.log(err));
-            console.log(request.body.arrayColaboradores);
+            
             for (colaborador of request.body.arrayColaboradores) {
-              console.log(colaborador);
               let id_colaborador = colaborador;
               Tarea.asignarColaborador(id_colaborador, rows[0].idTarea)
                 .then(()=>console.log("Tarea asignada a colaborador " + id_colaborador))
@@ -102,17 +101,15 @@ getHorasXtarea = async (request, response, next) => {
     .then( async ([rowsHoras, fielData]) => {
         await Proyecto.getTareas(request.params.idProyecto)
             .then( async ([rowsTarea, fillData]) => {
-                console.log(rowsTarea);
                 for(let tarea of rowsTarea){
                     [rowsColab, fieldData] = await Tarea.getColaboradores(tarea.idTarea);
                     tarea.colaboradores = rowsColab;
                 }
-                console.log(rowsHoras[0]);
                 tareas = rowsTarea;
                 proyecto = rowsHoras;
-                // regresar el mensaje
-                // mensaje =  mensaje;
             });
+
+        console.log(tareas);
 
         response.render(path.join("horasXtarea", "horasXtarea.ejs"), {
             tarea: tareas,
@@ -132,13 +129,11 @@ borrarColaborador = (request, response, next) => {
 }
 
 agregarColaborador = (request, response, next) => {
-    Tarea.getIdTareaAgregarColab(request.params.idTarea)
-    .then(([rows, fielData]) => {
-        Tarea.asignarColaborador(request.params.idEmpleado, request.params.idTarea)
+    
+    Tarea.asignarColaborador(request.params.idEmpleado, request.params.idTarea)
         .then(() => {
-            response.redirect("/tarea/editar/" + rows[0].idTarea);
-        })
-    })
+            response.redirect("/tarea/editar/" + request.params.idTarea);
+        });
 }
 
 getEditarTarea = (request, response, next) => {
