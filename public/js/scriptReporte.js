@@ -98,3 +98,35 @@ function postNuevoReporte() {
         console.log(err);
     });
 }
+
+//Creacion de reporte
+function getPDF() {
+    let proporcion = document.getElementById("proporcion");
+    let horasVacaciones = document.getElementById('horasVacaciones');
+    let personalCompletoT = document.getElementById('personalCompletoT');
+    let personalMedioT = document.getElementById('personalMedioT');
+    let descripcion = document.getElementById('descripcion');
+
+    let ruta = "/reporte/registrarReporte";
+    let data = {
+        proporcion: proporcion.value,
+        horasVacaciones: horasVacaciones.value,
+        personalCompletoT: personalCompletoT.value,
+        personalMedioT: personalMedioT.value,
+        descripcion: descripcion.value
+    }
+    console.log(data);
+    fetch(ruta, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(response => {
+    window.location.href = '/reporte/nuevoReporte';
+    }).catch(err => {
+        console.log(err);
+    });
+}

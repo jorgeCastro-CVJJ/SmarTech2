@@ -4,6 +4,8 @@ const Tarea  = require("../models/tareaModel");
 const Empleado = require("../models/empleadoModel");
 const Usuario = require("../models/usuarioModel");
 const Reporte = require("../models/reporteModel");
+const PDF = require("pdfkit");
+const fs = require("fs");
 
 postnuevoReporte = (request, response, next) => {
     Reporte.fetchHoras()
@@ -63,9 +65,28 @@ getBuscarReporte = (request, response, next) => {
         });
 };
 
+getPDF = async(request, responde, next) => {
+    const doc = new PDF();
+
+    doc.pipe(fs.createWriteStream('reporteSemanal.pdf'));
+
+    doc
+        .image("logo.png", 50, 45, {width: 50})
+        .fillColor("#4444444")
+        .fontSize(20)
+        .text("Prueba", 110, 57)
+        .fontSize(10)
+        .text("Texto1", 200, 65, {align: "right"})
+        .text("Texto2", 200, 80, {align: "right"})
+        .moveDown();
+
+    doc.end();
+}
+
 module.exports = {
     postnuevoReporte,
     getReportes,
     postReporte,
-    getBuscarReporte
+    getBuscarReporte,
+    getPDF
 }
