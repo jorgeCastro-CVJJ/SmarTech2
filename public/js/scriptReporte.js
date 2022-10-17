@@ -59,6 +59,7 @@ function sumHoras(){
     for (let proyecto of nombreP){
         let id = "horasTrabajo['" + proyecto + "']";
         let id2 = "horasReales['" + proyecto + "']";
+        console.log(nombreP);
         horasTotales += parseInt( document.getElementById(id).value );
         horasTotales2 += parseInt( document.getElementById(id2).value );
         totalHorasTrabajo.innerHTML = horasTotales;
@@ -101,32 +102,5 @@ function postNuevoReporte() {
 
 //Creacion de reporte
 function getPDF() {
-    let proporcion = document.getElementById("proporcion");
-    let horasVacaciones = document.getElementById('horasVacaciones');
-    let personalCompletoT = document.getElementById('personalCompletoT');
-    let personalMedioT = document.getElementById('personalMedioT');
-    let descripcion = document.getElementById('descripcion');
 
-    let ruta = "/reporte/registrarReporte";
-    let data = {
-        proporcion: proporcion.value,
-        horasVacaciones: horasVacaciones.value,
-        personalCompletoT: personalCompletoT.value,
-        personalMedioT: personalMedioT.value,
-        descripcion: descripcion.value
-    }
-    console.log(data);
-    fetch(ruta, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body:JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(response => {
-    window.location.href = '/reporte/nuevoReporte';
-    }).catch(err => {
-        console.log(err);
-    });
 }
