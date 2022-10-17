@@ -13,29 +13,19 @@
       <div class="field is-horizontal">
         <h1 class="titulo" style="margin-left: 35%;">Mis tareas</h1>
       </div>
-      <table class="table">
+
+      
+      <table id="table_f">
         <thead>
           <tr>
             <th><abbr title="Proyecto">Proyecto</abbr></th>
             <th><abbr title="Tarea">Tarea</abbr></th>
-            <th><abbr title="Fecha">
-              <!-- <button class="js-modal-trigger" data-target="filtro_fechas"><img src="../../media/filtrar (1).png" width="20px"; height="20px">
-              </button> -->
-              <div class="input-field is-horizontal">
-                <p>Fecha inicio:</p>
-                <input id="fechaInicio" type="date" onclick = "validarFechas()">
-              </div>
-              <div class="input-field is-horizontal">
-              <p>Fecha fin:</p>
-                <input id="fechaFin" type="date" onclick = "validarFechas()">
-              </div>
-            </abbr></th>
+            <th><abbr title="Fecha">Fecha</abbr></th>
             <th><abbr title="Horas">Horas</abbr></th>
           </tr>
         </thead>
 
-    <div class="section"> 
-      <tbody id="lista_fechas">        
+      <tbody>        
         <% for (let t of tarea) { %>
           <tr>
             <td><%= t.nombreP %></td>
@@ -45,63 +35,38 @@
           </tr>
           <% } %>
       </tbody>
-    </div>
-
-        <script>
-          const asyncFunc = () => {
-              const fechaInicio = document.getElementById('fechaInicio').value;
-              const fechaFin = document.getElementById('fechaFin').value
-
-              //función que manda la petición asíncrona
-              fetch('/tarea/buscar/' + fechaInicio + '/' + fechaFin, {
-                  method: 'GET',
-              }).then(result => {
-                  return result.json(); //Regresa otra promesa
-              }).then(data => {
-                  //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
-                  console.log(data.fecha);
-                  let html = '';
-                  if (data.fecha.length > 0) {                 
-                    for(let f of (data.fecha)) {
-                      html += '<tr>';
-                      html += '<td>';
-                      html += f.nombreP;
-                      html += '</td>';
-                      html += '<td>';
-                      html += f.nombreT;
-                      html += '</td>';
-                      html += '<td>';
-                      html += new Date(f.fecha).toLocaleString('ES-mx');
-                      html += '</td>';
-                      html += '<td>';
-                      html += f.horasTrabajo;  
-                      html += '</td>'; 
-                      html += '</tr>';         
-                    };                 
-                  } else {
-                      html = '<h2>No hay tareas registradas en el periodo seleccionado.</h2>';
-                  }
-                  document.getElementById("lista_fechas").innerHTML = html;
-                
-              }).catch(err => {
-                  console.log(err);
-              });
-          };
   
-          document.getElementById('fechaFin').oninput = asyncFunc;
 
-          function validarFechas(){
-            var fechaInicio = document.getElementById("FechaInicio");
-            var fechaFin = document.getElementById("fechaFin");
-            if (Date.parse(fechaInicio) == Date.parse(fechaFin)){
-              console.log("La fecha inicial es igual a la fecha final");
-            }
-            else if(Date.parse(fechaInicio) > Date.parse(fechaFin)){
-              console.log("fechaI>fechaF");
-              alert("La fecha inicial debe ser menor a la fecha final");
-            }
-          }
-      </script>
+<script>
+  $(document).ready( function () {
+$('#table_f').DataTable({
+                language: {
+                    processing: "Tratamiento en curso...",
+                    search: "Buscar&nbsp;:",
+                    lengthMenu: "Agrupar de _MENU_ items",
+                    info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+                    infoEmpty: "No existen datos.",
+                    infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                    infoPostFix: "",
+                    loadingRecords: "Cargando...",
+                    zeroRecords: "No se encontraron datos con tu búsqueda.",
+                    emptyTable: "No hay datos disponibles en la tabla.",
+                    paginate: {
+                        first: "Primero",
+                        previous: "Anterior",
+                        next: "Siguiente",
+                        last: "Último"
+                    },
+                    aria: {
+                        sortAscending: ": active para ordenar la columna en orden ascendente",
+                        sortDescending: ": active para ordenar la columna en orden descendente"
+                    }
+                },
+                scrollY: 450,
+                lengthMenu: [ [10, 25, -1], [10, 25, "All"] ],
+            });
+  } );
+</script>
   
       <a href="/tarea/registrarTarea"><button class="button is-info botonTarea">Registrar nueva tarea</button></a>
     </div>

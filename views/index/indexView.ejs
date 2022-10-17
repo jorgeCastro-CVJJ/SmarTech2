@@ -7,7 +7,7 @@ const $grafica = document.querySelector("#grafica");
 const etiquetas = [ <% for (let r of reporte) { %> '<%= r.nombreP %>', <% } %> ];
 // Podemos tener varios conjuntos de datos. Comencemos con uno
 const eficienciaSemanal = {
-    label: "Eficiencia semanal",
+    label: "Horas por proyecto",
     data: [ <% for (let n of reporte) { %> <%= n.horasTrabajo %>,  <% } %> ], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
     backgroundColor: '#049B4E', // Color de fondo
    // Color del borde

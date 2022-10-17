@@ -248,8 +248,8 @@ html{
 }
 
 .botonTarea {
-  left: 165%;
-  top: -220%;
+  left: 250%;
+  margin-top: -280px;
   color: white;
   border: none;
   width: 190px;
@@ -518,16 +518,16 @@ html{
   font-weight: bold;
   padding-left: 20px;
   margin-top: 10px;
-  background-color: #1D9C61;
+  /* background-color: #1D9C61; */
 }
 
 table tbody tr:nth-child(odd) {
   color: #0F1C24  !important;
-	background: #1d9c6156;
+	background: #078caa56; 
 }
 table tbody tr:nth-child(even) {
   color:#0F1C24 !important;
-	background: #1d9c61c0;
+  background: #08b3da1e;
 }
 
 .fechas_reporte {
@@ -638,7 +638,7 @@ table tbody tr:nth-child(even) {
 }
 
 .swiper-pagination {
-  paddin-top:100px;
+  padding-top:100px;
   position: static !important;
 }
 
@@ -649,7 +649,7 @@ table tbody tr:nth-child(even) {
 
 .card .image {
   position: fixed;
-  right: !important; 
+  /* right: !important;  */
 }
 
 #azul{
@@ -739,4 +739,40 @@ table tbody tr:nth-child(even) {
   max-width: 800px;
   margin-left: 30%;
   display: flexbox;
+}
+
+#table_f_wrapper {
+  position: absolute;
+  left: 30%;
+  top: 18%;
+} 
+
+#table_f {
+  /* margin-top: 100px; */
+  /* width: 600px; */
+  box-shadow: 10px 10px 8px #8888888d;
+}
+
+th,td {
+  padding: 0.6rem !important;
+}
+
+/* #table_f_filter, #table_f_length{
+  position: absolute;
+  top: 20px;
+}  */
+
+#table_f_filter {
+  position: absolute;
+  left: 600px;
+  top: -13px;
+}
+
+#table_f_length {
+  top: -13px;
+}
+
+#dataTables_scrollBody {
+  position: absolute;
+  margin-left: 90%;
 }
