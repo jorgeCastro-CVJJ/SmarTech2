@@ -53,7 +53,7 @@ static buscar(valor) {
 }
 
 static getTareas(idProyecto) {
-  return db.execute('SELECT DISTINCT T.idTarea, P.nombreP, T.nombreT, EJ.fecha, T.horasTrabajo FROM tarea as T, ejecuta as EJ, proyecto as P WHERE T.idTarea = EJ.idTarea AND P.idProyecto = T.idProyecto AND T.idProyecto = ?', [idProyecto])
+  return db.execute('SELECT DISTINCT T.idTarea, P.nombreP, T.nombreT, T.horasTrabajo FROM tarea as T, ejecuta as EJ, proyecto as P WHERE T.idTarea = EJ.idTarea AND P.idProyecto = T.idProyecto AND T.idProyecto = ?', [idProyecto])
 }
 
 static horasTotales(idProyecto){
