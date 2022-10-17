@@ -15,8 +15,12 @@ module.exports = class Reporte {
     }
 
     static fetchReporte() {
-       return db.execute("SELECT proporcion, horasVacaciones, personalCompletoT, personalMedioT, descripcion FROM reporteFinal")
+       return db.execute("SELECT noReporte, proporcion, horasVacaciones, personalCompletoT, personalMedioT, descripcion FROM reporteFinal")
     }
+
+  //   static fetchOne(descripcion) {
+  //     return db.execute("SELECT proporcion, horasVacaciones, personalCompletoT, personalMedioT, descripcion FROM reporteFinal WHERE descripcion = ?", [descripcion])
+  //  }
 
   //   static fetchHorasReporte(idSesion, fechaInicio, fechaFinal) {
   //    return db.execute('SELECT fechaInicio, fechaFinal FROM reporteFinal WHERE fechaInicio ? AND fechaFinal ?', [idSesion, fechaInicio, fechaFinal])
