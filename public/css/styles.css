@@ -249,7 +249,7 @@ html{
 
 .botonTarea {
   left: 12%;
-  margin-top: -280px;
+  margin-top: -250px;
   color: white;
   border: none;
   width: 190px;
@@ -731,7 +731,7 @@ table tbody tr:nth-child(even) {
 
 #table_f_wrapper {
   position: absolute;
-  left: 30%;
+  left:32%;
   top: 24%;
 } 
 
