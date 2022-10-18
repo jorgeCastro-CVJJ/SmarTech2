@@ -380,8 +380,8 @@ html{
   position: absolute;
   width: 290px;
   height: 61px;
-  left: 680px;
-  top: 30px;
+  left: 50%;
+  top: 50px;
 
   font-family: var(--fuente);
   font-style: normal;
@@ -395,7 +395,7 @@ html{
 .imagenExistente {
   position: absolute;
   width: 450px;
-  left: 550px;
+  left: 40%;
   top: 120px;
 }
 
@@ -404,8 +404,8 @@ html{
   text-align: center;
   width: 758px;
   height: 84px;
-  left: 395px; 
-  top: 420px; 
+  left:29%; 
+  top: 380px; 
 
   font-family: var(--fuente);
   font-style: normal;
@@ -421,7 +421,7 @@ html{
   /* width: 244px; */
   height: 30px;
   left: 415px;
-  top: 500px;
+  top: 450px;
 
   font-family: var(--fuente);
   font-style: normal;
@@ -437,7 +437,7 @@ html{
   /* width: 244px; */
   height: 30px;
   left: 415px;
-  top: 570px;
+  top: 520px;
 
   font-family: var(--fuente);
   font-style: normal;
@@ -453,7 +453,7 @@ html{
   /* width: 244px; */
   height: 30px;
   left: 415px;
-  top: 640px;
+  top: 590px;
 
   font-family: var(--fuente);
   font-style: normal;
@@ -469,7 +469,7 @@ html{
   /* width: 244px; */
   height: 30px;
   left: 415px;
-  top: 710px;
+  top: 660px;
 
   font-family: var(--fuente);
   font-style: normal;
@@ -481,13 +481,13 @@ html{
 }
 
 .botonRegreso{
-  top:400px;
-  left: 750px;
+  top:-350px;
+  left: 30px;
 }
 
 .botonDetalles{
-  top:400px;
-  left: 450px;
+  top:-290px;
+  left: -70px;
 }
 
 .idProyectoE{
@@ -531,17 +531,17 @@ table tbody tr:nth-child(even) {
 }
 
 .tablahorasXtarea{
-  margin-top: -135px;
-  margin-left: -450px;
+  margin-top: 50px;
+  margin-left: 10px;
 }
 
 .horasTotales{
-  margin-top: -250px;
-  margin-left: 415px;
+  margin-top: -230px;
+  margin-left: 450px;
 }
 
 .seleccionarProyecto{
-  top: 10px;
+  top: 90px;
   left: -80px;
 }
 
@@ -728,6 +728,7 @@ table tbody tr:nth-child(even) {
   position: absolute;
   max-width: 800px;
   margin-left: 30%;
+  margin-top: 3%;
   display: flexbox;
 }
 
@@ -826,3 +827,42 @@ th,td {
   to {top: 0; opacity: 0;}
 }
 
+.botonRegreso2{
+  top:-350px;
+  left: -640px;
+}
+
+.tituloBienvenida{
+  position: absolute;
+  font-family: var(--fuente);
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+  margin-left: 43%;
+  top: 65px;
+}
+
+.mensajeB2{
+  position: absolute;
+  font-family: var(--fuente);
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+  margin-left: 46%;
+  top: 15%;
+}
+
+.mensajeGrafica{
+  position: absolute;
+  font-family: var(--fuente);
+  font-style: italic;
+  font-size: 15px;
+  color: black;
+  margin-left: 32%;
+  top: 25%;
+
+}
+
+.labelPE{
+  top: 80px;
+}
