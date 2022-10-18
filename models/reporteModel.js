@@ -2,27 +2,26 @@ const db = require("../util/database");
 const bcrypt = require("bcryptjs");
 
 module.exports = class Reporte {
-    constructor(noReporte, proporcion, horasVacaciones, personalCompletoT, personalMedioT, descripcion, fechaInicio, fechaFin) {
-        this.noReporte = noReporte,
-        this.proporcion = proporcion,
+    constructor(porcentaje, horasVacaciones, personalCompletoT, personalMedioT, descripcion, fechaInicio, fechaFinal) {
+        this.porcentaje = porcentaje,
         this.horasVacaciones = horasVacaciones, 
         this.personalCompletoT = personalCompletoT,
         this.personalMedioT = personalMedioT,
         this.descripcion = descripcion,
         this.fechaInicio = fechaInicio,
-        this.fechaFin = fechaFin
+        this.fechaFinal = fechaFinal
     };
 
     save() {
-        return db.execute('INSERT INTO reporteFinal (proporcion, horasVacaciones, personalCompletoT, personalMedioT, descripcion, fechaInicio, fechaFin) VALUES (?,?,?,?,?, ?, ?)', [this.proporcion, this.horasVacaciones, this.personalCompletoT, this.personalMedioT, this.descripcion, this.fechaInicio, this.fechaFin]);
+        return db.execute('INSERT INTO reporteFinal (porcentaje, horasVacaciones, personalCompletoT, personalMedioT, descripcion, fechaInicio, fechaFinal) VALUES (?,?,?,?,?, ?, ?)', [this.porcentaje, this.horasVacaciones, this.personalCompletoT, this.personalMedioT, this.descripcion, this.fechaInicio, this.fechaFinal]);
     }
 
     static fetchReporte() {
-       return db.execute("SELECT noReporte, proporcion, horasVacaciones, personalCompletoT, personalMedioT, descripcion FROM reporteFinal")
+       return db.execute("SELECT porcentaje, horasVacaciones, personalCompletoT, personalMedioT, descripcion FROM reporteFinal")
     }
 
      static fetchOne(noReporte) {
-       return db.execute("SELECT noReporte, proporcion, horasVacaciones, personalCompletoT, personalMedioT, descripcion FROM reporteFinal WHERE noReporte = ?", [noReporte])
+       return db.execute("SELECT noReporte, porcentaje, horasVacaciones, personalCompletoT, personalMedioT, descripcion FROM reporteFinal WHERE noReporte = ?", [noReporte])
     }
 
   //   static fetchHorasReporte(idSesion, fechaInicio, fechaFinal) {
@@ -34,8 +33,8 @@ module.exports = class Reporte {
     return db.execute('SELECT SUM(horasTrabajo) as horasTrabajo, nombreP FROM tarea T, proyecto P WHERE T.idProyecto = P.idProyecto GROUP BY nombreP');
   }
 
-  static buscarReporteFecha(fechaInicio, fechaFin) {
-    return db.execute('SELECT SUM(horasTrabajo) as horasTrabajo, nombreP FROM tarea T, proyecto P, trabaja Tr WHERE T.idProyecto = P.idProyecto AND Tr.fecha BETWEEN ? AND ? GROUP BY nombreP', [fechaInicio, fechaFin]);
+  static buscarReporteFecha(fechaInicio, fechaFinal) {
+    return db.execute('SELECT SUM(horasTrabajo) as horasTrabajo, nombreP FROM tarea T, proyecto P, trabaja Tr WHERE T.idProyecto = P.idProyecto AND Tr.fecha BETWEEN ? AND ? GROUP BY nombreP', [fechaInicio, fechaFinal]);
   }
 
 }

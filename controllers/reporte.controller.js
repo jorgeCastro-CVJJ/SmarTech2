@@ -38,7 +38,7 @@ getReportes = (request, response, next) => {
 }
 
 postReporte = (request, response, next) => {
-    const nuevoReporte = new Reporte(request.body.proporcion, request.body.horasVacaciones, request.body.personalCompletoT, request.body.personalMedioT, request.body.descripcion, request.body.fechaInicio, request.body.fechaFin);
+    const nuevoReporte = new Reporte(request.body.porcentaje, request.body.horasVacaciones, request.body.personalCompletoT, request.body.personalMedioT, request.body.descripcion, request.body.fechaInicio, request.body.fechaFinal);
     console.log(nuevoReporte);
     nuevoReporte.save()
     .then(() => {
@@ -51,7 +51,7 @@ postReporte = (request, response, next) => {
 
 getBuscarReporte = (request, response, next) => {
 
-    Reporte.buscarReporteFecha(request.params.fechaInicio, request.params.fechaFin)
+    Reporte.buscarReporteFecha(request.params.fechaInicio, request.params.fechaFinal)
         .then(([rows, fieldData]) => {
             Reporte.fetchReporte()
             .then(([rowsRep, fieldData]) => {
