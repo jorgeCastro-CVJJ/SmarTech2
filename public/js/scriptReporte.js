@@ -75,13 +75,17 @@ function postNuevoReporte() {
     let personalMedioT = document.getElementById('personalMedioT');
     let descripcion = document.getElementById('descripcion');
 
+    let fechaInicio = document.getElementById('fechaInicio');
+    let fechaFin = document.getElementById('fechaFin');
     let ruta = "/reporte/registrarReporte";
     let data = {
         proporcion: proporcion.value,
         horasVacaciones: horasVacaciones.value,
         personalCompletoT: personalCompletoT.value,
         personalMedioT: personalMedioT.value,
-        descripcion: descripcion.value
+        descripcion: descripcion.value,
+        fechaInicio: fechaInicio.value,
+        fechaFin: fechaFin.value
     }
     console.log(data);
     fetch(ruta, {
