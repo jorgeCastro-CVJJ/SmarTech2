@@ -19,6 +19,9 @@ router.get("/existente/:idProyecto", isAuth, regProyectoController.getProyectosE
 router.get("/editar/:idProyecto", isAuth, hasEditarProyecto, regProyectoController.getEditarProyecto)
 router.post("/editar/:idProyecto", hasEditarProyecto, regProyectoController.postEditarProyecto)
 
+router.get('/eliminarProyecto/:idProyecto', isAuth, regProyectoController.eliminarProyecto)
+
+
 // Rutas Auxiliares 
 router.get('/eliminar/:id', isAuth, regProyectoController.borrarColaboradorController);
 router.get('/asignar/:idProyecto/empleado/:idEmpleado', isAuth, regProyectoController.agregarColaboradorController);

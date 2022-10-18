@@ -100,4 +100,12 @@ static asignarColaboradorProyecto(idEmpleado, idProyecto) {
   VALUES (${idEmpleado},${idProyecto})`)
 }
 
+static getIdEliminar(idProyecto) {
+  return db.execute(`SELECT * FROM proyecto WHERE idProyecto = ${idProyecto}`)
+}
+
+static eliminarProyecto(idProyecto) {
+  return db.execute(`DELETE FROM proyecto WHERE idProyecto = ${idProyecto}`)
+}
+
 }

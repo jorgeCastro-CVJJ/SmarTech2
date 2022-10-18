@@ -162,6 +162,18 @@ agregarColaboradorController = (request,response) => {
   })
 };
 
+eliminarProyecto = (request, response) => {
+  Proyecto.getIdEliminar(request.params.idProyecto)
+  .then(([rowsID, fieldata]) => {
+    console.log('pase el primer then')
+    Proyecto.eliminarProyecto(request.params.idProyecto)
+    .then(() => {
+      console.log('Pase el segundo then')
+      response.redirect('back')
+    })
+  })
+}
+
 
 module.exports = {
   getnuevoProyecto,
@@ -174,4 +186,5 @@ module.exports = {
   postEditarProyecto,
   agregarColaboradorController,
   borrarColaboradorController,
+  eliminarProyecto
 };
