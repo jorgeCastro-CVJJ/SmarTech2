@@ -34,17 +34,20 @@ function horasEsperadas() {
     }
 }
 
-/*En construcción*/
 function eficiencia() {
-    //let porcentaje = document.getElementById("porcentaje");
+    const porcentaje = document.getElementById("porcentaje").value;
     const horasEsperadas = Number(document.getElementById("horasEsperadas").innerHTML);
     const totalHorasReales = Number(document.getElementById("totalHorasReales").innerHTML);
     const porcentajeEficiencia = document.getElementById("porcentajeEficiencia");
-    console.log(totalHorasReales);
-    console.log(horasEsperadas);
-    porcentajeEficiencia.innerHTML = totalHorasReales / horasEsperadas;
+    porcentajeEficiencia.innerHTML = (totalHorasReales / horasEsperadas).toFixed(2);
+    proporcion();
+}
 
-    
+function proporcion(){
+    const proporcion = document.getElementById("proporcion");
+    const porcentajeEficiencia = Number(document.getElementById("porcentajeEficiencia").innerHTML);
+    const porcentaje = Number(document.getElementById("porcentaje").value);
+    proporcion.innerHTML = (parseFloat(porcentajeEficiencia) / parseFloat(porcentaje)).toFixed(2);
 }
 
 /*Row de total*/
