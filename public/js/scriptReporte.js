@@ -54,8 +54,10 @@ window.addEventListener("load", function(){
 })
 
 function sumHoras(){
+    console.log("sumHoras");
     horasTotales = 0;
     horasTotales2 = 0;
+    console.log(nombreP);
     for (let proyecto of nombreP){
         let id = "horasTrabajo['" + proyecto + "']";
         let id2 = "horasReales['" + proyecto + "']";

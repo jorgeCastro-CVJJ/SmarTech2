@@ -3,8 +3,9 @@
             <div class="fechas_reporte">
                 <div class = "row">
                     <div class="input-field is-normal">
-                        <h6 id="fechaInicio">Fecha inicio: <%= reporteN[0].fechaInicio %></h6>
-                        <h6 id="fechaFin">Fecha fin: <%= reporteN[0].fechaFinal %></h6>
+                        <h6 id="fechaInicio">Fecha inicio: <%= new Date(reporteN[0].fechaInicio).toLocaleDateString("ES-mx") %></h6>
+                        <h6 id="fechaFin"> Fecha fin: <%= new Date(reporteN[0].fechaFinal).toLocaleDateString(`ES-mx`) %> </h6>
+                        
                         <h6>Número reporte: 
                         <%= reporteN[0].noReporte %>
                         </h6>
@@ -68,8 +69,8 @@
             <% for (let h of horas) { %>
                 <tr>
                     <td><%= h.nombreP %></td> 
-                    <td><input id = "horasTrabajo['<%= h.nombreP %>']" type = "number" value="<%= h.horasTrabajo %>" readonly></td> 
-                    <td><input value = "<%= h.horasTrabajo %>" type="number" id = "horasReales['<%= h.nombreP %>']" min = "0" placeholder="0" onkeyup="sumHoras()" onclick="sumHoras()"></td>
+                    <td><input id = "horasReales['<%= h.nombreP %>']" type = "number" value="<%= h.horasReales %>" readonly></td> 
+                    <td><input value = "<%= h.horasReales %>" type="number" id = "horasReales['<%= h.nombreP %>']" min = "0" placeholder="0" onkeyup="sumHoras()" onclick="sumHoras()"></td>
                 </tr>
                 <script>
                     nombreP.push("<%= h.nombreP %>");
@@ -85,6 +86,7 @@
         <!--Botón de guardar-->
         <input type="submit" id = "reportebtn" value = "Guardar" onclick="postNuevoReporte()">
 
+        
         <script>
             const asyncFunc = () => {
                 const fechaInicio = document.getElementById('fechaInicio').value;
@@ -101,6 +103,7 @@
                     let html = '';
                     if (data.fecha.length > 0) {                 
                       for(let f of (data.fecha)) {
+                        nombreP.push(f.nombreP);
                         html += '<tr>';
                         html += '<td>'
                         html += `${f.nombreP}`;
@@ -109,7 +112,7 @@
                         html += `<input id = "horasTrabajo['${f.nombreP }']" type = "number" value="${f.horasReales}" readonly>`;
                         html += '</td>';
                         html += '<td>';
-                        html += `<input value = "${f.horasReales}" type="number" id = "horasReales['${f.nombreP}']" min = "0" placeholder="0" onkeyup=${sumHoras()} onclick=${sumHoras()}">`;  
+                        html += `<input value = "${f.horasReales}" type="number" id = "horasReales['${f.nombreP}']" min = "0" placeholder="0" onkeyup="sumHoras()" onclick="sumHoras()">`;  
                         html += '</td>';
                         html += '</tr>';       
                       };      
@@ -126,14 +129,13 @@
                         html = '<h2>No hay proyectos registrados en el periodo seleccionado.</h2>';
                     }
                     document.getElementById("datos_tabla").innerHTML = html;
-                  
+                    sumHoras();
                 }).catch(err => {
                     console.log(err);
                 });
             };
     
-            document.getElementById('fechaFinal').onloadstart = asyncFunc;
+            document.getElementById('fechaFinal').oninput = asyncFunc;
         </script>
-
 
 <script src="/js/scriptReporte.js"></script>

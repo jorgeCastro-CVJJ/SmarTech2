@@ -888,7 +888,29 @@ th,td {
   top: 25%;
 
 }
+#reportebtn {
+  position: absolute;
+  right: 180px;
+  bottom: -30%;
+  width: 100px;
+  height: 50px;
+  background-color: #00A99D;
+  border: none;
+  color: white;
+  border-radius: 10px;
+}
 
 .labelPE{
   top: 80px;
+}
+#crearPDF {
+  position: absolute;
+  right: 50px;
+  bottom: -30%;
+  width: 100px;
+  height: 50px;
+  background-color: #00A99D;
+  border: none;
+  color: white;
+  border-radius: 10px;
 }

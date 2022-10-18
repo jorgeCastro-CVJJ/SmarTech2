@@ -83,16 +83,20 @@ getPDF = async(request, responde, next) => {
 
 getReporteExistente = (request, response, next) =>{
     Reporte.fetchOne(request.params.noReporte)
-    .then(([rowsReporte, fielData]) =>{
-        Reporte.fetchHoras() 
-            .then(([rowsHoras, fieldData]) => {
+    .then(([rowsReporte, fielData]) => {
+        Reporte.fetchHoras()
+        .then(([rowsHrs, fieldData])=> {
+            Reporte.buscarReporteFecha(rowsReporte[0].fechaInicio, rowsReporte[0].fechaFinal)
+            .then(([rowsHoras, fieldData]) => {  
+                console.log("Las hrs son",rowsHoras)
                 response.render(path.join('reporte', 'reportesExistentes.ejs'), {
                 reporteN: rowsReporte,
                 horas: rowsHoras,
-                listaPrivilegios: request.session.privilegios,
+                hrs: rowsHrs,
+                listaPrivilegios: request.session.privilegios,   
+                })            
             })
-           
-      });
+        })
     })
     .catch((err) => {
       console.log(err);
