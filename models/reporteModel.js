@@ -2,7 +2,8 @@ const db = require("../util/database");
 const bcrypt = require("bcryptjs");
 
 module.exports = class Reporte {
-    constructor(proporcion, horasVacaciones, personalCompletoT, personalMedioT, descripcion) {
+    constructor(noReporte, proporcion, horasVacaciones, personalCompletoT, personalMedioT, descripcion) {
+        this.noReporet = noReporte,
         this.proporcion = proporcion,
         this.horasVacaciones = horasVacaciones, 
         this.personalCompletoT = personalCompletoT,
@@ -18,9 +19,9 @@ module.exports = class Reporte {
        return db.execute("SELECT noReporte, proporcion, horasVacaciones, personalCompletoT, personalMedioT, descripcion FROM reporteFinal")
     }
 
-  //   static fetchOne(descripcion) {
-  //     return db.execute("SELECT proporcion, horasVacaciones, personalCompletoT, personalMedioT, descripcion FROM reporteFinal WHERE descripcion = ?", [descripcion])
-  //  }
+     static fetchOne(noReporte) {
+       return db.execute("SELECT noReporte, proporcion, horasVacaciones, personalCompletoT, personalMedioT, descripcion FROM reporteFinal WHERE noReporte = ?", [noReporte])
+    }
 
   //   static fetchHorasReporte(idSesion, fechaInicio, fechaFinal) {
   //    return db.execute('SELECT fechaInicio, fechaFinal FROM reporteFinal WHERE fechaInicio ? AND fechaFinal ?', [idSesion, fechaInicio, fechaFinal])
