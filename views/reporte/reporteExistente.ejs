@@ -3,8 +3,8 @@
             <div class="fechas_reporte">
                 <div class = "row">
                     <div class="input-field is-normal">
-                        <h6>Fecha inicio: <%= reporteN[0].fechaInicio %></h6>
-                        <h6>Fecha fin: <%= reporteN[0].fechaFinal %></h6>
+                        <h6 id="fechaInicio">Fecha inicio: <%= reporteN[0].fechaInicio %></h6>
+                        <h6 id="fechaFin">Fecha fin: <%= reporteN[0].fechaFinal %></h6>
                         <h6>Número reporte: 
                         <%= reporteN[0].noReporte %>
                         </h6>
@@ -84,6 +84,56 @@
 
         <!--Botón de guardar-->
         <input type="submit" id = "reportebtn" value = "Guardar" onclick="postNuevoReporte()">
+
+        <script>
+            const asyncFunc = () => {
+                const fechaInicio = document.getElementById('fechaInicio').value;
+                const fechaFinal = document.getElementById('fechaFinal').value
+  
+                //función que manda la petición asíncrona
+                fetch('/reporte/buscar/' + fechaInicio + '/' + fechaFinal, {
+                    method: 'GET',
+                }).then(result => {
+                    return result.json(); //Regresa otra promesa
+                }).then(data => {
+                    //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+                    console.log(data.fecha);
+                    let html = '';
+                    if (data.fecha.length > 0) {                 
+                      for(let f of (data.fecha)) {
+                        html += '<tr>';
+                        html += '<td>'
+                        html += `${f.nombreP}`;
+                        html += '</td>'; 
+                        html += '<td>';
+                        html += `<input id = "horasTrabajo['${f.nombreP }']" type = "number" value="${f.horasReales}" readonly>`;
+                        html += '</td>';
+                        html += '<td>';
+                        html += `<input value = "${f.horasReales}" type="number" id = "horasReales['${f.nombreP}']" min = "0" placeholder="0" onkeyup=${sumHoras()} onclick=${sumHoras()}">`;  
+                        html += '</td>';
+                        html += '</tr>';       
+                      };      
+                        html += '<tr>';
+                        html += '<td>'; 
+                        html += '<b>Total</b>';
+                        html += '</td>';
+                        html += '<td id = "totalHorasTrabajo" type = "number" value = "0">';
+                        html += '</td>';
+                        html += '<td id = "totalHorasReales" type = "number" value = "0">';
+                        html += '</td>';
+                        html += '</tr>';            
+                    } else {
+                        html = '<h2>No hay proyectos registrados en el periodo seleccionado.</h2>';
+                    }
+                    document.getElementById("datos_tabla").innerHTML = html;
+                  
+                }).catch(err => {
+                    console.log(err);
+                });
+            };
+    
+            document.getElementById('fechaFinal').onloadstart = asyncFunc;
+        </script>
 
 
 <script src="/js/scriptReporte.js"></script>

@@ -11,9 +11,19 @@
     <%= proyecto[0].descripcion %>
   </div>
 
-  <label class="label estatusPE">Estatus:  
-    <%= proyecto[0].estatus %>
+  <label class="label estatusPE">
+    Estatus:<% if(proyecto[0].estatus == "Estabilizacion") { %>
+      <span style="color: green"><%= proyecto[0].estatus %></span>
+    <%} else if (proyecto[0].estatus == "Ejecucion" ) { %>
+      <span style="color: yellow"><%= proyecto[0].estatus %></span>
+    <% } else if(proyecto[0].estatus == "Definicion") { %>
+      <span style="color: orange"><%= proyecto[0].estatus %></span>
+    <% } else if(proyecto[0].estatus == "Pausado") { %>
+      <span style="color: red"><%= proyecto[0].estatus %></span>
+    <% } %>
   </label>
+
+  
 
 
   <label class="label stackPE">Stack Tecnologico:  
@@ -33,23 +43,12 @@
     </ul>
   </label>
 
-  <label class="label idProyectoE" id="idProyecto"> Número de Proyecto:  
-    <%= proyecto[0].idProyecto %>
-  </label>
+  <input class="input" type="hidden" value="<%= proyecto[0].idProyecto %>" id="idProyecto" name="idProyecto">
 
   <button class="button is-info is-outlined botonRegreso"><a href="/user/inicio"> Regresar</a></button>
 
+  <% if(listaPrivilegios.indexOf('RegNuevoProyecto') != -1) {  %>
   <a class="button is-info is-outlined botonDetalles" href="/tarea/horasTarea/<%=proyecto[0].idProyecto%>">Detalle de horas</a> 
+  
+  <% } %> 
  
-
-  <!-- <script>
-    // cuando se seleeciona un proyecto entra
-    function verHorasTarea(event)  {
-      console.log("hola si entra :)", event)
-      // redirigue a la vista 
-      window.location = "/tarea/horasTarea/<%proyecto[0].idProyecto%>" ;//+ event.target.dataset.idProyecto;
-    }
-
-    //al path le añade el numero del proyecto, nombreP es una referencia al elemento que selecciona los datos
-    document.getElementById("botonDetalles").addEventListener('click', verHorasTarea);
-  </script> -->

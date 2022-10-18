@@ -1,4 +1,6 @@
-<h1 class="titulo">Inicio</h1>
+<h1 class="tituloBienvenida"> Bienvenid@ <%= nombreSesion %></h1>
+<p class="mensajeB2">No olvides registrar tus horas de trabajo</p>
+<p class="mensajeGrafica"> Grafico de horas de trabajo por proyecto</p>
 
 <canvas id="grafica">
 <script>
@@ -37,7 +39,7 @@ new Chart($grafica, {
 
     <div class="field is-horizontal proyectosExistentes">
      <div class="field-label is-normal">
-    <label class="label">Proyectos Existentes</label>
+    <label class="label labelPE">Proyectos Existentes</label>
   </div>
   <div class="select is-link seleccionarProyecto">
     <select name="nombreP" id="nombreP">

@@ -1,9 +1,9 @@
 <% if(mensaje != "") {  %>
 
-  <div class="notification is-success is-light exitoTarea">
-    Tarea creada <strong>correctamente</strong>
+  <div class="notification is-success is-light exitoTarea" id="snackbar">
+  Tarea Creada <strong>correctamente</strong>
   </div>
-  
+
 <% } %>
 
 <div class="field is-static">
@@ -66,6 +66,16 @@ $('#table_f').DataTable({
                 lengthMenu: [ [10, 25, -1], [10, 25, "All"] ],
             });
   } );
+
+  window.onload = function() {
+        // Get the snackbar DIV
+        var x = document.getElementById("snackbar");
+        // Add the "show" class to DIV
+        x.className = "show";
+    // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className  = x.className.replace("show",""); }, 3000);
+    };
+
 </script>
   
       <a href="/tarea/registrarTarea"><button class="button is-info botonTarea">Registrar nueva tarea</button></a>
