@@ -21,7 +21,7 @@ module.exports = class Reporte {
     }
 
      static fetchOne(noReporte) {
-       return db.execute("SELECT noReporte, porcentaje, horasVacaciones, personalCompletoT, personalMedioT, descripcion FROM reporteFinal WHERE noReporte = ?", [noReporte])
+       return db.execute("SELECT noReporte, porcentaje, horasVacaciones, personalCompletoT, personalMedioT, descripcion, fechaInicio, fechaFinal FROM reporteFinal WHERE noReporte = ?", [noReporte])
     }
 
   //   static fetchHorasReporte(idSesion, fechaInicio, fechaFinal) {
@@ -29,9 +29,9 @@ module.exports = class Reporte {
   //  }
 
       //tarea, proyecto = idProyecto
-  static fetchHoras() {
-    return db.execute('SELECT SUM(horasTrabajo) as horasTrabajo, nombreP FROM tarea T, proyecto P WHERE T.idProyecto = P.idProyecto GROUP BY nombreP');
-  }
+   static fetchHoras() {
+     return db.execute('SELECT SUM(horasTrabajo) as horasTrabajo, nombreP FROM tarea T, proyecto P WHERE T.idProyecto = P.idProyecto GROUP BY nombreP');
+   }
 
   static buscarReporteFecha(fechaInicio, fechaFinal) {
     return db.execute(`SELECT nombreP, SUM(horasTrabajo) as horasReales 

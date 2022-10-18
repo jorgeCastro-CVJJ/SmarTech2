@@ -827,3 +827,26 @@ th,td {
   to {top: 0; opacity: 0;}
 }
 
+#reportebtn {
+  position: absolute;
+  right: 180px;
+  bottom: -30%;
+  width: 100px;
+  height: 50px;
+  background-color: #00A99D;
+  border: none;
+  color: white;
+  border-radius: 10px;
+}
+
+#crearPDF {
+  position: absolute;
+  right: 50px;
+  bottom: -30%;
+  width: 100px;
+  height: 50px;
+  background-color: #00A99D;
+  border: none;
+  color: white;
+  border-radius: 10px;
+}
