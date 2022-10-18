@@ -106,7 +106,7 @@
         </tbody>
 
         <!--Botón de guardar-->
-        <input type="submit" id = "reportebtn" value = "Guardar" onclick="postNuevoReporte()">
+        <a href="/reporte/nuevoReporte"><input type="submit" id = "reportebtn" value = "Guardar" onclick="postNuevoReporte()"></a> 
         <a href="/reporte/crearPdf" class="button">Crear PDF</a>
 
         <script>
@@ -126,17 +126,26 @@
                     if (data.fecha.length > 0) {                 
                       for(let f of (data.fecha)) {
                         html += '<tr>';
+                        html += '<td>'
+                        html += `${f.nombreP}`;
+                        html += '</td>'; 
                         html += '<td>';
-                        html += f.nombreP;
+                        html += `<input id = "horasTrabajo['${f.nombreP }']" type = "number" value="${f.horasReales}" readonly>`;
                         html += '</td>';
                         html += '<td>';
-                        html += f.horasTrabajo;  
-                        html += '</td>'; 
-                        html += '<td>';
-                        html += '<input>';  
-                        html += '</td>'; 
-                        html += '</tr>';         
-                      };                 
+                        html += `<input value = "${f.horasReales}" type="number" id = "horasReales['${f.nombreP}']" min = "0" placeholder="0" onkeyup=${sumHoras()} onclick=${sumHoras()}">`;  
+                        html += '</td>';
+                        html += '</tr>';       
+                      };      
+                        html += '<tr>';
+                        html += '<td>'; 
+                        html += '<b>Total</b>';
+                        html += '</td>';
+                        html += '<td id = "totalHorasTrabajo" type = "number" value = "0">';
+                        html += '</td>';
+                        html += '<td id = "totalHorasReales" type = "number" value = "0">';
+                        html += '</td>';
+                        html += '</tr>';            
                     } else {
                         html = '<h2>No hay proyectos registrados en el periodo seleccionado.</h2>';
                     }
