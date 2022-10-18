@@ -9,6 +9,7 @@ module.exports = class Usuario {
     this.password = contraseña;
   }
 
+
   save() {
   //return db.execute('INSERT INTO usuarios (username, password, nombre) VALUES (?, ?, ?)', [this.username, this.pasword, this.nombre]);
   return bcrypt.hash(this.password, 12)
@@ -18,6 +19,11 @@ module.exports = class Usuario {
     }).catch(err => {
         console.log("Error al cifrar el password");
       });
+  }
+
+  // Tal ves no se necesite
+  static fetchAll() {
+    return db.execute("SELECT correo, contraseña, nombre, idEmpleado FROM empleado WHERE correo = ?", [correo]);
   }
 
   static fetchOne(correo) {

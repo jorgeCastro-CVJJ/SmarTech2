@@ -52,6 +52,7 @@ module.exports = class Tarea {
     return db.execute('SELECT E.nombre FROM empleado as E, ejecuta as EJ where E.idEmpleado = EJ.idEmpleado AND EJ.idTarea = ?', [idTarea]);
   }
 
+    // Devuelve todo de una tarea (Empleado,ejecuta,Tarea)
   static getTodoTarea(idTarea){
     return db.execute('SELECT * FROM tarea as T, ejecuta as E, empleado as Em WHERE T.idTarea = E.idTarea AND Em.idEmpleado = E.idEmpleado AND T.idTarea = ?', [idTarea]);
   }

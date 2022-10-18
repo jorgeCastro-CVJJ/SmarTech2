@@ -6,7 +6,7 @@
                         <h6>Fecha inicio: </h6>
                         <input id="fechaInicio" type="date">
                         <h6>Fecha fin: </h6>
-                        <input id="fechaFin" type="date">
+                        <input id="fechaFinal" type="date">
                         <h6>Número reporte: </h6>
                     </div>
                 </div>
@@ -33,8 +33,8 @@
                 <div class = "field is-horizontal"> 
                     <label class = "label">Personal de Medio Tiempo</label>
                     <input class = "input" type = "number" min="0" placeholder = "Ingresar" 
-                    onkeyup="horasMedioT()" onclick="horasMedioT()"
-                    id = "personalMedioT" value = "0">   
+                    onkeyup="horasMedioT()" onclick="horasMedioT()" pattern="^[0-9]+"
+                    oninput="this.value = Math.max(this.value, 0)" id = "personalMedioT" value = "0">   
                     <label class = "label">Horas</label>  
                     <div class = "horasMedioT" type = "number" id= "horasMedioT">0</div>                            
                 </div>
@@ -42,14 +42,15 @@
                 <div class="field is-horizontal">
                     <label class = "label">Personal de Tiempo Completo</label>
                     <input class = "input" type = "number" min="0" placeholder = "Ingresar" 
-                    onkeyup="horasCompletoT()" onclick="horasCompletoT()" 
-                    id = "personalCompletoT" value = "0">
+                    onkeyup="horasCompletoT()" onclick="horasCompletoT()" pattern="^[0-9]+"
+                    oninput="this.value = Math.max(this.value, 0)" id = "personalCompletoT" value = "0">
                     <label class = "label">Horas</label>  
                     <div class = "horasCompletoT" type = "number" id= "horasCompletoT">0</div>                      
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Total de personal</label>
-                    <div type = "number" id= "totalPersonal" min = "0" value = "0">0</div> 
+                    <div type = "number" id= "totalPersonal" min = "0" value = "0"
+                    pattern="^[0-9]+" oninput="this.value = Math.max(this.value, 0)">0</div> 
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Horas Esperadas</label>
@@ -59,7 +60,8 @@
                     <label class = "label">Horas de Vacaciones</label>
                     <input class = "input" type = "number" min = "0"
                     onkeyup="horasEsperadas()" onclick="horasEsperadas()"
-                    value = "0" id= "horasVacaciones">  
+                    value = "0" id= "horasVacaciones" pattern="^[0-9]+"
+                    oninput="this.value = Math.max(this.value, 0)">  
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Descripcion</label>
@@ -87,7 +89,10 @@
                 <tr>
                     <td><%= h.nombreP %></td> 
                     <td><input id = "horasTrabajo['<%= h.nombreP %>']" type = "number" value="<%= h.horasTrabajo %>" readonly></td> 
-                    <td><input value = "<%= h.horasTrabajo %>" type="number" id = "horasReales['<%= h.nombreP %>']" min = "0" placeholder="0" onkeyup="sumHoras()" onclick="sumHoras()"></td>
+                    <td><input value = "<%= h.horasTrabajo %>" type="number" 
+                    id = "horasReales['<%= h.nombreP %>']" min = "0" placeholder="0" 
+                    onkeyup="sumHoras()" onclick="sumHoras()" pattern="^[0-9]+"
+                    oninput="this.value = Math.max(this.value, 0)"></td>
                 </tr>
                 <script>
                     nombreP.push("<%= h.nombreP %>");
@@ -96,21 +101,21 @@
             <tr>
                 <td><b>TOTAL</b></td>
                 <td id = "totalHorasTrabajo" type = "number" value = "0"></td>
-                <td><input id = "totalHorasReales" type = "number" readonly></td>
+                <td id = "totalHorasReales" type = "number" value = "0"></td>
             </tr>
         </tbody>
 
         <!--Botón de guardar-->
         <input type="submit" id = "reportebtn" value = "Guardar" onclick="postNuevoReporte()">
-        <input type="button" id = "reportePDF" value = "Crear PDF" onclick = "getPDF()">
+        <a href="/reporte/crearPdf" class="button">Crear PDF</a>
 
         <script>
             const asyncFunc = () => {
                 const fechaInicio = document.getElementById('fechaInicio').value;
-                const fechaFin = document.getElementById('fechaFin').value
+                const fechaFinal = document.getElementById('fechaFinal').value
   
                 //función que manda la petición asíncrona
-                fetch('/reporte/buscar/' + fechaInicio + '/' + fechaFin, {
+                fetch('/reporte/buscar/' + fechaInicio + '/' + fechaFinal, {
                     method: 'GET',
                 }).then(result => {
                     return result.json(); //Regresa otra promesa
@@ -142,13 +147,7 @@
                 });
             };
     
-            document.getElementById('fechaFin').oninput = asyncFunc;
+            document.getElementById('fechaFinal').oninput = asyncFunc;
         </script>
-
-<script>
-    $(document).ready( function () {
-  $('#tabla_reporte').DataTable();
-    } );
-  </script>
 
 <script src="/js/scriptReporte.js"></script>

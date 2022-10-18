@@ -24,6 +24,17 @@ module.exports = class Empleado {
 
   static getEmpleadosNoRegistrados(idTarea) {
     return db.execute('SELECT E.nombre, E.idEmpleado FROM empleado as E WHERE E.idEmpleado NOT IN (SELECT E.idEmpleado FROM empleado as E, ejecuta as EJ WHERE E.idEmpleado = EJ.idEmpleado AND EJ.idTarea = ?)', [idTarea])
-
   }
+
+  // Devuelve todos los empleados que no estén registrados en el proyecto dado
+  static getEmpleadosNoRegistradosProyectos(idProyecto) {
+  return db.execute(`SELECT E.nombre, E.idEmpleado 
+  FROM empleado as E 
+  WHERE E.idEmpleado 
+  NOT IN 
+  (SELECT E.idEmpleado 
+  FROM empleado as E, trabaja as TR 
+  WHERE E.idEmpleado = TR.idEmpleado 
+  AND TR.idProyecto = ${idProyecto})`)
+}
 }

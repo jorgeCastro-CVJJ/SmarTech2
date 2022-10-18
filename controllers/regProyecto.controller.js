@@ -4,6 +4,7 @@ const Empleado = require("../models/empleadoModel");
 const Trabaja = require("../models/trabajaModel");
 const { error } = require("console");
 const { response } = require("express");
+const { borrarColaborador } = require("../models/tareaModel");
 
 getnuevoProyecto = (request, response, next) =>{
   console.log(request.session);
@@ -85,10 +86,10 @@ getProyectosByUserID = (request, response, next) => {
 }
 
 getEditarProyecto = (request,response,next) => {
-  Proyecto.fetchOne(request.params.idProyecto)
+  Proyecto.getTodoProyecto(request.params.idProyecto)
   .then(([rowsProyecto,fieldata]) => {
-    Empleado.fetchAll()
-    .then(async ([rowsEmpleado,fieldata]) => {
+    Empleado.getEmpleadosNoRegistradosProyectos(request.params.idProyecto)
+    .then(([rowsEmpleado,fieldata]) => {
       response.render(path.join('editarProyecto', 'editarProyecto.ejs'), {
         proyecto: rowsProyecto,
         empleado: rowsEmpleado,
@@ -103,11 +104,13 @@ getEditarProyecto = (request,response,next) => {
 }
 
 postEditarProyecto = (request, response, next) => {
-  Proyecto.updateProyecto(request.params.idProyecto, 
+  Proyecto.updateProyecto(request.body.idProyecto, 
     request.body.nombreP, request.body.descripcion, 
     request.body.estatus, request.body.stackTecnologico, 
     request.body.stakeholders)
-  response.status(200).redirect('/proyecto/misProyectos')
+    console.log(request.body.arrayColaboradores)
+  request.session.mensaje = "Proyecto Editado Correctamente";
+  response.status(200).json({mensaje: "Listo"})
 }
 
 
@@ -140,6 +143,38 @@ getProyectosExistentes = (request, response, next) => {
   });
 }
 
+borrarColaboradorController = (request, response) => {
+  console.log(request.params.id, "soy el console de borrar")
+  Proyecto.getIdProyecto(request.params.id)
+  .then(([rowsID,fieldata]) => {
+    Proyecto.borrarColaboradorProyecto(request.params.id)
+    .then(() => {
+      response.redirect('/proyecto/editar/'+ rowsID[0].idProyecto);
+    })
+  })
+};
+
+agregarColaboradorController = (request,response) => {
+  console.log(request.params.id, "Soy el console de agregarColab")
+  Proyecto.asignarColaboradorProyecto(request.params.idEmpleado, request.params.idProyecto)
+  .then(() => {
+    response.redirect('/proyecto/editar/' + request.params.idProyecto);
+  })
+};
+
+eliminarProyecto = (request, response) => {
+  Proyecto.getIdEliminar(request.params.idProyecto)
+  .then(([rowsID, fieldata]) => {
+    console.log('pase el primer then')
+    Proyecto.eliminarProyecto(request.params.idProyecto)
+    .then(() => {
+      console.log('Pase el segundo then')
+      response.redirect('back')
+    })
+  })
+}
+
+
 module.exports = {
   getnuevoProyecto,
   postnuevoProyecto,
@@ -149,4 +184,7 @@ module.exports = {
   getProyectosExistentes,
   getEditarProyecto,
   postEditarProyecto,
+  agregarColaboradorController,
+  borrarColaboradorController,
+  eliminarProyecto
 };

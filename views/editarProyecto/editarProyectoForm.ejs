@@ -1,97 +1,87 @@
 
+<h1 class="titulo">Editar Proyecto</h1>
 
-
-<h1 class="titulo"> Editar Proyecto </h1>
-
-  <input value="<%= proyecto[0].idProyecto %>" type="hidden" id="idProyecto">
-  <div class="contenedorProyecto">
+<input value="<%= proyecto[0].idProyecto %>" type="hidden" id="idProyecto">
+<div class="editarTarea">
+  
     <form action="" method="POST">
       <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Nombre del proyecto</label>
+        <div class="field-label ">
+          <label class="label">Nombre del Proyecto</label>
         </div>
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input value="<%= proyecto[0].nombreP %>"class="input" type="text" placeholder="Escribe aqui" id="nombreP" name="nombreP">
+              <input value="<%= proyecto[0].nombreP%>" class="input" type="text"  id="nombreP" name="nombreP" onkeyup="deshabilitar()">
             </div>
           </div>
         </div>
       </div>
 
       <div class="field is-horizontal">
-        <div class="field-label is-normal">
+        <div class="field-label">
           <label class="label">Descripción</label>
         </div>
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input value="<%=proyecto[0].descripcion %>"class="input" type="text" placeholder="Escribe aqui" id="descripcion" name="descripcion">
+              <input value="<%= proyecto[0].descripcion %>"class="input" type="text"  id="descripcion" name="descripcion" onkeyup="deshabilitar()">
             </div>
           </div>
         </div>
       </div>
 
       <div class="field is-horizontal">
-        <div class="field-label is-normal">
+        <div class="field-label">
           <label class="label">Estatus</label>
         </div>
         <div class="field-body">
           <div class="field">
             <div class="control select is-fullwidth">
               <select  id="estatus" name="estatus">
-                  <option value= "Selecciona un estatus" selected disabled>Selecciona un estatus</option>
-                  <option value= "<%= proyecto[0].estatus %>"><%= proyecto[0].estatus %></option>
-                  <option value= "Finalizado">Finalizado</option>
-                  <option value= "En Revisión">En Revisión</option>
-                  <option value= "Planeación">Planeación</option>
-
+                  <option value= "" selected disabled>Selecciona un estatus</option>
+                  <option value= "Estabilizacion" >Estabilización</option>
+                  <option value= "Ejecucion" >Ejecución</option>
+                  <option value= "Definicion" >Definición</option>
+                  <option value= "Pausado" >Pausado</option>
               </select>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Colaboradores</label>
-        </div>
-        <div class="field-body">
-          <div class="field is-narrow">
-            <div class="control">
-              <%= nombreSesion %>
-            </br>
-
-            <div class="label" >
-              <div class="row">
-                <label class="label">Colaboradores Registrados: </label>
-              </div>
-              <ul id="listaColabsRegistrados">
-                <% for (let p of proyecto) { %>
-                  <li><%= p.nombre %> <a href="/proyecto/eliminar/<%= p.idProyecto %>"><img src="../../media/borrar.png" id="borrarColabEditProyecto"></a></li>
+      
+      <div class="field-label">
+        <div class="label" >
+          <div class="row">
+            <label class="label">Colaboradores Registrados: </label>
+          </div>
+          <ul id="listaColabsRegistrados">
+            <% for (let p of proyecto) { %>
+              <li class="listaCollabs"><%= p.nombre %> 
+                <% if( proyecto.length > 1) { %>
+                  <a href="/proyecto/eliminar/<%= p.ID %>"><img src="../../media/menos.png" id="borrarColab"></a> 
                 <% } %>
-              </ul>
-            </div>
-
-              <div class="select is-fullwidth"> 
-                <select name="nombre" id="nombre"> 
-                  <option value="" disabled selected> Selecciona a los colaboradores</option>
-                  <% for (let e of empleado) { %>
-                    <% if (e.idEmpleado != idSesion){ %>
-                      <option value ="<%= e.idEmpleado %>"><%= e.nombre %></option>                       
-                    <% } %>
-                  <% } %>
-                </select><a class="button is-link is-outlined botonAgregarColabProyecto" id="agregarColaborador"> + </a>
-              </div>
-            </div>
+                </li>
+            <% } %>
+          </ul>
+        </div>
+        <div class="label" >
+          <div class="row">
+            <label class="label">Agregar Colaboradores: </label>
+          </div>
+          <div id="cajaColabs">
+            <ul class="is-fullwidth" id="agregarColaboradores">
+              <% for (let e of empleado) { %>
+                <li class="listaCollabs"><%= e.nombre %> 
+                    <a href="/proyecto/asignar/<%= proyecto[0].idProyecto %>/empleado/<%= e.idEmpleado %>"><img src="../../media/mas.png" id="addColab"></a>  <!-- AGREGAR ESTO A PROYECTO-->
+                </li>
+              <% } %>
+            </ul>
           </div>
         </div>
       </div>
       
-      <!-- desplegar los compañeros-->
-      <div class="divColaboradores" id="listaColabradores">
-      </div>
-
+      <br>
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">Stack Tecnológico</label>
@@ -99,7 +89,7 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input value="<%= proyecto[0].stackTecnologico %>"class="input" type="text" placeholder="Escribe aqui" id="stackTecnologico" name="stackTecnologico">
+              <input value="<%= proyecto[0].stackTecnologico %>"class="input" type="text" placeholder="Escribe aqui" id="stackTecnologico" name="stackTecnologico" onkeyup="deshabilitar()">
             </div>
           </div>
         </div>
@@ -112,7 +102,7 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input value="<%= proyecto[0].stakeholders %>"class="input" type="text" placeholder="Escribe aqui" id="stakeholders" name="stakeholders">
+              <input value="<%= proyecto[0].stakeholders %>"class="input" type="text" placeholder="Escribe aqui" id="stakeholders" name="stakeholders" onkeyup="deshabilitar()">
             </div>
           </div>
         </div>
@@ -120,10 +110,12 @@
 
       <div class="field is-grouped is-grouped-centered">
         <p class="control">
-          <input type="submit" value="Submit" class="button botonAgregarTarea is-success is-outlined">
+          <input type="button" value="Modificar" id= "submitProyectobtn" disabled class="button botonAgregarTarea is-success is-outlined"onclick="postEditarProyecto()">
+          <button type="reset" class="button botonAgregarTarea is-danger is-outlined" onclick="window.location.href='/proyecto/misProyectos/';">Regresar</button>
         </p>
       </div>
     </form>
-  </div>
-<script src="/js/scriptRegProyecto.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</div>
+  <script src="/js/scriptEditarProyecto.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  

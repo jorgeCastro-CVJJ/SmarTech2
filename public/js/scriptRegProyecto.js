@@ -92,18 +92,6 @@ console.log(ruta)
 });
 }
 
-// function deshabilitarProyectoEditado() {
-//   if (document.getElementById("nombreP").value == ""
-//   || document.getElementById("descripcion").value == ""
-//   || document.getElementById("estatus").value == ""
-//   || document.getElementById("stackTenologico").value == ""
-//   || document.getElementById("stakeholders").value == "") {
-//     document.getElementById("submitProyectobtn").disabled = true;
-//   } else {
-//     document.getElementById("submitProyectobtn").disabled = false;
-//   }
-// }
-
 
 
 /*Llamada de funciones*/

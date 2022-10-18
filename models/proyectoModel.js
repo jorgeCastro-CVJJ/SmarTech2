@@ -71,4 +71,41 @@ static updateProyecto(idProyecto, nombreP, descripcion, estatus, stackTecnologic
   WHERE
       idProyecto = ${idProyecto};`)
 }
+
+
+// Devuelve todo de un proyecto (Empleado, Trabaja, Proyecto))
+static getTodoProyecto(idProyecto) {
+  
+  return db.execute(`SELECT * 
+  FROM proyecto as P, trabaja as TR, empleado as Em 
+  WHERE P.idProyecto = TR.idProyecto 
+  AND Em.idEmpleado = TR.idEmpleado 
+  AND P.idProyecto = ${idProyecto}`)
+}
+
+// Devuelve el idProyecto de la tabla Trabaja que con el ID dado 
+static getIdProyecto(id) {
+  return db.execute(`SELECT idProyecto 
+  FROM trabaja as TR 
+  WHERE TR.id = ${id}`)
+}
+
+// Borrar el registro de la Base de datos con el ID dado
+static borrarColaboradorProyecto(id) {
+  return db.execute(`DELETE FROM trabaja where ID =${id}`)
+}
+
+static asignarColaboradorProyecto(idEmpleado, idProyecto) {
+  return db.execute(`INSERT INTO trabaja (idEmpleado, idProyecto) 
+  VALUES (${idEmpleado},${idProyecto})`)
+}
+
+static getIdEliminar(idProyecto) {
+  return db.execute(`SELECT * FROM proyecto WHERE idProyecto = ${idProyecto}`)
+}
+
+static eliminarProyecto(idProyecto) {
+  return db.execute(`DELETE FROM proyecto WHERE idProyecto = ${idProyecto}`)
+}
+
 }
