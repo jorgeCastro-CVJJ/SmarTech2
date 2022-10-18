@@ -291,7 +291,6 @@ html{
 
 .titulo {
   position: absolute;
-  text-align: center;
   font-family: var(--fuente);
   font-weight: bold;
   font-size: 25px;
