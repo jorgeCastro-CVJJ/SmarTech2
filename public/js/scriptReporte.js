@@ -36,7 +36,7 @@ function horasEsperadas() {
 
 /*En construcción*/
 function eficiencia() {
-    const proporcion = document.getElementById("proporcion");
+    const porcentaje = document.getElementById("porcentaje");
     var horasEsperadas = document.getElementById("horasEsperadas");
     var totalHorasReales = document.getElementById("totalHorasReales");
     const porcentajeEficiencia = document.getElementById("porcentajeEficiencia");
@@ -44,8 +44,8 @@ function eficiencia() {
     console.log(typeof(totalHorasReales));
     console.log(horasEsperadas);
     console.log(typeof(horasEsperadas));
-    proporcion.innerHTML = parseInt(totalHorasReales) / parseInt(horasEsperadas);
-    porcentajeEficiencia.innerHTML = parseFloat(proporcion * 1);
+    porcentaje.innerHTML = parseInt(totalHorasReales) / parseInt(horasEsperadas);
+    porcentajeEficiencia.innerHTML = parseFloat(porcentaje * 1);
 }
 
 /*Row de total*/
@@ -69,23 +69,23 @@ function sumHoras(){
 }
 
 function postNuevoReporte() {
-    let proporcion = document.getElementById("proporcion");
+    let porcentaje = document.getElementById("porcentaje");
     let horasVacaciones = document.getElementById('horasVacaciones');
     let personalCompletoT = document.getElementById('personalCompletoT');
     let personalMedioT = document.getElementById('personalMedioT');
     let descripcion = document.getElementById('descripcion');
-
     let fechaInicio = document.getElementById('fechaInicio');
-    let fechaFin = document.getElementById('fechaFin');
-    let ruta = "/reporte/registrarReporte";
+    let fechaFinal = document.getElementById('fechaFinal');
+
+    let ruta = "/reporte/crearReporte";
     let data = {
-        proporcion: proporcion.value,
+        porcentaje: porcentaje.value,
         horasVacaciones: horasVacaciones.value,
         personalCompletoT: personalCompletoT.value,
         personalMedioT: personalMedioT.value,
         descripcion: descripcion.value,
         fechaInicio: fechaInicio.value,
-        fechaFin: fechaFin.value
+        fechaFinal: fechaFinal.value
     }
     console.log(data);
     fetch(ruta, {
@@ -104,6 +104,6 @@ function postNuevoReporte() {
 }
 
 //Creacion de reporte
-function getPDF() {
+// function getPDF() {
 
-}
+// }

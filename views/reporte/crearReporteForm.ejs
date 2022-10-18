@@ -6,7 +6,7 @@
                         <h6>Fecha inicio: </h6>
                         <input id="fechaInicio" type="date">
                         <h6>Fecha fin: </h6>
-                        <input id="fechaFin" type="date">
+                        <input id="fechaFinal" type="date">
                         <h6>Número reporte: </h6>
                     </div>
                 </div>
@@ -112,10 +112,10 @@
         <script>
             const asyncFunc = () => {
                 const fechaInicio = document.getElementById('fechaInicio').value;
-                const fechaFin = document.getElementById('fechaFin').value
+                const fechaFinal = document.getElementById('fechaFinal').value
   
                 //función que manda la petición asíncrona
-                fetch('/reporte/buscar/' + fechaInicio + '/' + fechaFin, {
+                fetch('/reporte/buscar/' + fechaInicio + '/' + fechaFinal, {
                     method: 'GET',
                 }).then(result => {
                     return result.json(); //Regresa otra promesa
@@ -147,7 +147,7 @@
                 });
             };
     
-            document.getElementById('fechaFin').oninput = asyncFunc;
+            document.getElementById('fechaFinal').oninput = asyncFunc;
         </script>
 
 <script src="/js/scriptReporte.js"></script>

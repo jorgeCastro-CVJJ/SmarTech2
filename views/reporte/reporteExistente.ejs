@@ -3,12 +3,8 @@
             <div class="fechas_reporte">
                 <div class = "row">
                     <div class="input-field is-normal">
-                        <h6>Fecha inicio: 
-                        <%= reporteN[0].fechaInicio %>
-                        </h6>
-                        <h6>Fecha fin: 
-                        <%= reporteN[0].fechaFin %>
-                        </h6>
+                        <h6>Fecha inicio: <%= reporteN[0].fechaInicio %></h6>
+                        <h6>Fecha fin: <%= reporteN[0].fechaFinal %></h6>
                         <h6>Número reporte: 
                         <%= reporteN[0].noReporte %>
                         </h6>
@@ -19,12 +15,8 @@
             <div class="columns">
                 <div class="column">
                     <div class="porcentajes">
-                        <h6>Porcentaje: </h6>
-                        <input class = "porcentaje" type = "number" id = "porcentaje"
-                        onkeyup="eficiencia()" onclick="eficiencia()" placeholder="0.85" value = "0.85">
-                        <h6>Verdadero porcentaje de eficiencia: <%= reporteN[0].eficiencia %></h6> 
-                        <h6>Proporción: <%= reporteN[0].proporcion %></h6> 
-                        
+                        <h6>Porcentaje: <%= reporteN[0].porcentaje %></h6> 
+                        <h6>Verdadero porcentaje de eficiencia:</h6> 
                     </div>
                 </div>
             </div>
@@ -33,38 +25,27 @@
         <div class="column">
             <div class="inputs_reporte">
                 <div class = "field is-horizontal"> 
-                    <label class = "label">Personal de Medio Tiempo</label>
-                    <input class = "input" type = "number" min="0" placeholder = "Ingresar" 
-                    onkeyup="horasMedioT()" onclick="horasMedioT()"
-                    id = "personalMedioT" value = "0">   
-                    <label class = "label">Horas: <%= reporteN[0].horasMedioT %></label>                             
+                    <label class = "label">Personal de Medio Tiempo: <%= reporteN[0].personalMedioT %></label>                              
                 </div>
 
                 <div class="field is-horizontal">
-                    <label class = "label">Personal de Tiempo Completo</label>
-                    <input class = "input" type = "number" min="0" placeholder = "Ingresar" 
-                    onkeyup="horasCompletoT()" onclick="horasCompletoT()" 
-                    id = "personalCompletoT" value = "0">
-                    <label class = "label">Horas</label>  
-                    <div class = "horasCompletoT" type = "number" id= "horasCompletoT">0</div>                      
+                    <label class = "label">Personal de Tiempo Completo: <%= reporteN[0].personalCompletoT %></label>
+                    <div class = "horasCompletoT" type = "number" id= "horasCompletoT"></div>                      
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Total de personal</label>
-                    <div type = "number" id= "totalPersonal" min = "0" value = "0">0</div> 
+                    <div type = "number" id= "totalPersonal" min = "0" value = "0"></div> 
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Horas Esperadas</label>
                     <div type = "number" id= "horasEsperadas" min = "0" value = "0">0</div>
                 </div>
                 <div class="field is-horizontal">
-                    <label class = "label">Horas de Vacaciones</label>
-                    <input class = "input" type = "number" min = "0"
-                    onkeyup="horasEsperadas()" onclick="horasEsperadas()"
-                    value = "0" id= "horasVacaciones">  
+                    <label class = "label">Horas de Vacaciones: <%= reporteN[0].horasVacaciones %></label>
+                    
                 </div>
                 <div class="field is-horizontal">
-                    <label class = "label">Descripcion</label>
-                    <input id = "descripcion" type ="text" placeholder="Ingresar">
+                    <label class = "label">Descripcion: <%= reporteN[0].descripcion %></label>
                 </div>
             </div>
         </div>
@@ -104,10 +85,5 @@
         <!--Botón de guardar-->
         <input type="submit" id = "reportebtn" value = "Guardar" onclick="postNuevoReporte()">
 
-<script>
-    $(document).ready( function () {
-  $('#tabla_reporte').DataTable();
-    } );
-  </script>
 
 <script src="/js/scriptReporte.js"></script>

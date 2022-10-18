@@ -38,8 +38,7 @@ getReportes = (request, response, next) => {
 }
 
 postReporte = (request, response, next) => {
-    const nuevoReporte = new Reporte(request.body.proporcion, request.body.horasVacaciones, request.body.personalCompletoT, request.body.personalMedioT, request.body.descripcion, request.body.fechaInicio, request.body.fechaFin);
-    console.log(nuevoReporte);
+    const nuevoReporte = new Reporte(request.body.porcentaje, request.body.horasVacaciones, request.body.personalCompletoT, request.body.personalMedioT, request.body.descripcion, request.body.fechaInicio, request.body.fechaFinal);
     nuevoReporte.save()
     .then(() => {
         console.log(nuevoReporte)
@@ -51,7 +50,7 @@ postReporte = (request, response, next) => {
 
 getBuscarReporte = (request, response, next) => {
 
-    Reporte.buscarReporteFecha(request.params.fechaInicio, request.params.fechaFin)
+    Reporte.buscarReporteFecha(request.params.fechaInicio, request.params.fechaFinal)
         .then(([rows, fieldData]) => {
             Reporte.fetchReporte()
             .then(([rowsRep, fieldData]) => {
@@ -66,15 +65,11 @@ getBuscarReporte = (request, response, next) => {
 };
 
 getPDF = async(request, responde, next) => {
-    Reporte.fetchReporte() 
-    .then(([rowsReporte, fieldData]) => {
-        rep: rowsReporte
-        .then(() => {
-            console.log("pdf creado")
-                const doc = new PDF();
-    doc.pipe(fs.createWriteStream('reporteSemanal.pdf'));
-    doc
-        .image("../public/media/logo.png", 50, 45, {width: 50})
+        console.log("pdf creado")
+        const doc = new PDF();
+        doc.pipe(fs.createWriteStream('reporteSemanal.pdf'));
+        doc
+        // .image("../public/media/logo.png", 50, 45, {width: 50})
         .fillColor("#4444444")
         .fontSize(20)
         .text("Prueba", 110, 57)
@@ -82,10 +77,7 @@ getPDF = async(request, responde, next) => {
         .text("Texto1", 200, 65, {align: "right"})
         .text("Texto2", 200, 80, {align: "right"})
         .moveDown();
-
-    doc.end();
-        })
-    })
+        doc.end();
 }
 
 getReporteExistente = (request, response, next) =>{
