@@ -92,10 +92,6 @@ getBuscar = (request, response, next) => {
 };
 
 getHorasXtarea = async (request, response, next) => {
-    // regresar el mensaje
-    // let mensaje = request.session.mensaje ? request.session.mensaje : '';
-    //  request.session.mensaje = '';
-     
     let tareas;
     await Proyecto.horasTotales(request.params.idProyecto)
     .then( async ([rowsHoras, fielData]) => {
@@ -164,12 +160,7 @@ postEditarTarea = (request, response, next) => {
                     rowsTarea[0].idTarea
                 )
                     .then(([rowsTarea, fielData]) => {
-                        
-                        response
-                            .status(200)
-                            // manda el id del proyecto
-                            .json({ mensaje: 'Tarea editada correctamente', idProyecto: rowsTarea[0].idProyecto });
-                        // mensaje de exit
+                        response.status(200).json({ mensaje: 'Tarea editada correctamente', idProyecto: rowsTarea[0].idProyecto });
                     })
                     .catch((err) => console.log(err));
         })
