@@ -103,11 +103,13 @@ getEditarProyecto = (request,response,next) => {
 }
 
 postEditarProyecto = (request, response, next) => {
-  Proyecto.updateProyecto(request.params.idProyecto, 
+  Proyecto.updateProyecto(request.body.idProyecto, 
     request.body.nombreP, request.body.descripcion, 
     request.body.estatus, request.body.stackTecnologico, 
     request.body.stakeholders)
-  response.status(200).redirect('/proyecto/misProyectos')
+    console.log(request.body.arrayColaboradores)
+  request.session.mensaje = "Proyecto Editado Correctamente";
+  response.status(200).json({mensaje: "Listo"})
 }
 
 

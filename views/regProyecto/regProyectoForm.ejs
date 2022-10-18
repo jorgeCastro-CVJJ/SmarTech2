@@ -33,8 +33,14 @@
     </div>
     <div class="field-body">
       <div class="field">
-        <div class="control">
-          <input class="input" type="text" placeholder="Escribe aqui" onkeyup="deshabilitar()" id="estatus" name="estatus">
+        <div class="control select is-fullwidth">
+          <select id="estatus" name="estatus">
+              <option disabled selected>Selecciona un estatus</option>
+              <option name="Definicion" value="Definicion">Definición</option>
+              <option name="Ejecucion" value="Ejecucion">Ejecución</option>
+              <option name="Estabilizacion" value="Estabilizacion">Estabilización</option>
+              <option name="Pausado" value="Pausado">Pausado</option>
+          </select>
         </div>
       </div>
     </div>
@@ -101,7 +107,7 @@
 
   <div class="field is-grouped is-grouped-centered">
     <p class="control">
-      <input type="button" value="Agregar" disabled id= "submitProyectobtn" onclick="postProyecto()"
+      <input type="button" value="Agregar" id= "submitProyectobtn" disabled onclick="postProyecto()"
       class="button botonAgregarTarea is-success is-outlined">
     </p>
     

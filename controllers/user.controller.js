@@ -95,22 +95,22 @@ menu = (request, response, next) => {
   })
 };
 
-getCrearUsuario = (request, response, next) => {
+getCrearEmpleado = (request, response, next) => {
   let mensaje = request.session.mensaje ? request.session.mensaje : '';
   request.session.mensaje = '';
-  response.render(path.join('CrearUsuario','CrearUsuario.ejs'), {
+  response.render(path.join('CrearEmpleado','CrearEmpleado.ejs'), {
     listaPrivilegios: request.session.privilegios,
     mensaje: mensaje,
   })
 };
 
-postCrearUsuario = (request, response, next) => {
+postCrearEmpleado = (request, response, next) => {
   console.log(request.body)
-  const nuevoUsuario = new Usuario(request.body.nombre, request.body.correo, request.body.contraseña)
-  console.log(nuevoUsuario)
-  nuevoUsuario.save()
-    .then(() => {
-      response.redirect('/user/crearUsuario');
+  const nuevoEmpleado = new Usuario(request.body.nombre, request.body.correo, request.body.contraseña)
+  console.log(nuevoEmpleado)
+  nuevoEmpleado.save()
+    .then(() => { //Agregar la parte de roles **
+      response.redirect('/user/crearEmpleado');
     })
     .catch(err => {
       console.log(err);
@@ -123,7 +123,7 @@ module.exports = {
   postLogin,
   logout,
   menu,
-  getCrearUsuario,
-  postCrearUsuario
+  getCrearEmpleado,
+  postCrearEmpleado
 };
 // en vistas poner if pasar arreglo de privilegios a la vista e ir comparando 

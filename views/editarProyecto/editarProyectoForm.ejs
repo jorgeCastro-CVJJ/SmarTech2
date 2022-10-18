@@ -13,7 +13,7 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input value="<%= proyecto[0].nombreP %>"class="input" type="text" placeholder="Escribe aqui" id="nombreP" name="nombreP">
+              <input value="<%= proyecto[0].nombreP %>"class="input" type="text" placeholder="Escribe aqui" id="nombreP" name="nombreP" onkeyup="deshabilitar()">
             </div>
           </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input value="<%=proyecto[0].descripcion %>"class="input" type="text" placeholder="Escribe aqui" id="descripcion" name="descripcion">
+              <input value="<%=proyecto[0].descripcion %>"class="input" type="text" placeholder="Escribe aqui" id="descripcion" name="descripcion" onkeyup="deshabilitar()">
             </div>
           </div>
         </div>
@@ -81,7 +81,7 @@
                       <option value ="<%= e.idEmpleado %>"><%= e.nombre %></option>                       
                     <% } %>
                   <% } %>
-                </select><a class="button is-link is-outlined botonAgregarColabProyecto" id="agregarColaborador"> + </a>
+                </select><a class="button is-link is-outlined botonAgregarColabProyecto" onclick="agregarColaborador()" id="agregarColaborador"> + </a>
               </div>
             </div>
           </div>
@@ -99,7 +99,7 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input value="<%= proyecto[0].stackTecnologico %>"class="input" type="text" placeholder="Escribe aqui" id="stackTecnologico" name="stackTecnologico">
+              <input value="<%= proyecto[0].stackTecnologico %>"class="input" type="text" placeholder="Escribe aqui" id="stackTecnologico" name="stackTecnologico" onkeyup="deshabilitar()">
             </div>
           </div>
         </div>
@@ -112,7 +112,7 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input value="<%= proyecto[0].stakeholders %>"class="input" type="text" placeholder="Escribe aqui" id="stakeholders" name="stakeholders">
+              <input value="<%= proyecto[0].stakeholders %>"class="input" type="text" placeholder="Escribe aqui" id="stakeholders" name="stakeholders" onkeyup="deshabilitar()">
             </div>
           </div>
         </div>
@@ -120,10 +120,12 @@
 
       <div class="field is-grouped is-grouped-centered">
         <p class="control">
-          <input type="submit" value="Submit" class="button botonAgregarTarea is-success is-outlined">
+          <input type="button" value="Modificar" id= "submitProyectobtn" disabled class="button botonAgregarTarea is-success is-outlined"onclick="postEditarProyecto()">
+          <button type="reset" class="button botonAgregarTarea is-danger is-outlined" onclick="window.location.href='/proyecto/misProyectos/';">Regresar</button>
         </p>
       </div>
     </form>
   </div>
-<script src="/js/scriptRegProyecto.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="/js/scriptEditarProyecto.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
