@@ -23,7 +23,6 @@ postnuevoReporte = (request, response, next) => {
 
 getReportes = (request, response, next) => {
     // Reporte.fetchHorasReporte(request.session.idSesion, request.params.fechaInicio, request.params.fechaFin)
-    console.log("hola")
     Reporte.fetchReporte()
     .then(([rowsRep, fieldData]) => {
         console.log("Datos de filas:", rowsRep)
@@ -54,8 +53,10 @@ getBuscarReporte = (request, response, next) => {
         .then(([rows, fieldData]) => {
             Reporte.fetchReporte()
             .then(([rowsRep, fieldData]) => {
-                 console.log("Los datos del reporte son:", rows)
+                 console.log("Los datos del reporte son:", rows);
+                 console.log("Rows rep", rowsRep)
             response.status(200).json({fecha: rows, reporte: rowsRep});
+            
             })
         })
         .catch(err => { 
