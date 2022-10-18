@@ -33,8 +33,8 @@
                 <div class = "field is-horizontal"> 
                     <label class = "label">Personal de Medio Tiempo</label>
                     <input class = "input" type = "number" min="0" placeholder = "Ingresar" 
-                    onkeyup="horasMedioT()" onclick="horasMedioT()"
-                    id = "personalMedioT" value = "0">   
+                    onkeyup="horasMedioT()" onclick="horasMedioT()" pattern="^[0-9]+"
+                    oninput="this.value = Math.max(this.value, 0)" id = "personalMedioT" value = "0">   
                     <label class = "label">Horas</label>  
                     <div class = "horasMedioT" type = "number" id= "horasMedioT">0</div>                            
                 </div>
@@ -42,8 +42,8 @@
                 <div class="field is-horizontal">
                     <label class = "label">Personal de Tiempo Completo</label>
                     <input class = "input" type = "number" min="0" placeholder = "Ingresar" 
-                    onkeyup="horasCompletoT()" onclick="horasCompletoT()" 
-                    id = "personalCompletoT" value = "0">
+                    onkeyup="horasCompletoT()" onclick="horasCompletoT()" pattern="^[0-9]+"
+                    oninput="this.value = Math.max(this.value, 0)" id = "personalCompletoT" value = "0">
                     <label class = "label">Horas</label>  
                     <div class = "horasCompletoT" type = "number" id= "horasCompletoT">0</div>                      
                 </div>
@@ -54,8 +54,7 @@
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Horas Esperadas</label>
-                    <div type = "number" id= "horasEsperadas" min = "0" value = "0"
-                    pattern="^[0-9]+" oninput="this.value = Math.max(this.value, 0)">0</div>
+                    <div type = "number" id= "horasEsperadas" min = "0" value = "0">0</div>
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Horas de Vacaciones</label>
@@ -90,7 +89,10 @@
                 <tr>
                     <td><%= h.nombreP %></td> 
                     <td><input id = "horasTrabajo['<%= h.nombreP %>']" type = "number" value="<%= h.horasTrabajo %>" readonly></td> 
-                    <td><input value = "<%= h.horasTrabajo %>" type="number" id = "horasReales['<%= h.nombreP %>']" min = "0" placeholder="0" onkeyup="sumHoras()" onclick="sumHoras()"></td>
+                    <td><input value = "<%= h.horasTrabajo %>" type="number" 
+                    id = "horasReales['<%= h.nombreP %>']" min = "0" placeholder="0" 
+                    onkeyup="sumHoras()" onclick="sumHoras()" pattern="^[0-9]+"
+                    oninput="this.value = Math.max(this.value, 0)"></td>
                 </tr>
                 <script>
                     nombreP.push("<%= h.nombreP %>");
@@ -99,7 +101,7 @@
             <tr>
                 <td><b>TOTAL</b></td>
                 <td id = "totalHorasTrabajo" type = "number" value = "0"></td>
-                <td id = "totalHorasReales" type = "number"></td>
+                <td id = "totalHorasReales" type = "number" value = "0"></td>
             </tr>
         </tbody>
 
@@ -147,11 +149,5 @@
     
             document.getElementById('fechaFin').oninput = asyncFunc;
         </script>
-
-<script>
-    $(document).ready( function () {
-  $('#tabla_reporte').DataTable();
-    } );
-  </script>
 
 <script src="/js/scriptReporte.js"></script>
