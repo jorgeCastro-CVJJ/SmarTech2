@@ -626,7 +626,6 @@ table tbody tr:nth-child(even) {
 }
 
 .swiper-pagination {
-  padding-top:100px;
   position: static !important;
 }
 
@@ -695,6 +694,10 @@ table tbody tr:nth-child(even) {
 .boton_crearReporte:hover {
   background-color:#00bdc7;
   cursor: pointer;
+}
+
+.listaCollabs {
+  position: relative;
 }
 
 #reporteSemanal {

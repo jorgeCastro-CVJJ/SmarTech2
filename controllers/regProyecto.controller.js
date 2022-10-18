@@ -85,10 +85,10 @@ getProyectosByUserID = (request, response, next) => {
 }
 
 getEditarProyecto = (request,response,next) => {
-  Proyecto.fetchOne(request.params.idProyecto)
+  Proyecto.getTodoProyecto(request.params.idProyecto)
   .then(([rowsProyecto,fieldata]) => {
-    Empleado.fetchAll()
-    .then(async ([rowsEmpleado,fieldata]) => {
+    Empleado.getEmpleadosNoRegistradosProyectos(request.params.idProyecto)
+    .then(([rowsEmpleado,fieldata]) => {
       response.render(path.join('editarProyecto', 'editarProyecto.ejs'), {
         proyecto: rowsProyecto,
         empleado: rowsEmpleado,

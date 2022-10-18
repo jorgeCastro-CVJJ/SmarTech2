@@ -75,7 +75,8 @@ static updateProyecto(idProyecto, nombreP, descripcion, estatus, stackTecnologic
 
 // Devuelve todo de un proyecto (Empleado, Trabaja, Proyecto))
 static getTodoProyecto(idProyecto) {
-  db.execute(`SELECT * 
+  
+  return db.execute(`SELECT * 
   FROM proyecto as P, trabaja as TR, empleado as Em 
   WHERE P.idProyecto = TR.idProyecto 
   AND Em.idEmpleado = TR.idEmpleado 

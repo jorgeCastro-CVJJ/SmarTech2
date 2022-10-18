@@ -9,7 +9,7 @@
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <% for (let p of misproyectos) { %>
-                            <% if (p.estatus != "Estabilizacion") { %>
+                            <% if (p.estatus != "Pausado") { %>
                                 <div class="swiper-slide card" id="gris-clare">
                                     <figure class="image is-24x24">
                                         <img src="/media/edit-free-icon-font.png">
@@ -28,7 +28,15 @@
                                         <div class="content">
                                             <p>
                                             Stack Tecnológico:  <%=p.stackTecnologico %> <br>
-                                            Estatus:  <%=p.estatus%>
+                                            Estatus:<% if( p.estatus == "Estabilizacion") { %>
+                                                <span style="color: green"><%= p.estatus %></span>
+                                            <%} else if (p.estatus == "Ejecucion" ) { %>
+                                                <span style="color: yellow"><%= p.estatus %></span>
+                                            <% } else if(p.estatus == "Definicion") { %>
+                                                <span style="color: orange"><%= p.estatus %></span>
+                                            <% } else if(p.estus == "Pausado") { %>
+                                                <span style="color: red"><%= p.estatus %></span>
+                                            <% } %>
                                             </p>
                                         </div>
                                     </div> 
@@ -50,7 +58,7 @@
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <% for (let t of todosproyectos) { %>
-                            <% if (t.estatus != "Finalizado") { %>
+                            <% if (t.estatus != "Pausado") { %>
                                 <div class="swiper-slide card" id="azul">
                                     <figure class="image is-24x24" >
                                         <img src="/media/edit-free-icon-font.png">
@@ -67,7 +75,15 @@
                                         </div>
                                         <div class="content">
                                             Stack Tecnológico: <%= t.stackTecnologico %> <br>
-                                            Estatus: <%= t.estatus%>
+                                            Estatus: <% if( t.estatus == "Estabilizacion") { %>
+                                                <span style="color: green"><%= t.estatus %></span>
+                                            <%} else if (t.estatus == "Ejecucion" ) { %>
+                                                <span style="color: yellow"><%= t.estatus %></span>
+                                            <% } else if(t.estatus == "Definicion") { %>
+                                                <span style="color: orange"><%= t.estatus %></span>
+                                            <% } else if(t.estus == "Pausado") { %>
+                                                <span style="color: red"><%= t.estatus %></span>
+                                            <% } %>
                                         </div>
                                     </div> 
                                 </div>
