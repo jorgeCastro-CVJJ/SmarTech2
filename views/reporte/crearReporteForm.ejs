@@ -107,7 +107,7 @@
 
         <!--Botón de guardar-->
         <a href="/reporte/nuevoReporte"><input type="submit" id = "reportebtn" value = "Guardar" onclick="postNuevoReporte()"></a> 
-        <a href="/reporte/crearPdf" class="button">Crear PDF</a>
+        <a href="/reporte/crearPdf" class="button" id="crearPDF">Crear PDF</a>
 
         <script>
             const asyncFunc = () => {
@@ -120,11 +120,15 @@
                 }).then(result => {
                     return result.json(); //Regresa otra promesa
                 }).then(data => {
+                    while (nombreP.length > 0) {
+                        nombreP.pop();
+                    }
                     //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
-                    console.log(data.fecha);
+                    console.log("hrs:", data.fecha);
                     let html = '';
                     if (data.fecha.length > 0) {                 
                       for(let f of (data.fecha)) {
+                        nombreP.push(f.nombreP);
                         html += '<tr>';
                         html += '<td>'
                         html += `${f.nombreP}`;
@@ -133,7 +137,7 @@
                         html += `<input id = "horasTrabajo['${f.nombreP }']" type = "number" value="${f.horasReales}" readonly>`;
                         html += '</td>';
                         html += '<td>';
-                        html += `<input value = "${f.horasReales}" type="number" id = "horasReales['${f.nombreP}']" min = "0" placeholder="0" onkeyup=${sumHoras()} onclick=${sumHoras()}">`;  
+                        html += `<input value = "${f.horasReales}" type="number" id = "horasReales['${f.nombreP}']" min = "0" placeholder="0" onkeyup="sumHoras()" onclick="sumHoras()">`;  
                         html += '</td>';
                         html += '</tr>';       
                       };      
@@ -150,7 +154,7 @@
                         html = '<h2>No hay proyectos registrados en el periodo seleccionado.</h2>';
                     }
                     document.getElementById("datos_tabla").innerHTML = html;
-                  
+                    sumHoras();
                 }).catch(err => {
                     console.log(err);
                 });

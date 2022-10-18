@@ -9,18 +9,16 @@
     <div class="columns ">
         <div class="column is-four-fifths is-offset-1">   
             <h1 class="titulo-MisProyectos">Mis Proyectos</h1>
-            <br>
-            <br>
             <div class="field is-horizontal proyectoVista">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <% for (let p of misproyectos) { %>
                             <% if (p.estatus != "Pausado") { %>
                                 <div class="swiper-slide card" id="gris-clare">
-                                    <figure class="image is-24x24">
+                                    <figure class="image is-24x24 botonEditarProyecto is-clickable" href="/proyecto/editar/<%= p.idProyecto %>" >
                                         <img src="/media/edit-free-icon-font.png">
                                     </figure>
-                                    <figure class="image is-24x24">
+                                    <figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" data-target="modal-js-example">
                                         <img src="/media/borrar.png">
                                     </figure>
                                     <div class="card-content"> 
@@ -55,21 +53,19 @@
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
-            <br>
-            <div class="field is-horizontal">
-                <h1 class="titulo-medio">TODOS PROYECTOS</h1>
-            </div>
-            <br>
+
+
+            
             <div class="field is-horizontal proyectoVista">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <% for (let t of todosproyectos) { %>
                             <% if (t.estatus != "Pausado") { %>
                                 <div class="swiper-slide card" id="azul">
-                                    <figure class="image is-24x24" >
+                                    <figure class="image is-24x24 botonEditarProyecto is-clickable" href="/proyecto/editar/<%= t.idProyecto %>" >
                                         <img src="/media/edit-free-icon-font.png">
                                     </figure>
-                                    <figure class="image is-24x24">
+                                    <figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" data-target="modal-js-example">
                                         <img src="/media/borrar.png">
                                     </figure>
                                     <div class="card-content">
@@ -91,6 +87,7 @@
                                                 <span style="color: red"><%= t.estatus %></span>
                                             <% } %>
                                         </div>
+                                        
                                     </div> 
                                 </div>
                             <% } %>
@@ -104,6 +101,26 @@
         </div>
     </div>
 
+
+
+
+
+    <div class="modal" id="modal-js-example">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Modal title</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <!-- Content ... -->
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-success">Save changes</button>
+                <button class="button">Cancel</button>
+            </footer>
+        </div>
+    </div>
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
@@ -111,7 +128,7 @@
 <script>
   var swiper = new Swiper(".mySwiper", {
     slidesPerView: 2,
-    spaceBetween: 20,
+    spaceBetween: 30,
     slidesPerGroup: 2,
     loop: true,
     loopFillGroupWithBlank: true,
@@ -135,5 +152,51 @@
         setTimeout(function(){ x.className  = x.className.replace("show",""); }, 3000);
     };
 
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+  // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add('is-active');
+  }
+
+  function closeModal($el) {
+    $el.classList.remove('is-active');
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById(modal);
+
+    $trigger.addEventListener('click', () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+    const $target = $close.closest('.modal');
+
+    $close.addEventListener('click', () => {
+      closeModal($target);
+    });
+  });
+
+  // Add a keyboard event to close all modals
+  document.addEventListener('keydown', (event) => {
+    const e = event || window.event;
+
+    if (e.keyCode === 27) { // Escape key
+      closeAllModals();
+    }
+  });
+});
 </script>
 

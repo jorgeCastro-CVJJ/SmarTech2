@@ -605,7 +605,8 @@ table tbody tr:nth-child(even) {
 .swiper {
   max-width:1150px;;
   min-width: 600px;
-  height: 80%;
+  height: 75%;
+  padding: 20px !important;
 }
 
 .swiper-slide {
@@ -630,12 +631,37 @@ table tbody tr:nth-child(even) {
 
 .swiper .card{
   min-width: 40%;
-  min-height: 260px;
+  min-height: 250px;
+  box-shadow: 8px 8px #202a30
 }
 
 .card .image {
   position: fixed;
-  /* right: !important;  */
+}
+
+.botonEditarProyecto {
+  right: 40px;
+  top: 10px;
+  
+}
+
+.botonEliminarProyecto {
+  right: 10px;
+  top: 10px;
+  
+}
+
+/* .botonEditarProyecto2 {
+  right: 90px;
+  top: 10px;
+  position: relative !important;
+}
+
+*/
+.botonEliminarProyecto2 {
+  top: 10px;
+  right: 40px;
+  position:relative !important;    
 }
 
 #azul{
@@ -862,7 +888,29 @@ th,td {
   top: 25%;
 
 }
+#reportebtn {
+  position: absolute;
+  right: 180px;
+  bottom: -30%;
+  width: 100px;
+  height: 50px;
+  background-color: #00A99D;
+  border: none;
+  color: white;
+  border-radius: 10px;
+}
 
 .labelPE{
   top: 80px;
+}
+#crearPDF {
+  position: absolute;
+  right: 50px;
+  bottom: -30%;
+  width: 100px;
+  height: 50px;
+  background-color: #00A99D;
+  border: none;
+  color: white;
+  border-radius: 10px;
 }
