@@ -46,7 +46,7 @@ function postEditarProyecto(){
         body: JSON.stringify(data)})
     .then(response => response.json())
     .then(response => {
-        window.location.href = '/proyecto/misProyectos';
+        window.location.href = '/proyecto/misProyectos'; // Me regresa a la página anterior (no muestra cambios hasta que se recarga la pagina)
     
     }).catch(err => {
         console.log(err);
@@ -65,6 +65,7 @@ function deshabilitar() {
         document.getElementById('submitProyectobtn').disabled = false;
     }
 }
+
 
 // Esto se pone en el boton de "modificar" para llamar a la funcion PO
 document.getElementById('submitProyectobtn').onclick=postEditarProyecto;

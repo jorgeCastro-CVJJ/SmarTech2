@@ -1,10 +1,16 @@
 
-    
+<% if(mensaje != "") {  %>
+
+    <div class="notification is-success is-light exitoTarea" id="snackbar">
+    Proyecto Guardado <strong>correctamente</strong>
+    </div>
+
+<% } %>
     <div class="columns ">
-        <div class="column is-four-fifths is-offset-1">    
+        <div class="column is-four-fifths is-offset-1">   
             <h1 class="titulo-MisProyectos">Mis Proyectos</h1>
             <br>
-            <br>  
+            <br>
             <div class="field is-horizontal proyectoVista">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
@@ -110,13 +116,24 @@
     loop: true,
     loopFillGroupWithBlank: true,
     pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
+        el: ".swiper-pagination",
+        clickable: true,
     },
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
     },
-  });
+});
+
+
+    window.onload = function() {
+        // Get the snackbar DIV
+        var x = document.getElementById("snackbar");
+        // Add the "show" class to DIV
+        x.className = "show";
+    // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className  = x.className.replace("show",""); }, 3000);
+    };
+
 </script>
 
