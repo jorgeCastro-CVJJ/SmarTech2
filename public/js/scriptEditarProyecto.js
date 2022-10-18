@@ -21,12 +21,12 @@ function agregarColaborador(){
 // del proyecto --> Falta 
 function postEditarProyecto(){
 
+    let idProyecto = document.getElementById('idProyecto');
     let nombreP = document.getElementById("nombreP");
     let descripcion = document.getElementById("descripcion");
     let estatus = document.getElementById('estatus');
     let stackTecnologico = document.getElementById('stackTecnologico');
     let stakeholders = document.getElementById('stakeholders');
-    let idProyecto = document.getElementById('idProyecto')
 
     let ruta = "/proyecto/editar/:idProyecto/";
     let data = {
