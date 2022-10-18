@@ -70,7 +70,7 @@ getPDF = async(request, responde, next) => {
         const doc = new PDF();
         doc.pipe(fs.createWriteStream('reporteSemanal.pdf'));
         doc
-        // .image("../public/media/logo.png", 50, 45, {width: 50})
+        .image(path.join( "public", "media", "logo.png"), 50, 45, {width: 50})
         .fillColor("#4444444")
         .fontSize(20)
         .text("Prueba", 110, 57)
