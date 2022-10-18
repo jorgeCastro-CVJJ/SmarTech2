@@ -39,7 +39,6 @@ getReportes = (request, response, next) => {
 
 postReporte = (request, response, next) => {
     const nuevoReporte = new Reporte(request.body.porcentaje, request.body.horasVacaciones, request.body.personalCompletoT, request.body.personalMedioT, request.body.descripcion, request.body.fechaInicio, request.body.fechaFinal);
-    console.log(nuevoReporte);
     nuevoReporte.save()
     .then(() => {
         console.log(nuevoReporte)

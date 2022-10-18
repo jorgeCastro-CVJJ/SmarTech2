@@ -17,7 +17,7 @@ module.exports = class Reporte {
     }
 
     static fetchReporte() {
-       return db.execute("SELECT porcentaje, horasVacaciones, personalCompletoT, personalMedioT, descripcion FROM reporteFinal")
+       return db.execute("SELECT * FROM reporteFinal")
     }
 
      static fetchOne(noReporte) {
