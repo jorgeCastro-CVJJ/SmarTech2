@@ -4,6 +4,7 @@ const Empleado = require("../models/empleadoModel");
 const Trabaja = require("../models/trabajaModel");
 const { error } = require("console");
 const { response } = require("express");
+const { borrarColaborador } = require("../models/tareaModel");
 
 getnuevoProyecto = (request, response, next) =>{
   console.log(request.session);
@@ -142,6 +143,26 @@ getProyectosExistentes = (request, response, next) => {
   });
 }
 
+borrarColaboradorController = (request, response) => {
+  console.log(request.params.id, "soy el console de borrar")
+  Proyecto.getIdProyecto(request.params.id)
+  .then(([rowsID,fieldata]) => {
+    Proyecto.borrarColaboradorProyecto(request.params.id)
+    .then(() => {
+      response.redirect('/proyecto/editar/'+ rowsID[0].idProyecto);
+    })
+  })
+};
+
+agregarColaboradorController = (request,response) => {
+  console.log(request.params.id, "Soy el console de agregarColab")
+  Proyecto.asignarColaboradorProyecto(request.params.idEmpleado, request.params.idProyecto)
+  .then(() => {
+    response.redirect('/proyecto/editar/' + request.params.idProyecto);
+  })
+};
+
+
 module.exports = {
   getnuevoProyecto,
   postnuevoProyecto,
@@ -151,4 +172,6 @@ module.exports = {
   getProyectosExistentes,
   getEditarProyecto,
   postEditarProyecto,
+  agregarColaboradorController,
+  borrarColaboradorController,
 };

@@ -83,5 +83,21 @@ static getTodoProyecto(idProyecto) {
   AND P.idProyecto = ${idProyecto}`)
 }
 
+// Devuelve el idProyecto de la tabla Trabaja que con el ID dado 
+static getIdProyecto(id) {
+  return db.execute(`SELECT idProyecto 
+  FROM trabaja as TR 
+  WHERE TR.id = ${id}`)
+}
+
+// Borrar el registro de la Base de datos con el ID dado
+static borrarColaboradorProyecto(id) {
+  return db.execute(`DELETE FROM trabaja where ID =${id}`)
+}
+
+static asignarColaboradorProyecto(idEmpleado, idProyecto) {
+  return db.execute(`INSERT INTO trabaja (idEmpleado, idProyecto) 
+  VALUES (${idEmpleado},${idProyecto})`)
+}
 
 }

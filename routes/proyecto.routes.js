@@ -20,8 +20,8 @@ router.get("/editar/:idProyecto", isAuth, hasEditarProyecto, regProyectoControll
 router.post("/editar/:idProyecto", hasEditarProyecto, regProyectoController.postEditarProyecto)
 
 // Rutas Auxiliares 
-router.get('/eliminar/:id', isAuth, regProyectoController.borrarColaborador);
-router.get('/asignar/:idProyecto/empleado/:idEmpleado', isAuth, regProyectoController.agregarColaborador);
+router.get('/eliminar/:id', isAuth, regProyectoController.borrarColaboradorController);
+router.get('/asignar/:idProyecto/empleado/:idEmpleado', isAuth, regProyectoController.agregarColaboradorController);
 
 
 module.exports = router;
