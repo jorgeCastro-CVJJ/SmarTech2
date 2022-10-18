@@ -21,7 +21,9 @@
       </p>
       <ul class="menu-list">
         <li><a href="/proyecto/misProyectos"><img class="icon icon-us" src="/media/form-free-icon-font.png" alt="MisProyectos"/>Mis Proyectos</a></li>
+        <% if(listaPrivilegios.indexOf('RegNuevoProyecto') != -1) {  %>
         <li><a href="/proyecto/registrarProyecto"><img class="icon icon-us" src="/media/crear.png" alt="Crear Proyectos"/>Crear Proyecto</a></li>
+        <% } %> 
       </ul>
       <p class="menu-label">
         Tareas
@@ -29,12 +31,15 @@
       <ul class="menu-list">
         <li><a href="/tarea/misTareas"><img class="icon icon-us" src="/media/mis_tareas.svg" alt="Mis Tareas"/>Mis Tareas</a></li>
       </ul>
+      <% if(listaPrivilegios.indexOf('RegHorasAusentes') != -1) {  %>
       <p class="menu-label">
         Reportes
       </p>
+    
       <ul class="menu-list">
         <li><a href="/reporte/nuevoReporte"><img class="icon icon-us" src="/media/contrato.png" alt="Crear Reporte"/>Crear Reporte</a></li>
       </ul>
+      <% } %>
       <p class="menu-label">
         
       </p>
