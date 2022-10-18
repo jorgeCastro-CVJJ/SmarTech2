@@ -11,6 +11,6 @@ router.get('/buscar/:fechaInicio/:fechaFin', isAuth, reporteController.getBuscar
 
 router.get("/crearPdf", isAuth,reporteController.getPDF);
 
-router.get("/existente/:descripcion", isAuth, reporteController.getReporteExistente)
+router.get("/existente/:noReporte", isAuth, reporteController.getReporteExistente)
 
 module.exports = router;

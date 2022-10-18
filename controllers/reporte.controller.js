@@ -66,10 +66,13 @@ getBuscarReporte = (request, response, next) => {
 };
 
 getPDF = async(request, responde, next) => {
-    const doc = new PDF();
-
+    Reporte.fetchReporte() 
+    .then(([rowsReporte, fieldData]) => {
+        rep: rowsReporte
+        .then(() => {
+            console.log("pdf creado")
+                const doc = new PDF();
     doc.pipe(fs.createWriteStream('reporteSemanal.pdf'));
-
     doc
         .image("../public/media/logo.png", 50, 45, {width: 50})
         .fillColor("#4444444")
@@ -81,10 +84,12 @@ getPDF = async(request, responde, next) => {
         .moveDown();
 
     doc.end();
+        })
+    })
 }
 
 getReporteExistente = (request, response, next) =>{
-    Reporte.fetchReporte()
+    Reporte.fetchOne(request.params.noReporte)
     .then(([rowsReporte, fielData]) =>{
         Reporte.fetchHoras() 
             .then(([rowsHoras, fieldData]) => {
