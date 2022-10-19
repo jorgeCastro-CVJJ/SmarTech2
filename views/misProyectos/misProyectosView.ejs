@@ -15,13 +15,14 @@
                         <% for (let p of misproyectos) { %>
                             <% if (p.estatus != "Pausado") { %>
                                 <div class="swiper-slide card" id="gris-clare">
+                                    <% if(listaPrivilegios.indexOf('EditarProyecto') != -1) {  %>
                                     <a href="/proyecto/editar/<%= p.idProyecto %>"><figure class="image is-24x24 botonEditarProyecto is-clickable" >
                                         <img src="/media/edit-free-icon-font.png">
                                     </figure></a>
-                                    <figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" data-target="modal-js-example" data-idProyecto="<%p.idProyecto%>">
+                                    <a href="/proyecto/eliminarProyecto/<%= p.idProyecto %>"><figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" data-target="modal-js-example" data-idProyecto="<%p.idProyecto%>">
                                         <img src="/media/borrar.png">
-                                    </figure>
-                                    
+                                    </figure></a>
+                                    <% } %>
                                     <div class="card-content"> 
                                         <i src="/media/edit-free-icon-font.png"></i>
                                         <div class="title" id="blanco">
@@ -66,12 +67,14 @@
                         <% for (let t of todosproyectos) { %>
                             <% if (t.estatus != "Pausado") { %>
                                 <div class="swiper-slide card" id="azul">
+                                    <% if(listaPrivilegios.indexOf('EditarProyecto') != -1) {  %>
                                     <a href="/proyecto/editar/<%= t.idProyecto %>"><figure class="image is-24x24 botonEditarProyecto is-clickable" href="/proyecto/editar/<%= t.idProyecto %>" >
                                         <img src="/media/edit-free-icon-font.png">
                                     </figure></a>
-                                    <figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" data-target="modal-js-example" data-idProyecto="<%t.idProyecto%>">
+                                    <a href="/proyecto/eliminarProyecto/<%= t.idProyecto %>"><figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" data-target="modal-js-example" data-idProyecto="<%t.idProyecto%>">
                                         <img src="/media/borrar.png">
-                                    </figure>
+                                    </figure></a>
+                                    <% } %>
                                     <div class="card-content">
                                         <div class="title" id="blanco">
                                             <%= t.nombreP %>

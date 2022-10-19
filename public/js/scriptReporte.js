@@ -53,6 +53,8 @@ function proporcion(){
 /*Row de total*/
 window.addEventListener("load", function(){
     sumHoras();
+    horasCompletoT();
+    horasMedioT();
 })
 
 function sumHoras(){
@@ -70,8 +72,6 @@ function sumHoras(){
         totalHorasTrabajo.innerHTML = horasTotales;
         totalHorasReales.innerHTML = parseInt(horasTotales2 * 1);
     }
-    console.log(typeof(totalHorasTrabajo));
-    console.log(typeof(totalHorasTotales));
 }
 
 function postNuevoReporte() {

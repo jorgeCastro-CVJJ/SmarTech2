@@ -39,8 +39,6 @@ module.exports = class Reporte {
             'UPDATE reporteFinal SET porcentaje = ? , horasVacaciones = ?, personalCompletoT = ?, personalMedioT = ?, descripcion = ?, WHERE noReporte = ?',
             [porcentaje, horasVacaciones, personalCompletoT, personalMedioT, descripcion, noReporte]
         );
-        // const edited = await db.execute('SELECT idProyecto from tarea WHERE idTarea = ?', [idTarea])
-        // return edited;
     } catch (error) {
         console.log(error);
     }

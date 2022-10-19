@@ -16,8 +16,8 @@
 
             <div class="columns">
                 <div class="column">
-                    <div class="porcentajes">
-                        <label class = "label">Porcentaje: <input value = '<%= reporteN[0].porcentaje %>' type="number" min = "0" placeholder="0"> </label>
+                    <div class="porcentajesRep">
+                        <label class = "label">Porcentaje: <input value = '<%= reporteN[0].porcentaje %>' type="number" min = "0" placeholder="0" id="porcentaje"> </label>
                         <label class="label">Verdadero porcentaje de eficiencia:</label> 
                     </div>
                 </div>
@@ -25,14 +25,13 @@
                 
     <div class="columns">
         <div class="column">
-            <div class="inputs_reporte">
+            <div class="inputs_reporteRep">
                 <div class = "field is-horizontal"> 
-                    <label class = "label">Personal de Medio Tiempo: <input value = '<%= reporteN[0].personalMedioT %>' type="number" min = "0" placeholder="0"></label>                              
+                    <label class = "label">Personal de Medio Tiempo: <input value = '<%= reporteN[0].personalMedioT %>' type="number" min = "0" placeholder="0" id="personalMedioT"></label>                              
                 </div>
 
                 <div class="field is-horizontal">
-                    <label class = "label">Personal de Tiempo Completo: <input value = '<%= reporteN[0].personalCompletoT %>' type="number" min = "0" placeholder="0"></label>
-                    <div class = "horasCompletoT" type = "number" id= "horasCompletoT"></div>                      
+                    <label class = "label">Personal de Tiempo Completo: <input value = '<%= reporteN[0].personalCompletoT %>' type="number" min = "0" placeholder="0" id="personalCompletoT"></label>                     
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Total de personal</label>
@@ -44,11 +43,11 @@
                     <div type = "number" id= "horasEsperadas" min = "0" value = "0">0</div>
                 </div>
                 <div class="field is-horizontal">
-                    <label class = "label">Horas de Vacaciones: <input value = '<%= reporteN[0].horasVacaciones %>' type="number" min = "0" placeholder="0"></label>
+                    <label class = "label">Horas de Vacaciones: <input value = '<%= reporteN[0].horasVacaciones %>' type="number" min = "0" placeholder="0" id="horasVacaciones"></label>
                     
                 </div>
                 <div class="field is-horizontal">
-                    <label class = "label">Descripcion: <input value = '<%= reporteN[0].descripcion %>' type="text" min = "0" placeholder="descripcion"></label>
+                    <label class = "label">Descripcion: <input value = '<%= reporteN[0].descripcion %>' type="text" min = "0" placeholder="descripcion" id="descripcion"></label>
                 </div>
             </div>
         </div>
@@ -86,8 +85,15 @@
         </tbody>
 
         <!--Botón de guardar-->
-        <input type="submit" id = "reportebtn" value = "Guardar cambios" onclick="postReporteEditado()">
+        <p class="control">
+            <input type="submit" onclick="postReporteEditado()" value="Guardar cambios"
+            class="button reportebtn is-success is-outlined" id="reportebtn">
+          </p>
 
+          <p class="control">
+            <input type="submit" value="Generar PDF"
+            class="button reportebtn is-info" id="crearPDF">
+          </p>
         
         <script>
             const asyncFunc = () => {
@@ -147,20 +153,17 @@
     let personalCompletoT = document.getElementById('personalCompletoT');
     let personalMedioT = document.getElementById('personalMedioT');
     let descripcion = document.getElementById('descripcion');
-    let fechaInicio = document.getElementById('fechaInicio');
-    let fechaFinal = document.getElementById('fechaFinal');
 
       var pathArray = window.location.pathname.split('/');
-      let ruta = "/reporte/crearReporte" + pathArray[pathArray.length-1];
+      let ruta = "/reporte/existente/" + pathArray[pathArray.length-1];
     let data = {
         porcentaje: porcentaje.value,
         horasVacaciones: horasVacaciones.value,
         personalCompletoT: personalCompletoT.value,
         personalMedioT: personalMedioT.value,
         descripcion: descripcion.value,
-        fechaInicio: fechaInicio.value,
-        fechaFinal: fechaFinal.value
         }
+        console.log(porcentaje);
         console.log(data);
         fetch(ruta, {
           method: 'POST',
@@ -172,7 +175,8 @@
         .then(response => response.json())
         .then(response => {
           console.log(response);
-          window.location = '/reporte/nuevoReporte' + response.noReporte; 
+          window.location = '/reporte/crearReporte';
+          console.log("Reporte editado") 
       }).catch(err => {
         console.log(err);
       });
