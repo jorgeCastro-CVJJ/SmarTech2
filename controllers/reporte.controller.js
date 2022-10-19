@@ -172,14 +172,12 @@ getReporteExistente = (request, response, next) =>{
                      rowsRep[0].descripcion,
                      rowsRep[0].noReporte,
                  )
-                     .then(([]) => {
+
                         request.session.mensaje = "Reporte modificado correctamente";
                         response.status(200).json({mensaje: "Listo"});
                         //  response.status(200).json({ mensaje: 'Reporte editado correctamente'});
-                     })
-                     .catch((err) => console.log(err));
-         })
-         .catch((err) => console.log(err));
+
+            }).catch((err) => console.log(err));
  };
 
 module.exports = {
