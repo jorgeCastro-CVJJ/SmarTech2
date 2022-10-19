@@ -950,3 +950,15 @@ th,td {
   color: white;
   border-radius: 10px; */
 }
+
+#botonRegreso {
+  position: absolute;
+  top: 10%;
+  left: 18%;
+}
+
+#botonDetalle {
+  position: absolute;
+  top: 10%;
+  left: 26%;
+}
