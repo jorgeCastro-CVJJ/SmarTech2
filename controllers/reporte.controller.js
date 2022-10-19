@@ -22,13 +22,16 @@ postnuevoReporte = (request, response, next) => {
 }
 
 getReportes = (request, response, next) => {
+    let mensaje = request.session.mensaje ? request.session.mensaje : '';
+     request.session.mensaje = '';
     // Reporte.fetchHorasReporte(request.session.idSesion, request.params.fechaInicio, request.params.fechaFin)
     Reporte.fetchReporte()
     .then(([rowsRep, fieldData]) => {
         console.log("Datos de filas:", rowsRep)
         return response.render(path.join("reporte", "modificarCrearReporte"), {
             reporte: rowsRep,
-            listaPrivilegios: request.session.privilegios
+            listaPrivilegios: request.session.privilegios,
+            mensaje: mensaje,
         });
     })
     .catch(err => {
@@ -164,8 +167,10 @@ getReporteExistente = (request, response, next) =>{
                      rowsRep[0].descripcion,
                      rowsRep[0].noReporte,
                  )
-                     .then(([rowsRep, fielData]) => {
-                         response.status(200).json({ mensaje: 'Reporte editado correctamente'});
+                     .then(([]) => {
+                        request.session.mensaje = "Reporte modificado correctamente";
+                        response.status(200).json({mensaje: "Listo"});
+                        //  response.status(200).json({ mensaje: 'Reporte editado correctamente'});
                      })
                      .catch((err) => console.log(err));
          })

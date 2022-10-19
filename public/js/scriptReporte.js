@@ -63,38 +63,3 @@ function sumHoras(){
         totalHorasReales.innerHTML = parseInt(horasTotales2 * 1);
     }
 }
-
-function postNuevoReporte() {
-    let porcentaje = document.getElementById("porcentaje");
-    let horasVacaciones = document.getElementById('horasVacaciones');
-    let personalCompletoT = document.getElementById('personalCompletoT');
-    let personalMedioT = document.getElementById('personalMedioT');
-    let descripcion = document.getElementById('descripcion');
-    let fechaInicio = document.getElementById('fechaInicio');
-    let fechaFinal = document.getElementById('fechaFinal');
-
-    let ruta = "/reporte/crearReporte";
-    let data = {
-        porcentaje: porcentaje.value,
-        horasVacaciones: horasVacaciones.value,
-        personalCompletoT: personalCompletoT.value,
-        personalMedioT: personalMedioT.value,
-        descripcion: descripcion.value,
-        fechaInicio: fechaInicio.value,
-        fechaFinal: fechaFinal.value
-    }
-    console.log(data);
-    fetch(ruta, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body:JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(response => {
-    window.location.href = '/reporte/nuevoReporte';
-    }).catch(err => {
-        console.log(err);
-    });
-}

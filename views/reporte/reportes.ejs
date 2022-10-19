@@ -1,3 +1,11 @@
+<% if(mensaje != "") {  %>
+
+  <div class="notification is-success is-light exitoTarea" id="snackbar">
+  Reporte creado <strong>correctamente</strong>
+  </div>
+
+<% } %>
+
 <div class="titulo">Crear reporte</div>
 
   <div class="titulo" style="top: 330px">Modificar reporte:</div>
@@ -25,6 +33,16 @@
   }
   //al path le añade el numero del proyecto, nombreP es una referencia al elemento que selecciona los datos
   document.getElementById("nombreR").addEventListener('change', handleReporteSelect);
+
+  window.onload = function() {
+        // Get the snackbar DIV
+        var x = document.getElementById("snackbar");
+        // Add the "show" class to DIV
+        x.className = "show";
+    // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className  = x.className.replace("show",""); }, 3000);
+    };
+    
 </script>
 
 <p class="control">

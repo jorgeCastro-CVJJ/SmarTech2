@@ -104,6 +104,41 @@
             <input type="submit" value="Generar PDF"
             class="button reportebtn is-info" id="crearPDF">
           </p>
+
+          <script>
+            function postReporteEditado(){
+    let porcentaje = document.getElementById("porcentaje");
+    let horasVacaciones = document.getElementById('horasVacaciones');
+    let personalCompletoT = document.getElementById('personalCompletoT');
+    let personalMedioT = document.getElementById('personalMedioT');
+    let descripcion = document.getElementById('descripcion');
+
+      var pathArray = window.location.pathname.split('/');
+      let ruta = "/reporte/existente/" + pathArray[pathArray.length-1];
+    let data = {
+        porcentaje: porcentaje.value,
+        horasVacaciones: horasVacaciones.value,
+        personalCompletoT: personalCompletoT.value,
+        personalMedioT: personalMedioT.value,
+        descripcion: descripcion.value,
+        }
+        console.log("listo");
+        console.log(data);
+        fetch(ruta, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body:JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(response => {
+          window.location.href = '/reporte/nuevoReporte'; 
+      }).catch(err => {
+        console.log(err);
+      });
+    }
+          </script>
         
         <script>
             const asyncFunc = () => {
@@ -163,45 +198,5 @@
             console.log(typeof(totalHorasReales));
             porcentajeEficiencia.innerHTML = (totalHorasReales / horasEsperadas).toFixed(2);
         </script>
-
-<script>
-    function postReporteEditado(){
-    let porcentaje = document.getElementById("porcentaje");
-    let horasVacaciones = document.getElementById('horasVacaciones');
-    let personalCompletoT = document.getElementById('personalCompletoT');
-    let personalMedioT = document.getElementById('personalMedioT');
-    let descripcion = document.getElementById('descripcion');
-
-      var pathArray = window.location.pathname.split('/');
-      let ruta = "/reporte/existente/" + pathArray[pathArray.length-1];
-    let data = {
-        porcentaje: porcentaje.value,
-        horasVacaciones: horasVacaciones.value,
-        personalCompletoT: personalCompletoT.value,
-        personalMedioT: personalMedioT.value,
-        descripcion: descripcion.value,
-        }
-        console.log(porcentaje);
-        console.log(data);
-        fetch(ruta, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body:JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(response => {
-          console.log(response);
-          window.location = '/reporte/crearReporte';
-          console.log("Reporte editado") 
-      }).catch(err => {
-        console.log(err);
-      });
-    }
     
-</script>
-    
-    
-
 <script src="/js/scriptReporte.js"></script>
