@@ -729,21 +729,6 @@ table tbody tr:nth-child(even) {
   width: 600px;
 }
 
-#btnCrearReporte{
-  position: absolute;  
-  width: 150px;
-  top: 200px;
-  left: 970px;
-  /* right: 50px;
-  top: 220px;
-  width: 100px;
-  height: 50px;
-  background-color: #00A99D;
-  border: none;
-  color: white;
-  border-radius: 10px; */
-}
-
 /* .boton_crearReporte:hover {
   background-color:#00bdc7;
   cursor: pointer;
@@ -759,11 +744,6 @@ table tbody tr:nth-child(even) {
   top: 150px;
 }
 
-#reporteSemanal2 {
-  position: absolute;
-  left: 300px;
-  top: 410px;
-}
 #cajaColabs{
   margin-right: 320px;
   
@@ -962,3 +942,42 @@ th,td {
   top: 10%;
   left: 26%;
 }
+
+#crearR, #modificar {
+  top: 50px;
+}
+
+#crearR {
+  left: -3%;
+}
+
+#modificar {
+  left: 440px;
+} 
+
+#btnCrearReporte{
+  position: absolute;  
+  width: 150px;
+  top: -200px;
+  left: 237px;
+  /* right: 50px;
+  top: 220px;
+  width: 100px;
+  height: 50px;
+  background-color: #00A99D;
+  border: none;
+  color: white;
+  border-radius: 10px; */
+}
+
+#reporteSemanal2 {
+  position: absolute;
+  left: 900px;
+  top: 165px;
+}
+
+ #modificarR {
+  position: absolute;
+  left: 1090px;
+  top: 160px;
+} 
