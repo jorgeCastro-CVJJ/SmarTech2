@@ -36,7 +36,7 @@ module.exports = class Reporte {
    static async postEditarReporte(porcentaje, horasVacaciones, personalCompletoT, personalMedioT, descripcion, noReporte) {
     try {
         await db.execute(
-            'UPDATE reporteFinal SET porcentaje = ? , horasVacaciones = ?, personalCompletoT = ?, personalMedioT = ?, descripcion = ?, WHERE noReporte = ?',
+            'UPDATE reporteFinal SET porcentaje = ? , horasVacaciones = ?, personalCompletoT = ?, personalMedioT = ?, descripcion = ? WHERE noReporte = ?',
             [porcentaje, horasVacaciones, personalCompletoT, personalMedioT, descripcion, noReporte]
         );
     } catch (error) {
