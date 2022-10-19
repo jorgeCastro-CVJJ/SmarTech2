@@ -33,6 +33,19 @@ module.exports = class Reporte {
      return db.execute('SELECT SUM(horasTrabajo) as horasTrabajo, nombreP FROM tarea T, proyecto P WHERE T.idProyecto = P.idProyecto GROUP BY nombreP');
    }
 
+   static async postEditarReporte(porcentaje, horasVacaciones, personalCompletoT, personalMedioT, descripcion, noReporte) {
+    try {
+        await db.execute(
+            'UPDATE reporteFinal SET porcentaje = ? , horasVacaciones = ?, personalCompletoT = ?, personalMedioT = ?, descripcion = ?, WHERE noReporte = ?',
+            [porcentaje, horasVacaciones, personalCompletoT, personalMedioT, descripcion, noReporte]
+        );
+        // const edited = await db.execute('SELECT idProyecto from tarea WHERE idTarea = ?', [idTarea])
+        // return edited;
+    } catch (error) {
+        console.log(error);
+    }
+  }
+
   static buscarReporteFecha(fechaInicio, fechaFinal) {
     return db.execute(`SELECT nombreP, SUM(horasTrabajo) as horasReales 
     FROM tarea T, proyecto P, trabaja Tr 

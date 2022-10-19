@@ -103,24 +103,32 @@ getReporteExistente = (request, response, next) =>{
     })
   };
 
-//   postEditarReporte = (request, response, next) => {
-//     Reporte.fetchOne(request.params.noReporte)
-//         .then(([rowsRep, fielData]) => {
-//             (rowsRep[0].nombreT = request.body.nombreT),
-//                 (rowsTarea[0].horasTrabajo = request.body.horasRegistradas),
-//                 //console.log(rowsTarea);
-//                 Tarea.editarTablaTarea(
-//                     rowsTarea[0].nombreT,
-//                     rowsTarea[0].horasTrabajo,
-//                     rowsTarea[0].idTarea
-//                 )
-//                     .then(([rowsTarea, fielData]) => {
-//                         response.status(200).json({ mensaje: 'Tarea editada correctamente', idProyecto: rowsTarea[0].idProyecto });
-//                     })
-//                     .catch((err) => console.log(err));
-//         })
-//         .catch((err) => console.log(err));
-// };
+//porcentaje, horasVacaciones, personalCompletoT, personalMedioT, descripcion, noReporte
+
+   postEditarReporte = (request, response, next) => {
+     Reporte.fetchOne(request.params.noReporte)
+         .then(([rowsRep, fielData]) => {
+             (rowsRep[0].porcentaje = request.body.porcentaje),
+                 (rowsRep[0].horasVacaciones = request.body.horasVacaciones),
+                   (rowsRep[0].personalCompletoT = request.body.personalCompletoT),
+                     (rowsRep[0].personalMedioT = request.body.personalMedioT),
+                       (rowsRep[0].descripcion = request.body.descripcion),
+                 //console.log(rowsTarea);
+                 Reporte.postEditarReporte(
+                     rowsRep[0].porcentaje,
+                     rowsRep[0].horasVacaciones,
+                     rowsRep[0].personalCompletoT,
+                     rowsRep[0].personalMedioT,
+                     rowsRep[0].descripcion,
+                     rowsRep[0].noReporte,
+                 )
+                     .then(([rowsTarea, fielData]) => {
+                         response.status(200).json({ mensaje: 'Reporte editado correctamente'});
+                     })
+                     .catch((err) => console.log(err));
+         })
+         .catch((err) => console.log(err));
+ };
 
 module.exports = {
     postnuevoReporte,
@@ -128,5 +136,6 @@ module.exports = {
     postReporte,
     getBuscarReporte,
     getPDF,
-    getReporteExistente
+    getReporteExistente,
+    postEditarReporte
 }
