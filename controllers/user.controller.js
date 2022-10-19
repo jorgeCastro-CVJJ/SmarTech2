@@ -98,7 +98,7 @@ menu = (request, response, next) => {
 getCrearEmpleado = (request, response, next) => {
   let mensaje = request.session.mensaje ? request.session.mensaje : '';
   request.session.mensaje = '';
-  response.render(path.join('CrearEmpleado','CrearEmpleado.ejs'), {
+  response.render(path.join('crearEmpleado','crearEmpleado.ejs'), {
     listaPrivilegios: request.session.privilegios,
     mensaje: mensaje,
   })
