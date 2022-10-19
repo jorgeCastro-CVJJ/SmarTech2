@@ -550,11 +550,6 @@ table tbody tr:nth-child(even) {
   border-radius: none;
 }
 
-.tablahorasXtarea{
-  margin-top: 50px;
-  margin-left: 10px;
-}
-
 .horasTotales{
   margin-top: -230px;
   margin-left: 450px;
