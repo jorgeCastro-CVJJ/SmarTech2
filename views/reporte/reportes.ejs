@@ -6,13 +6,13 @@
 
 <% } %>
 
-<div class="titulo">Crear reporte</div>
+<div class="titulo" id="crearR">Crear reporte</div>
 
-  <div class="titulo" style="top: 330px">Modificar reporte:</div>
+  <div class="titulo" id="modificar">Modificar reporte:</div>
 
   <p id="reporteSemanal2">Reporte semanal:</p>
  
-<div class="modificar">
+<div class="modificar" id="modificarR">
   <div class="field is-horizontal reportesExistentes">
  <div class="select is-link seleccionarReporte">
    <select name="nombreR" id="nombreR">
@@ -26,6 +26,7 @@
 </div>
 
 </div>
+
 
 <script>
   function handleReporteSelect(event)  {
