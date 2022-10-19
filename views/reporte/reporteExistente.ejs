@@ -19,6 +19,7 @@
                     <div class="porcentajesRep">
                         <label class = "label">Porcentaje: <input value = '<%= reporteN[0].porcentaje %>' type="number" min = "0" placeholder="0" id="porcentaje"> </label>
                         <label class="label">Verdadero porcentaje de eficiencia:</label> 
+                        <label class = "porcentajeEficiencia" type = "number" id = "porcentajeEficiencia" value = "0">0</label>  
                     </div>
                 </div>
             </div>
@@ -27,16 +28,22 @@
         <div class="column">
             <div class="inputs_reporteRep">
                 <div class = "field is-horizontal"> 
-                    <label class = "label">Personal de Medio Tiempo: <input value = '<%= reporteN[0].personalMedioT %>' type="number" min = "0" placeholder="0" id="personalMedioT"></label>                              
+                    <label class = "label">Personal de Medio Tiempo: <input value = '<%= reporteN[0].personalMedioT %>' type="number" min = "0" placeholder="0" id="personalMedioT"></label>                             
                 </div>
 
                 <div class="field is-horizontal">
                     <label class = "label">Personal de Tiempo Completo: <input value = '<%= reporteN[0].personalCompletoT %>' type="number" min = "0" placeholder="0" id="personalCompletoT"></label>                     
                 </div>
+
                 <div class="field is-horizontal">
                     <label class = "label">Total de personal</label>
                     <div type = "number" id= "totalPersonal" min = "0" value = "0"
                     pattern="^[0-9]+" oninput="this.value = Math.max(this.value, 0)">0</div> 
+                    <script>
+                        const personalMedioT = document.getElementById("personalMedioT").value;
+                        const personalCompletoT = document.getElementById("personalCompletoT").value;
+                        totalPersonal.innerHTML = parseInt(personalMedioT) + parseInt(personalCompletoT);
+                    </script>
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Horas Esperadas</label>
@@ -44,7 +51,10 @@
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Horas de Vacaciones: <input value = '<%= reporteN[0].horasVacaciones %>' type="number" min = "0" placeholder="0" id="horasVacaciones"></label>
-                    
+                    <script>
+                        const horasVacaciones = document.getElementById("horasVacaciones").value;
+                        horasEsperadas.innerHTML = parseInt(personalCompletoT * 48) + parseInt(personalMedioT * 34) - parseInt(horasVacaciones * 1);
+                    </script>
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Descripcion: <input value = '<%= reporteN[0].descripcion %>' type="text" min = "0" placeholder="descripcion" id="descripcion"></label>
@@ -138,12 +148,20 @@
                     }
                     document.getElementById("datos_tabla").innerHTML = html;
                     sumHoras();
+                      
                 }).catch(err => {
                     console.log(err);
                 });
             };
     
             document.getElementById('fechaFinal').oninput = asyncFunc;
+        </script>
+        <script>
+            const porcentaje = document.getElementById("porcentaje").value;
+            const totalHorasReales = Number(document.getElementById("totalHorasReales").innerHTML);
+            console.log(totalHorasReales);
+            console.log(typeof(totalHorasReales));
+            porcentajeEficiencia.innerHTML = (totalHorasReales / horasEsperadas).toFixed(2);
         </script>
 
 <script>

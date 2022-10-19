@@ -1,7 +1,7 @@
 function horasMedioT() {
     const personalMedioT = document.getElementById("personalMedioT").value;
     const horasMedioT = document.getElementById("horasMedioT");
-    horasMedioT.innerHTML = parseInt(personalMedioT) * 34;
+    horasMedioT.innerHTML = personalMedioT * 34;
     personal();
     horasEsperadas();
 }
@@ -9,7 +9,7 @@ function horasMedioT() {
 function horasCompletoT() {
     const personalCompletoT = document.getElementById("personalCompletoT").value;
     const horasCompletoT = document.getElementById("horasCompletoT");
-    horasCompletoT.innerHTML = parseInt(personalCompletoT) * 48;
+    horasCompletoT.innerHTML = personalCompletoT * 48;
     personal();
     horasEsperadas();
 }
@@ -28,10 +28,6 @@ function horasEsperadas() {
     const horasVacaciones = document.getElementById("horasVacaciones").value;
     horasEsperadas.innerHTML = parseInt(personalCompletoT * 48) + parseInt(personalMedioT * 34) - parseInt(horasVacaciones * 1);
     eficiencia();
-    if (horasEsperadas < 0){
-        console.log("Negativo");
-        alert("Las horas de vacaciones no pueden ser mayor que las horas esperadas");
-    }
 }
 
 function eficiencia() {
@@ -53,19 +49,13 @@ function proporcion(){
 /*Row de total*/
 window.addEventListener("load", function(){
     sumHoras();
-    horasCompletoT();
-    horasMedioT();
 })
 
 function sumHoras(){
-    console.log("sumHoras");
     horasTotales = 0;
     horasTotales2 = 0;
-    console.log(nombreP);
     for (let proyecto of nombreP){
-        console.log(proyecto);
         let id = "horasTrabajo['" + proyecto + "']";
-        console.log(id)
         let id2 = "horasReales['" + proyecto + "']";
         horasTotales += parseInt( document.getElementById(id).value );
         horasTotales2 += parseInt( document.getElementById(id2).value );
@@ -108,8 +98,3 @@ function postNuevoReporte() {
         console.log(err);
     });
 }
-
-//Creacion de reporte
-// function getPDF() {
-
-// }
