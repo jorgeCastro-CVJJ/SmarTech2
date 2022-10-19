@@ -496,8 +496,21 @@ html{
 
 .porcentajes {
   position: absolute;
+  margin-left: 1.2%;
+  top: 330px;
+}
+
+.porcentajesRep {
+  position: absolute;
   margin-left: 2.5%;
-  top: 550px;
+  top: 560px;
+}
+
+.inputs_reporteRep {
+  position: absolute;
+  left: 19%;
+  width: 600px;
+  top: 290px;
 }
 
 .fechas_reporte {
@@ -508,9 +521,9 @@ html{
 
 .inputs_reporte {
   position: absolute;
-  left: 18.5%;
+  left: 19%;
   width: 600px;
-  top: 250px;
+  top: 290px;
 }
 
 .table thead td, .table thead th {
@@ -716,22 +729,25 @@ table tbody tr:nth-child(even) {
   width: 600px;
 }
 
-.boton_crearReporte {
-  position: absolute;
-  right: 50px;
+#btnCrearReporte{
+  position: absolute;  
+  width: 150px;
+  top: 200px;
+  left: 970px;
+  /* right: 50px;
   top: 220px;
   width: 100px;
   height: 50px;
   background-color: #00A99D;
   border: none;
   color: white;
-  border-radius: 10px;
+  border-radius: 10px; */
 }
 
-.boton_crearReporte:hover {
+/* .boton_crearReporte:hover {
   background-color:#00bdc7;
   cursor: pointer;
-}
+} */
 
 .listaCollabs {
   position: relative;
@@ -907,28 +923,30 @@ th,td {
 
 }
 #reportebtn {
-  position: absolute;
-  right: 180px;
-  margin-top: 50%;
+  position: absolute;  
   width: 150px;
-  height: 50px;
+  top: 340px;
+  left: 1100px;
+ /* height: 50px;
   background-color: #00A99D;
   border: none;
   color: white;
-  border-radius: 10px;
+  border-radius: 10px; */
 }
 
 .labelPE{
   top: 80px;
 }
 #crearPDF {
-  position: absolute;
-  right: 50px;
-  bottom: -10%;
+  position: absolute;  
+  width: 150px;
+  top: 340px;
+  left: 910px;
+  /* bottom: -10%;
   width: 100px;
   height: 50px;
   background-color: #00A99D;
   border: none;
   color: white;
-  border-radius: 10px;
+  border-radius: 10px; */
 }

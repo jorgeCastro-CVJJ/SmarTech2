@@ -3,11 +3,11 @@
             <div class="fechas_reporte">
                 <div class = "row">
                     <div class="input-field is-normal">
-                        <h6>Fecha inicio: </h6>
+                        <label class="label">Fecha inicio: </label>
                         <input id="fechaInicio" type="date">
-                        <h6>Fecha fin: </h6>
+                        <label class="label">Fecha fin: </label>
                         <input id="fechaFinal" type="date">
-                        <h6>Número reporte: </h6>
+                        <label class="label">Número reporte: </label>
                     </div>
                 </div>
             </div>
@@ -51,12 +51,12 @@
                 <div class="columns">
                     <div class="column">
                         <div class="porcentajes">
-                            <h6>Porcentaje: </h6>
+                            <label class="label">Porcentaje: </label>
                             <input class = "porcentaje" type = "number" id = "porcentaje"
                             onkeyup="eficiencia()" onclick="eficiencia()" placeholder="0.85" value = "0.85">
-                            <h6>Verdadero porcentaje de eficiencia: </h6> 
+                            <label class="label">Verdadero porcentaje de eficiencia: </label> 
                             <label class = "porcentajeEficiencia" type = "number" id = "porcentajeEficiencia" value = "0">0</label>  
-                            <h6>Proporción: </h6> 
+                            <label class="label">Proporción: </label> 
                             <label class = "proporcion" type = "number" id = "proporcion" value = "0">0</label>
                         </div>
                     </div>
@@ -101,8 +101,18 @@
         </tbody>
 
         <!--Botón de guardar-->
-        <a href="/reporte/nuevoReporte"><input type="submit" id = "reportebtn" value = "Guardar" onclick="postNuevoReporte()"></a> 
-        <a href="/reporte/crearPdf" class="button" id="crearPDF">Crear PDF</a>
+
+        <p class="control">
+            <a href="/reporte/nuevoReporte"><input type="submit" onclick="postNuevoReporte()" value="Guardar cambios"
+            class="button reportebtn is-success is-outlined" id="reportebtn"></a> 
+          </p>
+
+          <p class="control">
+            <input type="submit" value="Generar PDF"
+            class="button reportebtn is-info" id="crearPDF">
+          </p>
+
+        
 
         <script>
             const asyncFunc = () => {
