@@ -19,7 +19,9 @@
                     <div class="porcentajesRep">
                         <label class = "label">Porcentaje: <input value = '<%= reporteN[0].porcentaje %>' type="number" min = "0" placeholder="0" id="porcentaje"> </label>
                         <label class="label">Verdadero porcentaje de eficiencia:</label> 
-                        <label class = "porcentajeEficiencia" type = "number" id = "porcentajeEficiencia" value = "0">0</label>  
+                        <label class = "porcentajeEficiencia" type = "number" id = "porcentajeEficiencia" value = "0">0</label> 
+                        <label class="label">Proporción: </label> 
+                        <label class = "proporcion" type = "number" id = "proporcion" value = "0">0</label>
                     </div>
                 </div>
             </div>
@@ -90,7 +92,7 @@
             <tr>
                 <td><b>TOTAL</b></td>
                 <td id = "totalHorasTrabajo" type = "number" value = "0"></td>
-                <td id = "totalHorasReales" type = "number"></td>
+                <td id = "totalHorasReales" type = "number" value = "0"></td>
             </tr>
         </tbody>
 
@@ -191,12 +193,56 @@
     
             document.getElementById('fechaFinal').oninput = asyncFunc;
         </script>
-        <script>
-            const porcentaje = document.getElementById("porcentaje").value;
-            const totalHorasReales = Number(document.getElementById("totalHorasReales").innerHTML);
-            console.log(totalHorasReales);
-            console.log(typeof(totalHorasReales));
-            porcentajeEficiencia.innerHTML = (totalHorasReales / horasEsperadas).toFixed(2);
-        </script>
+
+<script>
+    function postReporteEditado(){
+    let porcentaje = document.getElementById("porcentaje");
+    let horasVacaciones = document.getElementById('horasVacaciones');
+    let personalCompletoT = document.getElementById('personalCompletoT');
+    let personalMedioT = document.getElementById('personalMedioT');
+    let descripcion = document.getElementById('descripcion');
+
+      var pathArray = window.location.pathname.split('/');
+      let ruta = "/reporte/existente/" + pathArray[pathArray.length-1];
+    let data = {
+        porcentaje: porcentaje.value,
+        horasVacaciones: horasVacaciones.value,
+        personalCompletoT: personalCompletoT.value,
+        personalMedioT: personalMedioT.value,
+        descripcion: descripcion.value,
+        }
+        console.log(porcentaje);
+        console.log(data);
+        fetch(ruta, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body:JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(response => {
+          console.log(response);
+          window.location = '/reporte/crearReporte';
+          console.log("Reporte editado") 
+      }).catch(err => {
+        console.log(err);
+      });
+    }
     
+</script>
+
+<script>
+    const totalHorasReales = document.getElementById("totalHorasReales");
+    const porcentaje = document.getElementById("porcentaje").value;
+    console.log(totalHorasReales);
+    console.log(typeof(totalHorasReales));
+    console.log(horasEsperadas);
+    console.log(typeof(horasEsperadas));
+    porcentajeEficiencia.innerHTML = (totalHorasReales / horasEsperadas).toFixed(2);
+    proporcion.innerHTML = (parseFloat(porcentajeEficiencia) / parseFloat(porcentaje)).toFixed(2);
+</script> 
+    
+    
+
 <script src="/js/scriptReporte.js"></script>
