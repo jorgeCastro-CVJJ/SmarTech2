@@ -63,3 +63,5 @@ function sumHoras(){
         totalHorasReales.innerHTML = parseInt(horasTotales2 * 1);
     }
 }
+
+
