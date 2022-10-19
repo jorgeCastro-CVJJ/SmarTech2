@@ -59,7 +59,9 @@ function sumHoras(){
     horasTotales2 = 0;
     console.log(nombreP);
     for (let proyecto of nombreP){
+        console.log(proyecto);
         let id = "horasTrabajo['" + proyecto + "']";
+        console.log(id)
         let id2 = "horasReales['" + proyecto + "']";
         horasTotales += parseInt( document.getElementById(id).value );
         horasTotales2 += parseInt( document.getElementById(id2).value );
