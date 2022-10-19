@@ -46,8 +46,8 @@ function postEditarProyecto(){
         body: JSON.stringify(data)})
     .then(response => response.json())
     .then(response => {
-        window.location.href = '/proyecto/misProyectos'; // Me regresa a la página anterior (no muestra cambios hasta que se recarga la pagina)
-    
+        window.location.replace('/proyecto/misProyectos') // Me regresa a la página anterior (no muestra cambios hasta que se recarga la pagina)
+        
     }).catch(err => {
         console.log(err);
     });
