@@ -497,7 +497,7 @@ html{
 .porcentajes {
   position: absolute;
   margin-left: 2.5%;
-  top: 280px;
+  top: 240px;
 }
 
 .fechas_reporte {
@@ -510,7 +510,7 @@ html{
   position: absolute;
   left: 18.5%;
   width: 600px;
-  margin-top: 85px;
+  margin-top: 280px;
 }
 
 .table thead td, .table thead th {
