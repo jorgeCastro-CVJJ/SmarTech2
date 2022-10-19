@@ -11,19 +11,22 @@
 
 
 
+
   
-  <table class="table is-fillwidth tablahorasXtarea">
-    <thead>
-      <tr>
-        <th>Tarea</th>
-        <th>Horas</th>
-        <th>Colaboradores</th>
-        <th> Editar </th>
-        <th> Borrar </th>
-      </tr>
-    </thead>
-    <tbody>
-      <% for (let t of tarea) { %>
+<table class="table is-fillwidth tablahorasXtarea" id="table_f">
+
+  <thead>
+    <tr>
+      <th><abbr title="Tarea">Tarea</abbr></th>
+      <th><abbr title="Horas">Horas</abbr></th>
+      <th><abbr title="Colaboradores">Colaboradores</abbr></th>
+      <th><abbr title="Editar">Editar</abbr>  </th>
+      <th><abbr title="Borrar">Borrar</abbr></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% for (let t of tarea) { %>
       <tr>
         <td><%= t.nombreT %></td>
         <td id="horasTrabajo"><%= t.horasTrabajo %></td>
@@ -37,10 +40,13 @@
         <td> <a href="/tarea/eliminarTarea/<%= t.idTarea %>"><img src="../../media/borrar.png" alt="boton borrar" id="botonBorrar22"></a></td>
       </tr>
     <% } %>
-    </tbody>
-  </table>
-  <input class="input" type="hidden" value="<%= tarea[0].idProyecto %>" id="idProyecto" name="idProyecto">
-  <button class="button is-info is-outlined botonRegreso2"><a href="/user/inicio"> Regresar a inicio</a></button>
+  </tbody>
+  
+</table>
+
+
+<input class="input" type="hidden" value="<%= tarea[0].idProyecto %>" id="idProyecto" name="idProyecto">
+<button class="button is-info is-outlined botonRegreso2"><a href="/user/inicio"> Regresar a inicio</a></button>
 
 
 
