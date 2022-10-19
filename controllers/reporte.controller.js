@@ -164,7 +164,7 @@ getReporteExistente = (request, response, next) =>{
                      rowsRep[0].descripcion,
                      rowsRep[0].noReporte,
                  )
-                     .then(([rowsTarea, fielData]) => {
+                     .then(([rowsRep, fielData]) => {
                          response.status(200).json({ mensaje: 'Reporte editado correctamente'});
                      })
                      .catch((err) => console.log(err));
