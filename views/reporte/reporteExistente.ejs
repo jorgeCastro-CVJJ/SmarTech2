@@ -1,14 +1,15 @@
-<div class="titulo">Reporte semanal NatDev</div>
+<div class="titulo">Reporte semanal NatDev - Editar reporte</div>
 
             <div class="fechas_reporte">
                 <div class = "row">
                     <div class="input-field is-normal">
-                        <h6 id="fechaInicio">Fecha inicio: <%= new Date(reporteN[0].fechaInicio).toLocaleDateString("ES-mx") %></h6>
-                        <h6 id="fechaFin"> Fecha fin: <%= new Date(reporteN[0].fechaFinal).toLocaleDateString(`ES-mx`) %> </h6>
                         
-                        <h6>Número reporte: 
+                        <label class = "label" id="fechaInicio">Fecha inicio: <%= new Date(reporteN[0].fechaInicio).toLocaleDateString("ES-mx") %></label>
+                        <label class = "label" id="fechaFinal"> Fecha fin: <%= new Date(reporteN[0].fechaFinal).toLocaleDateString(`ES-mx`) %> </label>
+                        
+                        <label class = "label">Número reporte: 
                         <%= reporteN[0].noReporte %>
-                        </h6>
+                        </label>
                     </div>
                 </div>
             </div>
@@ -16,8 +17,8 @@
             <div class="columns">
                 <div class="column">
                     <div class="porcentajes">
-                        <h6>Porcentaje: <%= reporteN[0].porcentaje %></h6> 
-                        <h6>Verdadero porcentaje de eficiencia:</h6> 
+                        <label class = "label">Porcentaje: <input value = '<%= reporteN[0].porcentaje %>' type="number" min = "0" placeholder="0"> </label>
+                        <label class="label">Verdadero porcentaje de eficiencia:</label> 
                     </div>
                 </div>
             </div>
@@ -26,27 +27,28 @@
         <div class="column">
             <div class="inputs_reporte">
                 <div class = "field is-horizontal"> 
-                    <label class = "label">Personal de Medio Tiempo: <%= reporteN[0].personalMedioT %></label>                              
+                    <label class = "label">Personal de Medio Tiempo: <input value = '<%= reporteN[0].personalMedioT %>' type="number" min = "0" placeholder="0"></label>                              
                 </div>
 
                 <div class="field is-horizontal">
-                    <label class = "label">Personal de Tiempo Completo: <%= reporteN[0].personalCompletoT %></label>
+                    <label class = "label">Personal de Tiempo Completo: <input value = '<%= reporteN[0].personalCompletoT %>' type="number" min = "0" placeholder="0"></label>
                     <div class = "horasCompletoT" type = "number" id= "horasCompletoT"></div>                      
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Total de personal</label>
-                    <div type = "number" id= "totalPersonal" min = "0" value = "0"></div> 
+                    <div type = "number" id= "totalPersonal" min = "0" value = "0"
+                    pattern="^[0-9]+" oninput="this.value = Math.max(this.value, 0)">0</div> 
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Horas Esperadas</label>
                     <div type = "number" id= "horasEsperadas" min = "0" value = "0">0</div>
                 </div>
                 <div class="field is-horizontal">
-                    <label class = "label">Horas de Vacaciones: <%= reporteN[0].horasVacaciones %></label>
+                    <label class = "label">Horas de Vacaciones: <input value = '<%= reporteN[0].horasVacaciones %>' type="number" min = "0" placeholder="0"></label>
                     
                 </div>
                 <div class="field is-horizontal">
-                    <label class = "label">Descripcion: <%= reporteN[0].descripcion %></label>
+                    <label class = "label">Descripcion: <input value = '<%= reporteN[0].descripcion %>' type="text" min = "0" placeholder="descripcion"></label>
                 </div>
             </div>
         </div>
@@ -69,7 +71,7 @@
             <% for (let h of horas) { %>
                 <tr>
                     <td><%= h.nombreP %></td> 
-                    <td><input id = "horasReales['<%= h.nombreP %>']" type = "number" value="<%= h.horasReales %>" readonly></td> 
+                    <td><input id = "horasTrabajo['<%= h.nombreP %>']" type = "number" value="<%= h.horasReales %>" readonly></td> 
                     <td><input value = "<%= h.horasReales %>" type="number" id = "horasReales['<%= h.nombreP %>']" min = "0" placeholder="0" onkeyup="sumHoras()" onclick="sumHoras()"></td>
                 </tr>
                 <script>
@@ -84,7 +86,7 @@
         </tbody>
 
         <!--Botón de guardar-->
-        <input type="submit" id = "reportebtn" value = "Guardar" onclick="postNuevoReporte()">
+        <input type="submit" id = "reportebtn" value = "Guardar cambios" onclick="postReporteEditado()">
 
         
         <script>
@@ -137,5 +139,47 @@
     
             document.getElementById('fechaFinal').oninput = asyncFunc;
         </script>
+
+<script>
+    function postReporteEditado(){
+    let porcentaje = document.getElementById("porcentaje");
+    let horasVacaciones = document.getElementById('horasVacaciones');
+    let personalCompletoT = document.getElementById('personalCompletoT');
+    let personalMedioT = document.getElementById('personalMedioT');
+    let descripcion = document.getElementById('descripcion');
+    let fechaInicio = document.getElementById('fechaInicio');
+    let fechaFinal = document.getElementById('fechaFinal');
+
+      var pathArray = window.location.pathname.split('/');
+      let ruta = "/reporte/crearReporte" + pathArray[pathArray.length-1];
+    let data = {
+        porcentaje: porcentaje.value,
+        horasVacaciones: horasVacaciones.value,
+        personalCompletoT: personalCompletoT.value,
+        personalMedioT: personalMedioT.value,
+        descripcion: descripcion.value,
+        fechaInicio: fechaInicio.value,
+        fechaFinal: fechaFinal.value
+        }
+        console.log(data);
+        fetch(ruta, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body:JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(response => {
+          console.log(response);
+          window.location = '/reporte/nuevoReporte' + response.noReporte; 
+      }).catch(err => {
+        console.log(err);
+      });
+    }
+    
+    </script>
+    
+    
 
 <script src="/js/scriptReporte.js"></script>

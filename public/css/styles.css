@@ -496,8 +496,21 @@ html{
 
 .porcentajes {
   position: absolute;
-  margin-left: 55%;
-  top: 136px;
+  margin-left: 2.5%;
+  top: 280px;
+}
+
+.fechas_reporte {
+  position: absolute;
+  margin-left: 19%;
+  top: 140px;
+}
+
+.inputs_reporte {
+  position: absolute;
+  left: 18.5%;
+  width: 600px;
+  margin-top: 85px;
 }
 
 .table thead td, .table thead th {
@@ -515,12 +528,6 @@ table tbody tr:nth-child(odd) {
 table tbody tr:nth-child(even) {
   color:#0F1C24 !important;
   background: #08b3da1e;
-}
-
-.fechas_reporte {
-  position: absolute;
-  margin-left: 19%;
-  top: 144px;
 }
 
 .number {
@@ -796,15 +803,12 @@ th,td {
 
 #tabla_reporte {
   position: absolute;
-  top: 700px;
-  left: 35%;
+  top: 17%;
+  left: 60%;
 }
 
-.inputs_reporte {
-  position: absolute;
-  left: 35%;
-  width: 600px;
-  margin-top: 2px;
+#personalMedioT.input, #personalCompletoT.input, #horasVacaciones {
+  width: 70px;
 }
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
@@ -891,8 +895,8 @@ th,td {
 #reportebtn {
   position: absolute;
   right: 180px;
-  bottom: -30%;
-  width: 100px;
+  margin-top: 50%;
+  width: 150px;
   height: 50px;
   background-color: #00A99D;
   border: none;
@@ -906,7 +910,7 @@ th,td {
 #crearPDF {
   position: absolute;
   right: 50px;
-  bottom: -30%;
+  bottom: -10%;
   width: 100px;
   height: 50px;
   background-color: #00A99D;

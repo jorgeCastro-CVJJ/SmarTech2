@@ -103,6 +103,25 @@ getReporteExistente = (request, response, next) =>{
     })
   };
 
+//   postEditarReporte = (request, response, next) => {
+//     Reporte.fetchOne(request.params.noReporte)
+//         .then(([rowsRep, fielData]) => {
+//             (rowsRep[0].nombreT = request.body.nombreT),
+//                 (rowsTarea[0].horasTrabajo = request.body.horasRegistradas),
+//                 //console.log(rowsTarea);
+//                 Tarea.editarTablaTarea(
+//                     rowsTarea[0].nombreT,
+//                     rowsTarea[0].horasTrabajo,
+//                     rowsTarea[0].idTarea
+//                 )
+//                     .then(([rowsTarea, fielData]) => {
+//                         response.status(200).json({ mensaje: 'Tarea editada correctamente', idProyecto: rowsTarea[0].idProyecto });
+//                     })
+//                     .catch((err) => console.log(err));
+//         })
+//         .catch((err) => console.log(err));
+// };
+
 module.exports = {
     postnuevoReporte,
     getReportes,
