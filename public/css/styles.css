@@ -639,23 +639,28 @@ table tbody tr:nth-child(even) {
 .swiper .card{
   min-width: 40%;
   min-height: 250px;
-  box-shadow: 8px 8px #202a30
+  box-shadow: 8px 8px  rgb(136 139 141 / 48%);
 }
 
-.card .image {
-  position: fixed;
+.card a{
+  right: 0px;
+  position: absolute !important;
+  top: 32px;
 }
+/* .card .image {
+  position: fixed;
+} */
 
 .botonEditarProyecto {
-  right: 40px;
-  top: 10px;
-  
+  right: 53px;
+  top: 13px;
+  position: absolute !important;
 }
 
 .botonEliminarProyecto {
-  right: 10px;
-  top: 10px;
-  
+  right: 13px;
+  top: 13px;
+  position: absolute !important;
 }
 
 /* .botonEditarProyecto2 {
@@ -755,6 +760,15 @@ table tbody tr:nth-child(even) {
   padding-top: 150px;
   position:absolute;
   width: 900px;
+}
+
+.editarProyecto {
+  left: 25%;
+  position: absolute;
+  width: 900px;
+  top: 5px;
+  padding-top: 7%;
+  padding-bottom: 3%;
 }
 
 #grafica{

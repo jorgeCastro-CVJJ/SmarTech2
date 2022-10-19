@@ -1,9 +1,9 @@
 
-<h1 class="titulo">Editar Proyecto</h1>
-
 <input value="<%= proyecto[0].idProyecto %>" type="hidden" id="idProyecto">
-<div class="editarTarea">
-  
+<div class="editarProyecto">
+  <div class="field is-horizontal">
+    <h1 class="titulo">Editar Proyecto</h1>
+  </div>
     <form action="" method="POST">
       <div class="field is-horizontal">
         <div class="field-label ">
@@ -37,15 +37,16 @@
         </div>
         <div class="field-body">
           <div class="field">
-            <div class="control select is-fullwidth">
-              <select  id="estatus" name="estatus">
-                  <option value= "" selected disabled>Selecciona un estatus</option>
+            <div class="control select is-fullwidth is-danger">
+              <select  id="estatus" name="estatus" required>
+                  <option selected disabled>Selecciona un estatus</option>
                   <option value= "Estabilizacion" >Estabilización</option>
                   <option value= "Ejecucion" >Ejecución</option>
                   <option value= "Definicion" >Definición</option>
                   <option value= "Pausado" >Pausado</option>
               </select>
             </div>
+            <p class="help is-warning">Selecciona un estatus antes de modificar!</p> </p>
           </div>
         </div>
       </div>
