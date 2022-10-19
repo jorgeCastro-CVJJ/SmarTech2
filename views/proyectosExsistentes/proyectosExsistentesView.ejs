@@ -45,10 +45,10 @@
 
   <input class="input" type="hidden" value="<%= proyecto[0].idProyecto %>" id="idProyecto" name="idProyecto">
 
-  <button class="button is-info is-outlined botonRegreso"><a href="/user/inicio"> Regresar</a></button>
+  <button class="button is-info is-outlined botonRegreso" id = "botonRegreso"><a href="/user/inicio"> Regresar</a></button>
 
   <% if(listaPrivilegios.indexOf('RegNuevoProyecto') != -1) {  %>
-  <a class="button is-info is-outlined botonDetalles" href="/tarea/horasTarea/<%=proyecto[0].idProyecto%>">Detalle de horas</a> 
+  <a class="button is-info is-outlined botonDetalles" href="/tarea/horasTarea/<%=proyecto[0].idProyecto%>" id="botonDetalle">Detalle de horas</a> 
   
   <% } %> 
  
