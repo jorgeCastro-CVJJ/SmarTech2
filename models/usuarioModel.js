@@ -21,6 +21,13 @@ module.exports = class Usuario {
       });
   }
 
+  static registrarRol(idRol,idEmpleado) {
+    return db.execute(`INSERT INTO tiene (idRol,idEmpleado) VALUES (${idRol},${idEmpleado})`)
+  }
+
+  static EmpleadoMasReciente() {
+    return db.execute(`SELECT idEmpleado FROM empleado ORDER BY idEmpleado DESC limit 1`)
+  }
   // Tal ves no se necesite
   static fetchAll() {
     return db.execute("SELECT correo, contraseña, nombre, idEmpleado FROM empleado WHERE correo = ?", [correo]);

@@ -11,8 +11,8 @@ router.get("/logout", userController.logout)
 router.get('/inicio', isAuth, userController.menu);
 router.post('/inicio', isAuth, userController.menu);
 
-router.get('/crearUsuario', isAuth, hasCrearEmpleado ,userController.getCrearEmpleado);
-router.post('/crearusuario', isAuth, hasCrearEmpleado, userController.postCrearEmpleado);
+router.get('/crearEmpleado', isAuth, hasCrearEmpleado ,userController.getCrearEmpleado);
+router.post('/crearEmpleado', isAuth, hasCrearEmpleado, userController.postCrearEmpleado);
 
 
 module.exports = router;
