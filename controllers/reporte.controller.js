@@ -4,8 +4,8 @@ const Tarea  = require("../models/tareaModel");
 const Empleado = require("../models/empleadoModel");
 const Usuario = require("../models/usuarioModel");
 const Reporte = require("../models/reporteModel");
-const PDF = require("pdfkit");
-const fs = require("fs");
+const PDF = require("pdfkit-construct");
+const { response } = require("express");
 
 postnuevoReporte = (request, response, next) => {
     Reporte.fetchHoras()
@@ -66,18 +66,60 @@ getBuscarReporte = (request, response, next) => {
 };
 
 getPDF = async(request, responde, next) => {
-        console.log("pdf creado")
-        const doc = new PDF();
-        doc.pipe(fs.createWriteStream('reporteSemanal.pdf'));
-        doc
-        .image(path.join( "public", "media", "logo.png"), 50, 45, {width: 50})
-        .fillColor("#4444444")
-        .fontSize(20)
-        .text("Prueba", 110, 57)
-        .fontSize(10)
-        .text("Texto1", 200, 65, {align: "right"})
-        .text("Texto2", 200, 80, {align: "right"})
-        .moveDown();
+        const doc = new PDF({bufferPages: true});
+
+        const filename =`reporteSemanal.pdf`;
+
+        const stream = responde.writeHead(200, {
+            'Content-Type': 'application/pdf',
+            'Content-Disposition': `attachment;filename=${filename}`
+        });
+        doc.on('data', (data) => {stream.write(data)});
+        doc.on('end', () => {stream.end()});
+
+        doc.setDocumentHeader({
+            height: '15'
+        }, () => {
+            doc
+            .image(path.join( "public", "media", "logo.png"), 50, 45, {width: 50})
+            .fillColor("#20BA4F")
+            .fontSize(30)
+            .text("NatGas", 110, 57)
+            .fontSize(10)
+            .text(`noReporte: ${reporteFinal.noReporte}`, 200, 50, {align: "right"})
+            .text(`Fecha Inicial: ${reporteFinal.fechaInicio}`, 200, 65, {align: "right"})
+            .text(`Fecha Final: ${reporteFinal.fechaFinal}`, 200, 80, {align: "right"})
+            .moveDown();
+        });
+
+        const datosPDF = [
+            {
+                Proyecto: 1,
+                horasRegistradas: 20,
+                horasReales: 30
+            }, 
+            {
+                Proyecto: 2,
+                horasRegistradas: 60,
+                horasReales: 20
+            }
+        ]
+
+        doc.addTable([
+            {key: 'Proyecto', label: 'Proyecto', align: 'left'},
+            {key: 'horasRegistradas', label: 'Horas Registradas', align: 'left'},
+            {key: 'horasReales', label: 'Horas Reales', align: 'left'}
+        ], datosPDF,{
+            border: null,
+            width: "fill_body",
+            striped: true,
+            stripedColors: ["#f6f6f6", "#d6c4dd"],
+            cellsPadding: 10,
+            marginLeft: 45,
+            marginRight: 45,
+            headAlign: 'center'
+        })
+        doc.render();
         doc.end();
 }
 
@@ -103,11 +145,39 @@ getReporteExistente = (request, response, next) =>{
     })
   };
 
+//porcentaje, horasVacaciones, personalCompletoT, personalMedioT, descripcion, noReporte
+
+   postEditarReporte = (request, response, next) => {
+     Reporte.fetchOne(request.params.noReporte)
+         .then(([rowsRep, fielData]) => {
+             (rowsRep[0].porcentaje = request.body.porcentaje),
+                 (rowsRep[0].horasVacaciones = request.body.horasVacaciones),
+                   (rowsRep[0].personalCompletoT = request.body.personalCompletoT),
+                     (rowsRep[0].personalMedioT = request.body.personalMedioT),
+                       (rowsRep[0].descripcion = request.body.descripcion),
+                 //console.log(rowsTarea);
+                 Reporte.postEditarReporte(
+                     rowsRep[0].porcentaje,
+                     rowsRep[0].horasVacaciones,
+                     rowsRep[0].personalCompletoT,
+                     rowsRep[0].personalMedioT,
+                     rowsRep[0].descripcion,
+                     rowsRep[0].noReporte,
+                 )
+                     .then(([rowsTarea, fielData]) => {
+                         response.status(200).json({ mensaje: 'Reporte editado correctamente'});
+                     })
+                     .catch((err) => console.log(err));
+         })
+         .catch((err) => console.log(err));
+ };
+
 module.exports = {
     postnuevoReporte,
     getReportes,
     postReporte,
     getBuscarReporte,
     getPDF,
-    getReporteExistente
+    getReporteExistente,
+    postEditarReporte
 }

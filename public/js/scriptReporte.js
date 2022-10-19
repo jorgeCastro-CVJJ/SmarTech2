@@ -34,17 +34,20 @@ function horasEsperadas() {
     }
 }
 
-/*En construcción*/
 function eficiencia() {
-    //let porcentaje = document.getElementById("porcentaje");
+    const porcentaje = document.getElementById("porcentaje").value;
     const horasEsperadas = Number(document.getElementById("horasEsperadas").innerHTML);
     const totalHorasReales = Number(document.getElementById("totalHorasReales").innerHTML);
     const porcentajeEficiencia = document.getElementById("porcentajeEficiencia");
-    console.log(totalHorasReales);
-    console.log(horasEsperadas);
-    porcentajeEficiencia.innerHTML = totalHorasReales / horasEsperadas;
+    porcentajeEficiencia.innerHTML = (totalHorasReales / horasEsperadas).toFixed(2);
+    proporcion();
+}
 
-    
+function proporcion(){
+    const proporcion = document.getElementById("proporcion");
+    const porcentajeEficiencia = Number(document.getElementById("porcentajeEficiencia").innerHTML);
+    const porcentaje = Number(document.getElementById("porcentaje").value);
+    proporcion.innerHTML = (parseFloat(porcentajeEficiencia) / parseFloat(porcentaje)).toFixed(2);
 }
 
 /*Row de total*/
@@ -58,7 +61,9 @@ function sumHoras(){
     horasTotales2 = 0;
     console.log(nombreP);
     for (let proyecto of nombreP){
+        console.log(proyecto);
         let id = "horasTrabajo['" + proyecto + "']";
+        console.log(id)
         let id2 = "horasReales['" + proyecto + "']";
         horasTotales += parseInt( document.getElementById(id).value );
         horasTotales2 += parseInt( document.getElementById(id2).value );

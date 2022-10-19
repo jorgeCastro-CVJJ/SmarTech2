@@ -11,21 +11,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="columns">
-                <div class="column">
-                    <div class="porcentajes">
-                        <h6>Porcentaje: </h6>
-                        <input class = "porcentaje" type = "number" id = "porcentaje"
-                        onkeyup="eficiencia()" onclick="eficiencia()" placeholder="0.85" value = "0.85">
-                        <h6>Verdadero porcentaje de eficiencia: </h6> 
-                        <label class = "porcentajeEficiencia" type = "number" id = "porcentajeEficiencia" value = "0">0</label>  
-                        
-                        <h6>Proporción: </h6> 
-                        <label class = "proporcion" type = "number" id = "proporcion" value = "0">0</label>
-                    </div>
-                </div>
-            </div>
                 
     <div class="columns">
         <div class="column">
@@ -48,6 +33,13 @@
                     <div class = "horasCompletoT" type = "number" id= "horasCompletoT">0</div>                      
                 </div>
                 <div class="field is-horizontal">
+                    <label class = "label">Horas de Vacaciones</label>
+                    <input class = "input" type = "number" min = "0"
+                    onkeyup="horasEsperadas()" onclick="horasEsperadas()"
+                    value = "0" id= "horasVacaciones" pattern="^[0-9]+"
+                    oninput="this.value = Math.max(this.value, 0)">  
+                </div>
+                <div class="field is-horizontal">
                     <label class = "label">Total de personal</label>
                     <div type = "number" id= "totalPersonal" min = "0" value = "0"
                     pattern="^[0-9]+" oninput="this.value = Math.max(this.value, 0)">0</div> 
@@ -56,12 +48,18 @@
                     <label class = "label">Horas Esperadas</label>
                     <div type = "number" id= "horasEsperadas" min = "0" value = "0">0</div>
                 </div>
-                <div class="field is-horizontal">
-                    <label class = "label">Horas de Vacaciones</label>
-                    <input class = "input" type = "number" min = "0"
-                    onkeyup="horasEsperadas()" onclick="horasEsperadas()"
-                    value = "0" id= "horasVacaciones" pattern="^[0-9]+"
-                    oninput="this.value = Math.max(this.value, 0)">  
+                <div class="columns">
+                    <div class="column">
+                        <div class="porcentajes">
+                            <h6>Porcentaje: </h6>
+                            <input class = "porcentaje" type = "number" id = "porcentaje"
+                            onkeyup="eficiencia()" onclick="eficiencia()" placeholder="0.85" value = "0.85">
+                            <h6>Verdadero porcentaje de eficiencia: </h6> 
+                            <label class = "porcentajeEficiencia" type = "number" id = "porcentajeEficiencia" value = "0">0</label>  
+                            <h6>Proporción: </h6> 
+                            <label class = "proporcion" type = "number" id = "proporcion" value = "0">0</label>
+                        </div>
+                    </div>
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Descripcion</label>
@@ -87,12 +85,9 @@
             </script>       
             <% for (let h of horas) { %>
                 <tr>
-                    <td><%= h.nombreP %></td> 
-                    <td><input id = "horasTrabajo['<%= h.nombreP %>']" type = "number" value="<%= h.horasTrabajo %>" readonly></td> 
-                    <td><input value = "<%= h.horasTrabajo %>" type="number" 
-                    id = "horasReales['<%= h.nombreP %>']" min = "0" placeholder="0" 
-                    onkeyup="sumHoras()" onclick="sumHoras()" pattern="^[0-9]+"
-                    oninput="this.value = Math.max(this.value, 0)"></td>
+                    <td></td> 
+                    <td></td> 
+                    <td></td>
                 </tr>
                 <script>
                     nombreP.push("<%= h.nombreP %>");
@@ -100,8 +95,8 @@
              <% } %>
             <tr>
                 <td><b>TOTAL</b></td>
-                <td id = "totalHorasTrabajo" type = "number" value = "0"></td>
-                <td id = "totalHorasReales" type = "number" value = "0"></td>
+                <td></td>
+                <td></td>
             </tr>
         </tbody>
 
@@ -126,7 +121,8 @@
                     //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
                     console.log("hrs:", data.fecha);
                     let html = '';
-                    if (data.fecha.length > 0) {                 
+                    if (data.fecha.length > 0) { 
+                                        
                       for(let f of (data.fecha)) {
                         nombreP.push(f.nombreP);
                         html += '<tr>';

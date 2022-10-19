@@ -496,8 +496,21 @@ html{
 
 .porcentajes {
   position: absolute;
-  margin-left: 55%;
-  top: 136px;
+  margin-left: 2.5%;
+  top: 550px;
+}
+
+.fechas_reporte {
+  position: absolute;
+  margin-left: 19%;
+  top: 140px;
+}
+
+.inputs_reporte {
+  position: absolute;
+  left: 18.5%;
+  width: 600px;
+  top: 250px;
 }
 
 .table thead td, .table thead th {
@@ -515,12 +528,6 @@ table tbody tr:nth-child(odd) {
 table tbody tr:nth-child(even) {
   color:#0F1C24 !important;
   background: #08b3da1e;
-}
-
-.fechas_reporte {
-  position: absolute;
-  margin-left: 19%;
-  top: 144px;
 }
 
 .number {
@@ -632,23 +639,28 @@ table tbody tr:nth-child(even) {
 .swiper .card{
   min-width: 40%;
   min-height: 250px;
-  box-shadow: 8px 8px #202a30
+  box-shadow: 8px 8px  rgb(136 139 141 / 48%);
 }
 
-.card .image {
-  position: fixed;
+.card a{
+  right: 0px;
+  position: absolute !important;
+  top: 32px;
 }
+/* .card .image {
+  position: fixed;
+} */
 
 .botonEditarProyecto {
-  right: 40px;
-  top: 10px;
-  
+  right: 53px;
+  top: 13px;
+  position: absolute !important;
 }
 
 .botonEliminarProyecto {
-  right: 10px;
-  top: 10px;
-  
+  right: 13px;
+  top: 13px;
+  position: absolute !important;
 }
 
 /* .botonEditarProyecto2 {
@@ -750,6 +762,15 @@ table tbody tr:nth-child(even) {
   width: 900px;
 }
 
+.editarProyecto {
+  left: 25%;
+  position: absolute;
+  width: 900px;
+  top: 5px;
+  padding-top: 7%;
+  padding-bottom: 3%;
+}
+
 #grafica{
   position: absolute;
   max-width: 800px;
@@ -796,15 +817,12 @@ th,td {
 
 #tabla_reporte {
   position: absolute;
-  top: 700px;
-  left: 35%;
+  top: 17%;
+  left: 60%;
 }
 
-.inputs_reporte {
-  position: absolute;
-  left: 35%;
-  width: 600px;
-  margin-top: 2px;
+#personalMedioT.input, #personalCompletoT.input, #horasVacaciones {
+  width: 70px;
 }
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
@@ -891,8 +909,8 @@ th,td {
 #reportebtn {
   position: absolute;
   right: 180px;
-  bottom: -30%;
-  width: 100px;
+  margin-top: 50%;
+  width: 150px;
   height: 50px;
   background-color: #00A99D;
   border: none;
@@ -906,7 +924,7 @@ th,td {
 #crearPDF {
   position: absolute;
   right: 50px;
-  bottom: -30%;
+  bottom: -10%;
   width: 100px;
   height: 50px;
   background-color: #00A99D;

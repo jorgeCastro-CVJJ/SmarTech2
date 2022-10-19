@@ -15,12 +15,13 @@
                         <% for (let p of misproyectos) { %>
                             <% if (p.estatus != "Pausado") { %>
                                 <div class="swiper-slide card" id="gris-clare">
-                                    <figure class="image is-24x24 botonEditarProyecto is-clickable" href="/proyecto/editar/<%= p.idProyecto %>" >
+                                    <a href="/proyecto/editar/<%= p.idProyecto %>"><figure class="image is-24x24 botonEditarProyecto is-clickable" >
                                         <img src="/media/edit-free-icon-font.png">
-                                    </figure>
-                                    <figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" data-target="modal-js-example">
+                                    </figure></a>
+                                    <figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" data-target="modal-js-example" data-idProyecto="<%p.idProyecto%>">
                                         <img src="/media/borrar.png">
                                     </figure>
+                                    
                                     <div class="card-content"> 
                                         <i src="/media/edit-free-icon-font.png"></i>
                                         <div class="title" id="blanco">
@@ -54,6 +55,9 @@
                 </div>
             </div>
 
+            <div class="field is-horizontal">
+                <h1 class="titulo-medio"></h1class>Todos los Proyectos</h1>
+            </div>
 
             
             <div class="field is-horizontal proyectoVista">
@@ -62,10 +66,10 @@
                         <% for (let t of todosproyectos) { %>
                             <% if (t.estatus != "Pausado") { %>
                                 <div class="swiper-slide card" id="azul">
-                                    <figure class="image is-24x24 botonEditarProyecto is-clickable" href="/proyecto/editar/<%= t.idProyecto %>" >
+                                    <a href="/proyecto/editar/<%= t.idProyecto %>"><figure class="image is-24x24 botonEditarProyecto is-clickable" href="/proyecto/editar/<%= t.idProyecto %>" >
                                         <img src="/media/edit-free-icon-font.png">
-                                    </figure>
-                                    <figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" data-target="modal-js-example">
+                                    </figure></a>
+                                    <figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" data-target="modal-js-example" data-idProyecto="<%t.idProyecto%>">
                                         <img src="/media/borrar.png">
                                     </figure>
                                     <div class="card-content">
@@ -101,26 +105,27 @@
         </div>
     </div>
 
-
-
-
-
     <div class="modal" id="modal-js-example">
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Modal title</p>
+                <p class="modal-card-title">Eliminar Proyecto</p>
                 <button class="delete" aria-label="close"></button>
             </header>
             <section class="modal-card-body">
-                <!-- Content ... -->
+                Estás a punto de <span class="is-red">Eliminar</span> el proyecto seleccionado. <br>
+                ¿Quieres continuar con este proceso?
             </section>
             <footer class="modal-card-foot">
-                <button class="button is-success">Save changes</button>
-                <button class="button">Cancel</button>
+                <button class="button is-danger" href="/proyecto/eliminarProyecto/:idProyecto">Eliminar</button>
+                <button class="button">Cancelar</button>
             </footer>
         </div>
     </div>
+
+
+
+
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
