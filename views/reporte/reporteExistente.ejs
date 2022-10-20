@@ -17,7 +17,7 @@
             <div class="columns">
                 <div class="column">
                     <div class="porcentajesRep">
-                        <label class = "label">Porcentaje: <input value = '<%= reporteN[0].porcentaje %>' type="number" min = "0" placeholder="0" id="porcentaje"> </label>
+                        <label class = "label">Porcentaje: <input value = '<%= reporteN[0].porcentaje %>' type="number" maxlength="4" min = "0" placeholder="0" id="porcentaje"> </label>
                         <label class="label">Verdadero porcentaje de eficiencia:</label> 
                         <label class = "porcentajeEficiencia" type = "number" id = "porcentajeEficiencia" value = "0">0</label> 
                         <label class="label">Proporción: </label> 
@@ -78,8 +78,14 @@
         <tbody id="datos_tabla"> 
             <script>
                 const nombreP = new Array();
-            </script>       
+            </script>
+            
+            <% let suma_horas_trabajo = 0; %> 
+            <% let suma_horas_reales = 0; %>   
             <% for (let h of horas) { %>
+                
+                <% suma_horas_reales += Number(h.horasReales); %>
+                <% suma_horas_trabajo += Number(h.horasTrabajo); %>
                 <tr>
                     <td><%= h.nombreP %></td> 
                     <td><input id = "horasTrabajo['<%= h.nombreP %>']" type = "number" value="<%= h.horasReales %>" readonly></td> 
@@ -91,8 +97,8 @@
              <% } %>
             <tr>
                 <td><b>TOTAL</b></td>
-                <td id = "totalHorasTrabajo" type = "number" value = "0"></td>
-                <td id = "totalHorasReales" type = "number" value = "0"></td>
+                <td id = "totalHorasTrabajo" type = "number" value = "0"><%= suma_horas_trabajo %></td>
+                <td id = "totalHorasReales" type = "number" value = "0"><%= suma_horas_reales %></td>
             </tr>
         </tbody>
 
@@ -104,7 +110,7 @@
 
           <p class="control">
             <input type="submit" value="Generar PDF"
-            class="button reportebtn is-info" id="crearPDF">
+            class="button reportebtn is-info" id="crearPDF" href = "/reporte/crearPdf/">
           </p>
 
 <script>
@@ -196,14 +202,14 @@
         </script>
 
 <script>
-    const totalHorasReales = document.getElementById("totalHorasReales");
+    const totalHorasReales = Number(document.getElementById("totalHorasReales").innerHTML);
     const porcentaje = document.getElementById("porcentaje").value;
-    console.log(totalHorasReales);
-    console.log(typeof(totalHorasReales));
-    console.log(horasEsperadas);
-    console.log(typeof(horasEsperadas));
-    porcentajeEficiencia.innerHTML = (totalHorasReales / horasEsperadas).toFixed(2);
-    proporcion.innerHTML = (parseFloat(porcentajeEficiencia) / parseFloat(porcentaje)).toFixed(2);
+    console.log(porcentajeEficiencia);
+    console.log(typeof(porcentajeEficiencia));
+    console.log(porcentaje);
+    console.log(typeof(porcentaje));
+    porcentajeEficiencia.innerHTML = (totalHorasReales / Number(horasEsperadas.innerHTML)).toFixed(2);
+    proporcion.innerHTML = (parseFloat(porcentajeEficiencia.innerHTML) / parseFloat(porcentaje)).toFixed(2);
 </script> 
     
     
