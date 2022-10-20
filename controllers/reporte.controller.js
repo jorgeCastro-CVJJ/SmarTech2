@@ -191,6 +191,11 @@ getPDF = async(request, responde, next) => {
             marginRight: 45,
             headAlign: 'center'
         })
+        doc
+            .text(`Personal de Medio Tiempo: ${rowsRep[0].personalMedioT}`, 200, 50, {align: "right"})
+            .text(`Personal de Tiempo Completo: ${rowsRep[0].personalCompletoT}`, 200, 65, {align: "right"})
+            .text(`Personal Total: ${rowsRep[0].descripcion}`, 200, 80, {align: "right"})
+
         doc.render();
         doc.end();
     })
