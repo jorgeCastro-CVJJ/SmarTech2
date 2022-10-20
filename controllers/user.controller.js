@@ -110,7 +110,20 @@ postCrearEmpleado = (request, response, next) => {
   console.log(nuevoEmpleado)
   nuevoEmpleado.save()
     .then(() => { //Agregar la parte de roles **
-      
+      Usuario.EmpleadoMasReciente() // <-- Me regresa el Id más nuevo
+      .then(([rows,fieldData]) => {
+
+        if (request.body.rol == 3){
+          Usuario.registrarRol(3,rows[0].idEmpleado)
+          Usuario.registrarRol(2,rows[0].idEmpleado)
+          Usuario.registrarRol(1,rows[0].idEmpleado)
+        } else if (request.body.rol == 2) {
+          Usuario.registrarRol(2,rows[0].idEmpleado)
+          Usuario.registrarRol(1,rows[0].idEmpleado)
+        } else {
+        Usuario.registrarRol(1,rows[0].idEmpleado)
+        }
+      }) 
       response.redirect('/user/crearEmpleado');
     })
     .catch(err => {

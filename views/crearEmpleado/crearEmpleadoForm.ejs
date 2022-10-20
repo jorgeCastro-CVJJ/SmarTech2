@@ -27,11 +27,33 @@
           
             <div class="field is-horizontal">
               <div class="field-label">
-                <label class="label">Correo del Usuario</label>
+                <label class="label">Correo</label>
               </div>
               <div class="field-body">
                 <div class="control is-fullwidth">
-                  <input class="input"  placeholder="helenacobo@tec.mx" id="correo" name="correo" type="email" required>
+                  <input class="input"  placeholder="helenacobo@natgas.mx" id="correo" name="correo" type="email" pattern="([\w - \.]+)@natgas.com.mx" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Rol</label>
+              </div>
+              <div class="field-body">
+                <div class="control is-fullwidth">
+                  <label class="radio">
+                    <input type="radio" name="rol" value="1">
+                    Colaborador
+                  </label><br>
+                  <label class="radio">
+                    <input type="radio" name="rol" value="2">
+                    Lider
+                  </label><br>
+                  <label class="radio">
+                    <input type="radio" name="rol" value="3">
+                    Coordinador
+                  </label>
                 </div>
               </div>
             </div>
