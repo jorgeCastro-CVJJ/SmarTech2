@@ -132,12 +132,19 @@ postCrearEmpleado = (request, response, next) => {
     });
 };
 
+getAyuda = (request, response, next) => {
+  response.render(path.join('ayuda','ayuda.ejs'), {
+    listaPrivilegios: request.session.privilegios,
+  });
+}
+
 module.exports = {
   getLogin,
   postLogin,
   logout,
   menu,
   getCrearEmpleado,
-  postCrearEmpleado
+  postCrearEmpleado,
+  getAyuda
 };
 // en vistas poner if pasar arreglo de privilegios a la vista e ir comparando 

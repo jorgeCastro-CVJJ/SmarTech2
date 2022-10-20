@@ -14,5 +14,7 @@ router.post('/inicio', isAuth, userController.menu);
 router.get('/crearEmpleado', isAuth, hasCrearEmpleado ,userController.getCrearEmpleado);
 router.post('/crearEmpleado', isAuth, hasCrearEmpleado, userController.postCrearEmpleado);
 
+router.get('/ayuda', isAuth, userController.getAyuda);
+
 
 module.exports = router;
