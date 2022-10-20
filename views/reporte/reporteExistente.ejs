@@ -110,12 +110,11 @@
         <p class="control">
             <input type="submit" onclick="postReporteEditado()" value="Guardar cambios"
             class="button reportebtn is-success is-outlined" id="reportebtn">
-          </p>
+        </p>
 
-          <p class="control">
-            <input type="submit" value="Generar PDF"
-            class="button reportebtn is-info" id="crearPDF" href = "/reporte/crearPdf/">
-          </p>
+        <p class="control">
+            <a type="button" class="button reportebtn is-info" id="crearPDF" href = "/reporte/crearPDF/<%= reporteN[0].noReporte %>"></a>
+        </p>
 
 <script>
     function postReporteEditado(){

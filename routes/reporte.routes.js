@@ -9,7 +9,7 @@ router.post("/crearReporte", isAuth,reporteController.postReporte);
 
 router.get('/buscar/:fechaInicio/:fechaFinal', isAuth, reporteController.getBuscarReporte);
 
-router.get("/crearPdf", isAuth,reporteController.getPDF);
+router.get("/crearPdf/:noReporte", isAuth,reporteController.getPDF);
 
 router.get("/existente/:noReporte", isAuth, reporteController.getReporteExistente)
 router.post("/existente/:noReporte",  isAuth, reporteController.postEditarReporte);
