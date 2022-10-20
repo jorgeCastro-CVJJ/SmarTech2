@@ -75,11 +75,69 @@ getBuscarReporte = (request, response, next) => {
         });
 };
 
+/*getPDF = async(request, responde, next) => {
+    const doc = new PDF({bufferPages: true});
+
+    const filename =`reporteSemanal.pdf`;
+
+    const stream = responde.writeHead(200, {
+        'Content-Type': 'application/pdf',
+        'Content-Disposition': `attachment;filename=${filename}`
+    });
+    doc.on('data', (data) => {stream.write(data)});
+    doc.on('end', () => {stream.end()});
+
+    doc.setDocumentHeader({
+        height: '15'
+    }, () => {
+        doc
+        .image(path.join( "public", "media", "logo.png"), 50, 45, {width: 50})
+        .fillColor("#20BA4F")
+        .fontSize(30)
+        .text("NatGas", 110, 57)
+        .fontSize(10)
+        .text(`noReporte: ${reporteFinal.noReporte}`, 200, 50, {align: "right"})
+        .text(`Fecha Inicial: ${reporteFinal.fechaInicio}`, 200, 65, {align: "right"})
+        .text(`Fecha Final: ${reporteFinal.fechaFinal}`, 200, 80, {align: "right"})
+        .moveDown();
+    });
+
+    const datosPDF = [
+        {
+            Proyecto: 1,
+            horasRegistradas: 20,
+            horasReales: 30
+        }, 
+        {
+            Proyecto: 2,
+            horasRegistradas: 60,
+            horasReales: 20
+        }
+    ]
+
+    doc.addTable([
+        {key: 'Proyecto', label: 'Proyecto', align: 'left'},
+        {key: 'horasRegistradas', label: 'Horas Registradas', align: 'left'},
+        {key: 'horasReales', label: 'Horas Reales', align: 'left'}
+    ], datosPDF,{
+        border: null,
+        width: "fill_body",
+        striped: true,
+        stripedColors: ["#f6f6f6", "#d6c4dd"],
+        cellsPadding: 10,
+        marginLeft: 45,
+        marginRight: 45,
+        headAlign: 'center'
+    })
+    doc.render();
+    doc.end();
+}*/
+
 getPDF = async(request, responde, next) => {
-    console.log("Funciona btn")
-    Reporte.fetchOne(request.params.noReporte)
+     Reporte.fetchOne(request.params.noReporte)
     .then(([rowsRep, fieldData])=> {
-        rep: rowsRep;
+        rep: rowsRep,
+        console.log(rowsRep, "Este es el test")
         const doc = new PDF({bufferPages: true});
 
         const filename =`reporteSemanal.pdf`;
@@ -99,43 +157,21 @@ getPDF = async(request, responde, next) => {
             .fillColor("#20BA4F")
             .fontSize(30)
             .text("NatGas", 110, 57)
-            .fontSize(10)
+            .fontSize(12)
             .text(`noReporte: ${rowsRep[0].noReporte}`, 200, 50, {align: "right"})
-            .text(`Fecha Inicial: ${reporteFinal[0].fechaInicio}`, 200, 65, {align: "right"})
-            .text(`Fecha Final: ${reporteFinal[0].fechaFinal}`, 200, 80, {align: "right"})
+            .text(`Fecha Inicial: ${rowsRep[0].fechaInicio}`, 200, 65, {align: "right"})
+            .text(`Fecha Final: ${rowsRep[0].fechaFinal}`, 200, 80, {align: "right"})
             .moveDown();
         });
 
-        const datosPDF = [
-            {
-                Proyecto: 1,
-                horasRegistradas: 20,
-                horasReales: 30
-            }, 
-            {
-                Proyecto: 2,
-                horasRegistradas: 60,
-                horasReales: 20
-            }
-        ]
+        doc
+            .text(`Personal de Medio Tiempo: ${rowsRep[0].personalMedioT}`, 50, 130, {align: "left"})
+            .text(`Personal de Tiempo Completo: ${rowsRep[0].personalCompletoT}`, 50, 145, {align: "left"})
+            .text(`Personal Total: ${rowsRep[0].descripcion}`, 50, 160, {align: "left"})
 
-        doc.addTable([
-            {key: 'Proyecto', label: 'Proyecto', align: 'left'},
-            {key: 'horasRegistradas', label: 'Horas Registradas', align: 'left'},
-            {key: 'horasReales', label: 'Horas Reales', align: 'left'}
-        ], datosPDF,{
-            border: null,
-            width: "fill_body",
-            striped: true,
-            stripedColors: ["#f6f6f6", "#d6c4dd"],
-            cellsPadding: 10,
-            marginLeft: 45,
-            marginRight: 45,
-            headAlign: 'center'
-        })
-    })
         doc.render();
         doc.end();
+    })
 }
 
 getReporteExistente = (request, response, next) =>{
