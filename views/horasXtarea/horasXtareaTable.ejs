@@ -11,7 +11,7 @@
 
 <div class="field is-static">
 
-<table  id="table_f">
+<table  id="table_tarea">
 
   <thead>
     <tr>
@@ -50,7 +50,7 @@
 
 <script>
   $(document).ready( function () {
-$('#table_f').DataTable({
+$('#table_tarea').DataTable({
                 language: {
                     processing: "Tratamiento en curso...",
                     search: "Buscar&nbsp;:",
@@ -73,8 +73,8 @@ $('#table_f').DataTable({
                         sortDescending: ": active para ordenar la columna en orden descendente"
                     }
                 },
-                scrollY: 450,
-                lengthMenu: [ [10, 25, -1], [10, 25, "All"] ],
+                scrollY: 400,
+                lengthMenu: [ [5, 10, -1], [5, 10, "All"] ],
             });
   } );
 

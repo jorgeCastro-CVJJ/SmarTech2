@@ -15,9 +15,9 @@
     Estatus:<% if(proyecto[0].estatus == "Estabilizacion") { %>
       <span style="color: green"><%= proyecto[0].estatus %></span>
     <%} else if (proyecto[0].estatus == "Ejecucion" ) { %>
-      <span style="color: yellow"><%= proyecto[0].estatus %></span>
+      <span style="color: #f6a700"><%= proyecto[0].estatus %></span>
     <% } else if(proyecto[0].estatus == "Definicion") { %>
-      <span style="color: orange"><%= proyecto[0].estatus %></span>
+      <span style="color: #b87400"><%= proyecto[0].estatus %></span>
     <% } else if(proyecto[0].estatus == "Pausado") { %>
       <span style="color: red"><%= proyecto[0].estatus %></span>
     <% } %>
