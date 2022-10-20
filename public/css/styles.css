@@ -248,7 +248,7 @@ html{
 }
 
 .botonTarea {
-  left: 20%;
+  left: 43%;
   margin-top: -250px;
   color: white;
   border: none;
@@ -318,8 +318,8 @@ html{
 }
 
 .proyectosExistentes {
-  padding-top: 500px;
-  padding-left: 350px;
+  padding-top: 460px;
+  padding-left: 600px;
 }
 
 
@@ -335,8 +335,8 @@ html{
 
 
 .contenedorProyecto{
-  margin-left: 18%;
-  margin-top: 13%;
+  margin-left: 38%;
+  margin-top: 8%;
   width:max-content;
 }
 
@@ -354,8 +354,9 @@ html{
   margin-top: -12%;
 }
 
-.botonAgregarTarea{
-  margin-top: 30%;
+.botonAgregarTarea {
+  left: 260%;
+  margin-top: 20%;
 }
 .cartaProyectos {
   width: 600px; 
@@ -502,7 +503,7 @@ html{
 
 .porcentajesRep {
   position: absolute;
-  margin-left: 2.5%;
+  left: 19%;
   top: 560px;
 }
 
@@ -632,12 +633,12 @@ table tbody tr:nth-child(even) {
 }
 
 .swiper-button-next::after {
-  position: fixed;
-  right:130px;
+  position: absolute;
+  right: -10px;
 }
 .swiper-button-prev::after {
-  position: fixed;
-  left:300px
+  position: absolute;
+  left: 2px;
 }
 
 .swiper-pagination {
@@ -772,7 +773,7 @@ table tbody tr:nth-child(even) {
 
 #table_f_wrapper {
   position: absolute;
-  left:32%;
+  left:29%;
   top: 26%;
 } 
 
@@ -822,7 +823,7 @@ th,td {
 
 #table_f_filter {
   position: absolute;
-  left: 580px;
+  left: 649px;
   top: -13px;
 }
 
@@ -930,7 +931,7 @@ th,td {
   position: absolute;  
   width: 150px;
   top: 340px;
-  left: 1100px;
+  left: 1260px;
  /* height: 50px;
   background-color: #00A99D;
   border: none;
@@ -945,7 +946,7 @@ th,td {
   position: absolute;  
   width: 150px;
   top: 340px;
-  left: 910px;
+  left: 1050px;
   /* bottom: -10%;
   width: 100px;
   height: 50px;
@@ -983,7 +984,7 @@ th,td {
   position: absolute;  
   width: 150px;
   top: -40px;
-  left: 207px;
+  left: 450px;
   /* right: 50px;
   top: 220px;
   width: 100px;
@@ -1012,4 +1013,46 @@ th,td {
 
 #reportes {
   left: 4.5%;
+}
+
+#regEmpleado {
+  position: absolute;
+  left: 40%;
+  top: 25%;
+}
+
+#regEmp {
+  position: absolute;
+  left: 80%;
+}
+
+#misP {
+  position: absolute;
+  left: 20%;
+  top: 13%;
+  width: 1115px;
+}
+
+#todosP {
+  position: absolute;
+  left: 20%;
+  top: 70%;
+  width: 1115px;
+}
+
+#misPrTitulo {
+  position: absolute;
+  left: 45%;
+  top: 7%;
+}
+
+#todosPrTitulo {
+  position: absolute;
+  left: 45%;
+  top: 57%;
+}
+
+#misTareas {
+  position: absolute;
+  left: 10%;
 }

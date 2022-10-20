@@ -8,8 +8,8 @@
 <% } %>
     <div class="columns ">
         <div class="column is-four-fifths is-offset-1">   
-            <h1 class="titulo-MisProyectos">Mis Proyectos</h1>
-            <div class="field is-horizontal proyectoVista">
+            <h1 class="titulo-MisProyectos" id="misPrTitulo">Mis Proyectos</h1>
+            <div class="field is-horizontal proyectoVista" id="misP">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <% if (misproyectos.length != 0 ) { %>
@@ -60,8 +60,8 @@
                                             </div>
                                             <div class="content">
                                                 <p>
-                                                    Parece que no tienes Proyectos asignados... <br>
-                                                    Mientras tanto revisa en qué estan trabajando los demás.
+                                                    Parece que no tienes proyectos asignados... <br>
+                                                    Mientras tanto revisa en qué están trabajando los demás.
                                                 </p>
                                             </div>
                                         </div> 
@@ -73,14 +73,14 @@
                                 <div class="card-content"> 
                                     <i src="/media/edit-free-icon-font.png"></i>
                                     <div class="title" id="blanco">
-                                        ¡Que suerte!
+                                        ¡Qué suerte!
                                     </div>
                                     <div class="subtitle" id="blanco">
                                         No tienes proyectos asignados.
                                     </div>
                                     <div class="content">
                                         <p>
-                                            Parece que no tienes Proyectos asignados... <br>
+                                            Parece que no tienes proyectos asignados... <br>
                                             Mientras tanto revisa en qué estan trabajando los demás.
                                         </p>
                                     </div>
@@ -94,12 +94,12 @@
                 </div>
             </div>
 
-            <div class="field is-horizontal">
-                <h1 class="titulo-medio"></h1class>Todos los Proyectos</h1>
+            <div class="field is-horizontal" id="todosPrTitulo">
+                <h1 class="titulo-medio">Todos los proyectos</h1>
             </div>
 
             
-            <div class="field is-horizontal proyectoVista">
+            <div class="field is-horizontal proyectoVista" id="todosP">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <% for (let t of todosproyectos) { %>
