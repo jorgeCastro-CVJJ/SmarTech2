@@ -17,11 +17,15 @@
             <div class="columns">
                 <div class="column">
                     <div class="porcentajesRep">
-                        <label class = "label">Porcentaje: <input value = '<%= reporteN[0].porcentaje %>' type="number" maxlength="4" min = "0" placeholder="0" id="porcentaje"> </label>
-                        <label class="label">Verdadero porcentaje de eficiencia:</label> 
+                        <label class = "label">Proporción: <input value = '<%= reporteN[0].porcentaje %>' type="number" min = "0" placeholder="0" id="porcentaje"> </label>
+                        <div class = "field is-horizontal">
+                        <label class="label">Eficiencia Verdadera:</label> 
                         <label class = "porcentajeEficiencia" type = "number" id = "porcentajeEficiencia" value = "0">0</label> 
-                        <label class="label">Proporción: </label> 
+                        </div>
+                        <div class = "field is-horizontal">
+                        <label class="label">Eficiencia Modificada: </label> 
                         <label class = "proporcion" type = "number" id = "proporcion" value = "0">0</label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,7 +63,7 @@
                     </script>
                 </div>
                 <div class="field is-horizontal">
-                    <label class = "label">Descripcion: <input value = '<%= reporteN[0].descripcion %>' type="text" min = "0" placeholder="descripcion" id="descripcion"></label>
+                    <label class = "label">Descripción: <input value = '<%= reporteN[0].descripcion %>' type="text" min = "0" placeholder="descripcion" id="descripcion"></label>
                 </div>
             </div>
         </div>
