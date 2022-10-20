@@ -76,6 +76,7 @@ getBuscarReporte = (request, response, next) => {
 };
 
 getPDF = async(request, responde, next) => {
+    console.log("Funciona btn")
     Reporte.fetchOne(request.params.noReporte)
     .then(([rowsRep, fieldData])=> {
         rep: rowsRep;
@@ -99,7 +100,7 @@ getPDF = async(request, responde, next) => {
             .fontSize(30)
             .text("NatGas", 110, 57)
             .fontSize(10)
-            .text(`noReporte: ${reporteFinal[0].noReporte}`, 200, 50, {align: "right"})
+            .text(`noReporte: ${rowsRep[0].noReporte}`, 200, 50, {align: "right"})
             .text(`Fecha Inicial: ${reporteFinal[0].fechaInicio}`, 200, 65, {align: "right"})
             .text(`Fecha Final: ${reporteFinal[0].fechaFinal}`, 200, 80, {align: "right"})
             .moveDown();
