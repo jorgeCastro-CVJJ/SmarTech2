@@ -157,44 +157,17 @@ getPDF = async(request, responde, next) => {
             .fillColor("#20BA4F")
             .fontSize(30)
             .text("NatGas", 110, 57)
-            .fontSize(10)
+            .fontSize(12)
             .text(`noReporte: ${rowsRep[0].noReporte}`, 200, 50, {align: "right"})
             .text(`Fecha Inicial: ${rowsRep[0].fechaInicio}`, 200, 65, {align: "right"})
             .text(`Fecha Final: ${rowsRep[0].fechaFinal}`, 200, 80, {align: "right"})
             .moveDown();
         });
 
-        const datosPDF = [
-            {
-                Proyecto: 1,
-                horasRegistradas: 20,
-                horasReales: 30
-            }, 
-            {
-                Proyecto: 2,
-                horasRegistradas: 60,
-                horasReales: 20
-            }
-        ]
-
-        doc.addTable([
-            {key: 'Proyecto', label: 'Proyecto', align: 'left'},
-            {key: 'horasRegistradas', label: 'Horas Registradas', align: 'left'},
-            {key: 'horasReales', label: 'Horas Reales', align: 'left'}
-        ], datosPDF,{
-            border: null,
-            width: "fill_body",
-            striped: true,
-            stripedColors: ["#f6f6f6", "#d6c4dd"],
-            cellsPadding: 10,
-            marginLeft: 45,
-            marginRight: 45,
-            headAlign: 'center'
-        })
         doc
-            .text(`Personal de Medio Tiempo: ${rowsRep[0].personalMedioT}`, 200, 50, {align: "right"})
-            .text(`Personal de Tiempo Completo: ${rowsRep[0].personalCompletoT}`, 200, 65, {align: "right"})
-            .text(`Personal Total: ${rowsRep[0].descripcion}`, 200, 80, {align: "right"})
+            .text(`Personal de Medio Tiempo: ${rowsRep[0].personalMedioT}`, 50, 130, {align: "left"})
+            .text(`Personal de Tiempo Completo: ${rowsRep[0].personalCompletoT}`, 50, 145, {align: "left"})
+            .text(`Personal Total: ${rowsRep[0].descripcion}`, 50, 160, {align: "left"})
 
         doc.render();
         doc.end();
