@@ -19,9 +19,9 @@
                                     <a href="/proyecto/editar/<%= p.idProyecto %>"><figure class="image is-24x24 botonEditarProyecto is-clickable" >
                                         <img src="/media/edit-free-icon-font.png">
                                     </figure></a>
-                                    <a href="/proyecto/eliminarProyecto/<%= p.idProyecto %>"><figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" data-target="modal-js-example" data-idProyecto="<%p.idProyecto%>">
+                                    <figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" onclick="eliminar(<%= p.idProyecto %>)" data-target="modal-js-example">
                                         <img src="/media/borrar2.png">
-                                    </figure></a>
+                                    </figure>
                                     <% } %>
                                     <div class="card-content"> 
                                         <i src="/media/edit-free-icon-font.png"></i>
@@ -71,9 +71,9 @@
                                     <a href="/proyecto/editar/<%= t.idProyecto %>"><figure class="image is-24x24 botonEditarProyecto is-clickable" href="/proyecto/editar/<%= t.idProyecto %>" >
                                         <img src="/media/edit-free-icon-font.png">
                                     </figure></a>
-                                    <a href="/proyecto/eliminarProyecto/<%= t.idProyecto %>"><figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" data-target="modal-js-example" data-idProyecto="<%t.idProyecto%>">
+                                    <figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" onclick="eliminar(<%= t.idProyecto %>)"  data-target="modal-js-example" >
                                         <img src="/media/borrar2.png">
-                                    </figure></a>
+                                    </figure>
                                     <% } %>
                                     <div class="card-content">
                                         <div class="title" id="blanco">
@@ -120,7 +120,7 @@
                 ¿Quieres continuar con este proceso?
             </section>
             <footer class="modal-card-foot">
-                <button class="button is-danger" href="/proyecto/eliminarProyecto/:idProyecto">Eliminar</button>
+                <a  id="botonEliminarProyectoModal" href="hola"><button class="button is-danger" href="#">Eliminar</button></a>
                 <button class="button">Cancelar</button>
             </footer>
         </div>
@@ -159,6 +159,12 @@
     // After 3 seconds, remove the show class from DIV
         setTimeout(function(){ x.className  = x.className.replace("show",""); }, 3000);
     };
+
+
+    function eliminar(idProyectoModal) {
+        document.getElementById("botonEliminarProyectoModal").href="/proyecto/eliminarProyecto/" + idProyectoModal;
+    }
+    ////proyecto/eliminarProyecto/${idProyectoModal}
 
 
 

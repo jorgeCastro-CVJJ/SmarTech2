@@ -24,10 +24,11 @@ app.use(
   session({
     secret: "jdfefwedewdwefsdsfsfsefewwfcvbjkygfvjm",
     resave: false, //La sesión no se guardará en cada petición, sino sólo se guardará si algo cambió
-    cookie: {maxAge : 300000},
+    cookie: {maxAge: 2678400000 },
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
   })
-  );
+);
+
   
   
   /* evitar mal uso de ruteo
