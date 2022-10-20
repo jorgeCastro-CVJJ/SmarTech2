@@ -7,7 +7,6 @@
                         <input id="fechaInicio" type="date">
                         <label class="label">Fecha fin: </label>
                         <input id="fechaFinal" type="date">
-                        <label class="label">Número reporte: </label>
                     </div>
                 </div>
             </div>
@@ -62,7 +61,7 @@
                     </div>
                 </div>
                 <div class="field is-horizontal">
-                    <label class = "label">Descripcion</label>
+                    <label class = "label">Descripción</label>
                     <input id = "descripcion" type ="text" placeholder="Ingresar">
                 </div>
             </div>
@@ -72,9 +71,9 @@
     <table id="tabla_reporte">
         <thead>
         <tr>
-            <th><abbr title="Proyecto">Proyecto</abbr></th>
-            <th><abbr title="Tarea">Horas registradas</abbr></th>
-            <th><abbr title="Horas">Horas reales</abbr></th>
+            <th><abbr title="Proyecto" id="proyecto">Proyecto</abbr></th>
+            <th><abbr title="Tarea" id="tarea">Horas registradas</abbr></th>
+            <th><abbr title="Horas" id="horas">Horas reales</abbr></th>
         </tr>
         </thead>
 
@@ -85,18 +84,15 @@
             </script>       
             <% for (let h of horas) { %>
                 <tr>
-                    <td></td> 
-                    <td></td> 
-                    <td></td>
+                  
                 </tr>
                 <script>
                     nombreP.push("<%= h.nombreP %>");
                 </script>
              <% } %>
             <tr>
-                <td><b>TOTAL</b></td>
-                <td></td>
-                <td></td>
+                
+                
             </tr>
         </tbody>
 
