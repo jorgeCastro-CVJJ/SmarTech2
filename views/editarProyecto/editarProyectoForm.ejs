@@ -12,7 +12,7 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input value="<%= proyecto[0].nombreP%>" class="input" type="text"  id="nombreP" name="nombreP" onkeyup="deshabilitar()">
+              <input value="<%= proyecto[0].nombreP%>" class="input" type="text"  id="nombreP" name="nombreP">
             </div>
           </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input value="<%= proyecto[0].descripcion %>"class="input" type="text"  id="descripcion" name="descripcion" onkeyup="deshabilitar()">
+              <input value="<%= proyecto[0].descripcion %>"class="input" type="text"  id="descripcion" name="descripcion" >
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@
           <div class="field">
             <div class="control select is-fullwidth is-danger">
               <select  id="estatus" name="estatus" required>
-                  <option selected disabled>Selecciona un estatus</option>
+                  <option value= "<% proyecto[0].estatus %>"selected disabled>Selecciona un estatus</option>
                   <option value= "Estabilizacion" >Estabilización</option>
                   <option value= "Ejecucion" >Ejecución</option>
                   <option value= "Definicion" >Definición</option>
@@ -90,7 +90,7 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input value="<%= proyecto[0].stackTecnologico %>"class="input" type="text" placeholder="Escribe aqui" id="stackTecnologico" name="stackTecnologico" onkeyup="deshabilitar()">
+              <input value="<%= proyecto[0].stackTecnologico %>"class="input" type="text" placeholder="Escribe aqui" id="stackTecnologico" name="stackTecnologico">
             </div>
           </div>
         </div>
@@ -103,7 +103,7 @@
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input value="<%= proyecto[0].stakeholders %>"class="input" type="text" placeholder="Escribe aqui" id="stakeholders" name="stakeholders" onkeyup="deshabilitar()">
+              <input value="<%= proyecto[0].stakeholders %>"class="input" type="text" placeholder="Escribe aqui" id="stakeholders" name="stakeholders" ">
             </div>
           </div>
         </div>
@@ -111,7 +111,7 @@
 
       <div class="field is-grouped is-grouped-centered">
         <p class="control">
-          <input type="button" value="Modificar" id= "submitProyectobtn" disabled class="button botonAgregarTarea is-success is-outlined"onclick="postEditarProyecto()">
+          <input type="button" value="Modificar" id= "submitProyectobtn" class="button botonAgregarTarea is-success is-outlined"onclick="postEditarProyecto()">
           <button type="reset" class="button botonAgregarTarea is-danger is-outlined" onclick="window.location.href='/proyecto/misProyectos/';">Regresar</button>
         </p>
       </div>

@@ -21,6 +21,14 @@ module.exports = class Proyecto {
     return db.execute('SELECT * FROM proyecto');
   }
 
+  static fetchProyectosNoPausados(idSesion) {
+    return db.execute(`SELECT DISTINCT p.idProyecto, nombreP, descripcion, estatus, stackTecnologico, stakeholders 
+    FROM proyecto p, trabaja t 
+    WHERE p.idProyecto = t.idProyecto 
+    AND t.idEmpleado = ${idSesion}
+    AND p.estatus != "Pausado"`) //Tablas: tarea, proyecto, ejecuta
+  }
+  
   // Obtiene los proyectos "asignados" que tiene el usuario
   static fetchProyectos(idSesion) {
     return db.execute(`SELECT DISTINCT p.idProyecto, nombreP, descripcion, estatus, stackTecnologico, stakeholders 

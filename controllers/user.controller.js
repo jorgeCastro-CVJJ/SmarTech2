@@ -110,6 +110,7 @@ postCrearEmpleado = (request, response, next) => {
   console.log(nuevoEmpleado)
   nuevoEmpleado.save()
     .then(() => { //Agregar la parte de roles **
+      
       response.redirect('/user/crearEmpleado');
     })
     .catch(err => {

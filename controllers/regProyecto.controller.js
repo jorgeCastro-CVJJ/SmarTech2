@@ -65,7 +65,7 @@ getProyectoExistente = (request, response, next) =>{
 getProyectosByUserID = (request, response, next) => {
   let mensaje = request.session.mensaje ? request.session.mensaje : '';
   request.session.mensaje = '';
-  Proyecto.fetchProyectos(request.session.idSesion)
+  Proyecto.fetchProyectosNoPausados(request.session.idSesion)
   .then(([rowsProyecto, fielData]) => {
     Proyecto.fetchNotMyProyectos(request.session.idSesion)
     .then(([rowsTodos,fielData]) => {
