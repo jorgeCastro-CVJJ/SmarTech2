@@ -612,8 +612,8 @@ table tbody tr:nth-child(even) {
 
 #botonBorrar22,
 #botonEditar{
-  max-width: 50%;
-  margin-left: 10%;
+  max-width: 30px;
+  margin-top: 20px;
 }
 
 #listaColabsRegistrados{
