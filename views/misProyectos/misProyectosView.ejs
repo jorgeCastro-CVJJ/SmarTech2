@@ -12,42 +12,80 @@
             <div class="field is-horizontal proyectoVista">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <% for (let p of misproyectos) { %>
-                            <% if (p.estatus != "Pausado") { %>
-                                <div class="swiper-slide card" id="gris-clare">
-                                    <% if(listaPrivilegios.indexOf('EditarProyecto') != -1) {  %>
-                                    <a href="/proyecto/editar/<%= p.idProyecto %>"><figure class="image is-24x24 botonEditarProyecto is-clickable" >
-                                        <img src="/media/edit-free-icon-font.png">
-                                    </figure></a>
-                                    <figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" onclick="eliminar(<%= p.idProyecto %>)" data-target="modal-js-example">
-                                        <img src="/media/borrar2.png">
-                                    </figure>
-                                    <% } %>
-                                    <div class="card-content"> 
-                                        <i src="/media/edit-free-icon-font.png"></i>
-                                        <div class="title" id="blanco">
-                                            <%=p.nombreP %>
-                                        </div>
-                                        <div class="subtitle" id="blanco">
-                                            <%= p.descripcion %>
-                                        </div>
-                                        <div class="content">
-                                            <p>
-                                            Stack Tecnológico:  <%=p.stackTecnologico %> <br>
-                                            Estatus:<% if( p.estatus == "Estabilizacion") { %>
-                                                <span style="color: green"><%= p.estatus %></span>
-                                            <%} else if (p.estatus == "Ejecucion" ) { %>
-                                                <span style="color: yellow"><%= p.estatus %></span>
-                                            <% } else if(p.estatus == "Definicion") { %>
-                                                <span style="color: orange"><%= p.estatus %></span>
-                                            <% } else if(p.estus == "Pausado") { %>
-                                                <span style="color: red"><%= p.estatus %></span>
-                                            <% } %>
-                                            </p>
-                                        </div>
-                                    </div> 
-                                </div>
+                        <% if (misproyectos.length != 0 ) { %>
+                            <% for (let p of misproyectos) { %>
+                                <% if (p.estatus != "Pausado") { %>
+                                    <div class="swiper-slide card" id="gris-clare">
+                                        <% if(listaPrivilegios.indexOf('EditarProyecto') != -1) {  %>
+                                        <a href="/proyecto/editar/<%= p.idProyecto %>"><figure class="image is-24x24 botonEditarProyecto is-clickable" >
+                                            <img src="/media/edit-free-icon-font.png">
+                                        </figure></a>
+                                        <figure class="image is-24x24 js-modal-trigger botonEliminarProyecto is-clickable" onclick="eliminar(<%= p.idProyecto %>)" data-target="modal-js-example">
+                                            <img src="/media/borrar2.png">
+                                        </figure>
+                                        <% } %>
+                                        <div class="card-content"> 
+                                            <i src="/media/edit-free-icon-font.png"></i>
+                                            <div class="title" id="blanco">
+                                                <%=p.nombreP %>
+                                            </div>
+                                            <div class="subtitle" id="blanco">
+                                                <%= p.descripcion %>
+                                            </div>
+                                            <div class="content">
+                                                <p>
+                                                Stack Tecnológico:  <%=p.stackTecnologico %> <br>
+                                                Estatus:<% if( p.estatus == "Estabilizacion") { %>
+                                                    <span style="color: green"><%= p.estatus %></span>
+                                                <%} else if (p.estatus == "Ejecucion" ) { %>
+                                                    <span style="color: yellow"><%= p.estatus %></span>
+                                                <% } else if(p.estatus == "Definicion") { %>
+                                                    <span style="color: orange"><%= p.estatus %></span>
+                                                <% } else if(p.estus == "Pausado") { %>
+                                                    <span style="color: red"><%= p.estatus %></span>
+                                                <% } %>
+                                                </p>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                <% } else { %>
+                                    <div class="swiper-slide card" id="gris-clare">
+                                        <div class="card-content"> 
+                                            <i src="/media/edit-free-icon-font.png"></i>
+                                            <div class="title" id="blanco">
+                                                ¡Que suerte!
+                                            </div>
+                                            <div class="subtitle" id="blanco">
+                                                No tienes proyectos asignados.
+                                            </div>
+                                            <div class="content">
+                                                <p>
+                                                    Parece que no tienes Proyectos asignados... <br>
+                                                    Mientras tanto revisa en qué estan trabajando los demás.
+                                                </p>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                <% } %>
                             <% } %>
+                        <% } else { %>
+                            <div class="swiper-slide card" id="gris-clare">
+                                <div class="card-content"> 
+                                    <i src="/media/edit-free-icon-font.png"></i>
+                                    <div class="title" id="blanco">
+                                        ¡Que suerte!
+                                    </div>
+                                    <div class="subtitle" id="blanco">
+                                        No tienes proyectos asignados.
+                                    </div>
+                                    <div class="content">
+                                        <p>
+                                            Parece que no tienes Proyectos asignados... <br>
+                                            Mientras tanto revisa en qué estan trabajando los demás.
+                                        </p>
+                                    </div>
+                                </div> 
+                            </div>
                         <% } %>
                     </div>
                     <div class="swiper-button-next"></div>
@@ -65,7 +103,7 @@
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <% for (let t of todosproyectos) { %>
-                            <% if (t.estatus != "Pausado") { %>
+                            <% if (t.estatus) { %>
                                 <div class="swiper-slide card" id="azul">
                                     <% if(listaPrivilegios.indexOf('EditarProyecto') != -1) {  %>
                                     <a href="/proyecto/editar/<%= t.idProyecto %>"><figure class="image is-24x24 botonEditarProyecto is-clickable" href="/proyecto/editar/<%= t.idProyecto %>" >
@@ -90,7 +128,7 @@
                                                 <span style="color: yellow"><%= t.estatus %></span>
                                             <% } else if(t.estatus == "Definicion") { %>
                                                 <span style="color: orange"><%= t.estatus %></span>
-                                            <% } else if(t.estus == "Pausado") { %>
+                                            <% } else if(t.estatus == "Pausado") { %>
                                                 <span style="color: red"><%= t.estatus %></span>
                                             <% } %>
                                         </div>
@@ -121,6 +159,7 @@
             </section>
             <footer class="modal-card-foot">
                 <a  id="botonEliminarProyectoModal" href="hola"><button class="button is-danger" href="#">Eliminar</button></a>
+                <br>
                 <button class="button">Cancelar</button>
             </footer>
         </div>
