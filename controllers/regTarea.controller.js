@@ -92,6 +92,8 @@ getBuscar = (request, response, next) => {
 };
 
 getHorasXtarea = async (request, response, next) => {
+    let mensaje = request.session.mensaje ? request.session.mensaje : '';
+    request.session.mensaje = '';
     let tareas;
     await Proyecto.horasTotales(request.params.idProyecto)
     .then( async ([rowsHoras, fielData]) => {
@@ -103,6 +105,8 @@ getHorasXtarea = async (request, response, next) => {
                 }
                 tareas = rowsTarea;
                 proyecto = rowsHoras;
+                
+                
             });
 
         console.log(tareas);
@@ -110,6 +114,7 @@ getHorasXtarea = async (request, response, next) => {
         response.render(path.join("horasXtarea", "horasXtarea.ejs"), {
             tarea: tareas,
             listaPrivilegios: request.session.privilegios,
+            mensaje: mensaje
         })
     })
 }
@@ -159,10 +164,9 @@ postEditarTarea = (request, response, next) => {
                     rowsTarea[0].horasTrabajo,
                     rowsTarea[0].idTarea
                 )
-                    .then(([rowsTarea, fielData]) => {
-                        response.status(200).json({ mensaje: 'Tarea editada correctamente', idProyecto: rowsTarea[0].idProyecto });
-                    })
-                    .catch((err) => console.log(err));
+                request.session.mensaje = "Tarea creada correctamente";
+                response.status(200).json({ mensaje: 'Listo', idProyecto: rowsTarea[0].idProyecto });
+                    
         })
         .catch((err) => console.log(err));
 };

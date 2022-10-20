@@ -1,3 +1,11 @@
+<% if(mensaje != "") {  %>
+
+  <div class="notification is-success is-light exitoTarea" id="snackbar">
+  Tarea Editada <strong>correctamente</strong>
+  </div>
+
+<% } %>
+
 <div>
   <h1 class="tituloProyectoE"> <%= tarea[0].nombreP %></h1>
   <div class="notification is-info horasTotales">
@@ -11,42 +19,62 @@
 
 <div class="field is-static">
 
-<table  id="table_tarea">
+  <table  id="table_tarea">
 
-  <thead>
-    <tr>
-      <th><abbr title="Tarea">Tarea</abbr></th>
-      <th><abbr title="Horas">Horas</abbr></th>
-      <th><abbr title="Colaboradores">Colaboradores</abbr></th>
-      <th><abbr title="Editar">Editar</abbr>  </th>
-      <th><abbr title="Borrar">Borrar</abbr></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% for (let t of tarea) { %>
+    <thead>
       <tr>
-        <td><%= t.nombreT %></td>
-        <td id="horasTrabajo"><%= t.horasTrabajo %></td>
-        <br>
-        <td>
-          <% for (let c of t.colaboradores) { %>
-            <%= c.nombre %></br>
-          <% } %>
-        </td>
-        <td> <a href="/tarea/editar/<%= t.idTarea %>"><img src="../../media/edit.png" alt="boton editar" id="botonEditar"></a></td>
-        <td> <a href="/tarea/eliminarTarea/<%= t.idTarea %>"><img src="../../media/borrar.png" alt="boton borrar" id="botonBorrar22"></a></td>
+        <th><abbr title="Tarea">Tarea</abbr></th>
+        <th><abbr title="Horas">Horas</abbr></th>
+        <th><abbr title="Colaboradores">Colaboradores</abbr></th>
+        <th><abbr title="Editar">Editar</abbr>  </th>
+        <th><abbr title="Borrar">Borrar</abbr></th>
       </tr>
-    <% } %>
-  </tbody>
-  
-</table>
+    </thead>
 
-<input class="input" type="hidden" value="<%= tarea[0].idProyecto %>" id="idProyecto" name="idProyecto">
-<button class="button is-info is-outlined botonRegreso2"><a href="/user/inicio"> Regresar a inicio</a></button>
+    <tbody>
+      <% for (let t of tarea) { %>
+        <tr>
+          <td><%= t.nombreT %></td>
+          <td id="horasTrabajo"><%= t.horasTrabajo %></td>
+          <br>
+          <td>
+            <% for (let c of t.colaboradores) { %>
+              <%= c.nombre %></br>
+            <% } %>
+          </td>
+          <td> <a href="/tarea/editar/<%= t.idTarea %>"><img src="../../media/edit.png" alt="boton editar" id="botonEditar"></a></td>
+          <td> <a href="/tarea/eliminarTarea/<%= t.idTarea %>"><img src="../../media/borrar.png" alt="boton borrar" id="botonBorrar22"></a>
+            <!-- <figure class="js-modal-trigger botonEliminarProyecto is-clickable" onclick="eliminar(<%= t.idTarea %>)"  data-target="modal-js-example"><img src="../../media/borrar.png" alt="boton borrar" id="botonBorrar22"></fgure> -->
+          </td>
+          <!-- <td> <img src="../../media/borrar.png" alt="boton borrar" id="botonBorrar22"></a></td> -->
+        </tr>
+      <% } %>
+    </tbody>
+    
+  </table>
+
+  <input class="input" type="hidden" value="<%= tarea[0].idProyecto %>" id="idProyecto" name="idProyecto">
+  <button class="button is-info is-outlined botonRegreso2"><a href="/user/inicio"> Regresar a inicio</a></button>
 
 </div>
-</div>
+
+<!-- <div class="modal" id="modal-js-example">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+      <header class="modal-card-head">
+          <p class="modal-card-title">Eliminar Proyecto</p>
+          <button class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+          Estás a punto de <span class="is-red">Eliminar</span> el proyecto seleccionado. <br>
+          ¿Quieres continuar con este proceso?
+      </section>
+      <footer class="modal-card-foot">
+          <a  id="botonEliminarProyectoModal" href="hola"><button class="button is-danger" href="#">Eliminar</button></a>
+          <button class="button">Cancelar</button>
+      </footer>
+  </div>
+</div> -->
 
 <script>
   $(document).ready( function () {
@@ -78,6 +106,71 @@ $('#table_tarea').DataTable({
             });
   } );
 
+  window.onload = function() {
+        // Get the snackbar DIV
+        var x = document.getElementById("snackbar");
+        // Add the "show" class to DIV
+        x.className = "show";
+    // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className  = x.className.replace("show",""); }, 3000);
+    };
+
+
+    // function eliminar(idProyectoModal) {
+    //     document.getElementById("botonEliminarProyectoModal").href="/proyecto/eliminarProyecto/" + idProyectoModal;
+    // }
+
+//   function eliminar(idTareaModal) {
+//         document.getElementById("botonEliminarProyectoModal").href="/tarea/eliminarTarea/" + idTareaModal;
+//     }
+//     ////proyecto/eliminarProyecto/${idProyectoModal}
+
+
+
+//     document.addEventListener('DOMContentLoaded', () => {
+//   // Functions to open and close a modal
+//   function openModal($el) {
+//     $el.classList.add('is-active');
+//   }
+
+//   function closeModal($el) {
+//     $el.classList.remove('is-active');
+//   }
+
+//   function closeAllModals() {
+//     (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+//       closeModal($modal);
+//     });
+//   }
+
+//   // Add a click event on buttons to open a specific modal
+//   (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+//     const modal = $trigger.dataset.target;
+//     const $target = document.getElementById(modal);
+
+//     $trigger.addEventListener('click', () => {
+//       openModal($target);
+//     });
+//   });
+
+//   // Add a click event on various child elements to close the parent modal
+//   (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+//     const $target = $close.closest('.modal');
+
+//     $close.addEventListener('click', () => {
+//       closeModal($target);
+//     });
+//   });
+
+//   // Add a keyboard event to close all modals
+//   document.addEventListener('keydown', (event) => {
+//     const e = event || window.event;
+
+//     if (e.keyCode === 27) { // Escape key
+//       closeAllModals();
+//     }
+//   });
+// });
 
 
 </script>
