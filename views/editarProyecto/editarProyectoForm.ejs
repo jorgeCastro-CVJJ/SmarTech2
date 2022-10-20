@@ -37,16 +37,15 @@
         </div>
         <div class="field-body">
           <div class="field">
-            <div class="control select is-fullwidth is-danger">
+            <div class="control select is-fullwidth">
               <select  id="estatus" name="estatus" required>
-                  <option value= "<% proyecto[0].estatus %>"selected disabled>Selecciona un estatus</option>
+                  <option value= "<%= proyecto[0].estatus %>" selected disabled>Selecciona un estatus</option>
                   <option value= "Estabilizacion" >Estabilización</option>
                   <option value= "Ejecucion" >Ejecución</option>
                   <option value= "Definicion" >Definición</option>
                   <option value= "Pausado" >Pausado</option>
               </select>
             </div>
-            <p class="help is-danger">¡Selecciona un estatus antes de modificar!</p> </p>
           </div>
         </div>
       </div>
@@ -111,8 +110,8 @@
 
       <div class="field is-grouped is-grouped-centered">
         <p class="control">
-          <input type="button" value="Modificar" id= "submitProyectobtn" class="button botonAgregarTarea is-success is-outlined"onclick="postEditarProyecto()">
-          <button type="reset" class="button botonAgregarTarea is-danger is-outlined" onclick="window.location.href='/proyecto/misProyectos/';">Regresar</button>
+          <input type="button" value="Modificar" id= "submitProyectobtn" class="button botonAgregarTarea3 is-success is-outlined"onclick="postEditarProyecto()">
+          <button type="reset" class="button botonAgregarTarea2 is-danger is-outlined" onclick="window.location.href='/proyecto/misProyectos/';">Regresar</button>
         </p>
       </div>
     </form>
