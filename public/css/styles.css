@@ -550,11 +550,6 @@ table tbody tr:nth-child(even) {
   border-radius: none;
 }
 
-.tablahorasXtarea{
-  margin-top: 50px;
-  margin-left: 10px;
-}
-
 .horasTotales{
   margin-top: -230px;
   margin-left: 450px;
@@ -781,11 +776,40 @@ table tbody tr:nth-child(even) {
   top: 26%;
 } 
 
+#table_tarea_paginate {
+  position: absolute;
+  left: -8%;
+}
+
+#table_tarea_previous, #table_tarea_next {
+  padding: 250px;
+  left: 4%;
+}
+
 #table_f {
   /* margin-top: 100px; */
   /* width: 600px; */
   box-shadow: 10px 10px 8px #8888888d;
 }
+
+#table_tarea{
+  box-shadow: 10px 10px 8px #8888888d;
+}
+
+#table_tarea_filter {
+  position: absolute;
+  left: 75%;
+  top: -3%;
+}
+
+#table_tarea_wrapper {
+  position: absolute;
+  left:25%;
+  top: 33%;
+  width: 900px;
+  padding-left: 90px;
+} 
+
 
 th,td {
   padding: 0.6rem !important;
