@@ -248,7 +248,7 @@ html{
 }
 
 .botonTarea {
-  left: 43%;
+  left: 110%;
   margin-top: -250px;
   color: white;
   border: none;
@@ -298,6 +298,27 @@ html{
   margin-left: 43%;
   top: 65px;
 }
+
+#tituloED {
+  position: absolute;
+  font-family: var(--fuente);
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+  margin-left: 50%;
+  top: 65px;
+}
+
+#tituloRE {
+  position: absolute;
+  font-family: var(--fuente);
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+  margin-left: 46%;
+  top: 65px;
+}
+
 .tituloProyecto{
   position: fixed;
   text-align: center;
@@ -305,7 +326,7 @@ html{
   font-weight: bold;
   font-size: 25px;
   color: black;
-  margin-left: 52%;
+  margin-left: 50%;
   top: 65px;
 
 }
@@ -319,7 +340,7 @@ html{
 
 .proyectosExistentes {
   padding-top: 460px;
-  padding-left: 600px;
+  padding-left: 650px;
 }
 
 
@@ -341,7 +362,7 @@ html{
 }
 
 .contenedorTarea{
-  margin-left: 16%;
+  margin-left: 35%;
   margin-top: 2%;
 }
 
@@ -355,8 +376,9 @@ html{
 }
 
 .botonAgregarTarea {
+  position: absolute;
   left: 260%;
-  margin-top: 20%;
+  bottom: 100%;
 }
 .cartaProyectos {
   width: 600px; 
@@ -552,8 +574,9 @@ table tbody tr:nth-child(even) {
 }
 
 .horasTotales{
+  position: absolute;
   margin-top: -230px;
-  margin-left: 450px;
+  left: 339%;;
 }
 
 .seleccionarProyecto{
@@ -620,16 +643,16 @@ table tbody tr:nth-child(even) {
 
 .swiper {
   max-width:1150px;;
-  min-width: 600px;
+  min-width: 600px; 
   height: 75%;
   padding: 20px !important;
 }
 
 .swiper-slide {
-  text-align: lefts;
+  text-align: left;
+  /* width: auto !important; */
   font-size: 18px;
   background: #fff;
-  ;
 }
 
 .swiper-button-next::after {
@@ -638,8 +661,12 @@ table tbody tr:nth-child(even) {
 }
 .swiper-button-prev::after {
   position: absolute;
-  left: 2px;
+  left: -10px;
 }
+/* 
+.mySwiper {
+  width: 200px;
+} */
 
 .swiper-pagination {
   position: static !important;
@@ -766,14 +793,14 @@ table tbody tr:nth-child(even) {
 #grafica{
   position: absolute;
   max-width: 800px;
-  margin-left: 30%;
+  margin-left: 31.5%;
   margin-top: 3%;
   display: flexbox;
 }
 
 #table_f_wrapper {
   position: absolute;
-  left:29%;
+  left:33%;
   top: 26%;
 } 
 
@@ -823,7 +850,7 @@ th,td {
 
 #table_f_filter {
   position: absolute;
-  left: 649px;
+  left: 570px;
   top: -13px;
 }
 
@@ -930,7 +957,7 @@ th,td {
 #reportebtn {
   position: absolute;  
   width: 150px;
-  top: 340px;
+  top: 320px;
   left: 1260px;
  /* height: 50px;
   background-color: #00A99D;
@@ -945,7 +972,7 @@ th,td {
 #crearPDF {
   position: absolute;  
   width: 150px;
-  top: 340px;
+  top: 320px;
   left: 1050px;
   /* bottom: -10%;
   width: 100px;
@@ -1012,7 +1039,7 @@ th,td {
 }
 
 #reportes {
-  left: 4.5%;
+  left: 5%;
 }
 
 #regEmpleado {
@@ -1028,16 +1055,16 @@ th,td {
 
 #misP {
   position: absolute;
-  left: 20%;
+  left: 24%;
   top: 13%;
-  width: 1115px;
+  width: 1000px;
 }
 
 #todosP {
   position: absolute;
-  left: 20%;
+  left: 24%;
   top: 70%;
-  width: 1115px;
+  width: 1000px;
 }
 
 #misPrTitulo {
@@ -1055,4 +1082,28 @@ th,td {
 #misTareas {
   position: absolute;
   left: 10%;
+}
+
+.botonAgregarTarea3 {
+  position: absolute;
+  left: 225%;
+  bottom: 17%;
+}
+
+.botonAgregarTarea2 {
+  position: absolute;
+  left: 110%;
+  bottom: 13%;
+}
+
+.botonAgregarTarea4 {
+  position: absolute;
+  left: 266%;
+  bottom: 13%;
+}
+
+.botonAgregarTarea5 {
+  position: absolute;
+  left: 262%;
+  bottom: 20%;
 }
