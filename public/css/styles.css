@@ -612,7 +612,7 @@ table tbody tr:nth-child(even) {
 
 #botonBorrar22,
 #botonEditar{
-  max-width: 15%;
+  max-width: 50%;
   margin-left: 10%;
 }
 
