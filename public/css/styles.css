@@ -4,6 +4,7 @@ body {
   display:flex;
   align-items: center;
   height: 100vh;
+  font-size: 16px;
 } 
 
 body .menu{
@@ -201,6 +202,7 @@ html{
   padding: 10px 20px;
   border: none;
   outline: none;
+  font-size: 1em;
 }
 
 .field button[type="submit"] {
@@ -293,7 +295,7 @@ html{
   position: absolute;
   font-family: var(--fuente);
   font-weight: bold;
-  font-size: 25px;
+  font-size: 1.56em;
   color: black;
   margin-left: 40%;
   top: 65px;
@@ -960,8 +962,8 @@ th,td {
 #reportebtn {
   position: absolute;  
   width: 150px;
-  top: 775px;
-  left: 52%;
+  top: 500px;
+  left: 800px;
  /* height: 50px;
   background-color: #00A99D;
   border: none;
@@ -975,8 +977,8 @@ th,td {
 #crearPDF {
   position: absolute;  
   width: 150px;
-  top: 775px;
-  left: 38%;
+  top: 500px;
+  left: 550px;
   /* bottom: -10%;
   width: 100px;
   height: 50px;
@@ -1178,6 +1180,6 @@ th,td {
 .regresarbtn2 {
   position: absolute;  
   width: 150px;
-  top: 10px;
-  left: 60px;
+  top: -280px;
+  left: 220px;
 }
