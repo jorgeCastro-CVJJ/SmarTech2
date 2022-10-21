@@ -632,6 +632,10 @@ table tbody tr:nth-child(even) {
   margin-left: 300px;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 
 .proyecto{
   min-height: 100vh;
