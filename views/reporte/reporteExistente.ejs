@@ -1,6 +1,6 @@
 <div class="titulo">Reporte semanal NatDev - Editar reporte</div>
 
-                <div class="fechas_reporte">
+                <div class="fechas_reporte2">
                     <div class = "row">
                         <div class="input-field is-normal">
                             
@@ -109,12 +109,12 @@
             <!--Botón de guardar-->
             <p class="control">
                 <input type="submit" onclick="postReporteEditado()" value="Guardar cambios"
-                class="button reportebtn is-success is-outlined" id="reportebtn">
+                class="button reportebtn is-success is-outlined" id="reportebtn2">
             </p>
         
 
             <p class="control">
-                <a type="button" class="button reportebtn is-info" onclick="crearPDF()" id = "crearPDF">Generar PDF</a>
+                <a type="button" class="button reportebtn is-info" onclick="crearPDF()" id = "crearPDF2">Generar PDF</a>
             </p>
             <script>
                 function crearPDF() {
@@ -122,10 +122,6 @@
                 }
             </script>
 
-            <p class="control">
-                <button type="button" value="Regresar" id="regresarbtn2" href="/reporte/nuevoReporte"
-                class="button regresarbtn2 is-success is-outlined"></button>
-            </p>
 
 <script>
     function postReporteEditado(){

@@ -541,6 +541,12 @@ html{
   top: 200px;
 }
 
+.fechas_reporte2 {
+  position: absolute;
+  left: 19%;
+  top: 180px;
+}
+
 .inputs_reporte {
   position: absolute;
   left: 15%;
@@ -969,6 +975,18 @@ th,td {
   border-radius: 10px; */
 }
 
+#reportebtn2 {
+  position: absolute;  
+  width: 150px;
+  top: 400px;
+  left: 850px;
+ /* height: 50px;
+  background-color: #00A99D;
+  border: none;
+  color: white;
+  border-radius: 10px; */
+}
+
 .labelPE{
   top: 80px;
 }
@@ -977,6 +995,20 @@ th,td {
   width: 150px;
   top: 775px;
   left: 38%;
+  /* bottom: -10%;
+  width: 100px;
+  height: 50px;
+  background-color: #00A99D;
+  border: none;
+  color: white;
+  border-radius: 10px; */
+}
+
+#crearPDF2 {
+  position: absolute;  
+  width: 150px;
+  top: 400px;
+  left: 650px;
   /* bottom: -10%;
   width: 100px;
   height: 50px;
