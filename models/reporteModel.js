@@ -32,6 +32,22 @@ module.exports = class Reporte {
    static fetchHoras() {
      return db.execute('SELECT SUM(horasTrabajo) as horasTrabajo, nombreP FROM tarea T, proyecto P WHERE T.idProyecto = P.idProyecto GROUP BY nombreP');
    }
+      //PDF
+   static fetchPersonal() {
+    return db.execute('SELECT SUM(personalCompletoT + personalMedioT) as totalPersonal FROM reporteFinal WHERE noReporte = ?', [noReporte])
+   }
+
+   static fetchPersonal() {
+    return db.execute('SELECT SUM(personalCompletoT + personalMedioT) as totalPersonal FROM reporteFinal WHERE noReporte = ?', [noReporte])
+   }
+
+   static fetchHorasEsperadas() {
+    return db.execute('SELECT SUM(((personalCompletoT*48) + (personalMedioT*34))-horasVacaciones) as horasEsperadas FROM reporteFinal WHERE noReporte = ?', [noReporte])
+   }
+
+   static fetchHoras() {
+    return db.execute('SELECT SUM(horasTrabajo) as horasTrabajo, nombreP FROM tarea T, proyecto P WHERE T.idProyecto = P.idProyecto GROUP BY nombreP');
+  }
 
    static async postEditarReporte(porcentaje, horasVacaciones, personalCompletoT, personalMedioT, descripcion, noReporte) {
     try {

@@ -4,9 +4,9 @@
                 <div class = "row">
                     <div class="input-field is-normal">
                         <label class="label">Fecha inicio: </label>
-                        <input id="fechaInicio" type="date">
+                        <input id="fechaInicio" type="date" onclick = deshabilitarProyecto()>
                         <label class="label">Fecha fin: </label>
-                        <input id="fechaFinal" type="date">
+                        <input id="fechaFinal" type="date" onclick = deshabilitarProyecto()>
                     </div>
                 </div>
             </div>
@@ -18,7 +18,8 @@
                     <label class = "label">Personal de Medio Tiempo</label>
                     <input class = "input" type = "number" min="0" placeholder = "Ingresar" 
                     onkeyup="horasMedioT()" onclick="horasMedioT()" pattern="^[0-9]+"
-                    oninput="this.value = Math.max(this.value, 0)" id = "personalMedioT" value = "0">   
+                    oninput="this.value = Math.max(this.value, 0)" id = "personalMedioT" value = "0"
+                    onclick = deshabilitarProyecto() onkeyup = deshabilitarProyecto()>   
                     <label class = "label">Horas</label>  
                     <div class = "horasMedioT" type = "number" id= "horasMedioT">0</div>                            
                 </div>
@@ -27,7 +28,8 @@
                     <label class = "label">Personal de Tiempo Completo</label>
                     <input class = "input" type = "number" min="0" placeholder = "Ingresar" 
                     onkeyup="horasCompletoT()" onclick="horasCompletoT()" pattern="^[0-9]+"
-                    oninput="this.value = Math.max(this.value, 0)" id = "personalCompletoT" value = "0">
+                    oninput="this.value = Math.max(this.value, 0)" id = "personalCompletoT" value = "0"
+                    onclick = deshabilitarProyecto() onkeyup = deshabilitarProyecto()>
                     <label class = "label">Horas</label>  
                     <div class = "horasCompletoT" type = "number" id= "horasCompletoT">0</div>                      
                 </div>
@@ -36,7 +38,8 @@
                     <input class = "input" type = "number" min = "0"
                     onkeyup="horasEsperadas()" onclick="horasEsperadas()"
                     value = "0" id= "horasVacaciones" pattern="^[0-9]+"
-                    oninput="this.value = Math.max(this.value, 0)">  
+                    oninput="this.value = Math.max(this.value, 0)"
+                    onclick = deshabilitarProyecto() onkeyup = deshabilitarProyecto()>  
                 </div>
                 <div class="field is-horizontal">
                     <label class = "label">Total de personal</label>
@@ -104,8 +107,13 @@
           </p>
 
           <p class="control">
-            <a type="button" class="button reportebtn is-info" id="crearPDF" href = "/reporte/crearPDF">Generar PDF</a>
+            <a type="button" class="button reportebtn is-info" onclick="crearPDF()" id = "crearPDF">Generar PDF</a>
           </p>
+          <script>
+            function crearPDF() {
+                window.print();
+            }
+          </script>
 
         
 

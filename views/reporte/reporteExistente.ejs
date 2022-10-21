@@ -17,7 +17,7 @@
             <div class="columns">
                 <div class="column">
                     <div class="porcentajesRep">
-                        <label class = "label">Proporción: <input value = '<%= reporteN[0].porcentaje %>' type="number" min = "0" placeholder="0" id="porcentaje"> </label>
+                        <label class = "label">Proporción: <input value = '<%= (reporteN[0].porcentaje).toFixed(2) %>' type="number" min = "0" placeholder="0" id="porcentaje"> </label>
                         <div class = "field is-horizontal">
                         <label class="label">Eficiencia Verdadera:</label> 
                         <label class = "porcentajeEficiencia" type = "number" id = "porcentajeEficiencia" value = "0">0</label> 
@@ -101,8 +101,8 @@
              <% } %>
             <tr>
                 <td><b>TOTAL</b></td>
-                <td id = "totalHorasTrabajo" type = "number" value = "0"><%= suma_horas_trabajo %></td>
-                <td id = "totalHorasReales" type = "number" value = "0"><%= suma_horas_reales %></td>
+                <td id = "totalHorasTrabajo" type = "number"><%= suma_horas_trabajo %></td>
+                <td id = "totalHorasReales" type = "number"><%= suma_horas_reales %></td>
             </tr>
         </tbody>
 
@@ -113,8 +113,14 @@
         </p>
 
         <p class="control">
-            <a type="button" class="button reportebtn is-info" id="crearPDF" href = "/reporte/crearPDF/<%= reporteN[0].noReporte %>">Generar PDF</a>
-        </p>
+            <a type="button" class="button reportebtn is-info" onclick="crearPDF()" id = "crearPDF">Generar PDF</a>
+          </p>
+          <script>
+            function crearPDF() {
+                window.print();
+            }
+          </script>
+
 
 <script>
     function postReporteEditado(){
@@ -205,13 +211,10 @@
         </script>
 
 <script>
-    const totalHorasReales = Number(document.getElementById("totalHorasReales").innerHTML);
     const porcentaje = document.getElementById("porcentaje").value;
-    console.log(porcentajeEficiencia);
-    console.log(typeof(porcentajeEficiencia));
-    console.log(porcentaje);
-    console.log(typeof(porcentaje));
-    porcentajeEficiencia.innerHTML = (totalHorasReales / Number(horasEsperadas.innerHTML)).toFixed(2);
+    console.log(totalHorasReales);
+    console.log(typeof(totalHorasReales));
+    porcentajeEficiencia.innerHTML = suma_horas_reales / Number(horasEsperadas.innerHTML).toFixed(2);
     proporcion.innerHTML = (parseFloat(porcentajeEficiencia.innerHTML) / parseFloat(porcentaje)).toFixed(2);
 </script> 
     
