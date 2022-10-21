@@ -35,9 +35,9 @@ body .menu{
 
   /* letras */
   font-style: normal;
-  font-weight: 600;
+  font-weight: 580;
   padding-left: 10px;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 .cerrarSesion {
@@ -243,7 +243,7 @@ html{
 .field-label label {
   width: 250px;
   display: flex;
-  padding: 13px;
+  padding: 0px;
   position: relative;
 }
 
@@ -612,8 +612,8 @@ table tbody tr:nth-child(even) {
 
 #botonBorrar22,
 #botonEditar{
-  max-width: 15%;
-  margin-left: 10%;
+  max-width: 30px;
+  margin-top: 20px;
 }
 
 #listaColabsRegistrados{
@@ -630,6 +630,10 @@ table tbody tr:nth-child(even) {
 #borrarColabEditProyecto{
   width: 20px;
   margin-left: 300px;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 
@@ -1106,4 +1110,53 @@ th,td {
   position: absolute;
   left: 262%;
   bottom: 20%;
+}
+
+#img {
+  position: absolute;
+  top: -50%;
+  padding: 16px;
+}
+
+#videos {
+  position: absolute;
+  left: 20%;
+  top: -200px;
+}
+
+#videos2 {
+  position: absolute;
+  left: 20%;
+  top: -140px;
+}
+
+#videos3 {
+  position: absolute;
+  left: 20%;
+  top: -80px;
+}
+
+#videos4 {
+  position: absolute;
+  left: 20%;
+  top: -9px;
+}
+
+#videos5 {
+  position: absolute;
+  left: 20%;
+  top: 80px;
+}
+
+.videosCaja {
+  position: absolute;
+  left: 35%;
+  top: 60%;
+  height: 100px;
+  width: 500px;
+}
+
+#ayuda {
+  position: absolute;
+  left: 2%;
 }

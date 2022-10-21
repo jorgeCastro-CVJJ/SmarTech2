@@ -32,7 +32,9 @@
               <div class="field-body">
                 <div class="control is-fullwidth">
                   <input class="input"  placeholder="helenacobo@natgas.mx" id="correo" name="correo" type="email" pattern="([\w - \.]+)@natgas.com.mx" required>
+                  <p class="help"> Formato 'uncorreo@natgas.com.mx'</p>
                 </div>
+                
               </div>
             </div>
 
@@ -65,6 +67,13 @@
               <div class="field-body">
                 <div class="control is-fullwidth">
                   <input class="input"  placeholder="*******" id="contraseña" name="contraseña" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                  <p class="help is-green-invert"> 
+                    Formato: <br>
+                    - Míinimo 8 caracteres o más. <br>
+                    - Al menos 1 letra minúscula. <br> 
+                    - Al menos 1 letra mayúscula. <br>
+                    - Al menos 1 número o símbolo. <br>
+                  </p>
                 </div>
               </div>
             </div>
